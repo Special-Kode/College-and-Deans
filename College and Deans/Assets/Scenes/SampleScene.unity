@@ -961,7 +961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GenerationMethod: 0
-  FixedValue: 30
+  FixedValue: 8
   RandomLowerBound: 5
   RandomUpperBound: 10
   MoveAmount: {x: 22, y: 16}
