@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class DoorBehaviour : MonoBehaviour
 {
@@ -14,5 +15,10 @@ public class DoorBehaviour : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void DisableCollider()
+    {
+        GetComponent<TilemapCollider2D>().enabled = false;
     }
 }

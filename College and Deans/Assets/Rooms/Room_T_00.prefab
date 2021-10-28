@@ -1633,6 +1633,7 @@ GameObject:
   - component: {fileID: 8851689317910216160}
   - component: {fileID: 4594314379682060610}
   - component: {fileID: 2278447515052266830}
+  - component: {fileID: 6022269423277871330}
   m_Layer: 0
   m_Name: Door_T
   m_TagString: Untagged
@@ -1832,6 +1833,18 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &6022269423277871330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4942298551629230976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5257692917080358118
 GameObject:
   m_ObjectHideFlags: 0
