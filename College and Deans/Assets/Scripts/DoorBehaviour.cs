@@ -19,6 +19,15 @@ public class DoorBehaviour : MonoBehaviour
 
     public void DisableCollider()
     {
-        GetComponent<TilemapCollider2D>().enabled = false;
+        //GetComponent<TilemapCollider2D>().enabled = false;
+        GetComponent<TilemapCollider2D>().isTrigger = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Player") && GetComponentInParent<RoomBehaviour>() != null)
+        {
+            Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = GetComponentInParent<RoomBehaviour>().gameObject;
+        }
     }
 }

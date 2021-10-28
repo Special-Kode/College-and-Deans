@@ -53,6 +53,7 @@ public class DungeonGeneratorManager : MonoBehaviour
     [SerializeField] private Vector2 currentPos = Vector2.zero;
 
     [SerializeField] private List<RoomInfo> roomInfoList; //TODO save useful room info for rearrangement
+    [SerializeField] private List<GameObject> roomList; //TODO save useful room info for rearrangement
     [SerializeField] private List<Vector2> positions;
 
     private void Awake()
@@ -237,6 +238,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 room = Instantiate(TRBL_Room, roomInfo.position, Quaternion.identity);
             }
 
+            roomList.Add(room);
 
             //TODO edit all prefabs with a RoomBehaviour
             if (room.GetComponent<RoomBehaviour>() != null)
@@ -245,5 +247,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             }
             //room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
         }
+
+        Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = roomList[0];
     }
 }
