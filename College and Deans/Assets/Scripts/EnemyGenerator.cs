@@ -105,6 +105,8 @@ public class EnemyGenerator : MonoBehaviour
     //Recibe la dificultad de la sala y una lista con los lugares donde pueden hacer spawn los enemigos
     public void SpawnEnemies(string tipoSala, List<Transform> spawns)
     {
+        if (spawns.Count == 0) return;
+
         switch(tipoSala)
         {
             case "facil":

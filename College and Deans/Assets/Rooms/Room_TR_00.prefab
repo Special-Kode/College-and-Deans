@@ -3892,6 +3892,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5802476671422910627}
+  - component: {fileID: 6868190281031678141}
   m_Layer: 0
   m_Name: Room_TR_00
   m_TagString: Untagged
@@ -3915,6 +3916,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6868190281031678141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5802476671422910626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f699ebe626c7ad34b9c656b425b4fe97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnPoints: []
+  roomInfo: {fileID: 0}
 --- !u!1 &5802476672458305654
 GameObject:
   m_ObjectHideFlags: 0
@@ -3974,6 +3989,7 @@ GameObject:
   - component: {fileID: 5802476672649468453}
   - component: {fileID: 5802476672649468452}
   - component: {fileID: 5082616403309353341}
+  - component: {fileID: 3094281537137034727}
   m_Layer: 0
   m_Name: Door_R
   m_TagString: Untagged
@@ -4221,6 +4237,18 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &3094281537137034727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5802476672649468454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8705690624776504028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4233,6 +4261,7 @@ GameObject:
   - component: {fileID: 997406236764494516}
   - component: {fileID: 2884744027910242736}
   - component: {fileID: 7713374234247675740}
+  - component: {fileID: 3634699870504646220}
   m_Layer: 0
   m_Name: Door_T
   m_TagString: Untagged
@@ -4480,3 +4509,15 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &3634699870504646220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705690624776504028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

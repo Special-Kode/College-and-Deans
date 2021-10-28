@@ -12,6 +12,10 @@ public class RoomBehaviour : MonoBehaviour
     void Start()
     {
         Debug.Log("Room spawned!");
+        foreach (var door in GetComponentsInChildren<DoorBehaviour>())
+        {
+            door.DisableCollider();
+        }
     }
 
     // Update is called once per frame

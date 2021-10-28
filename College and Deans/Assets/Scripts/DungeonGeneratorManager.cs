@@ -11,6 +11,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         Fixed = 0, Random = 1
     };
 
+    [Header("Generation Config")]
     public RandomRoomNumberMethod GenerationMethod; //Generates a fixed number of rooms or a random number of rooms
 
     public int FixedValue = 8;
@@ -23,6 +24,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     //Room prefabs
 
+    [Header("Room List")]
     //1 exit
     public GameObject T_Room;
     public GameObject R_Room;
@@ -47,9 +49,11 @@ public class DungeonGeneratorManager : MonoBehaviour
     public GameObject TRBL_Room;
     //public GameObject[] RoomList; //List of rooms for further use
 
-    public Vector2 currentPos = Vector2.zero;
+    [Header("Private Serialized Stuff")]
+    [SerializeField] private Vector2 currentPos = Vector2.zero;
 
     [SerializeField] private List<RoomInfo> roomInfoList; //TODO save useful room info for rearrangement
+    [SerializeField] private List<GameObject> roomList; //TODO save useful room info for rearrangement
     [SerializeField] private List<Vector2> positions;
 
     private void Awake()
@@ -102,7 +106,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
             if (!positions.Contains(currentPos))
             {
-                var roomInfo = new RoomInfo();
+                var roomInfo = ScriptableObject.CreateInstance<RoomInfo>();
                 if (i == 0)
                 {
                     roomInfo.roomType = RoomInfo.RoomType.Spawn;
@@ -234,6 +238,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 room = Instantiate(TRBL_Room, roomInfo.position, Quaternion.identity);
             }
 
+            roomList.Add(room);
 
             //TODO edit all prefabs with a RoomBehaviour
             if (room.GetComponent<RoomBehaviour>() != null)
@@ -242,5 +247,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             }
             //room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
         }
+
+        Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = roomList[0];
     }
 }
