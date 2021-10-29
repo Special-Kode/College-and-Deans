@@ -45,6 +45,8 @@ public class Pathfinding{
         PathNode startNode = grid.GetValue(startX, startY);
         PathNode endNode = grid.GetValue(endX, endY);
 
+        if(startNode == null || endNode == null){ return null;}
+
         openList = new List<PathNode> { startNode };
         closedList = new List<PathNode>();
 

@@ -18,20 +18,31 @@ public class Collisions : MonoBehaviour
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
             else
             {
-                //cuando se añadan más colisiones revisar esta línea
+                //cuando se aï¿½adan mï¿½s colisiones revisar esta lï¿½nea
                 this.GetComponent<AnimatorPlayerScript>().isMoved = false;
                 this.GetComponent<AnimatorPlayerScript>().isDashed = false;
             }
         }
-        if (this.tag == "Bullet" )
-        {
-            Destroy(this.gameObject);
-        }
-
-
-
-
     }
 
+    private void OnTriggerEnter2D(Collider2D other) 
+    {        
+        if (this.tag == "Bullet" )
+        {   
+            if(other.gameObject.tag == "Enemy")
+            {
+                //hacer daÃ±o al enemigo
+                Destroy(this.gameObject);
+            }
+        }
 
+        if(this.tag == "EnemyBullet")
+        {
+            if(other.gameObject.tag == "Player")
+            {
+                this.GetComponent<ExternMechanicsPlayer>().damage = true;
+                Destroy(this.gameObject);
+            }
+        }
+    }
 }

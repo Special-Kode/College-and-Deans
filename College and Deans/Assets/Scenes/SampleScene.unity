@@ -764,7 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8df0e29341838148b852e06e5649ed9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 1621872926787617426, guid: 76de8d97c5ede824a8c879d19e8b37b6, type: 3}
   bulletShooted: 0
   ClickedEnemy: 0
 --- !u!1 &684323599
