@@ -29,7 +29,7 @@ public class EnemyGenerator : MonoBehaviour
     {
         CreacionSets();
         var rooms = FindObjectsOfType<RoomBehaviour>();
-
+/*
         foreach (var room in rooms)
         {
             if(room.roomInfo.roomType == RoomInfo.RoomType.Enemies)
@@ -40,7 +40,7 @@ public class EnemyGenerator : MonoBehaviour
                 spawns.Clear();
             }
         }
-
+*/
         /**
         var oneroom = FindObjectOfType<RoomBehaviour>();
         if (oneroom != null)
@@ -53,7 +53,7 @@ public class EnemyGenerator : MonoBehaviour
     }
 
     //Creacion de los diferentes set de enemigos
-    //TODO: Mejorar creación de sets
+    //TODO: Mejorar creaciï¿½n de sets
     private void CreacionSets()
     {
         List<Enemy> set0 = new List<Enemy>();
@@ -121,10 +121,7 @@ public class EnemyGenerator : MonoBehaviour
                 {
                     Enemy temp = setRandom[0];
                     Transform spawnPosition = spawns[Random.Range(0, spawns.Count)];
-                    Instantiate(temp, spawnPosition);
-                    temp.gameObject.tag = "Enemy";
-                    temp.gameObject.AddComponent<Rigidbody2D>();
-                    temp.gameObject.AddComponent<BoxCollider2D>();
+                    Instantiate(temp, spawnPosition.position, Quaternion.identity);
                     spawns.Remove(spawnPosition);
                     setRandom.Remove(temp);
                 } while (setRandom.Count != 0);

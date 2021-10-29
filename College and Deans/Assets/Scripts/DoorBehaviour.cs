@@ -28,6 +28,8 @@ public class DoorBehaviour : MonoBehaviour
         if(other.gameObject.CompareTag("Player") && GetComponentInParent<RoomBehaviour>() != null)
         {
             Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = GetComponentInParent<RoomBehaviour>().gameObject;
+            var room = GetComponentInParent<RoomBehaviour>();
+            FindObjectOfType<GameManager>().EnterRoom(room);
         }
     }
 }
