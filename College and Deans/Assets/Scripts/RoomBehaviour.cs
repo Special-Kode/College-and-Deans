@@ -8,6 +8,8 @@ public class RoomBehaviour : MonoBehaviour
 
     public RoomInfo roomInfo;
 
+    public bool hasSpawned;
+
     // Start is called before the first frame update
     void Start()
     {

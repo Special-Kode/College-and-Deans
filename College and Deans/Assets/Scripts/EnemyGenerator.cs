@@ -10,6 +10,7 @@ public class EnemyGenerator : MonoBehaviour
     private int numSetsFacil = 5;
     [SerializeField] private Enemy enemy0;
     [SerializeField] private Enemy enemy1;
+    [SerializeField] private Enemy boss0;
 
     public List<Transform> spawns;
 
@@ -29,27 +30,6 @@ public class EnemyGenerator : MonoBehaviour
     {
         CreacionSets();
         var rooms = FindObjectsOfType<RoomBehaviour>();
-/*
-        foreach (var room in rooms)
-        {
-            if(room.roomInfo.roomType == RoomInfo.RoomType.Enemies)
-            {
-                var spawnPoints = room.SpawnPoints;
-                spawns.AddRange(spawnPoints);
-                SpawnEnemies("facil", spawns);
-                spawns.Clear();
-            }
-        }
-*/
-        /**
-        var oneroom = FindObjectOfType<RoomBehaviour>();
-        if (oneroom != null)
-        {
-            var spawnPoints = oneroom.SpawnPoints;
-            spawns.AddRange(spawnPoints);
-            SpawnEnemies("facil", spawns);
-        }
-        //*/
     }
 
     //Creacion de los diferentes set de enemigos
@@ -130,6 +110,9 @@ public class EnemyGenerator : MonoBehaviour
             case "medio": 
                 break;
             case "dificil":
+                break;
+            case "boss":
+                Instantiate(boss0, spawns[0].position, Quaternion.identity);
                 break;
         }
     }

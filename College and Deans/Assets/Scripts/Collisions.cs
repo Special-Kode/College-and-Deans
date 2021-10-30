@@ -33,6 +33,7 @@ public class Collisions : MonoBehaviour
             {
                 //hacer daño al enemigo
                 Destroy(this.gameObject);
+                Destroy(other.gameObject);
             }
         }
 
@@ -43,6 +44,7 @@ public class Collisions : MonoBehaviour
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
                 Destroy(this.gameObject);
             }
+            
         }
     }
 }
