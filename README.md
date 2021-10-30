@@ -207,29 +207,31 @@ En cuanto al resto de sonidos del juego habrá una variedad de sonidos de ataque
 
 Menú Principal 
 
+![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Menu-Principal.jpg?raw=true "Menú Principal")
+
 Ilustración 1: Menú Principal 
 
- 
+![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Opciones.jpg?raw=true "Menú de Opciones")
 
 Ilustración 2: Menú de Opciones 
 
- 
+![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Menu-de-Pausa.jpg?raw=true "Menú de Pausa")
 
 Ilustración 3: Menú de Pausa 
 
- 
+![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Creditos.jpg?raw=true "Pantalla de creditos y reconocimientos")
 
 Ilustración 4: Pantalla de creditos y reconocimientos 
 
 ### 7.2. Interfaz de usuario 
 
- 
+![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Interfaz-de-Usuario.jpg?raw=true "HUD durante el juego")
 
 Ilustración 5: HUD durante el juego 
 
 ### 7.3. Diagrama de flujo 
 
- 
+![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Diagrama-de-flujo.jpg?raw=true "Diagrama de Flujo")
 
 Ilustración 6: Diagrama de Flujo 
 
