@@ -136,101 +136,35 @@ El arma del jugador cuenta con un espacio de modificación. Los modificadores de
 
 El jugador cuenta con un arma a distancia que en su forma básica dispara proyectiles cada x tiempo. No obstante, esta puede ir variando su comportamiento dependiendo de los distintos modificadores disponibles. 
 
-Modificador 
-
-Efecto 
-
-M1 
-
-El tiempo entre proyectiles disminuye, lo que permite disparar más por segundo. Reduce un poco el daño. 
-
-M2 
-
-Aumenta el daño de los proyectiles, pero aumenta el tiempo entre ellos. 
-
-M3 
-
-Cambia los proyectiles por bombas que hacen daño en área. Aumenta considerablemente el tiempo entre ellos. 
-
-M4 
-
-Dispara en forma de rayo continuo. Reduce el daño. 
-
-M5 
-
-Dispara en forma de onda hacia el frente. Tiene un menor alcance que los proyectiles normales pero un mayor rango. 
-
-M6 
-
-Dispara dos proyectiles en vez de uno. Aumenta un pelín el tiempo entre ellos. 
-
-M7 
-
-Modifica el disparo para que ahora sean ondas que se desprenden del arma en todas direcciones. Es de corto alcance. 
-
-M8 
-
-El proyectil rebota una vez en las paredes y columnas. 
-
-M9 
-
-El proyectil atraviesa al enemigo en lugar de destruirse. 
-
-M10 
-
-Reduce el daño de los proyectiles a la mitad. 
+| Modificador | Efecto |
+| --- | --- |
+| M1 | El tiempo entre proyectiles disminuye, lo que permite disparar más por segundo. Reduce un poco el daño. |
+| M2 | Aumenta el daño de los proyectiles, pero aumenta el tiempo entre ellos. |
+| M3 | Cambia los proyectiles por bombas que hacen daño en área. Aumenta considerablemente el tiempo entre ellos. |
+| M4 | Dispara en forma de rayo continuo. Reduce el daño. |
+| M5 | Dispara en forma de onda hacia el frente. Tiene un menor alcance que los proyectiles normales pero un mayor rango. |
+| M6 | Dispara dos proyectiles en vez de uno. Aumenta un pelín el tiempo entre ellos. |
+| M7 | Modifica el disparo para que ahora sean ondas que se desprenden del arma en todas direcciones. Es de corto alcance. |
+| M8 | El proyectil rebota una vez en las paredes y columnas. |
+| M9 | El proyectil atraviesa al enemigo en lugar de destruirse. |
+| M10 | Reduce el daño de los proyectiles a la mitad. |
 
 De manera similar, el personaje podrá obtener distintos potenciadores. A diferencia de los modificadores de arma, estos potenciadores son acumulables y sus efectos son más variados. 
 
+| Potenciador | Efecto |
+| --- | --- |
+| P1 | Aumenta la velocidad. |
+| P2 | Ralentiza el paso del tiempo. |
+| P3 | Reduce el tiempo perdido por recibir un golpe. |
+| P4 | Duplica el daño infligido y el tiempo perdido por golpe recibido. |
+| P5 | Reduce la velocidad de movimiento. |
+| P6 | Aumenta el paso del tiempo. |
+| P7 | Muestra el mapa del nivel completo junto con los objetos y salas relevantes. |
+| P8 | Muestra la vida de los enemigos. |
+| P9 | Oculta el mapa del nivel. El efecto desaparece al coger otro potenciador. |
+| P10 | Oculta el tiempo restante del nivel. El efecto desaparece al coger otro potenciador. |
+| P11 | Aumenta el daño. |
  
-
-Potenciador 
-
-Efecto 
-
-P1 
-
-Aumenta la velocidad. 
-
-P2 
-
-Ralentiza el paso del tiempo. 
-
-P3 
-
-Reduce el tiempo perdido por recibir un golpe. 
-
-P4 
-
-Duplica el daño infligido y el tiempo perdido por golpe recibido. 
-
-P5 
-
-Reduce la velocidad de movimiento. 
-
-P6 
-
-Aumenta el paso del tiempo. 
-
-P7 
-
-Muestra el mapa del nivel completo junto con los objetos y salas relevantes. 
-
-P8 
-
-Muestra la vida de los enemigos. 
-
-P9 
-
-Oculta el mapa del nivel. El efecto desaparece al coger otro potenciador. 
-
-P10 
-
-Oculta el tiempo restante del nivel. El efecto desaparece al coger otro potenciador. 
-
-P11 
-
-Aumenta el daño. 
 
 ## 5. Trasfondo 
 
