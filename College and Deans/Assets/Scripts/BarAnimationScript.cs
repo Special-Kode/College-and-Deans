@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class BarAnimationScript : MonoBehaviour
 {
-    private GameObject HealthBar;
+    //private GameObject HealthBar;
     public bool damage;
     public int TimeDamage;
     public float sizeBar;
+    private string text;
     // Start is called before the first frame update
     void Start()
     {
         TimeDamage = 20;
-        HealthBar = this.gameObject;
-        sizeBar = HealthBar.transform.localScale.x;
+       // HealthBar = this.gameObject;
+        //sizeBar = HealthBar.transform.localScale.x;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        /*
         damage = GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().damage;
         if (damage == true)
         {
@@ -36,7 +39,7 @@ public class BarAnimationScript : MonoBehaviour
 
 
            
-        }
-
+        }*/
+        this.GetComponentInChildren<UnityEngine.UI.Text>().text= GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().vida.ToString();
     }
 }

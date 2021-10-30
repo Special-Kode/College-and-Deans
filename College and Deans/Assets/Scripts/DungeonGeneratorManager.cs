@@ -57,7 +57,7 @@ public class DungeonGeneratorManager : MonoBehaviour
     [SerializeField] private List<Vector2> positions;
 
     private void Awake()
-    {
+    {/*
         if (FindObjectsOfType(GetType()).Length > 1)
         {
             Destroy(gameObject);
@@ -65,7 +65,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         else
         {
             DontDestroyOnLoad(gameObject);
-        }
+        }*/
     }
 
     // Start is called before the first frame update
