@@ -207,31 +207,31 @@ En cuanto al resto de sonidos del juego habrá una variedad de sonidos de ataque
 
 Menú Principal 
 
-![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Menu-Principal.jpg?raw=true "Menú Principal")
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Menu%20Principal.png)
 
 Ilustración 1: Menú Principal 
 
-![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Opciones.jpg?raw=true "Menú de Opciones")
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Opciones.png)
 
 Ilustración 2: Menú de Opciones 
 
-![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Menu-de-Pausa.jpg?raw=true "Menú de Pausa")
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Menu%20de%20Pausa.png)
 
 Ilustración 3: Menú de Pausa 
 
-![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Creditos.jpg?raw=true "Pantalla de creditos y reconocimientos")
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Creditos.png)
 
 Ilustración 4: Pantalla de creditos y reconocimientos 
 
 ### 7.2. Interfaz de usuario 
 
-![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Interfaz-de-Usuario.jpg?raw=true "HUD durante el juego")
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Interfaz%20de%20usuario.jpg)
 
 Ilustración 5: HUD durante el juego 
 
 ### 7.3. Diagrama de flujo 
 
-![Alt text](/Concept-Art-and-GDD/GDD/Imagenes/Diagrama-de-flujo.jpg?raw=true "Diagrama de Flujo")
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Diagrama%20de%20flujo.jpg)
 
 Ilustración 6: Diagrama de Flujo 
 
