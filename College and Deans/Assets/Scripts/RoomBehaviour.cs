@@ -11,10 +11,9 @@ public class RoomBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Room spawned!");
         foreach (var door in GetComponentsInChildren<DoorBehaviour>())
         {
-            door.DisableCollider();
+            door.DisableCollider(); //Disable door colliders
         }
     }
 
