@@ -27,6 +27,7 @@ public class DoorBehaviour : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player") && GetComponentInParent<RoomBehaviour>() != null)
         {
+            //When a door is touched, you're entering the room
             Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = GetComponentInParent<RoomBehaviour>().gameObject;
         }
     }

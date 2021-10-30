@@ -52,8 +52,8 @@ public class DungeonGeneratorManager : MonoBehaviour
     [Header("Private Serialized Stuff")]
     [SerializeField] private Vector2 currentPos = Vector2.zero;
 
-    [SerializeField] private List<RoomInfo> roomInfoList; //TODO save useful room info for rearrangement
-    [SerializeField] private List<GameObject> roomList; //TODO save useful room info for rearrangement
+    [SerializeField] private List<RoomInfo> roomInfoList; //Saves useful room info for rearrangement
+    [SerializeField] private List<GameObject> roomList; //Saves created rooms for rearrangement
     [SerializeField] private List<Vector2> positions;
 
     private void Awake()
@@ -82,6 +82,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         
     }
 
+    // Level generation call, dependent of generation method
     void GenerateLevel()
     {
         switch (GenerationMethod)
@@ -98,6 +99,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         RearrangeLevel();
     }
 
+    // Procedural level generation, it generates num rooms
     void GenerateProcLevel(int num)
     {
         for (int i = 0; i < num;)
@@ -143,6 +145,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         }
     }
 
+    // Randomly sets the type of the room, excluding spawn and boss room type
     void SetRandomRoom(RoomInfo roomInfo)
     {
         int rand = UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(RoomInfo.RoomType)).Length - 2);
@@ -160,11 +163,12 @@ public class DungeonGeneratorManager : MonoBehaviour
         }
     }
 
+    // Check adjacent rooms for every room to instantiate and instantiates it dependent of the doors needed
     void RearrangeLevel()
     {
         foreach(var roomInfo in roomInfoList)
         {
-            Debug.Log(roomInfo.roomType);
+            Debug.Log(roomInfo.roomType); //Possibly removed, but used for fast room type debugging
             roomInfo.CheckAdjacentRooms(positions, MoveAmount);
             GameObject room;
 
@@ -240,14 +244,13 @@ public class DungeonGeneratorManager : MonoBehaviour
 
             roomList.Add(room);
 
-            //TODO edit all prefabs with a RoomBehaviour
             if (room.GetComponent<RoomBehaviour>() != null)
             {
                 room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
             }
-            //room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
         }
 
+        // Sets the spawn room for the current room
         Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = roomList[0];
     }
 }
