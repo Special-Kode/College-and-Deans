@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Collisions : MonoBehaviour
 {
-    AttackBehaviour attack;
-    Movement movement;
+
     public bool collide = false;
 
 
@@ -14,34 +13,39 @@ public class Collisions : MonoBehaviour
         collide = true;
         if (this.tag == "Player" )
         {
-            if(other.gameObject.tag == "Enemy")
+            this.GetComponent<AnimatorPlayerScript>().isDashed = false;
+
+            if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
-            else
-            {
-                //cuando se a�adan m�s colisiones revisar esta l�nea
-                this.GetComponent<AnimatorPlayerScript>().isMoved = false;
-                this.GetComponent<AnimatorPlayerScript>().isDashed = false;
-            }
+            
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {        
-        if (this.tag == "Bullet" )
-        {   
-            if(other.gameObject.tag == "Enemy")
+        if (this.tag == "Bullet")
+        {
+            
+
+            if (other.gameObject.tag == "Enemy")
             {
-                //hacer daño al enemigo
                 Destroy(this.gameObject);
+                //hacer daño al enemigo
                 Destroy(other.gameObject);
+            }
+            if(other.gameObject.tag == "Boss")
+            {
+                Destroy(other.gameObject);
+                SceneManager.LoadScene("MainMenu");
             }
         }
 
         if(this.tag == "EnemyBullet")
         {
-            if(other.gameObject.tag == "Player")
+            
+            if (other.gameObject.tag == "Player")
             {
-                this.GetComponent<ExternMechanicsPlayer>().damage = true;
+                other.GetComponent<ExternMechanicsPlayer>().damage = true;
                 Destroy(this.gameObject);
             }
             
