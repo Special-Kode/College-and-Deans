@@ -5,38 +5,37 @@ using UnityEngine;
 public class EnemyPathfinding : MonoBehaviour
 {
     private Enemy enemy;
-    private Transform target;
+    [SerializeField]private Transform target;
 
     public float speed = .02f;
     int nodoActual = 0;
     public bool reachedEndOfPath = false;
     List<Vector3> vectorPath;
     Pathfinding pathfinding;
+    GameManager gameManager;
     
     private void Awake() 
     {
         enemy = GetComponent<Enemy>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
 
     private void Start() 
     {
-        pathfinding = new Pathfinding(30, 15, 1f, new Vector3(-10f, -6f, 0));
-        //target = GameObject.FindGameObjectWithTag("Player").transform;
-
-        //vectorPath = pathfinding.FindPath(enemy.GetPosition(), target.position);
+        //pathfinding = new Pathfinding(20, 12, 1f, new Vector3(-10f, -6f, 0));
+        pathfinding = gameManager.GetPathfinding();
     }
 
     private void FixedUpdate() 
     {
-        //vectorPath = pathfinding.FindPath(enemy.GetPosition(), target.position);
         HandleMovement();
     }
 
     private void HandleMovement() 
     {
         if(vectorPath != null){
-            Vector2 targetPosition = (Vector2)vectorPath[nodoActual] + new Vector2(-10f, -6f);
+            Vector2 targetPosition = (Vector2)vectorPath[nodoActual] + pathfinding.GetOriginPosition();
             if(Vector2.Distance(enemy.GetPosition(), targetPosition) > .1f)
             {
                 Vector2 direction = (targetPosition - enemy.GetPosition()).normalized;
@@ -55,14 +54,6 @@ public class EnemyPathfinding : MonoBehaviour
                     reachedEndOfPath = false;
                 }
             }
-            
-            //Vector2 targetPosition = (Vector2)vectorPath[nodoActual] + new Vector2(-10f, -6f);
-            //Vector2 direction = (targetPosition - enemy.GetPosition()).normalized;
-            //Vector2 force = direction * speed * Time.deltaTime;
-
-            //enemy.EnemyRigidbody2D.AddForce(force); 
-
-            //float distance = Vector2.Distance(enemy.GetPosition(), targetPosition);
         }
     }
 
@@ -74,7 +65,7 @@ public class EnemyPathfinding : MonoBehaviour
     public void SetTargetPosition(Vector3 targetPosition)
     {
         nodoActual = 0;
-        vectorPath = Pathfinding.Instance.FindPath(enemy.GetPosition(), targetPosition);
+        vectorPath = pathfinding.FindPath(enemy.GetPosition(), targetPosition);
 
         if(vectorPath != null && vectorPath.Count > 1)
         {

@@ -1,3 +1,14 @@
+### -------------------------------------
+Este repositorio ha sido creado posterior al primero, ya que hubo un problema con el gitIgnore. Si se desea ver el historial completo de commits este se puede ver accediendo al anterior repositorio, llamado "Obsolete".
+### -------------------------------------
+
+### ----- Enlaces -----------
+
+Link Tree: https://linktr.ee/SpecialKode  
+Trello: https://trello.com/b/0ukCaUtt
+
+### -----------------------
+
 # College and Deans
 v 0.1
 

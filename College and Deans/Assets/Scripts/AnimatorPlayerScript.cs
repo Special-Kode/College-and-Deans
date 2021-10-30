@@ -97,6 +97,7 @@ public class AnimatorPlayerScript: MonoBehaviour
                 {
                     movement.InitialPos = transform.position;
                     isDashed = true;
+                    movement.PlayerDashed();
                     isMoved = false;
                     MouseClickedTime = 0;
                     Clicks = 0;
@@ -134,6 +135,7 @@ public class AnimatorPlayerScript: MonoBehaviour
 
                     isMoved = true;
                     setMovement(posToMove);
+                    movement.PlayerMoved();
                     enter = false;
                 }
 
@@ -149,13 +151,13 @@ public class AnimatorPlayerScript: MonoBehaviour
 
 
 
-            if (Vector3.Distance(movement.screenPos, transform.position) <= 0.1f && this.GetComponent<Rigidbody2D>().velocity != Vector2.zero && isMoved ==true)
+            if (Vector3.Distance(movement.screenPos, transform.position) <= 0.2f && !isDashed)
             {
                 this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 isMoved = false;
             }
 
-            if (Vector3.Distance(transform.position, movement.InitialPos) > 2f && this.GetComponent<Rigidbody2D>().velocity!=Vector2.zero && isDashed==true)
+            if (Vector3.Distance(transform.position, movement.InitialPos) > 2f && isDashed==true)
             {
                 this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 movement.distanceDashed = 0;
@@ -264,7 +266,7 @@ public class AnimatorPlayerScript: MonoBehaviour
         
         if (hit.collider != null)
         {
-            if (hit.collider.tag == "Enemy")
+            if (hit.collider.tag == "Enemy" || hit.collider.tag == "Boss")
                 HowToAttack.ClickedEnemy = true;
             else
                 HowToAttack.ClickedEnemy = false;

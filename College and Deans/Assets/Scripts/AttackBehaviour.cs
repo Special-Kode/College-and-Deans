@@ -4,7 +4,7 @@ using UnityEngine;
 
  public class AttackBehaviour :MonoBehaviour
 {
-    //Aquí están los distintos comportamientos de ataque dependiendo de si el arma es una arma blanca o una arma de fuego.
+    //Aquï¿½ estï¿½n los distintos comportamientos de ataque dependiendo de si el arma es una arma blanca o una arma de fuego.
     private Weapon weapon;
     private AnimatorPlayerScript animatorPlayer;
    [SerializeField] private GameObject bullet;
