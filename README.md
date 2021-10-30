@@ -1,3 +1,10 @@
+### -------------------------------------
+Este repositorio ha sido creado posterior al primero, ya que hubo un problema con el gitIgnore. Si se desea ver el historial completo de commits este se puede ver accediendo al anterior repositorio, llamado "Obsolete".
+### -------------------------------------
+
+https://linktr.ee/SpecialKode
+
+
 # College and Deans
 v 0.1
 
