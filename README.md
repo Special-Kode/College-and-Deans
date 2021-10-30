@@ -2,7 +2,7 @@
 Este repositorio ha sido creado posterior al primero, ya que hubo un problema con el gitIgnore. Si se desea ver el historial completo de commits este se puede ver accediendo al anterior repositorio, llamado "Obsolete".
 ### -------------------------------------
 
-### ----- Enlaes -----------
+### ----- Enlaces -----------
 
 Link Tree: https://linktr.ee/SpecialKode  
 Trello: https://trello.com/b/0ukCaUtt
