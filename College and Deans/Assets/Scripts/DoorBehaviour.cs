@@ -29,6 +29,8 @@ public class DoorBehaviour : MonoBehaviour
         {
             //When a door is touched, you're entering the room
             Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = GetComponentInParent<RoomBehaviour>().gameObject;
+            var room = GetComponentInParent<RoomBehaviour>();
+            FindObjectOfType<GameManager>().EnterRoom(room);
         }
     }
 }
