@@ -38,27 +38,12 @@ La primera y principal, será mediante anuncios que aparecerán al final de cada
 
 La segunda forma consistirá en la venta de contenido adicional que irá publicándose en los meses siguientes a la salida del videojuego. Este contenido consistirá en nuevas áreas, armas, bonificadores y enemigos. 
 
-### 2.2. Tablas de productos y precios 
+### 2.2. Tablas de productos y precios
 
-Producto 
-
-Descripción 
-
-Precio 
-
-DLC 1 
-
-Nuevos potenciadores y modificadores de arma 
-
-1,99 € 
-
- DLC 2 
-
-Nuevas áreas, enemigos, potenciadores y modificadores de armas 
-
-
-5,99 € 
-
+| Producto | Descripción | Precio |
+| --- | --- | --- |
+| DLC 1 | Nuevos potenciadores y modificadores de arma | 1,99 € |
+| DLC 2 | Nuevas áreas, enemigos, potenciadores y modificadores de armas | 5,99 € |
  
 ## 3. Planificación y Costes 
 
