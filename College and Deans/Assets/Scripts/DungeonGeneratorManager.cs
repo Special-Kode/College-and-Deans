@@ -22,6 +22,9 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     public Vector2 MoveAmount = new Vector2(22, 22); //Distance between rooms
 
+    [SerializeField] private bool lootSpawned;
+    [SerializeField] private bool cafeSpawned;
+
     //Room prefabs
 
     [Header("Room List")]
@@ -56,6 +59,7 @@ public class DungeonGeneratorManager : MonoBehaviour
     [SerializeField] private List<GameObject> roomList; //Saves created rooms for rearrangement
     [SerializeField] private List<Vector2> positions;
 
+    /*
     private void Awake()
     {/*
         if (FindObjectsOfType(GetType()).Length > 1)
@@ -65,12 +69,16 @@ public class DungeonGeneratorManager : MonoBehaviour
         else
         {
             DontDestroyOnLoad(gameObject);
-        }*/
+        }
     }
+    */
 
     // Start is called before the first frame update
     void Start()
     {
+        lootSpawned = false;
+        cafeSpawned = false;
+
         positions = new List<Vector2>();
         roomInfoList = new List<RoomInfo>();
         GenerateLevel();
@@ -155,10 +163,12 @@ public class DungeonGeneratorManager : MonoBehaviour
                 roomInfo.roomType = RoomInfo.RoomType.Enemies;
                 break;
             case 1:
-                roomInfo.roomType = RoomInfo.RoomType.Cafe;
+                roomInfo.roomType = cafeSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Cafe;
+                cafeSpawned = true;
                 break;
             case 2:
-                roomInfo.roomType = RoomInfo.RoomType.Loot;
+                roomInfo.roomType = lootSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Loot;
+                lootSpawned = true;
                 break;
         }
     }
