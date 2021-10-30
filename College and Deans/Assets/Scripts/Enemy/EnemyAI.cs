@@ -17,6 +17,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float fireRate;
     private float nextAttack;
     [SerializeField] private float attackRange;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private float speedBullet;
     private State state;
 
     private void Awake() 
@@ -51,6 +53,14 @@ public class EnemyAI : MonoBehaviour
                 }
                 break;
             case State.Attacking:
+                nextAttack += Time.deltaTime;
+                if(nextAttack >= fireRate)
+                {
+                    nextAttack = 0;
+                    GameObject tempBullet = Instantiate(bullet, this.transform.position, Quaternion.identity);
+                    Vector2 dir = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
+                    tempBullet.GetComponent<Rigidbody2D>().AddForce(dir * speedBullet * Time.deltaTime);
+                }
                 if(Vector2.Distance(transform.position, target.position) > attackRange)
                 {
                     state = State.Chasing;

@@ -10,6 +10,7 @@ public class EnemyGenerator : MonoBehaviour
     private int numSetsFacil = 5;
     [SerializeField] private Enemy enemy0;
     [SerializeField] private Enemy enemy1;
+    [SerializeField] private Enemy boss0;
 
     public List<Transform> spawns;
 
@@ -29,31 +30,10 @@ public class EnemyGenerator : MonoBehaviour
     {
         CreacionSets();
         var rooms = FindObjectsOfType<RoomBehaviour>();
-
-        foreach (var room in rooms)
-        {
-            if(room.roomInfo.roomType == RoomInfo.RoomType.Enemies)
-            {
-                var spawnPoints = room.SpawnPoints;
-                spawns.AddRange(spawnPoints);
-                SpawnEnemies("facil", spawns);
-                spawns.Clear();
-            }
-        }
-
-        /**
-        var oneroom = FindObjectOfType<RoomBehaviour>();
-        if (oneroom != null)
-        {
-            var spawnPoints = oneroom.SpawnPoints;
-            spawns.AddRange(spawnPoints);
-            SpawnEnemies("facil", spawns);
-        }
-        //*/
     }
 
     //Creacion de los diferentes set de enemigos
-    //TODO: Mejorar creación de sets
+    //TODO: Mejorar creaciï¿½n de sets
     private void CreacionSets()
     {
         List<Enemy> set0 = new List<Enemy>();
@@ -121,10 +101,7 @@ public class EnemyGenerator : MonoBehaviour
                 {
                     Enemy temp = setRandom[0];
                     Transform spawnPosition = spawns[Random.Range(0, spawns.Count)];
-                    Instantiate(temp, spawnPosition);
-                    temp.gameObject.tag = "Enemy";
-                    temp.gameObject.AddComponent<Rigidbody2D>();
-                    temp.gameObject.AddComponent<BoxCollider2D>();
+                    Instantiate(temp, spawnPosition.position, Quaternion.identity);
                     spawns.Remove(spawnPosition);
                     setRandom.Remove(temp);
                 } while (setRandom.Count != 0);
@@ -133,6 +110,9 @@ public class EnemyGenerator : MonoBehaviour
             case "medio": 
                 break;
             case "dificil":
+                break;
+            case "boss":
+                Instantiate(boss0, spawns[0].position, Quaternion.identity);
                 break;
         }
     }

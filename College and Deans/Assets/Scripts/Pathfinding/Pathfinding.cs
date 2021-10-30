@@ -12,11 +12,13 @@ public class Pathfinding{
     private Grid grid;
     private List<PathNode> openList;
     private List<PathNode> closedList;
+    private Vector2 originPosition;
 
     public Pathfinding(int width, int height, float cellSize, Vector3 originPosition)
     {
         Instance = this;
         grid = new Grid(width, height, cellSize, originPosition);
+        this.originPosition = originPosition;
     }
 
     public List<Vector3> FindPath(Vector3 startWorldPosition, Vector3 endWorldPosition)
@@ -42,6 +44,8 @@ public class Pathfinding{
     {
         PathNode startNode = grid.GetValue(startX, startY);
         PathNode endNode = grid.GetValue(endX, endY);
+
+        if(startNode == null || endNode == null){ return null;}
 
         openList = new List<PathNode> { startNode };
         closedList = new List<PathNode>();
@@ -134,6 +138,11 @@ public class Pathfinding{
     public Grid GetGrid()
     {
         return grid;
+    }
+
+    public Vector2 GetOriginPosition()
+    {
+        return originPosition;
     }
     private List<PathNode> CalculatePath(PathNode endNode)
     {
