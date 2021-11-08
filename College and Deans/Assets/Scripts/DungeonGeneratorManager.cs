@@ -11,6 +11,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         Fixed = 0, Random = 1
     };
 
+    [Header("Generation Config")]
     public RandomRoomNumberMethod GenerationMethod; //Generates a fixed number of rooms or a random number of rooms
 
     public int FixedValue = 8;
@@ -21,8 +22,12 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     public Vector2 MoveAmount = new Vector2(22, 22); //Distance between rooms
 
+    [SerializeField] private bool lootSpawned;
+    [SerializeField] private bool cafeSpawned;
+
     //Room prefabs
 
+    [Header("Room List")]
     //1 exit
     public GameObject T_Room;
     public GameObject R_Room;
@@ -47,13 +52,16 @@ public class DungeonGeneratorManager : MonoBehaviour
     public GameObject TRBL_Room;
     //public GameObject[] RoomList; //List of rooms for further use
 
-    public Vector2 currentPos = Vector2.zero;
+    [Header("Private Serialized Stuff")]
+    [SerializeField] private Vector2 currentPos = Vector2.zero;
 
-    [SerializeField] private List<RoomInfo> roomInfoList; //TODO save useful room info for rearrangement
+    [SerializeField] private List<RoomInfo> roomInfoList; //Saves useful room info for rearrangement
+    [SerializeField] private List<GameObject> roomList; //Saves created rooms for rearrangement
     [SerializeField] private List<Vector2> positions;
 
+    /*
     private void Awake()
-    {
+    {/*
         if (FindObjectsOfType(GetType()).Length > 1)
         {
             Destroy(gameObject);
@@ -63,10 +71,14 @@ public class DungeonGeneratorManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+    */
 
     // Start is called before the first frame update
     void Start()
     {
+        lootSpawned = false;
+        cafeSpawned = false;
+
         positions = new List<Vector2>();
         roomInfoList = new List<RoomInfo>();
         GenerateLevel();
@@ -78,6 +90,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         
     }
 
+    // Level generation call, dependent of generation method
     void GenerateLevel()
     {
         switch (GenerationMethod)
@@ -94,6 +107,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         RearrangeLevel();
     }
 
+    // Procedural level generation, it generates num rooms
     void GenerateProcLevel(int num)
     {
         for (int i = 0; i < num;)
@@ -102,7 +116,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
             if (!positions.Contains(currentPos))
             {
-                var roomInfo = new RoomInfo();
+                var roomInfo = ScriptableObject.CreateInstance<RoomInfo>();
                 if (i == 0)
                 {
                     roomInfo.roomType = RoomInfo.RoomType.Spawn;
@@ -139,6 +153,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         }
     }
 
+    // Randomly sets the type of the room, excluding spawn and boss room type
     void SetRandomRoom(RoomInfo roomInfo)
     {
         int rand = UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(RoomInfo.RoomType)).Length - 2);
@@ -148,19 +163,22 @@ public class DungeonGeneratorManager : MonoBehaviour
                 roomInfo.roomType = RoomInfo.RoomType.Enemies;
                 break;
             case 1:
-                roomInfo.roomType = RoomInfo.RoomType.Cafe;
+                roomInfo.roomType = cafeSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Cafe;
+                cafeSpawned = true;
                 break;
             case 2:
-                roomInfo.roomType = RoomInfo.RoomType.Loot;
+                roomInfo.roomType = lootSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Loot;
+                lootSpawned = true;
                 break;
         }
     }
 
+    // Check adjacent rooms for every room to instantiate and instantiates it dependent of the doors needed
     void RearrangeLevel()
     {
         foreach(var roomInfo in roomInfoList)
         {
-            Debug.Log(roomInfo.roomType);
+            Debug.Log(roomInfo.roomType); //Possibly removed, but used for fast room type debugging
             roomInfo.CheckAdjacentRooms(positions, MoveAmount);
             GameObject room;
 
@@ -234,13 +252,15 @@ public class DungeonGeneratorManager : MonoBehaviour
                 room = Instantiate(TRBL_Room, roomInfo.position, Quaternion.identity);
             }
 
+            roomList.Add(room);
 
-            //TODO edit all prefabs with a RoomBehaviour
             if (room.GetComponent<RoomBehaviour>() != null)
             {
                 room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
             }
-            //room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
         }
+
+        // Sets the spawn room for the current room
+        Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = roomList[0];
     }
 }

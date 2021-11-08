@@ -45,10 +45,6 @@ public class Movement : MonoBehaviour
             Left = animatorPlayer.GetBool("Left");
             Right = animatorPlayer.GetBool("Right");
 
-            if (playerScript.isMoved == true)
-                PlayerMoved();
-            if (playerScript.isDashed == true)
-                PlayerDashed();
         }
        
 
@@ -58,25 +54,26 @@ public class Movement : MonoBehaviour
     }
 
 
-    private void PlayerMoved()
+    public void PlayerMoved()
     {
-       
-            speed = 2000f;
+        //Debug.Log(this.GetComponent<Rigidbody2D>().velocity.magnitude);
+            speed = 10f;
             screenPos.z = 0;
             Vector3 dir = screenPos - transform.position;
-            velocity = dir.normalized * speed * Time.deltaTime;
+            velocity = dir.normalized * speed;
             this.GetComponent<Rigidbody2D>().velocity = velocity;
-               
-      //  Collider2D[] collider = Physics2D.OverlapBoxAll(new Vector2(newPosition.x, newPosition.y), new Vector2(2.56f/2f, 2.56f/2f), 0,mask);
+
+
+        //  Collider2D[] collider = Physics2D.OverlapBoxAll(new Vector2(newPosition.x, newPosition.y), new Vector2(2.56f/2f, 2.56f/2f), 0,mask);
         /*if (collider.Length < 1 && Vector3.Distance(transform.position, screenPos) > 0.05f)
         {
            
             transform.position = newPosition;
         }*/
 
-            
-            
-        
+
+
+
 
 
         /*
@@ -120,15 +117,14 @@ public class Movement : MonoBehaviour
        */
 
 
-            
+
     }
-    private void PlayerDashed()
+    public void PlayerDashed()
     {
-            speed = 3000f;
+            speed = 20f;
             direction = (playerScript.posFinalDash - playerScript.PosInitDash);
-            velocity = direction.normalized * speed * Time.deltaTime;
+            velocity = direction.normalized * speed;
             this.GetComponent<Rigidbody2D>().velocity = velocity;
-        
 
 
 
