@@ -57,6 +57,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     [SerializeField] private List<RoomInfo> roomInfoList; //Saves useful room info for rearrangement
     [SerializeField] private List<GameObject> roomList; //Saves created rooms for rearrangement
+    [SerializeField] private List<RoomBehaviour> roomBehaviourList; //Saves created rooms for rearrangement
     [SerializeField] private List<Vector2> positions;
 
     /*
@@ -210,6 +211,11 @@ public class DungeonGeneratorManager : MonoBehaviour
             {
                 room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
             }
+        }
+
+        foreach (var room in roomList)
+        {
+            room.GetComponent<RoomBehaviour>().SetAdjacentRooms(roomList, positions, MoveAmount);
         }
 
         // Sets the spawn room for the current room
