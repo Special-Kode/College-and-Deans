@@ -2017,6 +2017,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorDirection: 3
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &5257692917080358118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2062,6 +2065,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f699ebe626c7ad34b9c656b425b4fe97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  topRoom: {fileID: 0}
+  rightRoom: {fileID: 0}
+  bottomRoom: {fileID: 0}
+  leftRoom: {fileID: 0}
+  roomInfo: {fileID: 0}
   SpawnPoints:
   - {fileID: 7884341796786241436}
   - {fileID: 3522341747794812727}
@@ -2069,7 +2077,7 @@ MonoBehaviour:
   - {fileID: 3672860788766349984}
   - {fileID: 1539853488599438471}
   - {fileID: 7508918460919976355}
-  roomInfo: {fileID: 0}
+  hasSpawned: 0
 --- !u!1 &7599524230472448801
 GameObject:
   m_ObjectHideFlags: 0
