@@ -47,16 +47,19 @@ public class AnimatorPlayerScript: MonoBehaviour
             animator.SetBool("Walking", false);
         else
             animator.SetBool("Walking", true);
+
+
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
            
+       //if you press left click, clicks is added 1 and it is saved the time
             if (Input.GetMouseButtonDown(0))
             {
 
-                    PosInitDash = Input.mousePosition;
-                    PosInitDash = Camera.main.ScreenToWorldPoint(PosInitDash);
-                    PosInitDash.z = 0;
-                
+                PosInitDash = Input.mousePosition;
+                PosInitDash = Camera.main.ScreenToWorldPoint(PosInitDash);
+                PosInitDash.z = 0;
+               
                     
                 posToMove = Input.mousePosition;
                 posToMove.z = 0;
@@ -69,99 +72,75 @@ public class AnimatorPlayerScript: MonoBehaviour
 
 
                 }
-                isEnemyClicked(posToMove);
-                if (HowToAttack.ClickedEnemy == true)
-                {
-                    isMoved = false;
-
-                }
+                
 
             }
-           
 
 
 
-
-
-
-
-            
+            //if you stop pressing left click, it is saved the position of the mouse, and check if distance of init dash and end dash is higher than 2
             if (Input.GetMouseButtonUp(0))
             {
-                enter = true;
                 posFinalDash = Input.mousePosition;
-                    posFinalDash = Camera.main.ScreenToWorldPoint(posFinalDash);
+                posFinalDash = Camera.main.ScreenToWorldPoint(posFinalDash);
 
 
-                if (Vector3.Distance(posFinalDash, PosInitDash) > 2 && isDashed == false)
+                if (Vector3.Distance(posFinalDash, PosInitDash) > 2)
                 {
+                    animator.SetBool("Dash", true);
                     movement.InitialPos = transform.position;
-                    isDashed = true;
                     movement.PlayerDashed();
-                    isMoved = false;
+                    movement.agent.enabled = true;
                     MouseClickedTime = 0;
                     Clicks = 0;
-                    
-                }
-
-
-               
-
-            }
-
-            if ((Time.time - MouseClickedTime) <= ClickDelay && Clicks % 2 == 0 && Clicks!=0 && enter==true)
-            {
-                enter = false;
-
-                if (HowToAttack.ClickedEnemy)
-                {
-                    HowToAttack.attack(SecondsToAttack, transform.position,Camera.main.ScreenToWorldPoint(posToMove), 0);
 
                 }
-                else
+
+                
+                // if is not dashing,it means that might player can move
+                else if (Clicks % 2 == 0 && Clicks != 0)
                 {
-                    isMoved = false;
-                }
-
-                MouseClickedTime =Time.time;
-                Clicks = 0;
-
-            }
-
-            if (Clicks % 2 != 0)
-            {
-                if ((Time.time - MouseClickedTime) > ClickDelay && !HowToAttack.ClickedEnemy && isDashed == false && enter==true)
-                {
-
-                    isMoved = true;
+                    //  isMoved = true;
                     setMovement(posToMove);
                     movement.PlayerMoved();
                     enter = false;
+                    MouseClickedTime = Time.time;
+                    Clicks = 0;
+
                 }
 
-            }
 
-            if((Time.time - MouseClickedTime) > ClickDelay)
+
+            }
+            //if the user press left click, there might be the possibility to the user press second click, if this not happen, the player attack if the user input click an enemy.
+
+            if ((Time.time - MouseClickedTime) > ClickDelay && Clicks == 1)
             {
-                MouseClickedTime = Time.time;
+                isEnemyClicked(posToMove);
+
+                if (HowToAttack.ClickedEnemy)
+                {
+                    HowToAttack.attack(SecondsToAttack, transform.position, Camera.main.ScreenToWorldPoint(posToMove), 0);
+
+                }
                 Clicks = 0;
+                MouseClickedTime = 0;
             }
-
-
 
 
 
             if (Vector3.Distance(movement.screenPos, transform.position) <= 0.2f && !isDashed)
             {
                 this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                isMoved = false;
+              //  isMoved = false;
             }
 
-            if (Vector3.Distance(transform.position, movement.InitialPos) > 2f && isDashed==true)
+            if (Vector3.Distance(transform.position, movement.InitialPos) > 2f //&& isDashed==true
+                                                                               )
             {
                 this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 movement.distanceDashed = 0;
-                isDashed = false;
+               // isDashed = false;
             }
 
 
@@ -169,59 +148,7 @@ public class AnimatorPlayerScript: MonoBehaviour
 
 
         }
-        else if (SystemInfo.deviceType == DeviceType.Handheld)
-        {
-
-            posToMove = Input.GetTouch(0).position;
-            posToMove.z = 0;
-
-            if (Input.touchCount % 2 != 0)
-            {
-
-                touchTime = Time.time;
-
-
-            }
-            isEnemyClicked(posToMove);
-            if (HowToAttack.ClickedEnemy == true)
-            {
-                isMoved = false;
-
-            }
-
-
-            if ((Time.time - touchTime) < ClickDelay)
-            {
-
-                if (Input.touchCount % 2 == 0)
-                {
-                    if (HowToAttack.ClickedEnemy)
-                    {
-                        HowToAttack.attack(SecondsToAttack, transform.position, Camera.main.ScreenToWorldPoint(posToMove), 0);
-                    }
-                    else
-                    {
-                        isMoved = false;
-                    }
-
-
-                }
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
 
@@ -238,8 +165,9 @@ public class AnimatorPlayerScript: MonoBehaviour
 
 
 
-        }
+        
     }
+
 
 
 

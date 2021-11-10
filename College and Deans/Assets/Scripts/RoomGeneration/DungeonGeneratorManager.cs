@@ -210,6 +210,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             if (room.GetComponent<RoomBehaviour>() != null)
             {
                 room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
+                room.GetComponent<RoomBehaviour>().SetNavMesh();
             }
         }
 
