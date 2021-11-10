@@ -57,6 +57,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     [SerializeField] private List<RoomInfo> roomInfoList; //Saves useful room info for rearrangement
     [SerializeField] private List<GameObject> roomList; //Saves created rooms for rearrangement
+    [SerializeField] private List<RoomBehaviour> roomBehaviourList; //Saves created rooms for rearrangement
     [SerializeField] private List<Vector2> positions;
 
     /*
@@ -180,77 +181,29 @@ public class DungeonGeneratorManager : MonoBehaviour
         {
             Debug.Log(roomInfo.roomType); //Possibly removed, but used for fast room type debugging
             roomInfo.CheckAdjacentRooms(positions, MoveAmount);
-            GameObject room;
 
-            #region 1_exit
-            if (roomInfo.adjacentRooms == RoomInfo.AdjacentRooms.North)
+            string toConcat = "";
+            if ((roomInfo.adjacentRooms & RoomInfo.AdjacentRooms.North) != 0)
             {
-                room = Instantiate(T_Room, roomInfo.position, Quaternion.identity);
+                toConcat += "T";
             }
-            else if (roomInfo.adjacentRooms == RoomInfo.AdjacentRooms.East)
+            if ((roomInfo.adjacentRooms & RoomInfo.AdjacentRooms.East) != 0)
             {
-                room = Instantiate(R_Room, roomInfo.position, Quaternion.identity);
+                toConcat += "R";
             }
-            else if (roomInfo.adjacentRooms == RoomInfo.AdjacentRooms.South)
+            if ((roomInfo.adjacentRooms & RoomInfo.AdjacentRooms.South) != 0)
             {
-                room = Instantiate(B_Room, roomInfo.position, Quaternion.identity);
+                toConcat += "B";
             }
-            else if (roomInfo.adjacentRooms == RoomInfo.AdjacentRooms.West)
+            if ((roomInfo.adjacentRooms & RoomInfo.AdjacentRooms.West) != 0)
             {
-                room = Instantiate(L_Room, roomInfo.position, Quaternion.identity);
+                toConcat += "L";
             }
-            #endregion
 
-            #region 2_exits
-            else if (roomInfo.adjacentRooms == (RoomInfo.AdjacentRooms.North | RoomInfo.AdjacentRooms.East))
-            {
-                room = Instantiate(TR_Room, roomInfo.position, Quaternion.identity);
-            }
-            else if (roomInfo.adjacentRooms == (RoomInfo.AdjacentRooms.North | RoomInfo.AdjacentRooms.South))
-            {
-                room = Instantiate(TB_Room, roomInfo.position, Quaternion.identity);
-            }
-            else if (roomInfo.adjacentRooms == (RoomInfo.AdjacentRooms.North | RoomInfo.AdjacentRooms.West))
-            {
-                room = Instantiate(TL_Room, roomInfo.position, Quaternion.identity);
-            }
-            else if (roomInfo.adjacentRooms == (RoomInfo.AdjacentRooms.East | RoomInfo.AdjacentRooms.South))
-            {
-                room = Instantiate(RB_Room, roomInfo.position, Quaternion.identity);
-            }
-            else if (roomInfo.adjacentRooms == (RoomInfo.AdjacentRooms.East | RoomInfo.AdjacentRooms.West))
-            {
-                room = Instantiate(RL_Room, roomInfo.position, Quaternion.identity);
-            }
-            else if (roomInfo.adjacentRooms == (RoomInfo.AdjacentRooms.South | RoomInfo.AdjacentRooms.West))
-            {
-                room = Instantiate(BL_Room, roomInfo.position, Quaternion.identity);
-            }
-            #endregion
-
-            #region 3_exits
-            else if (roomInfo.adjacentRooms == (RoomInfo.AdjacentRooms.North | RoomInfo.AdjacentRooms.East | RoomInfo.AdjacentRooms.South))
-            {
-                room = Instantiate(TRB_Room, roomInfo.position, Quaternion.identity);
-            }
-            else if (roomInfo.adjacentRooms == (RoomInfo.AdjacentRooms.North | RoomInfo.AdjacentRooms.East | RoomInfo.AdjacentRooms.West))
-            {
-                room = Instantiate(TRL_Room, roomInfo.position, Quaternion.identity);
-            }
-            else if (roomInfo.adjacentRooms == (RoomInfo.AdjacentRooms.North | RoomInfo.AdjacentRooms.South | RoomInfo.AdjacentRooms.West))
-            {
-                room = Instantiate(TBL_Room, roomInfo.position, Quaternion.identity);
-            }
-            else if (roomInfo.adjacentRooms == (RoomInfo.AdjacentRooms.East | RoomInfo.AdjacentRooms.South | RoomInfo.AdjacentRooms.West))
-            {
-                room = Instantiate(RBL_Room, roomInfo.position, Quaternion.identity);
-            }
-            #endregion
-
-            else
-            {
-                room = Instantiate(TRBL_Room, roomInfo.position, Quaternion.identity);
-            }
+            string roomName = "Rooms/Room_" + toConcat + "_00";
+            var resource = Resources.Load<RoomBehaviour>(roomName);
+            GameObject roomInstance = (resource as RoomBehaviour).gameObject;
+            GameObject room = Instantiate(roomInstance, roomInfo.position, Quaternion.identity);
 
             roomList.Add(room);
 
@@ -258,6 +211,11 @@ public class DungeonGeneratorManager : MonoBehaviour
             {
                 room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
             }
+        }
+
+        foreach (var room in roomList)
+        {
+            room.GetComponent<RoomBehaviour>().SetAdjacentRooms(roomList, positions, MoveAmount);
         }
 
         // Sets the spawn room for the current room
