@@ -304,6 +304,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 5155298158085426503, guid: b56fe03f015b62643ad67b1b67b9cb7b, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b56fe03f015b62643ad67b1b67b9cb7b, type: 3}
 --- !u!1 &213555856
@@ -802,6 +806,8 @@ MonoBehaviour:
   RandomLowerBound: 5
   RandomUpperBound: 10
   MoveAmount: {x: 22, y: 16}
+  lootSpawned: 0
+  cafeSpawned: 0
   T_Room: {fileID: 5257692917080358118, guid: 947756c6265b8a441b89de274336eec8, type: 3}
   R_Room: {fileID: 5257692917080358118, guid: 2f1a6c6d9370c5f418ff559b9b4fc992, type: 3}
   B_Room: {fileID: 5257692917080358118, guid: 2bb871b726e0a6542931277fb74f3e75, type: 3}

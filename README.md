@@ -2,7 +2,7 @@
 Este repositorio ha sido creado posterior al primero, ya que hubo un problema con el gitIgnore. Si se desea ver el historial completo de commits este se puede ver accediendo al anterior repositorio, llamado "Obsolete".
 ### -------------------------------------
 
-### ----- Enlaes -----------
+### ----- Enlaces -----------
 
 Link Tree: https://linktr.ee/SpecialKode  
 Trello: https://trello.com/b/0ukCaUtt
@@ -38,27 +38,12 @@ La primera y principal, será mediante anuncios que aparecerán al final de cada
 
 La segunda forma consistirá en la venta de contenido adicional que irá publicándose en los meses siguientes a la salida del videojuego. Este contenido consistirá en nuevas áreas, armas, bonificadores y enemigos. 
 
-### 2.2. Tablas de productos y precios 
+### 2.2. Tablas de productos y precios
 
-Producto 
-
-Descripción 
-
-Precio 
-
-DLC 1 
-
-Nuevos potenciadores y modificadores de arma 
-
-1,99 € 
-
- DLC 2 
-
-Nuevas áreas, enemigos, potenciadores y modificadores de armas 
-
-
-5,99 € 
-
+| Producto | Descripción | Precio |
+| --- | --- | --- |
+| DLC 1 | Nuevos potenciadores y modificadores de arma | 1,99 € |
+| DLC 2 | Nuevas áreas, enemigos, potenciadores y modificadores de armas | 5,99 € |
  
 ## 3. Planificación y Costes 
 
@@ -136,101 +121,35 @@ El arma del jugador cuenta con un espacio de modificación. Los modificadores de
 
 El jugador cuenta con un arma a distancia que en su forma básica dispara proyectiles cada x tiempo. No obstante, esta puede ir variando su comportamiento dependiendo de los distintos modificadores disponibles. 
 
-Modificador 
-
-Efecto 
-
-M1 
-
-El tiempo entre proyectiles disminuye, lo que permite disparar más por segundo. Reduce un poco el daño. 
-
-M2 
-
-Aumenta el daño de los proyectiles, pero aumenta el tiempo entre ellos. 
-
-M3 
-
-Cambia los proyectiles por bombas que hacen daño en área. Aumenta considerablemente el tiempo entre ellos. 
-
-M4 
-
-Dispara en forma de rayo continuo. Reduce el daño. 
-
-M5 
-
-Dispara en forma de onda hacia el frente. Tiene un menor alcance que los proyectiles normales pero un mayor rango. 
-
-M6 
-
-Dispara dos proyectiles en vez de uno. Aumenta un pelín el tiempo entre ellos. 
-
-M7 
-
-Modifica el disparo para que ahora sean ondas que se desprenden del arma en todas direcciones. Es de corto alcance. 
-
-M8 
-
-El proyectil rebota una vez en las paredes y columnas. 
-
-M9 
-
-El proyectil atraviesa al enemigo en lugar de destruirse. 
-
-M10 
-
-Reduce el daño de los proyectiles a la mitad. 
+| Modificador | Efecto |
+| --- | --- |
+| M1 | El tiempo entre proyectiles disminuye, lo que permite disparar más por segundo. Reduce un poco el daño. |
+| M2 | Aumenta el daño de los proyectiles, pero aumenta el tiempo entre ellos. |
+| M3 | Cambia los proyectiles por bombas que hacen daño en área. Aumenta considerablemente el tiempo entre ellos. |
+| M4 | Dispara en forma de rayo continuo. Reduce el daño. |
+| M5 | Dispara en forma de onda hacia el frente. Tiene un menor alcance que los proyectiles normales pero un mayor rango. |
+| M6 | Dispara dos proyectiles en vez de uno. Aumenta un pelín el tiempo entre ellos. |
+| M7 | Modifica el disparo para que ahora sean ondas que se desprenden del arma en todas direcciones. Es de corto alcance. |
+| M8 | El proyectil rebota una vez en las paredes y columnas. |
+| M9 | El proyectil atraviesa al enemigo en lugar de destruirse. |
+| M10 | Reduce el daño de los proyectiles a la mitad. |
 
 De manera similar, el personaje podrá obtener distintos potenciadores. A diferencia de los modificadores de arma, estos potenciadores son acumulables y sus efectos son más variados. 
 
+| Potenciador | Efecto |
+| --- | --- |
+| P1 | Aumenta la velocidad. |
+| P2 | Ralentiza el paso del tiempo. |
+| P3 | Reduce el tiempo perdido por recibir un golpe. |
+| P4 | Duplica el daño infligido y el tiempo perdido por golpe recibido. |
+| P5 | Reduce la velocidad de movimiento. |
+| P6 | Aumenta el paso del tiempo. |
+| P7 | Muestra el mapa del nivel completo junto con los objetos y salas relevantes. |
+| P8 | Muestra la vida de los enemigos. |
+| P9 | Oculta el mapa del nivel. El efecto desaparece al coger otro potenciador. |
+| P10 | Oculta el tiempo restante del nivel. El efecto desaparece al coger otro potenciador. |
+| P11 | Aumenta el daño. |
  
-
-Potenciador 
-
-Efecto 
-
-P1 
-
-Aumenta la velocidad. 
-
-P2 
-
-Ralentiza el paso del tiempo. 
-
-P3 
-
-Reduce el tiempo perdido por recibir un golpe. 
-
-P4 
-
-Duplica el daño infligido y el tiempo perdido por golpe recibido. 
-
-P5 
-
-Reduce la velocidad de movimiento. 
-
-P6 
-
-Aumenta el paso del tiempo. 
-
-P7 
-
-Muestra el mapa del nivel completo junto con los objetos y salas relevantes. 
-
-P8 
-
-Muestra la vida de los enemigos. 
-
-P9 
-
-Oculta el mapa del nivel. El efecto desaparece al coger otro potenciador. 
-
-P10 
-
-Oculta el tiempo restante del nivel. El efecto desaparece al coger otro potenciador. 
-
-P11 
-
-Aumenta el daño. 
 
 ## 5. Trasfondo 
 
@@ -288,29 +207,31 @@ En cuanto al resto de sonidos del juego habrá una variedad de sonidos de ataque
 
 Menú Principal 
 
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Menu%20Principal.png)
+
 Ilustración 1: Menú Principal 
 
- 
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Opciones.png)
 
 Ilustración 2: Menú de Opciones 
 
- 
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Menu%20de%20Pausa.png)
 
 Ilustración 3: Menú de Pausa 
 
- 
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Creditos.png)
 
 Ilustración 4: Pantalla de creditos y reconocimientos 
 
 ### 7.2. Interfaz de usuario 
 
- 
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Interfaz%20de%20usuario.jpg)
 
 Ilustración 5: HUD durante el juego 
 
 ### 7.3. Diagrama de flujo 
 
- 
+![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Diagrama%20de%20flujo.jpg)
 
 Ilustración 6: Diagrama de Flujo 
 
