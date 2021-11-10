@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 public class Movement : MonoBehaviour
 {
     public int idImage;
@@ -19,9 +21,20 @@ public class Movement : MonoBehaviour
     public bool canPass;
     private int mask;
     public Vector2 velocity;
+    [SerializeField] public NavMeshAgent agent;
     // Se procede a cambiar de posición al personaje dependiendo de si se mueve o procede a realizar un dash.
     void Start()
     {
+        agent.enabled = true;
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        bool active = agent.isOnNavMesh;
+        if (active == false)
+        {
+
+            agent.enabled = false;
+            agent.enabled = true;
+        }
         player = this.gameObject;
         animatorPlayer = GetComponent<Animator>();
         playerScript = player.GetComponent<AnimatorPlayerScript>();
@@ -55,14 +68,18 @@ public class Movement : MonoBehaviour
 
 
     public void PlayerMoved()
-    {
+    {// agent.Warp(screenPos);
+        if(agent.enabled==true)
+            agent.SetDestination(screenPos);
+        
+           
         //Debug.Log(this.GetComponent<Rigidbody2D>().velocity.magnitude);
-            speed = 10f;
-            screenPos.z = 0;
-            Vector3 dir = screenPos - transform.position;
-            velocity = dir.normalized * speed;
-            this.GetComponent<Rigidbody2D>().velocity = velocity;
-
+        /* speed = 10f;
+         screenPos.z = 0;
+         Vector3 dir = screenPos - transform.position;
+         velocity = dir.normalized * speed;
+         this.GetComponent<Rigidbody2D>().velocity = velocity;
+        */
 
         //  Collider2D[] collider = Physics2D.OverlapBoxAll(new Vector2(newPosition.x, newPosition.y), new Vector2(2.56f/2f, 2.56f/2f), 0,mask);
         /*if (collider.Length < 1 && Vector3.Distance(transform.position, screenPos) > 0.05f)
@@ -121,6 +138,7 @@ public class Movement : MonoBehaviour
     }
     public void PlayerDashed()
     {
+            agent.enabled = false;
             speed = 20f;
             direction = (playerScript.posFinalDash - playerScript.PosInitDash);
             velocity = direction.normalized * speed;

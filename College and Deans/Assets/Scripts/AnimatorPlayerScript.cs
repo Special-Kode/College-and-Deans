@@ -47,6 +47,8 @@ public class AnimatorPlayerScript: MonoBehaviour
             animator.SetBool("Walking", false);
         else
             animator.SetBool("Walking", true);
+
+
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
            
@@ -98,6 +100,7 @@ public class AnimatorPlayerScript: MonoBehaviour
                     movement.InitialPos = transform.position;
                     isDashed = true;
                     movement.PlayerDashed();
+                    movement.agent.enabled = true;
                     isMoved = false;
                     MouseClickedTime = 0;
                     Clicks = 0;

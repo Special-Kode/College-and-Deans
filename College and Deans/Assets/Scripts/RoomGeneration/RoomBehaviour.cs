@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class RoomBehaviour : MonoBehaviour
 {
 
@@ -15,6 +15,7 @@ public class RoomBehaviour : MonoBehaviour
     public RoomInfo roomInfo;
     public Transform[] SpawnPoints;
     public bool hasSpawned;
+    public NavMeshSurface2d navMeshSurface;
 
     // Start is called before the first frame update
     void Start()
@@ -48,5 +49,15 @@ public class RoomBehaviour : MonoBehaviour
                     leftRoom = room.GetComponent<RoomBehaviour>();
             }
         }
+    }
+    public void SetNavMesh()
+    {
+        navMeshSurface = this.gameObject.GetComponentInChildren<NavMeshSurface2d>();
+        navMeshSurface.collectObjects = CollectObjects2d.All;
+        navMeshSurface.defaultArea = 1;
+        // navMeshSurface.useGeometry = NavMeshCollectGeometry.PhysicsColliders;
+        navMeshSurface.ignoreNavMeshAgent = false;
+        navMeshSurface.gameObject.transform.rotation = Quaternion.Euler(-90, 0, 0);
+        navMeshSurface.BuildNavMesh();
     }
 }

@@ -7,7 +7,6 @@ public class CameraBetweenRooms : MonoBehaviour
     public GameObject CurrentRoom;
     private Vector3 camSpeed;
     public float Smoothness;
-
     // Start is called before the first frame update
     void Start()
     {
