@@ -11,10 +11,12 @@ public class LevelLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Space))
         {
             LoadNextLevel();
         }
+#endif
     }
 
     public void LoadNextLevel()
