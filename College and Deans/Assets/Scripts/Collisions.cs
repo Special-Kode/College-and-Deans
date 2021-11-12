@@ -36,8 +36,10 @@ public class Collisions : MonoBehaviour
             if(other.gameObject.tag == "Boss")
             {
                 Destroy(other.gameObject);
-                FindObjectOfType<LevelLoader>().LoadNextLevel();
-                //SceneManager.LoadScene("MainMenu");
+                if (FindObjectOfType<LevelLoader>() != null)
+                    FindObjectOfType<LevelLoader>().LoadNextLevel();
+                else
+                    SceneManager.LoadScene("MainMenu");
             }
         }
 
