@@ -5,15 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - World
-  - CollidersTag
-  - HealthBarTag
   - Enemy
   - Bullet
   - EnemyBullet
   - SpawnPoint
   - Canvas
   - Boss
-  - Dash
+  - Wall
   layers:
   - Default
   - TransparentFX

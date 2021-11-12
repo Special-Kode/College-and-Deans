@@ -117,15 +117,19 @@ public class AnimatorPlayerScript : MonoBehaviour
             }
             //if the user press left click, there might be the possibility to the user press second click, if this not happen, the player attack if the user input click an enemy.
 
-            if ((Time.time - MouseClickedTime) > ClickDelay && Clicks == 1)
+            if ((Time.time - MouseClickedTime) > ClickDelay )
             {
                 isEnemyClicked(posToMove);
 
-                if (HowToAttack.ClickedEnemy)
+                if(Clicks == 1 &&
+                !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
+                    HowToAttack.attack(SecondsToAttack, transform.position, PosInitMouse, 0);
+                /*
+                if (!HowToAttack.ClickedEnemy)
                 {
-                    HowToAttack.attack(SecondsToAttack, transform.position, Camera.main.ScreenToWorldPoint(posToMove), 0);
+                   
 
-                }
+                }*/
                 Clicks = 0;
                 MouseClickedTime = 0;
             }
@@ -133,7 +137,7 @@ public class AnimatorPlayerScript : MonoBehaviour
 
             
               //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
-            if (Vector2.Distance(posFinaldash,transform.position)<0.1f && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
+            if ((Vector2.Distance(posFinaldash,transform.position)<0.1f || (Time.time-DashTimer)>0.3f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
             {
                 this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 movement.distanceDashed = 0;
@@ -183,6 +187,7 @@ public class AnimatorPlayerScript : MonoBehaviour
 
     public void isEnemyClicked(Vector3 pos)
     {
+        pos = Camera.main.WorldToScreenPoint(pos);
         Ray ray = Camera.main.ScreenPointToRay(pos);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
@@ -291,8 +296,6 @@ public class AnimatorPlayerScript : MonoBehaviour
         }
         if (check == false)
             posFinaldash = transform.position;
-
-
 
 
 

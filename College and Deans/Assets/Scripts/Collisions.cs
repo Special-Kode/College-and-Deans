@@ -24,6 +24,7 @@ public class Collisions : MonoBehaviour
 
 
 
+
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -39,10 +40,14 @@ public class Collisions : MonoBehaviour
                 //hacer daño al enemigo
                 Destroy(other.gameObject);
             }
-            if(other.gameObject.tag == "Boss")
+           else if(other.gameObject.tag == "Boss")
             {
                 Destroy(other.gameObject);
                 SceneManager.LoadScene("MainMenu");
+            }
+            else if(other.gameObject.tag == "Wall")
+            {
+                Destroy(this.gameObject);
             }
         }
 
