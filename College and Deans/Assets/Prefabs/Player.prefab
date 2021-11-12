@@ -105,6 +105,7 @@ MonoBehaviour:
   enter: 0
   PosInitDash: {x: 0, y: 0, z: 0}
   posFinalDash: {x: 0, y: 0, z: 0}
+  DashCollider: {fileID: 6476194702274867829, guid: fec8f7bb6461ac946b605b89f62199a1, type: 3}
 --- !u!114 &5475639532632729974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +135,7 @@ MonoBehaviour:
   oldPosition: {x: 0, y: 0, z: 0}
   canPass: 0
   velocity: {x: 0, y: 0}
+  agent: {fileID: 0}
 --- !u!212 &5475639532632729969
 SpriteRenderer:
   m_ObjectHideFlags: 0

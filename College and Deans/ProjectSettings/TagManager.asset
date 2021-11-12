@@ -13,6 +13,7 @@ TagManager:
   - SpawnPoint
   - Canvas
   - Boss
+  - Dash
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Holes
+  - PassHoles
   - 
   - 
   - 

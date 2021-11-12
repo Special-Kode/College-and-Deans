@@ -43,7 +43,6 @@ public class ExternMechanicsPlayer : MonoBehaviour
     //con esto,si se hacen cambios de cuánto baja la barra de vida por cada golpe, se actualizará solo
     void calculateHealth()
     {
-        float temp1, temp2, temp3;
         if (vida <= 0)
         {
             death = true;

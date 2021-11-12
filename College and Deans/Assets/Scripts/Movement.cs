@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     private int mask;
     public Vector2 velocity;
     [SerializeField] public NavMeshAgent agent;
+    [SerializeField] public GameObject DashCollider;
     // Se procede a cambiar de posición al personaje dependiendo de si se mueve o procede a realizar un dash.
     void Start()
     {
@@ -136,24 +137,23 @@ public class Movement : MonoBehaviour
 
 
     }
-    public void PlayerDashed()
+    public void PlayerDashed(Vector3 dir)
     {
-            agent.enabled = false;
-            speed = 20f;
-            direction = (playerScript.posFinalDash - playerScript.PosInitDash);
-            velocity = direction.normalized * speed;
+            speed = 10f;
+            velocity = (Vector2)dir.normalized * speed;
             this.GetComponent<Rigidbody2D>().velocity = velocity;
-
+        
 
 
     }
 
-  /*  private bool applyMovement(Vector3 newPosition)
-    {
-        if (this.GetComponent<ExternMechanicsPlayer>().MoveOrNot(newPosition))
-            return true;
-        else
-            return false;
-      
-    }*/
+    /*  private bool applyMovement(Vector3 newPosition)
+      {
+          if (this.GetComponent<ExternMechanicsPlayer>().MoveOrNot(newPosition))
+              return true;
+          else
+              return false;
+
+      }*/
+
 }

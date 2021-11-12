@@ -2,24 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimatorPlayerScript: MonoBehaviour
+public class AnimatorPlayerScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    Animator animator;
+    public Animator animator;
     Movement movement;
     GameObject bullet;
-    public bool isMoved;
-    public bool isDashed;
-    private float MouseClickedTime;
-    private float touchTime;
-    private float ClickDelay;
+    public Collisions collision;
+    private float MouseClickedTime, touchTime, ClickDelay,SecondsToAttack, WhenDashStatusStarted,DashTimer;
     private int Clicks;
-    private float SecondsToAttack;
     public AttackBehaviour HowToAttack;
     Vector3 posToMove;
-    public bool enter;
-   public  Vector3 PosInitDash;
-    public Vector3  posFinalDash;
+    public bool enter,canDash;
+    public Vector3 PosInitMouse, posFinalMouse, PosInitDash, posFinaldash;
+    Vector3 direction;
+
     void Start()
     {
         Clicks = 0;
@@ -30,38 +27,29 @@ public class AnimatorPlayerScript: MonoBehaviour
         HowToAttack = this.GetComponent<AttackBehaviour>();
         Weapon gun = new Weapon("Lapiz", 20, "Gun");
         HowToAttack.SetWeapon(gun);
-        isMoved = false;
         SecondsToAttack = 0;
-        
+        canDash = true;
     }
 
     // Aquí se cambian las variables de estado dependeiendo de el estado al cual se quiere llegar partiendo de un estado específico. También se dispone a ejecutar 
     //las distintas animaciones
     void Update()
     {
-        if (isDashed == false)
-            animator.SetBool("Dash", false);
-        else
-            animator.SetBool("Dash", true);
-        if (isMoved == false)
-            animator.SetBool("Walking", false);
-        else
-            animator.SetBool("Walking", true);
 
 
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
-           
-       //if you press left click, clicks is added 1 and it is saved the time
+
+            //if you press left click, clicks is added 1 and it is saved the time
             if (Input.GetMouseButtonDown(0))
             {
 
-                PosInitDash = Input.mousePosition;
-                PosInitDash = Camera.main.ScreenToWorldPoint(PosInitDash);
-                PosInitDash.z = 0;
-               
-                    
-                posToMove = Input.mousePosition;
+                PosInitMouse = Input.mousePosition;
+                PosInitMouse = Camera.main.ScreenToWorldPoint(PosInitMouse);
+                PosInitMouse.z = 0;
+
+
+                posToMove = PosInitMouse;
                 posToMove.z = 0;
 
                 Clicks++;
@@ -72,7 +60,7 @@ public class AnimatorPlayerScript: MonoBehaviour
 
 
                 }
-                
+
 
             }
 
@@ -81,27 +69,43 @@ public class AnimatorPlayerScript: MonoBehaviour
             //if you stop pressing left click, it is saved the position of the mouse, and check if distance of init dash and end dash is higher than 2
             if (Input.GetMouseButtonUp(0))
             {
-                posFinalDash = Input.mousePosition;
-                posFinalDash = Camera.main.ScreenToWorldPoint(posFinalDash);
+
+                posFinalMouse = Input.mousePosition;
+                posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
 
 
-                if (Vector3.Distance(posFinalDash, PosInitDash) > 2)
+
+                if (Vector3.Distance(posFinalMouse, PosInitMouse) > 2 && canDash==true
+                     && !animator.GetBool("Dash"))
                 {
+                    movement.agent.enabled = false;
+                    direction = (posFinalMouse - PosInitMouse);
+                    posFinaldash = transform.position + direction.normalized * 3f;
+                    PosInitDash = transform.position;
+                    canPass();
+                    movement.PlayerDashed(direction);
                     animator.SetBool("Dash", true);
+                    animator.SetBool("Walking", false);
                     movement.InitialPos = transform.position;
-                    movement.PlayerDashed();
-                    movement.agent.enabled = true;
                     MouseClickedTime = 0;
                     Clicks = 0;
+                    WhenDashStatusStarted = Time.time;
+                    DashTimer = Time.time;
+                    canDash = false;
 
                 }
 
-                
+
+
                 // if is not dashing,it means that might player can move
                 else if (Clicks % 2 == 0 && Clicks != 0)
                 {
                     //  isMoved = true;
-                    setMovement(posToMove);
+                    movement.agent.isStopped = false;
+                    movement.agent.enabled = true;
+                    animator.SetBool("Walking", true);
+                    animator.SetBool("Dash", false);
+                    setMovement();
                     movement.PlayerMoved();
                     enter = false;
                     MouseClickedTime = Time.time;
@@ -128,54 +132,47 @@ public class AnimatorPlayerScript: MonoBehaviour
             }
 
 
-
-            if (Vector3.Distance(movement.screenPos, transform.position) <= 0.2f && !isDashed)
-            {
-                this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-              //  isMoved = false;
-            }
-
-            if (Vector3.Distance(transform.position, movement.InitialPos) > 2f //&& isDashed==true
-                                                                               )
+            
+              //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
+            if (Vector2.Distance(posFinaldash,transform.position)<0.1f && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
             {
                 this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 movement.distanceDashed = 0;
-               // isDashed = false;
+                transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+                animator.SetBool("Dash", false);
+                this.gameObject.layer = LayerMask.NameToLayer("Default");
+                // isDashed = false;
             }
-
-
 
 
 
         }
-        
 
-
-
-            if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
-            {
-                animator.SetBool("Death", true);
-                /* if (animator.GetCurrentAnimatorStateInfo(0).IsTag("DeathTag"))
-                     UnityEditor.EditorApplication.isPlaying = false;*/
-
-            }
+        if (canDash == false)
+            checkIfcanDash();
 
 
 
 
+        if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
+        {
+            animator.SetBool("Death", true);
+            /* if (animator.GetCurrentAnimatorStateInfo(0).IsTag("DeathTag"))
+                 UnityEditor.EditorApplication.isPlaying = false;*/
+
+        }
 
 
-        
+
+
     }
 
 
 
 
-    void setMovement(Vector3 positionStart)
+    void setMovement()
     {
-        movement.positionToMove = positionStart;
-        movement.screenPos = Camera.main.ScreenToWorldPoint(new Vector3(movement.positionToMove.x, movement.positionToMove.y, 0));
-        movement.direction = movement.screenPos - transform.position;
+        movement.screenPos = posToMove;
     }
 
 
@@ -183,15 +180,13 @@ public class AnimatorPlayerScript: MonoBehaviour
     {
         animator.SetBool("Attacking", true);
         SecondsToAttack = Time.time;
-        isMoved = false;
-        isDashed = false;
     }
 
     public void isEnemyClicked(Vector3 pos)
     {
         Ray ray = Camera.main.ScreenPointToRay(pos);
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-        
+
         if (hit.collider != null)
         {
             if (hit.collider.tag == "Enemy" || hit.collider.tag == "Boss")
@@ -206,13 +201,13 @@ public class AnimatorPlayerScript: MonoBehaviour
     public void WhereToLook(Vector3 screenPos)
     {
 
-        
-        float angle = Mathf.Atan2((screenPos.y - transform.position.y), (screenPos.x - transform.position.x))*Mathf.Rad2Deg;
+
+        float angle = Mathf.Atan2((screenPos.y - transform.position.y), (screenPos.x - transform.position.x)) * Mathf.Rad2Deg;
         if (screenPos.y <= transform.position.y)
         {
             angle += 360;
         }
-            //derecha
+        //derecha
         if (angle <= 22.5f)
         {
             if (animator.GetBool("Walking"))
@@ -222,12 +217,12 @@ public class AnimatorPlayerScript: MonoBehaviour
             else
                 animator.SetFloat("BlendAttacking", 0.25f);
         }
-           
+
         // else if(angle <= 3/8*Mathf.PI && angle >= -Mathf.PI / 8)
 
 
         //arriba
-        else if(angle<= 112.5f && angle > 67.5f)
+        else if (angle <= 112.5f && angle > 67.5f)
         {
             if (animator.GetBool("Walking"))
                 animator.SetFloat("BlendWalking", 0f);
@@ -252,8 +247,8 @@ public class AnimatorPlayerScript: MonoBehaviour
             else
                 animator.SetFloat("BlendAttacking", 0.75f);
         }
-           
-                //else if (angle <= 1 + (3 / 8) * Mathf.PI && angle > 1 + (1 / 8) * Mathf.PI)
+
+        //else if (angle <= 1 + (3 / 8) * Mathf.PI && angle > 1 + (1 / 8) * Mathf.PI)
 
 
         //abajo
@@ -266,7 +261,7 @@ public class AnimatorPlayerScript: MonoBehaviour
             else
                 animator.SetFloat("BlendAttacking", 0.5f);
         }
-              
+
         //else if (angle <= 1 + (7 / 8) * Mathf.PI && angle > 1 + (5 / 8) * Mathf.PI)
 
         //Sea d el segmento ab
@@ -277,5 +272,41 @@ public class AnimatorPlayerScript: MonoBehaviour
         */
 
     }
-    
+    public void canPass()
+    {
+        int i = 3;
+        bool check = false;
+        Vector2[] positionsToCheck = new Vector2[4];
+        while (i > 0 && check == false)
+        {
+            positionsToCheck[i] = transform.position + direction.normalized * i;
+            if (Physics2D.OverlapBox(positionsToCheck[i], transform.localScale / 2, 0, LayerMask.GetMask("Holes")) == null)
+            {
+                posFinaldash = positionsToCheck[i];
+                check = true;
+                //  this.GetComponent<BoxCollider2D>().enabled = false;
+                this.gameObject.layer = LayerMask.NameToLayer("PassHoles");
+            }
+            i--;
+
+        }
+        if (check == false)
+            posFinaldash = transform.position;
+
+
+
+
+
+
+
+
+    }
+    public void checkIfcanDash()
+    {
+        if (Time.time - WhenDashStatusStarted > 2f)
+            canDash = true;
+        
+    }
+   
+
 }
