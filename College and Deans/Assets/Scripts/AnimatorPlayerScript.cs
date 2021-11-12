@@ -101,7 +101,6 @@ public class AnimatorPlayerScript : MonoBehaviour
                 else if (Clicks % 2 == 0 && Clicks != 0)
                 {
                     //  isMoved = true;
-                    movement.agent.isStopped = false;
                     movement.agent.enabled = true;
                     animator.SetBool("Walking", true);
                     animator.SetBool("Dash", false);
@@ -280,7 +279,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         while (i > 0 && check == false)
         {
             positionsToCheck[i] = transform.position + direction.normalized * i;
-            if (Physics2D.OverlapBox(positionsToCheck[i], transform.localScale / 2, 0, LayerMask.GetMask("Holes")) == null)
+            if (Physics2D.OverlapBox(positionsToCheck[i], transform.GetComponent<BoxCollider2D>().size / 2, 0, LayerMask.GetMask("Holes")) == null)
             {
                 posFinaldash = positionsToCheck[i];
                 check = true;
