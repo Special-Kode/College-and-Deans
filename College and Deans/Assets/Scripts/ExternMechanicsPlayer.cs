@@ -43,7 +43,6 @@ public class ExternMechanicsPlayer : MonoBehaviour
     //con esto,si se hacen cambios de cuánto baja la barra de vida por cada golpe, se actualizará solo
     void calculateHealth()
     {
-        float temp1, temp2, temp3;
         if (vida <= 0)
         {
             death = true;
@@ -55,24 +54,7 @@ public class ExternMechanicsPlayer : MonoBehaviour
     {
         if(canBeDamage)
             TimeLife -= DamageAmount;
-        /*
-        if (GameObject.FindGameObjectWithTag("HealthBarTag").GetComponentInChildren<BarAnimationScript>().TimeDamage == 20)
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-        else
-            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, (1f / GameObject.FindGameObjectWithTag("HealthBarTag").GetComponentInChildren<BarAnimationScript>().TimeDamage),
-                (1f / GameObject.FindGameObjectWithTag("HealthBarTag").GetComponentInChildren<BarAnimationScript>().TimeDamage));
-    }*/
-
-        /* public bool MoveOrNot(Vector3 position)
-         {
-
-             foreach (Collider collider in colliders){
-                 if (Physics.OverlapBox(collider.transform.position,collider.transform.localScale).Length!=0)
-                    return false;
-             }
-             return true;
-         }
-        */
+       
     }
     void AddNoDamageTime()
     {
