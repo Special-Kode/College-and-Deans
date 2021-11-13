@@ -826,6 +826,7 @@ MonoBehaviour:
   currentPos: {x: 0, y: 0}
   roomInfoList: []
   roomList: []
+  roomBehaviourList: []
   positions: []
 --- !u!4 &1557327681
 Transform:
