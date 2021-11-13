@@ -16,7 +16,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     public bool enter,canDash;
     public Vector3 PosInitMouse, posFinalMouse, PosInitDash, posFinaldash;
     Vector3 direction;
-
+    [SerializeField] public int Weapon;
     void Start()
     {
         Clicks = 0;
@@ -129,34 +129,14 @@ public class AnimatorPlayerScript : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (movement.velocity.x > 0)
-        {
-            if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
-                animator.SetFloat("BlendWalking", 0.75f);
+        if (animator.GetBool("Walking"))
+            setAnimationWalking();
+        else if (animator.GetBool("Attacking"))
+            setAnimationAttacking();
+      /*  else
+            setAnimationIdle();
+      */
 
-            else 
-            {
-                if(movement.velocity.y>0)
-                    animator.SetFloat("BlendWalking", 0.5f);
-                else
-                    animator.SetFloat("BlendWalking", 0f);
-
-            }      
-        }
-        else
-        {
-            if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
-                animator.SetFloat("BlendWalking", 0.25f);
-
-            else
-            {
-                if (movement.velocity.y > 0)
-                    animator.SetFloat("BlendWalking", 0.5f);
-                else
-                    animator.SetFloat("BlendWalking", 0f);
-
-            }
-        }
 
     }
 
@@ -206,6 +186,41 @@ public class AnimatorPlayerScript : MonoBehaviour
         animator.SetBool("Dash", false);
         this.gameObject.layer = LayerMask.NameToLayer("Default");
         // isDashed = false;
+    }
+    public void setAnimationWalking()
+    {
+        if (movement.velocity.x > 0)
+        {
+            if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
+                animator.SetFloat("BlendWalking", 0.75f+Weapon);
+
+            else
+            {
+                if (movement.velocity.y > 0)
+                    animator.SetFloat("BlendWalking", 0.5f + Weapon);
+                else
+                    animator.SetFloat("BlendWalking", 0f + Weapon);
+
+            }
+        }
+        else
+        {
+            if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
+                animator.SetFloat("BlendWalking", 0.25f + Weapon);
+
+            else
+            {
+                if (movement.velocity.y > 0)
+                    animator.SetFloat("BlendWalking", 0.5f + Weapon);
+                else
+                    animator.SetFloat("BlendWalking", 0f + Weapon);
+
+            }
+        }
+    }
+    public void setAnimationAttacking()
+    {
+
     }
     public void isEnemyClicked(Vector3 pos)
     {

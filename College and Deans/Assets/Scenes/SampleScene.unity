@@ -562,6 +562,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1.6384
       objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729971, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: Weapon
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Size.x
       value: 2.56
