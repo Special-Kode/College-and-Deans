@@ -37,8 +37,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     {
 
 
-        if (SystemInfo.deviceType == DeviceType.Desktop)
-        {
+
 
             //if you press left click, clicks is added 1 and it is saved the time
             if (Input.GetMouseButtonDown(0))
@@ -67,7 +66,7 @@ public class AnimatorPlayerScript : MonoBehaviour
 
 
             //if you stop pressing left click, it is saved the position of the mouse, and check if distance of init dash and end dash is higher than 2
-            if (Input.GetMouseButtonUp(0))
+            else if (Input.GetMouseButtonUp(0))
             {
 
                 posFinalMouse = Input.mousePosition;
@@ -78,38 +77,13 @@ public class AnimatorPlayerScript : MonoBehaviour
                 if (Vector3.Distance(posFinalMouse, PosInitMouse) > 2 && canDash==true
                      && !animator.GetBool("Dash"))
                 {
-                    movement.agent.enabled = false;
-                    direction = (posFinalMouse - PosInitMouse);
-                    posFinaldash = transform.position + direction.normalized * 3f;
-                    PosInitDash = transform.position;
-                    canPass();
-                    movement.PlayerDashed(direction);
-                    animator.SetBool("Dash", true);
-                    animator.SetBool("Walking", false);
-                    movement.InitialPos = transform.position;
-                    MouseClickedTime = 0;
-                    Clicks = 0;
-                    WhenDashStatusStarted = Time.time;
-                    DashTimer = Time.time;
-                    canDash = false;
-
+                    InitDash();
                 }
-
-
 
                 // if is not dashing,it means that might player can move
                 else if (Clicks % 2 == 0 && Clicks != 0)
                 {
-                    //  isMoved = true;
-                    movement.agent.enabled = true;
-                    animator.SetBool("Walking", true);
-                    animator.SetBool("Dash", false);
-                    setMovement();
-                    movement.PlayerMoved();
-                    enter = false;
-                    MouseClickedTime = Time.time;
-                    Clicks = 0;
-
+                    InitMove(); 
                 }
 
 
@@ -120,71 +94,119 @@ public class AnimatorPlayerScript : MonoBehaviour
             if ((Time.time - MouseClickedTime) > ClickDelay )
             {
                 isEnemyClicked(posToMove);
-
-                if(Clicks == 1 &&
-                !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
-                    HowToAttack.attack(SecondsToAttack, transform.position, PosInitMouse, 0);
-                /*
+            /*
                 if (!HowToAttack.ClickedEnemy)
                 {
                    
 
                 }*/
+                if (Clicks == 1 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
+                    Attack();
                 Clicks = 0;
                 MouseClickedTime = 0;
             }
-
-
-            
+   
               //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
             if ((Vector2.Distance(posFinaldash,transform.position)<0.1f || (Time.time-DashTimer)>0.3f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
+                EndDash();
+            
+
+
+            if (canDash == false)
+                checkIfcanDash();
+
+
+
+
+            if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
             {
-                this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                movement.distanceDashed = 0;
-                transform.position = new Vector3(transform.position.x, transform.position.y, 0);
-                animator.SetBool("Dash", false);
-                this.gameObject.layer = LayerMask.NameToLayer("Default");
-                // isDashed = false;
-            }
-
-
-
-        }
-
-        if (canDash == false)
-            checkIfcanDash();
-
-
-
-
-        if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
-        {
-            animator.SetBool("Death", true);
-            /* if (animator.GetCurrentAnimatorStateInfo(0).IsTag("DeathTag"))
-                 UnityEditor.EditorApplication.isPlaying = false;*/
-
-        }
+                animator.SetBool("Death", true);
+             }
 
 
 
 
     }
-
-
-
-
-    void setMovement()
+    private void LateUpdate()
     {
-        movement.screenPos = posToMove;
+        if (movement.velocity.x > 0)
+        {
+            if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
+                animator.SetFloat("BlendWalking", 0.75f);
+
+            else 
+            {
+                if(movement.velocity.y>0)
+                    animator.SetFloat("BlendWalking", 0.5f);
+                else
+                    animator.SetFloat("BlendWalking", 0f);
+
+            }      
+        }
+        else
+        {
+            if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
+                animator.SetFloat("BlendWalking", 0.25f);
+
+            else
+            {
+                if (movement.velocity.y > 0)
+                    animator.SetFloat("BlendWalking", 0.5f);
+                else
+                    animator.SetFloat("BlendWalking", 0f);
+
+            }
+        }
+
     }
 
 
-    public void SetAttack()
+    public void Attack()
     {
         animator.SetBool("Attacking", true);
         SecondsToAttack = Time.time;
+        HowToAttack.attack(SecondsToAttack, transform.position, PosInitMouse);
     }
 
+    public void InitDash()
+    {
+        movement.agent.enabled = false;
+        direction = (posFinalMouse - PosInitMouse);
+        posFinaldash = transform.position + direction.normalized * 3f;
+        PosInitDash = transform.position;
+        canPass();
+        movement.PlayerDashed(direction);
+        animator.SetBool("Dash", true);
+        animator.SetBool("Walking", false);
+        movement.InitialPos = transform.position;
+        MouseClickedTime = 0;
+        Clicks = 0;
+        WhenDashStatusStarted = Time.time;
+        DashTimer = Time.time;
+        canDash = false;
+    }
+
+    public void InitMove()
+    {
+        movement.agent.enabled = true;
+        animator.SetBool("Walking", true);
+        animator.SetBool("Dash", false);
+        movement.screenPos = posToMove;
+        movement.PlayerMoved();
+        enter = false;
+        MouseClickedTime = Time.time;
+        Clicks = 0;
+    }
+
+    public void EndDash()
+    {
+        this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        movement.distanceDashed = 0;
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        animator.SetBool("Dash", false);
+        this.gameObject.layer = LayerMask.NameToLayer("Default");
+        // isDashed = false;
+    }
     public void isEnemyClicked(Vector3 pos)
     {
         pos = Camera.main.WorldToScreenPoint(pos);
@@ -202,80 +224,7 @@ public class AnimatorPlayerScript : MonoBehaviour
             HowToAttack.ClickedEnemy = false;
 
     }
-    public void WhereToLook(Vector3 screenPos)
-    {
-
-
-        float angle = Mathf.Atan2((screenPos.y - transform.position.y), (screenPos.x - transform.position.x)) * Mathf.Rad2Deg;
-        if (screenPos.y <= transform.position.y)
-        {
-            angle += 360;
-        }
-        //derecha
-        if (angle <= 22.5f)
-        {
-            if (animator.GetBool("Walking"))
-                animator.SetFloat("BlendWalking", 0.25f);
-            else if (!animator.GetBool("Walking") && !animator.GetBool("Attacking"))
-                animator.SetFloat("BlendIdle", 0.25f);
-            else
-                animator.SetFloat("BlendAttacking", 0.25f);
-        }
-
-        // else if(angle <= 3/8*Mathf.PI && angle >= -Mathf.PI / 8)
-
-
-        //arriba
-        else if (angle <= 112.5f && angle > 67.5f)
-        {
-            if (animator.GetBool("Walking"))
-                animator.SetFloat("BlendWalking", 0f);
-            else if (!animator.GetBool("Walking") && !animator.GetBool("Attacking"))
-                animator.SetFloat("BlendIdle", 0f);
-            else
-                animator.SetFloat("BlendAttacking", 0);
-
-        }
-
-        //else if (angle <= 7 / 8 * Mathf.PI && angle > 5 / 8 * Mathf.PI)
-
-
-
-        //izquierda
-        else if (angle <= 202.5f && angle >= 157.5f)
-        {
-            if (animator.GetBool("Walking"))
-                animator.SetFloat("BlendWalking", 0.75f);
-            else if (!animator.GetBool("Walking") && !animator.GetBool("Attacking"))
-                animator.SetFloat("BlendIdle", 0.75f);
-            else
-                animator.SetFloat("BlendAttacking", 0.75f);
-        }
-
-        //else if (angle <= 1 + (3 / 8) * Mathf.PI && angle > 1 + (1 / 8) * Mathf.PI)
-
-
-        //abajo
-        else if (angle <= 292.5f && angle > 247.5f)
-        {
-            if (animator.GetBool("Walking"))
-                animator.SetFloat("BlendWalking", 0.5f);
-            else if (!animator.GetBool("Walking") && !animator.GetBool("Attacking"))
-                animator.SetFloat("BlendIdle", 0.5f);
-            else
-                animator.SetFloat("BlendAttacking", 0.5f);
-        }
-
-        //else if (angle <= 1 + (7 / 8) * Mathf.PI && angle > 1 + (5 / 8) * Mathf.PI)
-
-        //Sea d el segmento ab
-
-        //  if (screenPos.x>0&&screenPos.y>0)
-        /*
-            this.gameObject.transform.rotation=Quaternion.Euler(0,0,Mathf.Atan2((screenPos.y - transform.position.y), (screenPos.x - transform.position.x)) * Mathf.Rad2Deg);
-        */
-
-    }
+   
     public void canPass()
     {
         int i = 3;

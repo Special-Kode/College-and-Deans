@@ -30,27 +30,13 @@ using UnityEngine;
         return weapon;
     }
 
-    public void attack(float seconds,Vector3 position,Vector3 MousePos,int device)
-    {
-        this.EnemyPos = EnemyPos;
-        if (getWeapon().getType() == "Sword")
-        {
-
-            if (Vector3.Distance(position, GameObject.FindGameObjectWithTag("Enemy").transform.position) < 1f)
-            {
-                if (Time.time - seconds > 2f || seconds == 0)
-                {
-                    animatorPlayer.SetAttack();
-                }
-
-            }
-        }
-        else if (getWeapon().getType() == "Gun")
+    public void attack(float seconds,Vector3 position,Vector3 MousePos)
+    { 
+        if (getWeapon().getType() == "Gun")
         {
 
            bulletShooted = true;
            //animatorPlayer.WhereToLook(Input.mousePosition);
-           animatorPlayer.SetAttack();
            shootBullet(position,MousePos);
            if(DuplicateBullet)
                StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos));
