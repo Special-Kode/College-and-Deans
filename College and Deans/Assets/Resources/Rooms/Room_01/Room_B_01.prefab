@@ -1,5 +1,70 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &82613687900231099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2810650061546320697}
+  - component: {fileID: 5181671692556285624}
+  m_Layer: 0
+  m_Name: NavMesh2D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2810650061546320697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82613687900231099}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.605365, y: -0.73222727, z: -12.531385}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3300383175704957480}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5181671692556285624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82613687900231099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3db18f39f7ba93e4bad5122f1bc40dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_OverrideByGrid: 0
+  m_UseMeshPrefab: {fileID: 0}
+  m_CompressBounds: 0
+  m_OverrideVector: {x: 1, y: 1, z: 1}
+  m_DefaultArea: 1
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_HideEditorLogs: 0
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &1365761736827747591
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,6 +76,7 @@ GameObject:
   - component: {fileID: 4368561766275240033}
   - component: {fileID: 7323449796662861605}
   - component: {fileID: 7278129522440236030}
+  - component: {fileID: 9130387301703445502}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -45,7 +111,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -215,7 +281,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2195,7 +2261,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 6
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2240,16 +2306,16 @@ Tilemap:
     m_Data: {fileID: 182515998739034355, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
   - m_RefCount: 14
     m_Data: {fileID: -2800876817223335725, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -5895191231709818157, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 5339229742347854233, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 10
     m_Data: {fileID: -8158273205997960823, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: -8540854674809487797, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 2696214034221626940, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 16
     m_Data: {fileID: 6123212246031883711, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
   - m_RefCount: 0
@@ -2260,12 +2326,12 @@ Tilemap:
     m_Data: {fileID: -1297572194080285004, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 2696214034221626940, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 5339229742347854233, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -5895191231709818157, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -5351138903708955224, guid: 12bb13a5c4af3dc4c8b75a2064c9bfbd, type: 3}
   m_TileMatrixArray:
@@ -2362,6 +2428,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &9130387301703445502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365761736827747591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: 
 --- !u!1 &2471291766810871477
 GameObject:
   m_ObjectHideFlags: 0
@@ -2680,6 +2762,7 @@ Transform:
   - {fileID: 32485932121036970}
   - {fileID: 16660906369708395}
   - {fileID: 861194238756295260}
+  - {fileID: 2810650061546320697}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2708,6 +2791,7 @@ MonoBehaviour:
   - {fileID: 3790858730532736345}
   - {fileID: 6005970207257185336}
   hasSpawned: 0
+  navMeshSurface: {fileID: 0}
 --- !u!1 &3776077675901615529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2845,6 +2929,8 @@ GameObject:
   - component: {fileID: 8982510284486767961}
   - component: {fileID: 2328659648425914716}
   - component: {fileID: 8461381789981598881}
+  - component: {fileID: 8112442225665096973}
+  - component: {fileID: 2341704311132600354}
   m_Layer: 0
   m_Name: Holes
   m_TagString: Untagged
@@ -3860,6 +3946,38 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!19719996 &8112442225665096973
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312828442903119532}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
+--- !u!114 &2341704311132600354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312828442903119532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &6592919340787940174
 GameObject:
   m_ObjectHideFlags: 0
