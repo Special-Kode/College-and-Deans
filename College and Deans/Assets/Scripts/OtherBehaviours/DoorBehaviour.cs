@@ -30,8 +30,12 @@ public class DoorBehaviour : MonoBehaviour
 
     public void DisableCollider()
     {
-        //GetComponent<TilemapCollider2D>().enabled = false;
         GetComponent<TilemapCollider2D>().isTrigger = true;
+    }
+
+    public void EnableCollider()
+    {
+        GetComponent<TilemapCollider2D>().isTrigger = false;
     }
 
     public void SetAdjacentRoom()
