@@ -7,23 +7,20 @@ public class AnimatorPlayerScript : MonoBehaviour
     // Start is called before the first frame update
     public Animator animator;
     Movement movement;
-    GameObject bullet;
-    public Collisions collision;
-    private float MouseClickedTime, touchTime, ClickDelay,SecondsToAttack, WhenDashStatusStarted,DashTimer;
+    private float MouseClickedTime, ClickDelay,SecondsToAttack, WhenDashStatusStarted,DashTimer;
     private int Clicks;
     public AttackBehaviour HowToAttack;
     Vector3 posToMove;
     public bool enter,canDash;
     public Vector3 PosInitMouse, posFinalMouse, PosInitDash, posFinaldash;
     Vector3 direction;
-
+    [SerializeField] public int Weapon;
     void Start()
     {
         Clicks = 0;
         ClickDelay = 0.25f;
         animator = GetComponent<Animator>();
         movement = this.GetComponent<Movement>();
-        bullet = GameObject.FindGameObjectWithTag("Bullet");
         HowToAttack = this.GetComponent<AttackBehaviour>();
         Weapon gun = new Weapon("Lapiz", 20, "Gun");
         HowToAttack.SetWeapon(gun);
@@ -35,7 +32,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     //las distintas animaciones
     void Update()
     {
-
+        
 
 
 
@@ -72,10 +69,10 @@ public class AnimatorPlayerScript : MonoBehaviour
                 posFinalMouse = Input.mousePosition;
                 posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
 
-
+            if (!animator.GetBool("Attacking"))
 
                 if (Vector3.Distance(posFinalMouse, PosInitMouse) > 2 && canDash==true
-                     && !animator.GetBool("Dash"))
+                     && !animator.GetBool("Dash") )
                 {
                     InitDash();
                 }
@@ -91,7 +88,7 @@ public class AnimatorPlayerScript : MonoBehaviour
             }
             //if the user press left click, there might be the possibility to the user press second click, if this not happen, the player attack if the user input click an enemy.
 
-            if ((Time.time - MouseClickedTime) > ClickDelay )
+            if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash"))
             {
                 isEnemyClicked(posToMove);
             /*
@@ -129,34 +126,16 @@ public class AnimatorPlayerScript : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (movement.velocity.x > 0)
-        {
-            if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
-                animator.SetFloat("BlendWalking", 0.75f);
+        if (animator.GetBool("Walking"))
+            setAnimationDashOrWalk("BlendWalking");
+        else if(animator.GetBool("Dash"))
+            setAnimationDashOrWalk("BlendDash");
+        else if (animator.GetBool("Attacking"))
+            setAnimationAttacking();
+      /*  else
+            setAnimationIdle();
+      */
 
-            else 
-            {
-                if(movement.velocity.y>0)
-                    animator.SetFloat("BlendWalking", 0.5f);
-                else
-                    animator.SetFloat("BlendWalking", 0f);
-
-            }      
-        }
-        else
-        {
-            if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
-                animator.SetFloat("BlendWalking", 0.25f);
-
-            else
-            {
-                if (movement.velocity.y > 0)
-                    animator.SetFloat("BlendWalking", 0.5f);
-                else
-                    animator.SetFloat("BlendWalking", 0f);
-
-            }
-        }
 
     }
 
@@ -166,6 +145,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         animator.SetBool("Attacking", true);
         SecondsToAttack = Time.time;
         HowToAttack.attack(SecondsToAttack, transform.position, PosInitMouse);
+        animator.SetBool("Attacking", false);
     }
 
     public void InitDash()
@@ -178,7 +158,6 @@ public class AnimatorPlayerScript : MonoBehaviour
         movement.PlayerDashed(direction);
         animator.SetBool("Dash", true);
         animator.SetBool("Walking", false);
-        movement.InitialPos = transform.position;
         MouseClickedTime = 0;
         Clicks = 0;
         WhenDashStatusStarted = Time.time;
@@ -201,11 +180,49 @@ public class AnimatorPlayerScript : MonoBehaviour
     public void EndDash()
     {
         this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        movement.distanceDashed = 0;
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         animator.SetBool("Dash", false);
         this.gameObject.layer = LayerMask.NameToLayer("Default");
         // isDashed = false;
+    }
+    public void setAnimationDashOrWalk(string TypeMov)
+    {
+        if (TypeMov.Equals("BlendDash"))
+            Weapon = 0;
+        if (movement.velocity.x > 0)
+        {
+            if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
+                animator.SetFloat(TypeMov, 0.75f+Weapon);
+
+            else
+            {
+                if (movement.velocity.y > 0)
+                    animator.SetFloat(TypeMov, 0.5f + Weapon);
+                else
+                    animator.SetFloat(TypeMov, 0f + Weapon);
+
+            }
+        }
+        else
+        {
+            if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
+                animator.SetFloat(TypeMov, 0.25f + Weapon);
+
+            else
+            {
+                if (movement.velocity.y > 0)
+                    animator.SetFloat(TypeMov, 0.5f + Weapon);
+                else
+                    animator.SetFloat(TypeMov, 0f + Weapon);
+
+            }
+        }
+        if (TypeMov.Equals("BlendDash"))
+            Weapon = 1;
+    }
+    public void setAnimationAttacking()
+    {
+
     }
     public void isEnemyClicked(Vector3 pos)
     {

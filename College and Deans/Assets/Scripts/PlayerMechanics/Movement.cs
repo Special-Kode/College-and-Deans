@@ -5,24 +5,14 @@ using UnityEngine.AI;
 
 public class Movement : MonoBehaviour
 {
-    public int idImage;
-    public string movementState;
-    private Animator animatorPlayer;
-    public bool Up,Right,Left,Down,Attack;
-    private Vector3 movement;
-    private GameObject player;
-    private AnimatorPlayerScript playerScript;
-    public Vector3 positionToMove,direction,screenPos;
+    public Vector3 screenPos;
+    public Animator animator;
     public float speed;
-    public float distanceDashed;
-    public Vector3 InitialPos;
-   public Vector3 newPosition;
-    public Vector3 oldPosition;
     public bool canPass;
-    private int mask;
     public Vector2 velocity;
     [SerializeField] public NavMeshAgent agent;
-    [SerializeField] public GameObject DashCollider;
+    [SerializeField] public float destinationReachedThreshold;
+    private Vector3 target;
     // Se procede a cambiar de posición al personaje dependiendo de si se mueve o procede a realizar un dash.
     void Start()
     {
@@ -36,15 +26,9 @@ public class Movement : MonoBehaviour
             agent.enabled = false;
             agent.enabled = true;
         }
-        player = this.gameObject;
-        animatorPlayer = GetComponent<Animator>();
-        playerScript = player.GetComponent<AnimatorPlayerScript>();
-        movement = new Vector3 (0,0,0);
-        distanceDashed = 0;
-        InitialPos = Vector3.zero;
-        oldPosition = Vector3.zero;
         canPass = true;
-        mask = LayerMask.GetMask("Colliders");
+        animator = GetComponent<Animator>();
+        target = Vector3.zero;
         //offset = this.gameObject.transform.TransformPoint(offset, 0, 0).x;
 
     }
@@ -53,12 +37,25 @@ public class Movement : MonoBehaviour
     void Update()
     {
         if (agent.enabled == true)
+        {
             velocity = agent.velocity;
+
+            if(target != Vector3.zero)
+                if (Vector3.SqrMagnitude(target - transform.position) < destinationReachedThreshold)
+                {
+                    animator.SetBool("Walking", false);
+                    target = Vector3.zero;
+                }
+                    
+        }
+            
+        
     }
 
 
     public void PlayerMoved()
     {
+        target = screenPos;
         if(agent.enabled==true)
             agent.SetDestination(screenPos);
        
