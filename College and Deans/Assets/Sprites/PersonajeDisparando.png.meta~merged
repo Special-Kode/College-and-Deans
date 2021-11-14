@@ -1,5 +1,10 @@
 fileFormatVersion: 2
-guid: 9da0a61eb774c3d4789f1b5549b68a4e
+<<<<<<< HEAD
+guid: 019875ad6f3129d48a662c7f9c8d3d69
+TextureImporter:
+  internalIDToNameTable: []
+=======
+guid: ecfdc9659a105be43a574d4105a6de6b
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -14,6 +19,7 @@ TextureImporter:
   - first:
       213: 692749794310100353
     second: PersonajeDisparando_3
+>>>>>>> main
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -44,7 +50,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
+    filterMode: 1
+=======
     filterMode: 0
+>>>>>>> main
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -53,12 +63,20 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
+  spriteMode: 1
+=======
   spriteMode: 2
+>>>>>>> main
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
+  spritePixelsToUnits: 100
+=======
   spritePixelsToUnits: 15
+>>>>>>> main
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -80,6 +98,9 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
+    textureCompression: 1
+=======
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
@@ -117,6 +138,7 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
+>>>>>>> main
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -125,6 +147,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
+<<<<<<< HEAD
+    sprites: []
+=======
     sprites:
     - serializedVersion: 2
       name: PersonajeDisparando_0
@@ -210,6 +235,7 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+>>>>>>> main
     outline: []
     physicsShape: []
     bones: []
