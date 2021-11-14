@@ -12,11 +12,12 @@ using UnityEngine;
     public bool ClickedEnemy;
     float speedBullet;
     Vector3 EnemyPos;
+    [SerializeField] public  bool DuplicateBullet;
     public void Start()
     {
         animatorPlayer = this.GetComponent<AnimatorPlayerScript>();
         bulletShooted = false;
-        speedBullet = 200000f;
+        speedBullet = 30f;
         ClickedEnemy = false;
        
     }
@@ -29,29 +30,17 @@ using UnityEngine;
         return weapon;
     }
 
-    public void attack(float seconds,Vector3 position,Vector3 MousePos,int device)
-    {
-        this.EnemyPos = EnemyPos;
-        if (getWeapon().getType() == "Sword")
-        {
-
-            if (Vector3.Distance(position, GameObject.FindGameObjectWithTag("Enemy").transform.position) < 1f)
-            {
-                if (Time.time - seconds > 2f || seconds == 0)
-                {
-                    animatorPlayer.SetAttack();
-                }
-
-            }
-        }
-        else if (getWeapon().getType() == "Gun")
+    public void attack(float seconds,Vector3 position,Vector3 MousePos)
+    { 
+        if (getWeapon().getType() == "Gun")
         {
 
            bulletShooted = true;
            //animatorPlayer.WhereToLook(Input.mousePosition);
-           animatorPlayer.SetAttack();
            shootBullet(position,MousePos);
-                    
+           if(DuplicateBullet)
+               StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos));
+           
            
         }
             
@@ -66,10 +55,16 @@ using UnityEngine;
         GameObject tempBullet = Instantiate(bullet, this.transform.position, Quaternion.identity);
         tempBullet.transform.position = playerPos;
         Vector2 dir = new Vector2(mousePos.x - playerPos.x, mousePos.y - playerPos.y).normalized;
-        tempBullet.GetComponent<Rigidbody2D>().AddForce(dir * speedBullet * Time.deltaTime);
+        tempBullet.GetComponent<Rigidbody2D>().velocity=dir * speedBullet;
         dir = (Camera.main.ScreenToWorldPoint(mousePos) - playerPos).normalized;
         float rot_z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         tempBullet.transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
+    }
+    IEnumerator ExecuteAfterTime(float time,Vector3 position, Vector3 MousePos)
+    {
+        yield return new WaitForSeconds(time);
+
+        shootBullet(position, MousePos);
     }
 }
 

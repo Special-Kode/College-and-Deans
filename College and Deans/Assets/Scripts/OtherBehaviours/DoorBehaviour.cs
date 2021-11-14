@@ -65,8 +65,7 @@ public class DoorBehaviour : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player") && GetComponentInParent<RoomBehaviour>() != null)
         {
-            other.transform.position += dir * 7; //TODO not hardcode this number
-            other.GetComponent<AnimatorPlayerScript>().isMoved = false;
+            other.gameObject.GetComponent<Movement>().agent.Warp(other.transform.position + dir * 6); //TODO not hardcode this number
             other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
             Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = AdjacentRoom;

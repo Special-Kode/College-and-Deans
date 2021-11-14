@@ -5,24 +5,31 @@ using UnityEngine.SceneManagement;
 public class Collisions : MonoBehaviour
 {
 
-    public bool collide = false;
+    public bool collideHole = false;
 
 
    void OnCollisionStay2D(Collision2D other)
     {
-        collide = true;
+
+        
         if (this.tag == "Player" )
         {
-            this.GetComponent<AnimatorPlayerScript>().isDashed = false;
 
             if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
+            this.GetComponent<Animator>().SetBool("Dash", false);
+            this.GetComponent<Movement>().agent.enabled=true;
             
         }
+
+
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
-    {        
+    {
+
         if (this.tag == "Bullet")
         {
             
@@ -33,10 +40,17 @@ public class Collisions : MonoBehaviour
                 //hacer daño al enemigo
                 Destroy(other.gameObject);
             }
-            if(other.gameObject.tag == "Boss")
+           else if(other.gameObject.tag == "Boss")
             {
                 Destroy(other.gameObject);
-                SceneManager.LoadScene("MainMenu");
+                if (FindObjectOfType<LevelLoader>() != null)
+                    FindObjectOfType<LevelLoader>().LoadNextLevel();
+                else
+                    SceneManager.LoadScene("MainMenu");
+            }
+            else if(other.gameObject.tag == "Wall")
+            {
+                Destroy(this.gameObject);
             }
         }
 
@@ -50,5 +64,10 @@ public class Collisions : MonoBehaviour
             }
             
         }
+
+
+
+       
+
     }
 }
