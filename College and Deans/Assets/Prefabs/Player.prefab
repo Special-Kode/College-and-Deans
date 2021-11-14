@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87eae25c163d67148a75825bc0e50d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collide: 0
+  collideHole: 0
 --- !u!114 &5475639532632729981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +87,7 @@ MonoBehaviour:
   bullet: {fileID: 1621872926787617426, guid: 76de8d97c5ede824a8c879d19e8b37b6, type: 3}
   bulletShooted: 0
   ClickedEnemy: 0
+  DuplicateBullet: 0
 --- !u!114 &5475639532632729971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,12 +100,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a0fe1ec50df4240bf944d1419a72c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoved: 0
-  isDashed: 0
+  animator: {fileID: 0}
+  collision: {fileID: 0}
   HowToAttack: {fileID: 0}
   enter: 0
+  canDash: 0
+  PosInitMouse: {x: 0, y: 0, z: 0}
+  posFinalMouse: {x: 0, y: 0, z: 0}
   PosInitDash: {x: 0, y: 0, z: 0}
-  posFinalDash: {x: 0, y: 0, z: 0}
+  posFinaldash: {x: 0, y: 0, z: 0}
 --- !u!114 &5475639532632729974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +138,8 @@ MonoBehaviour:
   oldPosition: {x: 0, y: 0, z: 0}
   canPass: 0
   velocity: {x: 0, y: 0}
+  agent: {fileID: 0}
+  DashCollider: {fileID: 0}
 --- !u!212 &5475639532632729969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -174,8 +180,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 6314a178e0011f042ab1e432efe1052a, type: 3}
-  m_Color: {r: 0.033018887, g: 0.5778131, b: 1, a: 1}
+  m_Sprite: {fileID: 4289750085505012322, guid: e35a88e85625cbe4f9c84326e3aad1c6, type: 3}
+  m_Color: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -215,7 +221,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1.6384
+  m_Mass: 1.2129728
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -241,7 +247,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
