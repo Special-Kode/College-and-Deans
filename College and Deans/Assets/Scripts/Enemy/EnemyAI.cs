@@ -41,28 +41,24 @@ public class EnemyAI : MonoBehaviour
             case State.Chasing:
                 pathfinding.MoveTo(target.position);
 
-                if(Vector2.Distance(transform.position, target.position) < attackRange)
+                if(Vector2.Distance(transform.position, target.position) <= attackRange)
                 {
-                    //Target esta en rango
-                    if(Time.time > nextAttack)
-                    {
-                        pathfinding.StopMoving();
-                        state = State.Attacking;
-                        nextAttack = Time.time + fireRate;
-                    }
+                    pathfinding.StopMoving();
+                    state = State.Attacking;
+                    nextAttack = Time.time + fireRate;
                 }
                 break;
             case State.Attacking:
-                nextAttack += Time.deltaTime;
-                if(nextAttack >= fireRate)
+                if(Time.time >= nextAttack)
                 {
-                    nextAttack = 0;
+                    nextAttack = Time.time + fireRate;
                     GameObject tempBullet = Instantiate(bullet, this.transform.position, Quaternion.identity);
                     Vector2 dir = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
                     tempBullet.GetComponent<Rigidbody2D>().AddForce(dir * speedBullet * Time.deltaTime);
                 }
                 if(Vector2.Distance(transform.position, target.position) > attackRange)
                 {
+                    nextAttack = Time.time + fireRate;
                     state = State.Chasing;
                 }
                 break;
