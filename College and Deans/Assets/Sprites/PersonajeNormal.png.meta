@@ -1,4 +1,19 @@
 fileFormatVersion: 2
+guid: 157ec4931e2134b42bbf12c67f31dc28
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5093707373353062194
+    second: PersonajeDisparando_0
+  - first:
+      213: -1759291170206409500
+    second: PersonajeDisparando_1
+  - first:
+      213: 3945903846221260415
+    second: PersonajeDisparando_2
+  - first:
+      213: 692749794310100353
+    second: PersonajeDisparando_3
 guid: e35a88e85625cbe4f9c84326e3aad1c6
 TextureImporter:
   internalIDToNameTable:
