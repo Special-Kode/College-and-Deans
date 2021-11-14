@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public Enemy enemy {get; private set;}
     public EnemyPathfinding EnemyPathfinding {get; private set;}
     public Rigidbody2D EnemyRigidbody2D  {get; private set;}
+    public Animator EnemyAnimator {get; private set;}
 
     private void Awake()
     {
@@ -14,6 +15,7 @@ public class Enemy : MonoBehaviour
 
         EnemyPathfinding = GetComponent<EnemyPathfinding>();
         EnemyRigidbody2D = GetComponent<Rigidbody2D>();
+        EnemyAnimator = GetComponent<Animator>();
     }
 
     public Vector2 GetPosition()

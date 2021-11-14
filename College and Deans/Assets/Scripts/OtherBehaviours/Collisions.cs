@@ -61,6 +61,9 @@ public class Collisions : MonoBehaviour
             {
                 other.GetComponent<ExternMechanicsPlayer>().damage = true;
                 Destroy(this.gameObject);
+            }else if(other.gameObject.tag == "Wall")
+            {
+                Destroy(this.gameObject);
             }
             
         }
