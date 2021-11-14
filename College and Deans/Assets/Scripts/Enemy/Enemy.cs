@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D EnemyRigidbody2D  {get; private set;}
     public Animator EnemyAnimator {get; private set;}
 
+    [SerializeField] private int health;
+
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
@@ -21,5 +23,14 @@ public class Enemy : MonoBehaviour
     public Vector2 GetPosition()
     {
         return EnemyRigidbody2D.position;
+    }
+
+    public void GetHit(int damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
