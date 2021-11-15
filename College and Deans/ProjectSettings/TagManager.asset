@@ -12,6 +12,8 @@ TagManager:
   - Canvas
   - Boss
   - Wall
+  - Wave
+  - Bomb
   layers:
   - Default
   - TransparentFX

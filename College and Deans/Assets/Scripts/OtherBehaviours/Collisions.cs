@@ -24,7 +24,7 @@ public class Collisions : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
     {
 
-        if (this.tag == "Bullet")
+        if (this.tag == "Bullet" || this.tag=="Wave" || this.tag == "Bomb")
         {
             if (other.gameObject.tag == "Enemy")
             {

@@ -15,29 +15,29 @@ public class AnimatorPlayerScript : MonoBehaviour
     public Vector3 PosInitMouse, posFinalMouse, PosInitDash, posFinaldash;
     Vector3 direction;
     [SerializeField] public int Weapon;
+    private Modifiers Weapons;
+    [SerializeField] public int NumModifier;
     void Start()
     {
         Clicks = 0;
-        ClickDelay = 0.25f;
+        ClickDelay = 0.4f;
         animator = GetComponent<Animator>();
         movement = this.GetComponent<Movement>();
         HowToAttack = this.GetComponent<AttackBehaviour>();
-        Weapon gun = new Weapon("Lapiz", 20, "Gun");
-        HowToAttack.SetWeapon(gun);
+        Weapons = GetComponent<Modifiers>();
+        Weapons.Init();
         SecondsToAttack = 0;
         canDash = true;
+       
     }
 
     // Aquí se cambian las variables de estado dependeiendo de el estado al cual se quiere llegar partiendo de un estado específico. También se dispone a ejecutar 
     //las distintas animaciones
     void Update()
     {
-        
 
-
-
-            //if you press left click, clicks is added 1 and it is saved the time
-            if (Input.GetMouseButtonDown(0))
+        //if you press left click, clicks is added 1 and it is saved the time
+        if (Input.GetMouseButtonDown(0))
             {
 
                 PosInitMouse = Input.mousePosition;
@@ -88,7 +88,7 @@ public class AnimatorPlayerScript : MonoBehaviour
             }
             //if the user press left click, there might be the possibility to the user press second click, if this not happen, the player attack if the user input click an enemy.
 
-            if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash"))
+            if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash") && Vector3.Distance(posFinalMouse, PosInitMouse) < 2)
             {
                 isEnemyClicked(posToMove);
             /*
@@ -144,6 +144,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     {
         animator.SetBool("Attacking", true);
         SecondsToAttack = Time.time;
+        HowToAttack.SetWeapon(Weapons.modifiers[NumModifier]);
         HowToAttack.attack(SecondsToAttack, transform.position, PosInitMouse);
         animator.SetBool("Attacking", false);
     }
@@ -187,33 +188,31 @@ public class AnimatorPlayerScript : MonoBehaviour
     }
     public void setAnimationDashOrWalk(string TypeMov)
     {
-        if (TypeMov.Equals("BlendDash"))
-            Weapon = 0;
         if (movement.velocity.x > 0)
         {
             if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
-                animator.SetFloat(TypeMov, 0.75f+Weapon);
+                animator.SetFloat(TypeMov, 0.75f);
 
             else
             {
                 if (movement.velocity.y > 0)
-                    animator.SetFloat(TypeMov, 0.5f + Weapon);
+                    animator.SetFloat(TypeMov, 0.5f );
                 else
-                    animator.SetFloat(TypeMov, 0f + Weapon);
+                    animator.SetFloat(TypeMov, 0f );
 
             }
         }
         else
         {
             if (Mathf.Abs(movement.velocity.x) > Mathf.Abs(movement.velocity.y))
-                animator.SetFloat(TypeMov, 0.25f + Weapon);
+                animator.SetFloat(TypeMov, 0.25f );
 
             else
             {
                 if (movement.velocity.y > 0)
-                    animator.SetFloat(TypeMov, 0.5f + Weapon);
+                    animator.SetFloat(TypeMov, 0.5f );
                 else
-                    animator.SetFloat(TypeMov, 0f + Weapon);
+                    animator.SetFloat(TypeMov, 0f );
 
             }
         }
@@ -247,7 +246,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         int i = 3;
         bool check = false;
         Vector2[] positionsToCheck = new Vector2[4];
-        while (i > 0 && check == false)
+        while (i >= 0 && check == false)
         {
             positionsToCheck[i] = transform.position + direction.normalized * i;
             if (Physics2D.OverlapBox(positionsToCheck[i], transform.GetComponent<BoxCollider2D>().size / 2, 0, LayerMask.GetMask("Holes")) == null)

@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
         animator = GetComponent<Animator>();
         target = Vector3.zero;
         //offset = this.gameObject.transform.TransformPoint(offset, 0, 0).x;
-
+       
     }
 
     // Update is called once per frame

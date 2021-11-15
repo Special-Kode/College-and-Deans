@@ -4725,7 +4725,7 @@ GameObject:
   - component: {fileID: 5343899575775870733}
   - component: {fileID: 755716036551887233}
   - component: {fileID: 742311700367280322}
-  - component: {fileID: 7287177056462634500}
+  - component: {fileID: 3043383886834178349}
   m_Layer: 10
   m_Name: Holes
   m_TagString: Untagged
@@ -5997,7 +5997,7 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!114 &7287177056462634500
+--- !u!114 &3043383886834178349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6010,7 +6010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_OverrideArea: 1
-  m_Area: 1
+  m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
 --- !u!1 &4553248068798802011

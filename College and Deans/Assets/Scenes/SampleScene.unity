@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
-    agentHeight: 2
+    agentRadius: 0.06
+    agentHeight: 0.93
     agentSlope: 45
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.02
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -641,9 +641,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 393413928}
     m_Modifications:
+    - target: {fileID: 234882419581565699, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_Height
+      value: 1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 234882419581565699, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_Radius
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729962, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729970, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_Mass
+      value: 0.41546598
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1980193
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1834488
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0077670813
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5252936
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729975, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_RootOrder
