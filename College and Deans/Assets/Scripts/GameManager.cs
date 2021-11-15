@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     {
         if(room.roomInfo.roomType == RoomInfo.RoomType.Enemies && !room.hasSpawned)
         {
+            //Bloquear puertas
+            foreach (var door in room.GetComponentsInChildren<DoorBehaviour>())
+            {
+                door.EnableCollider(); //Enable door colliders
+            }
             //Generar grid
             Vector2 originPosition = room.roomInfo.position + new Vector2(-11f, -7f);
             pathfinding = new Pathfinding(22, 14, 1f, originPosition);
@@ -43,6 +48,11 @@ public class GameManager : MonoBehaviour
 
         if(room.roomInfo.roomType == RoomInfo.RoomType.Boss && !room.hasSpawned)
         {
+            //Bloquear puertas
+            foreach (var door in room.GetComponentsInChildren<DoorBehaviour>())
+            {
+                door.EnableCollider(); //Enable door colliders
+            }
             //Generar grid
             Vector2 originPosition = room.roomInfo.position + new Vector2(-11f, -7f);
             pathfinding = new Pathfinding(22, 14, 1f, originPosition);

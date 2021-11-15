@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:College and Deans/Assets/Sprites/PersonajeArma.png.meta
+guid: a604e55458ddfd24284f7fd8001b946a
+=======
 guid: 871b885cd68224f4787ae765e0da9571
+>>>>>>> main:College and Deans/Assets/Scripts/NavMeshPlus-master/Gizmos/NavMeshSurface2d Icon.png.meta
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -69,6 +73,9 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+<<<<<<< HEAD:College and Deans/Assets/Sprites/PersonajeArma.png.meta
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+=======
   - serializedVersion: 2
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -80,6 +87,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+>>>>>>> main:College and Deans/Assets/Scripts/NavMeshPlus-master/Gizmos/NavMeshSurface2d Icon.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []
