@@ -6,7 +6,7 @@ public class Collisions : MonoBehaviour
 {
 
     public bool collideHole = false;
-
+    public int damage { get; set; }
 
    void OnCollisionStay2D(Collision2D other)
     {
@@ -30,7 +30,7 @@ public class Collisions : MonoBehaviour
             {
                 Destroy(this.gameObject);
                 //Falta añadir el daño del jugador
-                other.gameObject.GetComponent<Enemy>().GetHit(3);
+                other.gameObject.GetComponent<Enemy>().GetHit(damage);
             }
            else if(other.gameObject.tag == "Boss")
             {

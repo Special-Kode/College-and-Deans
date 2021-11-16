@@ -15,7 +15,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     public Vector3 PosInitMouse, posFinalMouse, PosInitDash, posFinaldash;
     Vector3 direction;
     [SerializeField] public int Weapon;
-    private Modifiers Weapons;
+    public Modifiers Weapons;
     [SerializeField] public int NumModifier;
     void Start()
     {
@@ -69,10 +69,9 @@ public class AnimatorPlayerScript : MonoBehaviour
                 posFinalMouse = Input.mousePosition;
                 posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
 
-            if (!animator.GetBool("Attacking"))
 
-                if (Vector3.Distance(posFinalMouse, PosInitMouse) > 2 && canDash==true
-                     && !animator.GetBool("Dash") )
+                if (Vector3.Distance(posFinalMouse, PosInitMouse) > 1.5 && canDash==true
+                     && !animator.GetBool("Dash"))
                 {
                     InitDash();
                 }
@@ -88,7 +87,7 @@ public class AnimatorPlayerScript : MonoBehaviour
             }
             //if the user press left click, there might be the possibility to the user press second click, if this not happen, the player attack if the user input click an enemy.
 
-            if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash") && Vector3.Distance(posFinalMouse, PosInitMouse) < 2)
+            if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash") && Vector3.Distance(posFinalMouse, PosInitMouse) < 1.5)
             {
                 isEnemyClicked(posToMove);
             /*
@@ -270,7 +269,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     }
     public void checkIfcanDash()
     {
-        if (Time.time - WhenDashStatusStarted > 2f)
+        if (Time.time - WhenDashStatusStarted > 1f)
             canDash = true;
         
     }

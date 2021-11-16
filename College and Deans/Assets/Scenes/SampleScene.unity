@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.06
+    agentRadius: 0.33
     agentHeight: 0.93
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.02
+    cellSize: 0.11000001
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -643,11 +643,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 234882419581565699, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Height
-      value: 1.07
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: 234882419581565699, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Radius
-      value: 0.25
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 234882419581565699, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_BaseOffset
+      value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729962, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Name
@@ -655,7 +659,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729970, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Mass
-      value: 0.41546598
+      value: 0.29271743
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729971, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: NumModifier
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Size.x
@@ -663,7 +671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Size.y
-      value: 1.1834488
+      value: 0.97733796
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Offset.x
@@ -671,7 +679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Offset.y
-      value: -0.5252936
+      value: -0.4222381
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729975, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_RootOrder

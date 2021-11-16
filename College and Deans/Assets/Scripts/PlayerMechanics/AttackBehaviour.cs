@@ -41,33 +41,39 @@ using UnityEngine;
     }
     public void attack(float seconds,Vector3 position,Vector3 MousePos)
     {
-        typeMod = getWeapon().getType();
+        typeMod = weapon.getType();
+
+        GameObject temp;
         switch (getWeapon().getType())
         {
+            
             case 0:
                 bulletShooted = true;
                 //animatorPlayer.WhereToLook(Input.mousePosition);
-                Shoot(position, MousePos,bullet,1,speedBullet,0);
+                temp = Shoot(position, MousePos,bullet,0,speedBullet,0);
+                temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 1:
                 bulletShooted = true;
                 //animatorPlayer.WhereToLook(Input.mousePosition);
-                Shoot(position, MousePos,bullet,2,speedBullet,0);
+                temp = Shoot(position, MousePos,bullet,1,speedBullet,0);
                 StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos,2,bullet, speedBullet,0));
                 break;
             case 2:
                 bulletShooted = true;
-                Shoot(position, MousePos, Bomb, 3,speedBullet-20f,0);
+                Shoot(position, MousePos, Bomb, 2,speedBullet-20f,0);
                 posBomb = MousePos;
                 break;
             case 3:
-                bulletShooted = true;
-                GameObject temp;
-                temp = Shoot(position, MousePos, SimpleWave, 4,speedBullet-10f,90);
-                StartCoroutine(ExecuteAfterTime(0.1f, position, MousePos, 3, temp, speedBullet-10f,90));
-                StartCoroutine(WaveCollider(0.02f, temp, 0));
+                CreateWave(MousePos, position);
                 break;
             case 4:
+                bulletShooted = true;
+                CreateWave(position + Vector3.up,position);
+                CreateWave(position + Vector3.right, position);
+                CreateWave(position + Vector3.left, position);
+                CreateWave(position + Vector3.down, position);
+
                 break;
         }
 
@@ -90,9 +96,9 @@ using UnityEngine;
     IEnumerator ExecuteAfterTime(float time,Vector3 position, Vector3 MousePos,int Type,GameObject temp,float speed, float rotation)
     {
         yield return new WaitForSeconds(time);
-        if (Type == 2)
+        if (Type == 1)
             Shoot(position, MousePos, temp, Type,speed, rotation);
-        else if (Type == 3)
+        else if (Type == 3 && Type == 4)
             Destroy(temp);
     }
     IEnumerator WaveCollider(float time,GameObject temp,int count)
@@ -110,6 +116,14 @@ using UnityEngine;
     void Explode(GameObject bomb)
     {
         bomb.transform.localScale += new Vector3(2f, 2f, 0);
+    }
+    void CreateWave(Vector3 posToShoot,Vector3 position)
+    {
+        GameObject temp;
+        bulletShooted = true;
+        temp = Shoot(position, posToShoot, SimpleWave, 3, speedBullet - 10f, 90);
+        StartCoroutine(ExecuteAfterTime(0.1f, position, posToShoot, 3, temp, speedBullet - 10f, 90));
+        StartCoroutine(WaveCollider(0.02f, temp, 0));
     }
 }
 
