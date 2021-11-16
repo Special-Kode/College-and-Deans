@@ -34,11 +34,8 @@ public class Collisions : MonoBehaviour
             }
            else if(other.gameObject.tag == "Boss")
             {
-                Destroy(other.gameObject);
-                if (FindObjectOfType<LevelLoader>() != null)
-                    FindObjectOfType<LevelLoader>().LoadNextLevel();
-                else
-                    SceneManager.LoadScene("MainMenu");
+                Destroy(this.gameObject);
+                other.gameObject.GetComponent<Enemy>().GetHit(3);
             }
             else if(other.gameObject.tag == "Wall")
             {

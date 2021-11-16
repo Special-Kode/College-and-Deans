@@ -20,6 +20,11 @@ public class BossIA : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private GameObject bullet;
     [SerializeField] private float speedBullet;
+    [SerializeField] private float attackCD;
+    [SerializeField] public bool isJumping { get;  private set; }
+    private float timeBeforeAttack;
+    private int counter = 0;
+    [SerializeField] private float speed;
     private State state;
 
     private void Awake() 
@@ -32,6 +37,7 @@ public class BossIA : MonoBehaviour
     {
         startPosition = transform.position;
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        nextAttack = 5;
     }
 
     void Update()
@@ -41,42 +47,88 @@ public class BossIA : MonoBehaviour
             default:
             case State.Chasing:
                 pathfinding.MoveTo(target.position);
+                nextAttack -= Time.smoothDeltaTime;
 
-                if(Vector2.Distance(transform.position, target.position) <= attackRange)
+                if (nextAttack < 0)
                 {
                     pathfinding.StopMoving();
-                    state = State.Attacking;
-                    nextAttack = Time.time + fireRate;
+                    int random = Random.Range(0, 2);
+                    switch (random)
+                    {
+                        case 0:
+                            state = State.Attacking;
+                            nextAttack = attackCD;
+                            timeBeforeAttack = fireRate;
+                            break;
+                        case 1:
+                            state = State.Jumping;
+                            break;
+                    }
                 }
                 break;
             case State.Attacking:
-                if(Time.time >= nextAttack)
+                if(timeBeforeAttack < 0)
                 {
-                    nextAttack = Time.time + fireRate;
                     GameObject bullet0 = Instantiate(bullet, this.transform.position, Quaternion.identity);
-                    bullet0.GetComponent<Rigidbody2D>().AddForce(Vector2.up * speedBullet * Time.deltaTime);
+                    bullet0.GetComponent<Rigidbody2D>().velocity = Vector2.up * speedBullet;
                     GameObject bullet1 = Instantiate(bullet, this.transform.position, Quaternion.identity);
-                    bullet1.GetComponent<Rigidbody2D>().AddForce(new Vector2(0.5f, 0.5f) * speedBullet * Time.deltaTime);
+                    bullet1.GetComponent<Rigidbody2D>().velocity = new Vector2(1f, 1f).normalized * speedBullet;
                     GameObject bullet2 = Instantiate(bullet, this.transform.position, Quaternion.identity);
-                    bullet0.GetComponent<Rigidbody2D>().AddForce(Vector2.right * speedBullet * Time.deltaTime);
+                    bullet2.GetComponent<Rigidbody2D>().velocity = Vector2.right * speedBullet;
                     GameObject bullet3 = Instantiate(bullet, this.transform.position, Quaternion.identity);
-                    bullet0.GetComponent<Rigidbody2D>().AddForce(new Vector2(0.5f, -0.5f) * speedBullet * Time.deltaTime);
+                    bullet3.GetComponent<Rigidbody2D>().velocity = new Vector2(1f, -1f).normalized * speedBullet;
                     GameObject bullet4 = Instantiate(bullet, this.transform.position, Quaternion.identity);
-                    bullet0.GetComponent<Rigidbody2D>().AddForce(Vector2.down * speedBullet * Time.deltaTime);
+                    bullet4.GetComponent<Rigidbody2D>().velocity = Vector2.down * speedBullet;
                     GameObject bullet5 = Instantiate(bullet, this.transform.position, Quaternion.identity);
-                    bullet0.GetComponent<Rigidbody2D>().AddForce(new Vector2(-0.5f, -0.5f) * speedBullet * Time.deltaTime);
+                    bullet5.GetComponent<Rigidbody2D>().velocity = new Vector2(-1f, -1f).normalized * speedBullet;
                     GameObject bullet6 = Instantiate(bullet, this.transform.position, Quaternion.identity);
-                    bullet0.GetComponent<Rigidbody2D>().AddForce(Vector2.left * speedBullet * Time.deltaTime);
+                    bullet6.GetComponent<Rigidbody2D>().velocity = Vector2.left * speedBullet;
                     GameObject bullet7 = Instantiate(bullet, this.transform.position, Quaternion.identity);
-                    bullet0.GetComponent<Rigidbody2D>().AddForce(new Vector2(-0.5f, 0.5f) * speedBullet * Time.deltaTime);
+                    bullet7.GetComponent<Rigidbody2D>().velocity = new Vector2(-1f, 1f).normalized * speedBullet;
+
+                    timeBeforeAttack = fireRate;
+                    counter++;
                 }
-                if(Vector2.Distance(transform.position, target.position) > attackRange)
+
+                timeBeforeAttack -= Time.deltaTime;
+
+                if (counter == 3)
                 {
-                    nextAttack = Time.time + fireRate;
+                    Debug.Log("voy a perseguir");
+                    counter = 0;
                     state = State.Chasing;
                 }
                 break;
-            //case State.Jumping:
+            case State.Jumping:
+                StartCoroutine(Jump());
+                break;
+        }
+    }
+
+    IEnumerator Jump()
+    {
+        isJumping = true;
+        bool hasJumped = false;
+        float debug = 0;
+        Vector2 firstTarget = (Vector2)this.transform.position + Vector2.up;
+        while (!hasJumped && debug < 3)
+        {
+            debug += 1f;
+            Vector2.MoveTowards(this.transform.position, firstTarget, speed * Time.deltaTime);
+            if (Vector2.Distance(this.transform.position, firstTarget) < 0.1f)
+            {
+                hasJumped = true;
+            }
+        }
+        Vector2 secondTarget = target.position;
+        yield return new WaitForSeconds(1);
+        while (isJumping)
+        {
+            Vector2.MoveTowards(this.transform.position, secondTarget, speed * Time.deltaTime);
+            if (Vector2.Distance(this.transform.position, secondTarget) < 0.1f)
+            {
+                isJumping = false;
+            }
         }
     }
 }
