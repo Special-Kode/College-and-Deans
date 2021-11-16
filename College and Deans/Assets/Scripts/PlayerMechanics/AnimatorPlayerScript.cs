@@ -77,9 +77,9 @@ public class AnimatorPlayerScript : MonoBehaviour
                 }
 
                 // if is not dashing,it means that might player can move
-                else if (Clicks % 2 == 0 && Clicks != 0)
+                else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
                 {
-                    InitMove(); 
+                    Attack();
                 }
 
 
@@ -89,15 +89,15 @@ public class AnimatorPlayerScript : MonoBehaviour
 
             if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash") && Vector3.Distance(posFinalMouse, PosInitMouse) < 1.5)
             {
-                isEnemyClicked(posToMove);
             /*
                 if (!HowToAttack.ClickedEnemy)
                 {
                    
 
                 }*/
-                if (Clicks == 1 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
-                    Attack();
+            if(Clicks==1)
+                InitMove();
+                
                 Clicks = 0;
                 MouseClickedTime = 0;
             }
