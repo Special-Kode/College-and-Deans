@@ -24,7 +24,6 @@ public class EnemyPathfinding : MonoBehaviour
 
     private void Start() 
     {
-        //pathfinding = new Pathfinding(20, 12, 1f, new Vector3(-10f, -6f, 0));
         pathfinding = gameManager.GetPathfinding();
     }
 

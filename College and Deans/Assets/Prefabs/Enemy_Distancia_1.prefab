@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2167691292895425609}
   - component: {fileID: -901255170687042859}
   m_Layer: 0
-  m_Name: Enemy 1
+  m_Name: Enemy_Distancia_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
