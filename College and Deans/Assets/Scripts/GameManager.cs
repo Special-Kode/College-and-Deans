@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
             //No volver a spawnear
             room.hasSpawned = true;
         }
+
+        room.hasBeenVisited = true;
     }
 
     public Pathfinding GetPathfinding()
