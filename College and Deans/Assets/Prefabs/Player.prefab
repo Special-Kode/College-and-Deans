@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5475639532632729973}
   - component: {fileID: 5475639532632729980}
   - component: {fileID: 5475639532632729981}
+  - component: {fileID: 457461885308424961}
   - component: {fileID: 5475639532632729971}
   - component: {fileID: 5475639532632729974}
   - component: {fileID: 5475639532632729969}
@@ -85,9 +86,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1621872926787617426, guid: 76de8d97c5ede824a8c879d19e8b37b6, type: 3}
+  SimpleWave: {fileID: 584049287400830091, guid: 5ade873f3423474479879d3383396b1d, type: 3}
+  Bomb: {fileID: 6048944079043705129, guid: 56d10a0c5fd70024aba9a8f707a83b5c, type: 3}
   bulletShooted: 0
   ClickedEnemy: 0
-  DuplicateBullet: 0
+--- !u!114 &457461885308424961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5475639532632729962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2896551b8d2634780f0975d907fe80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5475639532632729971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  collision: {fileID: 0}
   HowToAttack: {fileID: 0}
   enter: 0
   canDash: 0
@@ -109,6 +122,8 @@ MonoBehaviour:
   posFinalMouse: {x: 0, y: 0, z: 0}
   PosInitDash: {x: 0, y: 0, z: 0}
   posFinaldash: {x: 0, y: 0, z: 0}
+  Weapon: 1
+  NumModifier: 0
 --- !u!114 &5475639532632729974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,25 +136,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a54b11c663efb74bb0aa8fe4a6d2764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idImage: 0
-  movementState: 
-  Up: 0
-  Right: 0
-  Left: 0
-  Down: 0
-  Attack: 0
-  positionToMove: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
   screenPos: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
   speed: 0
-  distanceDashed: 0
-  InitialPos: {x: 0, y: 0, z: 0}
-  newPosition: {x: 0, y: 0, z: 0}
-  oldPosition: {x: 0, y: 0, z: 0}
   canPass: 0
   velocity: {x: 0, y: 0}
-  agent: {fileID: 0}
-  DashCollider: {fileID: 0}
+  agent: {fileID: 234882419581565699}
+  destinationReachedThreshold: 1
 --- !u!212 &5475639532632729969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -180,12 +183,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 4289750085505012322, guid: e35a88e85625cbe4f9c84326e3aad1c6, type: 3}
+  m_Sprite: {fileID: 4289750085505012322, guid: 157ec4931e2134b42bbf12c67f31dc28, type: 3}
   m_Color: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 3.2, y: 3.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -221,7 +224,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1.2129728
+  m_Mass: 0.43179202
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -243,18 +246,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.01614526, y: -0.6040774}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 3.2, y: 3.2}
+    newSize: {x: 3.2, y: 3.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 1.2776375, y: 1.3518451}
   m_EdgeRadius: 0
 --- !u!195 &234882419581565699
 NavMeshAgent:
@@ -265,8 +268,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 5475639532632729962}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
-  m_Speed: 8
+  m_Radius: 0.3
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -274,7 +277,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2.56
+  m_Height: 1.26
   m_BaseOffset: 1.28
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

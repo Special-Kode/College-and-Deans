@@ -25,33 +25,6 @@ public class DungeonGeneratorManager : MonoBehaviour
     [SerializeField] private bool lootSpawned;
     [SerializeField] private bool cafeSpawned;
 
-    //Room prefabs
-
-    [Header("Room List")]
-    //1 exit
-    public GameObject T_Room;
-    public GameObject R_Room;
-    public GameObject B_Room;
-    public GameObject L_Room;
-
-    //2 exits
-    public GameObject TR_Room;
-    public GameObject TB_Room;
-    public GameObject TL_Room;
-    public GameObject RB_Room;
-    public GameObject RL_Room;
-    public GameObject BL_Room;
-
-    //3 exits
-    public GameObject TRB_Room;
-    public GameObject TRL_Room;
-    public GameObject TBL_Room;
-    public GameObject RBL_Room;
-
-    //4 exits
-    public GameObject TRBL_Room;
-    //public GameObject[] RoomList; //List of rooms for further use
-
     [Header("Private Serialized Stuff")]
     [SerializeField] private Vector2 currentPos = Vector2.zero;
 
@@ -200,7 +173,10 @@ public class DungeonGeneratorManager : MonoBehaviour
                 toConcat += "L";
             }
 
-            string roomName = "Rooms/Room_" + toConcat + "_00";
+            //TODO change room probability
+            int numRoom = UnityEngine.Random.Range(0, 2);
+
+            string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
             var resource = Resources.Load<RoomBehaviour>(roomName);
             GameObject roomInstance = (resource as RoomBehaviour).gameObject;
             GameObject room = Instantiate(roomInstance, roomInfo.position, Quaternion.identity);

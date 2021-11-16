@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5914384674015509676}
   m_Layer: 0
   m_Name: Solids
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1642,7 +1642,7 @@ GameObject:
   - component: {fileID: 3304126926894293262}
   - component: {fileID: 355816114540369204}
   - component: {fileID: 7516000958162772946}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Holes
   m_TagString: Untagged
   m_Icon: {fileID: 0}

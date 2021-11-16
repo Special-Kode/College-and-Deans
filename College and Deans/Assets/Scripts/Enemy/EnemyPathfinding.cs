@@ -13,6 +13,7 @@ public class EnemyPathfinding : MonoBehaviour
     List<Vector3> vectorPath;
     Pathfinding pathfinding;
     GameManager gameManager;
+    Vector2 direction;
     
     private void Awake() 
     {
@@ -38,7 +39,7 @@ public class EnemyPathfinding : MonoBehaviour
             Vector2 targetPosition = (Vector2)vectorPath[nodoActual] + pathfinding.GetOriginPosition();
             if(Vector2.Distance(enemy.GetPosition(), targetPosition) > .1f)
             {
-                Vector2 direction = (targetPosition - enemy.GetPosition()).normalized;
+                direction = (targetPosition - enemy.GetPosition()).normalized;
                 Vector2 force = direction * speed * Time.deltaTime;
 
                 enemy.EnemyRigidbody2D.AddForce(force); 
@@ -77,5 +78,10 @@ public class EnemyPathfinding : MonoBehaviour
     {
         vectorPath = null;
         enemy.EnemyRigidbody2D.velocity = Vector2.zero;
+    }
+
+    public Vector2 GetDirectionMov()
+    {
+        return direction;
     }
 }

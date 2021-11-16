@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 102813239598683490}
+  - component: {fileID: 4837806810497560281}
   m_Layer: 0
   m_Name: Room_TRBL_01
   m_TagString: Untagged
@@ -33,6 +34,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4837806810497560281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102813239598683491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f699ebe626c7ad34b9c656b425b4fe97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topRoom: {fileID: 0}
+  rightRoom: {fileID: 0}
+  bottomRoom: {fileID: 0}
+  leftRoom: {fileID: 0}
+  roomInfo: {fileID: 0}
+  SpawnPoints: []
+  hasSpawned: 0
+  navMeshSurface: {fileID: 0}
 --- !u!1 &876298777474810542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,6 +2501,7 @@ GameObject:
   - component: {fileID: 9189093062661590}
   - component: {fileID: 6295569451599581999}
   - component: {fileID: 7892555883356983417}
+  - component: {fileID: 6980963560354095960}
   m_Layer: 0
   m_Name: Door_T
   m_TagString: Untagged
@@ -2695,6 +2717,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &6980963560354095960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536575062326863185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 0
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &1646439023401265196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2709,7 +2746,7 @@ GameObject:
   - component: {fileID: 7342862038498558602}
   m_Layer: 0
   m_Name: Solids
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4322,6 +4359,7 @@ GameObject:
   - component: {fileID: 2779662533152664355}
   - component: {fileID: 1223718427486918163}
   - component: {fileID: 1427023449112422786}
+  - component: {fileID: 6222838480336825577}
   m_Layer: 0
   m_Name: Door_R
   m_TagString: Untagged
@@ -4537,6 +4575,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &6222838480336825577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3041899928416362625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 1
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &4267192659396820443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4549,6 +4602,7 @@ GameObject:
   - component: {fileID: 2309599752013711299}
   - component: {fileID: 4773517474861750747}
   - component: {fileID: 4385079921174133936}
+  - component: {fileID: 5608045437026675802}
   m_Layer: 0
   m_Name: Door_L
   m_TagString: Untagged
@@ -4764,6 +4818,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &5608045437026675802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4267192659396820443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 3
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &5014100751640710231
 GameObject:
   m_ObjectHideFlags: 0
@@ -5267,6 +5336,7 @@ GameObject:
   - component: {fileID: 6216721224763751353}
   - component: {fileID: 4671039315624637982}
   - component: {fileID: 4759909195225786533}
+  - component: {fileID: 4368880446683652168}
   m_Layer: 0
   m_Name: Door_B
   m_TagString: Untagged
@@ -5482,6 +5552,21 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &4368880446683652168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663116640671136766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 2
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &5841795543842089117
 GameObject:
   m_ObjectHideFlags: 0
@@ -5576,7 +5661,7 @@ GameObject:
   - component: {fileID: 3550479722066355380}
   - component: {fileID: 8654646109756388536}
   - component: {fileID: 2776854153584496541}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Holes
   m_TagString: Untagged
   m_Icon: {fileID: 0}

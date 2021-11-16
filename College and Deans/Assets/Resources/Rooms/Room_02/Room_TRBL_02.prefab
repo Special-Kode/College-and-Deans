@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 3942610403765288885}
   - component: {fileID: 502328586502631164}
   - component: {fileID: 5313861406407396638}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Holes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5007,6 +5007,7 @@ MonoBehaviour:
   - {fileID: 3369348594677841828}
   - {fileID: 4380912106633542198}
   hasSpawned: 0
+  navMeshSurface: {fileID: 0}
 --- !u!1 &8771053876830119302
 GameObject:
   m_ObjectHideFlags: 0
