@@ -89,12 +89,7 @@ public class AnimatorPlayerScript : MonoBehaviour
 
             if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash") && Vector3.Distance(posFinalMouse, PosInitMouse) < 1.5)
             {
-            /*
-                if (!HowToAttack.ClickedEnemy)
-                {
-                   
 
-                }*/
             if(Clicks==1)
                 InitMove();
                 
@@ -127,13 +122,10 @@ public class AnimatorPlayerScript : MonoBehaviour
     {
         if (animator.GetBool("Walking"))
             setAnimationDashOrWalk("BlendWalking");
-        else if(animator.GetBool("Dash"))
+        else if (animator.GetBool("Dash"))
             setAnimationDashOrWalk("BlendDash");
-        else if (animator.GetBool("Attacking"))
-            setAnimationAttacking();
-      /*  else
-            setAnimationIdle();
-      */
+        if(animator.GetBool("Attacking"))
+            WhereToLook(Camera.main.ScreenToWorldPoint( Input.mousePosition));
 
 
     }
@@ -145,7 +137,6 @@ public class AnimatorPlayerScript : MonoBehaviour
         SecondsToAttack = Time.time;
         HowToAttack.SetWeapon(Weapons.modifiers[NumModifier]);
         HowToAttack.attack(SecondsToAttack, transform.position, PosInitMouse);
-        animator.SetBool("Attacking", false);
     }
 
     public void InitDash()
@@ -215,13 +206,9 @@ public class AnimatorPlayerScript : MonoBehaviour
 
             }
         }
-        if (TypeMov.Equals("BlendDash"))
-            Weapon = 1;
+        animator.SetFloat("BlendIdle", animator.GetFloat(TypeMov));
     }
-    public void setAnimationAttacking()
-    {
 
-    }
     public void isEnemyClicked(Vector3 pos)
     {
         pos = Camera.main.WorldToScreenPoint(pos);
@@ -273,6 +260,53 @@ public class AnimatorPlayerScript : MonoBehaviour
             canDash = true;
         
     }
-   
+    public void WhereToLook(Vector3 screenPos)
+    {
+
+
+        float angle = Mathf.Atan2((screenPos.y - transform.position.y), (screenPos.x - transform.position.x)) * Mathf.Rad2Deg;
+        if (screenPos.y <= transform.position.y)
+        {
+            angle += 360;
+        }
+
+        float baseValue = 45f;
+        float multiplier = 90f;
+
+        //derecha
+        if (angle <= baseValue || angle > baseValue + multiplier * 3)
+        {
+            animator.SetFloat("BlendAttacking", 0.75f);
+        }
+
+ 
+
+        //arriba
+        else if (angle <= baseValue + multiplier && angle > baseValue)
+        {
+            animator.SetFloat("BlendAttacking", 0.5f);
+        }
+
+
+
+
+        //izquierda
+        else if (angle <= baseValue + multiplier * 2 && angle >= baseValue + multiplier)
+        {
+          animator.SetFloat("BlendAttacking", 0.25f);
+        }
+
+
+
+        //abajo
+        else if (angle <= baseValue + multiplier * 3 && angle > baseValue + multiplier * 2)
+        {
+           animator.SetFloat("BlendAttacking", 0);
+        }
+        animator.SetFloat("BlendIdle", animator.GetFloat("BlendAttacking"));
+
+      
+    }
+
 
 }

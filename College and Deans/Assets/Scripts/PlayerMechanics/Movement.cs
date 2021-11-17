@@ -41,7 +41,7 @@ public class Movement : MonoBehaviour
             velocity = agent.velocity;
 
             if(target != Vector3.zero)
-                if (Vector3.SqrMagnitude(target - transform.position) < destinationReachedThreshold)
+                if (Vector2.SqrMagnitude(target - transform.position) < destinationReachedThreshold)
                 {
                     animator.SetBool("Walking", false);
                     target = Vector3.zero;

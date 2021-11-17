@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.33
+    agentRadius: 0.49
     agentHeight: 0.93
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.11000001
+    cellSize: 0.16333334
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -803,42 +803,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 234882419581565699, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Radius
-      value: 0.22
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 234882419581565699, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_BaseOffset
-      value: 1.54
+      value: 1.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 234882419581565699, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_AutoTraverseOffMeshLink
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729962, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729969, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729970, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Mass
-      value: 0.29271743
+      value: 0.83105433
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729971, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: NumModifier
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Size.x
-      value: 1.1980193
+      value: 1.0409418
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Size.y
-      value: 0.97733796
+      value: 0.7983677
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Offset.x
-      value: 0.0077670813
+      value: -0.008156002
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Offset.y
-      value: -0.4222381
+      value: -0.13700983
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729975, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729975, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729975, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729975, guid: 52e304c89ca94f545a5056213089021d, type: 3}
@@ -881,6 +897,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729981, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: Explosion
+      value: 
+      objectReference: {fileID: 21300000, guid: 1ce220c69ed8e6448984868ecf3efbff, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52e304c89ca94f545a5056213089021d, type: 3}
 --- !u!1 &1903825172

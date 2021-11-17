@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 5475639532632729970}
   - component: {fileID: 5475639532632729972}
   - component: {fileID: 234882419581565699}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -88,6 +88,8 @@ MonoBehaviour:
   bullet: {fileID: 1621872926787617426, guid: 76de8d97c5ede824a8c879d19e8b37b6, type: 3}
   SimpleWave: {fileID: 584049287400830091, guid: 5ade873f3423474479879d3383396b1d, type: 3}
   Bomb: {fileID: 6048944079043705129, guid: 56d10a0c5fd70024aba9a8f707a83b5c, type: 3}
+  Wave360: {fileID: 6593843522054270871, guid: 0c6fb697fab7e0241aa480f3801c4bf5, type: 3}
+  Explosion: {fileID: 0}
   bulletShooted: 0
   ClickedEnemy: 0
 --- !u!114 &457461885308424961
@@ -250,8 +252,8 @@ BoxCollider2D:
   m_Offset: {x: -0.01614523, y: -0.11090465}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 3.2}
+    pivot: {x: 0.5, y: 0.33}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 3.2, y: 3.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

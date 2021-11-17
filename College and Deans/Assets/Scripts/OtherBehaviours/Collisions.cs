@@ -15,7 +15,6 @@ public class Collisions : MonoBehaviour
 
             if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
-            this.GetComponent<Animator>().SetBool("Dash", false);
             this.GetComponent<Movement>().agent.enabled=true;
             
         }
@@ -28,7 +27,10 @@ public class Collisions : MonoBehaviour
         {
             if (other.gameObject.tag == "Enemy")
             {
-                Destroy(this.gameObject);
+                if(this.tag=="Bullet")
+                    Destroy(this.gameObject);
+                if (this.tag == "Bomb")
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<AttackBehaviour>().Explode(this.gameObject);
                 //Falta añadir el daño del jugador
                 other.gameObject.GetComponent<Enemy>().GetHit(damage);
             }

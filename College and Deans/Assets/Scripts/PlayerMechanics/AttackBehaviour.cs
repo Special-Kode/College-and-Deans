@@ -10,6 +10,8 @@ using UnityEngine;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject SimpleWave;
     [SerializeField] private GameObject Bomb;
+    [SerializeField] private GameObject Wave360;
+    [SerializeField] private Sprite Explosion;
     public bool bulletShooted;
     public bool ClickedEnemy;
     float speedBullet;
@@ -35,45 +37,50 @@ using UnityEngine;
     public void Update()
     {
         if (GameObject.FindGameObjectWithTag("Bomb") != null)
-            if (Vector2.Distance(GameObject.FindGameObjectWithTag("Bomb").transform.position,posBomb) < 0.3f)
+            if (Vector2.Distance(GameObject.FindGameObjectWithTag("Bomb").transform.position,posBomb) < 0.1f)
                 Explode(GameObject.FindGameObjectWithTag("Bomb"));
 
     }
     public void attack(float seconds,Vector3 position,Vector3 MousePos)
     {
         typeMod = weapon.getType();
-
         GameObject temp;
+        
         switch (getWeapon().getType())
         {
             
             case 0:
                 bulletShooted = true;
                 //animatorPlayer.WhereToLook(Input.mousePosition);
-                temp = Shoot(position, MousePos,bullet,0,speedBullet,0);
+                temp = Instantiate(bullet, this.transform.position, Quaternion.identity);
+                temp = Shoot(position, MousePos,temp,0,speedBullet,90);
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 1:
                 bulletShooted = true;
                 //animatorPlayer.WhereToLook(Input.mousePosition);
-                temp = Shoot(position, MousePos,bullet,1,speedBullet,0);
+                temp = Instantiate(bullet, this.transform.position, Quaternion.identity);
+                temp = Shoot(position, MousePos,temp,1,speedBullet,90);
                 StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos,2,bullet, speedBullet,0));
+                temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 2:
                 bulletShooted = true;
-                Shoot(position, MousePos, Bomb, 2,speedBullet-20f,0);
+                temp = Instantiate(Bomb, this.transform.position, Quaternion.identity);
+                Shoot(position, MousePos, temp, 2,speedBullet-20f,0);
                 posBomb = MousePos;
+                temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 3:
-                CreateWave(MousePos, position);
+                temp = Instantiate(SimpleWave, this.transform);
+                CreateWave(MousePos, position, temp);
+                temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 4:
                 bulletShooted = true;
-                CreateWave(position + Vector3.up,position);
-                CreateWave(position + Vector3.right, position);
-                CreateWave(position + Vector3.left, position);
-                CreateWave(position + Vector3.down, position);
-
+                temp = Instantiate(Wave360, this.transform);
+                StartCoroutine(WaveCollider(0.1f,temp,0));
+                temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
         }
 
@@ -82,49 +89,65 @@ using UnityEngine;
 
      GameObject Shoot(Vector3 playerPos,Vector3 mousePos,GameObject TypeOfShoot,int type,float speed,float rotation)
     {
-        GameObject temp = TypeOfShoot;
-        temp = Instantiate(TypeOfShoot, this.transform.position, Quaternion.identity);
-        Vector2 dir = new Vector2(mousePos.x - playerPos.x, mousePos.y - playerPos.y).normalized;
-        temp.GetComponent<Rigidbody2D>().velocity = dir * speed;
-        dir = (mousePos - playerPos).normalized;
-        float rot_z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        temp.transform.rotation = Quaternion.Euler(0f, 0f, rot_z+rotation);
-        
+        if (TypeOfShoot != null)
+        {
+            Vector2 dir = new Vector2(mousePos.x - playerPos.x, mousePos.y - playerPos.y).normalized;
+            TypeOfShoot.GetComponent<Rigidbody2D>().velocity = dir * speed;
+            dir = (mousePos - playerPos).normalized;
+            float rot_z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            TypeOfShoot.transform.rotation = Quaternion.Euler(0f, 0f, rot_z + rotation);
+        }  
             
-        return temp;
+        return TypeOfShoot;
     }
     IEnumerator ExecuteAfterTime(float time,Vector3 position, Vector3 MousePos,int Type,GameObject temp,float speed, float rotation)
     {
-        yield return new WaitForSeconds(time);
-        if (Type == 1)
-            Shoot(position, MousePos, temp, Type,speed, rotation);
-        else if (Type == 3 && Type == 4)
-            Destroy(temp);
+        if(GameObject.FindGameObjectWithTag(temp.tag) != null)
+        {
+            yield return new WaitForSeconds(time);
+                Shoot(position, MousePos, temp, Type, speed, rotation);
+
+        }
+
     }
     IEnumerator WaveCollider(float time,GameObject temp,int count)
     {
-        if (count < 5)
-        {
-            temp.transform.localScale+=new Vector3(1f,0,0);
-            yield return new WaitForSeconds(time);
-            StartCoroutine(WaveCollider(time, temp,count+1));
-        }
-        else
-            Destroy(temp);
+
+            if (count < 5)
+            {
+                if (temp!=null)
+                {
+                    temp.transform.localScale += new Vector3(1f, 0, 0);
+                    yield return new WaitForSeconds(time);
+                    StartCoroutine(WaveCollider(time, temp, count + 1));
+                }
+
+            }
+            else
+                Destroy(temp.gameObject);
 
     }
-    void Explode(GameObject bomb)
+   public void Explode(GameObject bomb)
     {
         bomb.transform.localScale += new Vector3(2f, 2f, 0);
+        bomb.GetComponent<SpriteRenderer>().sprite = Explosion;
+        bomb.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        StartCoroutine(DestroyAfterTime(0.2f,bomb));
     }
-    void CreateWave(Vector3 posToShoot,Vector3 position)
+    void CreateWave(Vector3 posToShoot,Vector3 position,GameObject temp)
     {
-        GameObject temp;
         bulletShooted = true;
-        temp = Shoot(position, posToShoot, SimpleWave, 3, speedBullet - 10f, 90);
-        StartCoroutine(ExecuteAfterTime(0.1f, position, posToShoot, 3, temp, speedBullet - 10f, 90));
-        StartCoroutine(WaveCollider(0.02f, temp, 0));
+        temp = Shoot(position, posToShoot, temp, 3, speedBullet - 25f, 90);
+        StartCoroutine(DestroyAfterTime(0.4f,temp));
+        StartCoroutine(WaveCollider(0.1f, temp, 0));
     }
+    IEnumerator DestroyAfterTime(float time,GameObject temp)
+    {
+        yield return new WaitForSeconds(time);
+        if (temp != null)
+           Destroy(temp.gameObject);
+    }
+
 }
 
 
