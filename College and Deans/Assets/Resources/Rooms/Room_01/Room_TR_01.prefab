@@ -91,7 +91,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.123333335
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 0}
@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 6888468319554370271}
   - component: {fileID: 5302808286343543174}
   - component: {fileID: 2733491542097962268}
+  - component: {fileID: 2667129413276312831}
   m_Layer: 0
   m_Name: Door_R
   m_TagString: Untagged
@@ -490,6 +491,22 @@ MonoBehaviour:
   doorDirection: 1
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+--- !u!114 &2667129413276312831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6888468319554370269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &6888468319864410253
 GameObject:
   m_ObjectHideFlags: 0
@@ -4983,6 +5000,7 @@ GameObject:
   - component: {fileID: 2816689108332044619}
   - component: {fileID: 7211705860784480167}
   - component: {fileID: 4426832810229405367}
+  - component: {fileID: 1593547786419301750}
   m_Layer: 0
   m_Name: Door_T
   m_TagString: Untagged
@@ -5245,6 +5263,22 @@ MonoBehaviour:
   doorDirection: 0
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+--- !u!114 &1593547786419301750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8633008807285514791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8969382112584660422
 GameObject:
   m_ObjectHideFlags: 0

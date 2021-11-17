@@ -18,6 +18,7 @@ public class RoomInfo : ScriptableObject
     public AdjacentRooms adjacentRooms;
 
     public Vector2 position;
+    public Vector2 roomSize;
 
     //Adds a flag for every door that needs to be generated
     public void CheckAdjacentRooms(List<Vector2> positions, Vector2 moveAmount)
