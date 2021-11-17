@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         enemyGenerator = FindObjectOfType<EnemyGenerator>();
     }
 
+    /**
     public void EnterRoom(RoomBehaviour room)
     {
         if(room.roomInfo.roomType == RoomInfo.RoomType.Enemies && !room.hasSpawned)
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
             pathfinding = new Pathfinding(22, 14, 1f, originPosition);
             //Generar enemigos
             List<Transform> spawnPoints = new List<Transform>(room.SpawnPoints);
-            enemyGenerator.SpawnEnemies("facil", spawnPoints);
+            enemyGenerator.SpawnEnemies("facil", spawnPoints, pathfinding, room);
             spawnPoints.Clear();
             //No volver a spawnear
             room.hasSpawned = true;
@@ -58,7 +59,7 @@ public class GameManager : MonoBehaviour
             pathfinding = new Pathfinding(22, 14, 1f, originPosition);
             //Generar enemigos
             List<Transform> spawnPoints = new List<Transform>(room.SpawnPoints);
-            enemyGenerator.SpawnEnemies("boss", spawnPoints);
+            enemyGenerator.SpawnEnemies("boss", spawnPoints, pathfinding, room);
             spawnPoints.Clear();
             //No volver a spawnear
             room.hasSpawned = true;
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
 
         room.hasBeenVisited = true;
     }
+    //*/
 
     public Pathfinding GetPathfinding()
     {
