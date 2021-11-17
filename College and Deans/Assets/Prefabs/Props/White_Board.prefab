@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7875561226124595235}
   - component: {fileID: 9162786167548980443}
   - component: {fileID: 3697779517505739602}
+  - component: {fileID: 4522721166332854749}
   m_Layer: 0
   m_Name: Pizarra_blanca
   m_TagString: Untagged
@@ -123,7 +124,23 @@ BoxCollider:
   m_GameObject: {fileID: 4623751478936579809}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.316123, y: 1.5657363, z: 0.2}
   m_Center: {x: -0.030713558, y: 0.46764088, z: 0}
+--- !u!208 &4522721166332854749
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623751478936579809}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.25, y: 1, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.03, y: 0.47, z: 0}
+  m_TimeToStationary: 0.5

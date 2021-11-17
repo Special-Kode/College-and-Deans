@@ -181,21 +181,31 @@ public class DungeonGeneratorManager : MonoBehaviour
             GameObject roomInstance = (resource as RoomBehaviour).gameObject;
             GameObject room = Instantiate(roomInstance, roomInfo.position, Quaternion.identity);
 
+            var minimapResource = Resources.Load<MinimapRoomBehaviour>("Minimap/Minimap_" + toConcat);
+            Vector3 minimapPos = roomInfo.position;
+            minimapPos.z = 1;
+            GameObject minimapInstance = (minimapResource as MinimapRoomBehaviour).gameObject;
+            GameObject minimapRoom = Instantiate(minimapInstance, minimapPos, Quaternion.identity);
+            minimapRoom.GetComponent<MinimapRoomBehaviour>().roomInfo = roomInfo;
+
             roomList.Add(room);
 
             if (room.GetComponent<RoomBehaviour>() != null)
             {
                 room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
                 room.GetComponent<RoomBehaviour>().SetNavMesh();
+
+                minimapRoom.GetComponent<MinimapRoomBehaviour>().room = room.GetComponent<RoomBehaviour>();
             }
         }
 
         foreach (var room in roomList)
         {
-            room.GetComponent<RoomBehaviour>().SetAdjacentRooms(roomList, positions, MoveAmount);
+            room.GetComponent<RoomBehaviour>().SetAdjacentRooms(roomList, MoveAmount);
         }
 
         // Sets the spawn room for the current room
         Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = roomList[0];
+        roomList[0].GetComponent<RoomBehaviour>().hasBeenVisited = true;
     }
 }

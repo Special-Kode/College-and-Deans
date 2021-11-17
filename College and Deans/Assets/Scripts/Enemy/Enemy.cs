@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D EnemyRigidbody2D  {get; private set;}
     public Animator EnemyAnimator {get; private set;}
 
+    public RoomBehaviour Room;
+
     [SerializeField] private int health;
 
     private void Awake()
@@ -30,6 +32,7 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
+            Room.EnemyAmount -= 1;
             Destroy(this.gameObject);
         }
     }

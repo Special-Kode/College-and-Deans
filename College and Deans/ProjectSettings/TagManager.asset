@@ -23,13 +23,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Minimap
   - 
   - Holes
   - PassHoles
-  - 
-  - 
-  - 
+  - Enemy
+  - Wave
+  - Player
   - 
   - 
   - 
