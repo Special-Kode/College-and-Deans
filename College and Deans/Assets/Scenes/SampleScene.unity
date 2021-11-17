@@ -2547,8 +2547,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40321eb758dc7a4f92e989333390544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelNum: 1
-  LevelStage: 1
+  LevelNum: 3
+  StageNum: 1
+  maxGameLevels: 3
   maxLevelStages: 5
 --- !u!4 &1903825174
 Transform:
