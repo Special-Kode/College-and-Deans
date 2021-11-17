@@ -1,31 +1,30 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelLoader : MonoBehaviour
+public class GameLoader : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1f;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            LoadNextStage();
-        }
-#endif
+        
     }
 
-    public void LoadNextStage()
+    public void StartGame()
     {
-        StartCoroutine(LoadStage("Interlude"));
+        StartCoroutine(LoadScene("Interlude"));
     }
 
-
-    IEnumerator LoadStage(string levelName)
+    IEnumerator LoadScene(string levelName)
     {
         //Play animation
         transition.SetTrigger("Start");
@@ -34,7 +33,6 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
 
         //Load scene
-        FindObjectOfType<GameManager>().NextLevelOrStage();
         SceneManager.LoadScene(levelName);
     }
 }
