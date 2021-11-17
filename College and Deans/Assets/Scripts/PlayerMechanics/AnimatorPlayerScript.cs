@@ -35,9 +35,11 @@ public class AnimatorPlayerScript : MonoBehaviour
     //las distintas animaciones
     void Update()
     {
+        if (!PauseMenu.GameIsPaused)
+        {
 
-        //if you press left click, clicks is added 1 and it is saved the time
-        if (Input.GetMouseButtonDown(0))
+            //if you press left click, clicks is added 1 and it is saved the time
+            if (Input.GetMouseButtonDown(0))
             {
 
                 PosInitMouse = Input.mousePosition;
@@ -90,17 +92,19 @@ public class AnimatorPlayerScript : MonoBehaviour
             if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash") && Vector3.Distance(posFinalMouse, PosInitMouse) < 1.5)
             {
 
+
             if(Clicks==1)
                 InitMove();
                 
+
                 Clicks = 0;
                 MouseClickedTime = 0;
             }
-   
-              //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
-            if ((Vector2.Distance(posFinaldash,transform.position)<0.1f || (Time.time-DashTimer)>0.3f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
+
+            //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
+            if ((Vector2.Distance(posFinaldash, transform.position) < 0.1f || (Time.time - DashTimer) > 0.3f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
                 EndDash();
-            
+
 
 
             if (canDash == false)
@@ -112,22 +116,29 @@ public class AnimatorPlayerScript : MonoBehaviour
             if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
             {
                 animator.SetBool("Death", true);
-             }
+            }
 
-
-
+        } else
+        {
+            canDash = false;
+        }
 
     }
     private void LateUpdate()
     {
-        if (animator.GetBool("Walking"))
-            setAnimationDashOrWalk("BlendWalking");
-        else if (animator.GetBool("Dash"))
-            setAnimationDashOrWalk("BlendDash");
-        if(animator.GetBool("Attacking"))
-            WhereToLook(Camera.main.ScreenToWorldPoint( Input.mousePosition));
 
-
+        if (!PauseMenu.GameIsPaused)
+        {
+            if (animator.GetBool("Walking"))
+                setAnimationDashOrWalk("BlendWalking");
+            else if (animator.GetBool("Dash"))
+                setAnimationDashOrWalk("BlendDash");
+            else if (animator.GetBool("Attacking"))
+                setAnimationAttacking();
+            /*  else
+                  setAnimationIdle();
+            */
+        }
     }
 
 
