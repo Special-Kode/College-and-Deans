@@ -145,15 +145,18 @@ public class AnimatorPlayerScript : MonoBehaviour
         direction = (posFinalMouse - PosInitMouse);
         posFinaldash = transform.position + direction.normalized * 3f;
         PosInitDash = transform.position;
-        canPass();
-        movement.PlayerDashed(direction);
-        animator.SetBool("Dash", true);
-        animator.SetBool("Walking", false);
-        MouseClickedTime = 0;
-        Clicks = 0;
-        WhenDashStatusStarted = Time.time;
-        DashTimer = Time.time;
-        canDash = false;
+        if (canPass())
+        {
+            movement.PlayerDashed(direction);
+            animator.SetBool("Dash", true);
+            animator.SetBool("Walking", false);
+            MouseClickedTime = 0;
+            Clicks = 0;
+            WhenDashStatusStarted = Time.time;
+            DashTimer = Time.time;
+            canDash = false;
+        }
+        
     }
 
     public void InitMove()
@@ -227,7 +230,7 @@ public class AnimatorPlayerScript : MonoBehaviour
 
     }
    
-    public void canPass()
+    public bool canPass()
     {
         int i = 3;
         bool check = false;
@@ -241,12 +244,12 @@ public class AnimatorPlayerScript : MonoBehaviour
                 check = true;
                 //  this.GetComponent<BoxCollider2D>().enabled = false;
                 this.gameObject.layer = LayerMask.NameToLayer("PassHoles");
+                return true;
             }
             i--;
 
         }
-        if (check == false)
-            posFinaldash = transform.position;
+        return false;
 
 
 

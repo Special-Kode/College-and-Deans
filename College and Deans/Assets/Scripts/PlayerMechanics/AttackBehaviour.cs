@@ -72,7 +72,7 @@ using UnityEngine;
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 3:
-                temp = Instantiate(SimpleWave, this.transform);
+                temp = Instantiate(SimpleWave, this.transform.position, Quaternion.identity);
                 CreateWave(MousePos, position, temp);
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
@@ -138,7 +138,6 @@ using UnityEngine;
     {
         bulletShooted = true;
         temp = Shoot(position, posToShoot, temp, 3, speedBullet - 25f, 90);
-        StartCoroutine(DestroyAfterTime(0.4f,temp));
         StartCoroutine(WaveCollider(0.1f, temp, 0));
     }
     IEnumerator DestroyAfterTime(float time,GameObject temp)

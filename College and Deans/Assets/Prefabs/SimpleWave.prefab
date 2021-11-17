@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1405318073005572016}
   - component: {fileID: 2228642589231168608}
   - component: {fileID: 1293487205829531743}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SimpleWave
   m_TagString: Wave
   m_Icon: {fileID: 0}
