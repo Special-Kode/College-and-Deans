@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
             //Bloquear puertas
             foreach (var door in room.GetComponentsInChildren<DoorBehaviour>())
             {
-                door.EnableCollider(); //Enable door colliders
+                //door.EnableCollider(); //Enable door colliders
             }
             //Generar grid
             Vector2 originPosition = room.roomInfo.position + new Vector2(-11f, -7f);
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
             //Bloquear puertas
             foreach (var door in room.GetComponentsInChildren<DoorBehaviour>())
             {
-                door.EnableCollider(); //Enable door colliders
+                //door.EnableCollider(); //Enable door colliders
             }
             //Generar grid
             Vector2 originPosition = room.roomInfo.position + new Vector2(-11f, -7f);
