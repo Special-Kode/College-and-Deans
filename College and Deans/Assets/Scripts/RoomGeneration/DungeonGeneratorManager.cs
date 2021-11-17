@@ -133,7 +133,7 @@ public class DungeonGeneratorManager : MonoBehaviour
     // Randomly sets the type of the room, excluding spawn and boss room type
     void SetRandomRoom(RoomInfo roomInfo)
     {
-        int rand = UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(RoomInfo.RoomType)).Length - 2);
+        int rand = UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(RoomInfo.RoomType)).Length - 3);
         switch (rand)
         {
             case 0:
