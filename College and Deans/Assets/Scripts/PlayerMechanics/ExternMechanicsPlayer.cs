@@ -6,10 +6,10 @@ public class ExternMechanicsPlayer : MonoBehaviour
 {
     public bool damage;
     public bool death;
-    public int vida;
+    public int vida = 100;
     public bool canMove;
     private float NoDamageTimer;
-    private int TimeLife= 100;
+    public int TimeLife= 120;
     private bool canBeDamage;
     [SerializeField] private int DamageAmount = 3;
     [SerializeField] private float Invulnerability = 1.0f;
@@ -18,7 +18,7 @@ public class ExternMechanicsPlayer : MonoBehaviour
     {
         canMove = true;
         damage = false;
-        vida = 100;
+        vida = TimeLife;
         NoDamageTimer = 0;
         canBeDamage = true;
     }
