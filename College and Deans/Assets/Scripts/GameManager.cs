@@ -11,10 +11,18 @@ public class GameManager : MonoBehaviour
     public int LevelNum = 0;
     public int LevelStage = 1;
 
+    public int MaxLevelStages 
+    { 
+        get { return maxLevelStages; } 
+        private set { maxLevelStages = value; } 
+    }
+
     [SerializeField] private int maxLevelStages = 5;
 
     private void Awake() 
     {
+        MaxLevelStages = maxLevelStages;
+
         if (FindObjectsOfType(GetType()).Length > 1)
         {
             Destroy(gameObject);

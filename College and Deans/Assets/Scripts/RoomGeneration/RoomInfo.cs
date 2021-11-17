@@ -6,7 +6,7 @@ public class RoomInfo : ScriptableObject
 {
     public enum RoomType //All possible room types
     {
-        Spawn, Enemies, Boss, Cafe, Loot
+        Spawn, Enemies, Stairs, Boss, Cafe, Loot
     };
 
     public enum AdjacentRooms
