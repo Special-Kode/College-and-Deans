@@ -74,7 +74,10 @@ public class DoorBehaviour : MonoBehaviour
 
             Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = AdjacentRoom;
             var room = AdjacentRoom.GetComponent<RoomBehaviour>();
+            /**
             FindObjectOfType<GameManager>().EnterRoom(room);
+            //*/
+            room.EnterRoom();
         }
     }
 }

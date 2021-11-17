@@ -201,7 +201,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
         foreach (var room in roomList)
         {
-            room.GetComponent<RoomBehaviour>().SetAdjacentRooms(roomList, positions, MoveAmount);
+            room.GetComponent<RoomBehaviour>().SetAdjacentRooms(roomList, MoveAmount);
         }
 
         // Sets the spawn room for the current room
