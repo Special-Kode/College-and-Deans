@@ -110,6 +110,8 @@ public class RoomBehaviour : MonoBehaviour
             //No volver a spawnear
             hasSpawned = true;
         }
+
+        
     }
 
     public void SetNavMesh()

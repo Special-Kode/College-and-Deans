@@ -27,10 +27,6 @@ public class Collisions : MonoBehaviour
         {
             if (other.gameObject.tag == "Enemy")
             {
-                if(this.tag=="Bullet")
-                    Destroy(this.gameObject);
-                if (this.tag == "Bomb")
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<AttackBehaviour>().Explode(this.gameObject);
                 //Falta añadir el daño del jugador
                 other.gameObject.GetComponent<Enemy>().GetHit(damage);
             }
@@ -42,10 +38,11 @@ public class Collisions : MonoBehaviour
                 else
                     SceneManager.LoadScene("MainMenu");
             }
-            else if(other.gameObject.tag == "Wall")
-            {
+
+            if (this.tag == "Bullet")
                 Destroy(this.gameObject);
-            }
+            if (this.tag == "Bomb")
+                GameObject.FindGameObjectWithTag("Player").GetComponent<AttackBehaviour>().Explode(this.gameObject);
         }
 
         if(this.tag == "EnemyBullet")

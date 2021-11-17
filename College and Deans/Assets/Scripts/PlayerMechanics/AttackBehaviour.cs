@@ -94,6 +94,7 @@ using UnityEngine;
             Vector2 dir = new Vector2(mousePos.x - playerPos.x, mousePos.y - playerPos.y).normalized;
             TypeOfShoot.GetComponent<Rigidbody2D>().velocity = dir * speed;
             dir = (mousePos - playerPos).normalized;
+            TypeOfShoot.transform.position += new Vector3(dir.x,dir.y,0);
             float rot_z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             TypeOfShoot.transform.rotation = Quaternion.Euler(0f, 0f, rot_z + rotation);
         }  
@@ -129,10 +130,10 @@ using UnityEngine;
     }
    public void Explode(GameObject bomb)
     {
-        bomb.transform.localScale += new Vector3(2f, 2f, 0);
+        bomb.transform.localScale = new Vector3(20f, 20f, 0);
         bomb.GetComponent<SpriteRenderer>().sprite = Explosion;
         bomb.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        StartCoroutine(DestroyAfterTime(0.2f,bomb));
+        StartCoroutine(DestroyAfterTime(0.4f,bomb));
     }
     void CreateWave(Vector3 posToShoot,Vector3 position,GameObject temp)
     {
