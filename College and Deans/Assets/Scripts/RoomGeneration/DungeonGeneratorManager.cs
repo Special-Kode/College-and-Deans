@@ -152,7 +152,7 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     void SetLastRoom(RoomInfo roomInfo)
     {
-        if(gameManager.LevelStage != gameManager.MaxLevelStages)
+        if(gameManager.StageNum != gameManager.MaxLevelStages)
         {
             //TODO change functionality when possible
             roomInfo.roomType = RoomInfo.RoomType.Boss;

@@ -2258,6 +2258,7 @@ MonoBehaviour:
   MoveAmount: {x: 22, y: 16}
   lootSpawned: 0
   cafeSpawned: 0
+  gameManager: {fileID: 0}
   currentPos: {x: 0, y: 0}
   roomInfoList: []
   roomList: []
@@ -2546,7 +2547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40321eb758dc7a4f92e989333390544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelNum: 0
+  LevelNum: 1
   LevelStage: 1
   maxLevelStages: 5
 --- !u!4 &1903825174
@@ -2847,7 +2848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2976557278370504063, guid: ba990b5a815c63545ab24165cab36f28, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba990b5a815c63545ab24165cab36f28, type: 3}

@@ -38,7 +38,7 @@ public class Collisions : MonoBehaviour
             {
                 Destroy(other.gameObject);
                 if (FindObjectOfType<LevelLoader>() != null)
-                    FindObjectOfType<LevelLoader>().LoadNextLevel();
+                    FindObjectOfType<LevelLoader>().LoadNextStage();
                 else
                     SceneManager.LoadScene("MainMenu");
             }
