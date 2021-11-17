@@ -33,6 +33,7 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
 
         //Load scene
+        FindObjectOfType<GameManager>().AddLevelStage();
         SceneManager.LoadScene(levelIndex);
     }
 }

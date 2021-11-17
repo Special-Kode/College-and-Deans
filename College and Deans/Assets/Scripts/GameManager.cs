@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
     EnemyGenerator enemyGenerator;
     Pathfinding pathfinding;
 
+    public int LevelNum = 0;
+    public int LevelStage = 1;
+
+    [SerializeField] private int maxLevelStages = 5;
+
     private void Awake() 
     {
         if (FindObjectsOfType(GetType()).Length > 1)
@@ -68,6 +73,17 @@ public class GameManager : MonoBehaviour
         room.hasBeenVisited = true;
     }
     //*/
+
+    public void AddLevelStage()
+    {
+        if (LevelStage < maxLevelStages)
+            LevelStage += 1;
+        else
+        {
+            LevelStage = 1;
+            LevelNum += 1;
+        }
+    }
 
     public Pathfinding GetPathfinding()
     {

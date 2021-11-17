@@ -133,8 +133,8 @@ public class AnimatorPlayerScript : MonoBehaviour
                 setAnimationDashOrWalk("BlendWalking");
             else if (animator.GetBool("Dash"))
                 setAnimationDashOrWalk("BlendDash");
-            else if (animator.GetBool("Attacking"))
-                setAnimationAttacking();
+            if (animator.GetBool("Attacking"))
+                WhereToLook(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             /*  else
                   setAnimationIdle();
             */
