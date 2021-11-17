@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,8 +7,29 @@ public class GameManager : MonoBehaviour
     EnemyGenerator enemyGenerator;
     Pathfinding pathfinding;
 
+    public int LevelNum = 1;
+    public int StageNum = 1;
+
+    public int MaxLevelStages 
+    { 
+        get { return maxLevelStages; } 
+        private set { maxLevelStages = value; } 
+    }
+
+    public int MaxGameLevels
+    {
+        get { return maxGameLevels; }
+        private set { maxGameLevels = value; }
+    }
+
+    [SerializeField] private int maxGameLevels = 3;
+    [SerializeField] private int maxLevelStages = 5;
+
     private void Awake() 
     {
+        MaxLevelStages = maxLevelStages;
+        MaxGameLevels = maxGameLevels;
+
         if (FindObjectsOfType(GetType()).Length > 1)
         {
             Destroy(gameObject);
@@ -26,48 +46,46 @@ public class GameManager : MonoBehaviour
         enemyGenerator = FindObjectOfType<EnemyGenerator>();
     }
 
-    /**
-    public void EnterRoom(RoomBehaviour room)
+#if UNITY_EDITOR
+    void ClearLog()
     {
-        if(room.roomInfo.roomType == RoomInfo.RoomType.Enemies && !room.hasSpawned)
-        {
-            //Bloquear puertas
-            foreach (var door in room.GetComponentsInChildren<DoorBehaviour>())
-            {
-                //door.EnableCollider(); //Enable door colliders
-            }
-            //Generar grid
-            Vector2 originPosition = room.roomInfo.position + new Vector2(-11f, -7f);
-            pathfinding = new Pathfinding(22, 14, 1f, originPosition);
-            //Generar enemigos
-            List<Transform> spawnPoints = new List<Transform>(room.SpawnPoints);
-            enemyGenerator.SpawnEnemies("facil", spawnPoints, pathfinding, room);
-            spawnPoints.Clear();
-            //No volver a spawnear
-            room.hasSpawned = true;
-        }
-
-        if(room.roomInfo.roomType == RoomInfo.RoomType.Boss && !room.hasSpawned)
-        {
-            //Bloquear puertas
-            foreach (var door in room.GetComponentsInChildren<DoorBehaviour>())
-            {
-                //door.EnableCollider(); //Enable door colliders
-            }
-            //Generar grid
-            Vector2 originPosition = room.roomInfo.position + new Vector2(-11f, -7f);
-            pathfinding = new Pathfinding(22, 14, 1f, originPosition);
-            //Generar enemigos
-            List<Transform> spawnPoints = new List<Transform>(room.SpawnPoints);
-            enemyGenerator.SpawnEnemies("boss", spawnPoints, pathfinding, room);
-            spawnPoints.Clear();
-            //No volver a spawnear
-            room.hasSpawned = true;
-        }
-
-        room.hasBeenVisited = true;
+        var assembly = Assembly.GetAssembly(typeof(UnityEditor.Editor));
+        var type = assembly.GetType("UnityEditor.LogEntries");
+        var method = type.GetMethod("Clear");
+        method.Invoke(new object(), null);
     }
-    //*/
+#endif
+
+    public void NextLevelOrStage()
+    {
+#if UNITY_EDITOR
+        ClearLog();
+#endif
+
+        if (StageNum < MaxLevelStages)
+            StageNum += 1;
+        else
+            NextLevel();
+    }
+
+    void NextLevel()
+    {
+        if (LevelNum == MaxGameLevels)
+        {
+            ResetGame();
+        }
+        else
+        {
+            StageNum = 1;
+            LevelNum += 1;
+        }
+    }
+
+    void ResetGame()
+    {
+        LevelNum = 1;
+        StageNum = 1;
+    }
 
     public Pathfinding GetPathfinding()
     {

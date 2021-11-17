@@ -1103,7 +1103,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3127
+    m_Bits: 31799
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2258,6 +2258,7 @@ MonoBehaviour:
   MoveAmount: {x: 22, y: 16}
   lootSpawned: 0
   cafeSpawned: 0
+  gameManager: {fileID: 0}
   currentPos: {x: 0, y: 0}
   roomInfoList: []
   roomList: []
@@ -2390,6 +2391,14 @@ PrefabInstance:
     - target: {fileID: 5475639532632729962, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729968, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: vida
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729968, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: TimeLife
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729962, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Layer
@@ -2546,6 +2555,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40321eb758dc7a4f92e989333390544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelNum: 3
+  StageNum: 1
+  maxGameLevels: 3
+  maxLevelStages: 5
 --- !u!4 &1903825174
 Transform:
   m_ObjectHideFlags: 0
