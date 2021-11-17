@@ -53,21 +53,21 @@ using UnityEngine;
                 bulletShooted = true;
                 //animatorPlayer.WhereToLook(Input.mousePosition);
                 temp = Instantiate(bullet, this.transform.position, Quaternion.identity);
-                temp = Shoot(position, MousePos,temp,0,speedBullet,90);
+                temp = Shoot(position, MousePos,temp,speedBullet,90);
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 1:
                 bulletShooted = true;
                 //animatorPlayer.WhereToLook(Input.mousePosition);
                 temp = Instantiate(bullet, this.transform.position, Quaternion.identity);
-                temp = Shoot(position, MousePos,temp,1,speedBullet,90);
+                temp = Shoot(position, MousePos,temp,speedBullet,90);
                 StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos,2,bullet, speedBullet,0));
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 2:
                 bulletShooted = true;
                 temp = Instantiate(Bomb, this.transform.position, Quaternion.identity);
-                Shoot(position, MousePos, temp, 2,speedBullet-20f,0);
+                Shoot(position, MousePos, temp,speedBullet-20f,0);
                 posBomb = MousePos;
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
@@ -87,13 +87,14 @@ using UnityEngine;
     }
   
 
-     GameObject Shoot(Vector3 playerPos,Vector3 mousePos,GameObject TypeOfShoot,int type,float speed,float rotation)
-    {
+     GameObject Shoot(Vector3 playerPos,Vector3 mousePos,GameObject TypeOfShoot,float speed,float rotation)
+     {
         if (TypeOfShoot != null)
         {
             Vector2 dir = new Vector2(mousePos.x - playerPos.x, mousePos.y - playerPos.y).normalized;
             TypeOfShoot.GetComponent<Rigidbody2D>().velocity = dir * speed;
             dir = (mousePos - playerPos).normalized;
+            TypeOfShoot.transform.position += new Vector3(dir.x,dir.y,0);
             float rot_z = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             TypeOfShoot.transform.rotation = Quaternion.Euler(0f, 0f, rot_z + rotation);
         }  
@@ -105,7 +106,7 @@ using UnityEngine;
         if(GameObject.FindGameObjectWithTag(temp.tag) != null)
         {
             yield return new WaitForSeconds(time);
-                Shoot(position, MousePos, temp, Type, speed, rotation);
+                Shoot(position, MousePos, temp, speed, rotation);
 
         }
 
@@ -129,15 +130,15 @@ using UnityEngine;
     }
    public void Explode(GameObject bomb)
     {
-        bomb.transform.localScale += new Vector3(2f, 2f, 0);
+        bomb.transform.localScale = new Vector3(20f, 20f, 0);
         bomb.GetComponent<SpriteRenderer>().sprite = Explosion;
         bomb.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        StartCoroutine(DestroyAfterTime(0.2f,bomb));
+        StartCoroutine(DestroyAfterTime(0.4f,bomb));
     }
     void CreateWave(Vector3 posToShoot,Vector3 position,GameObject temp)
     {
         bulletShooted = true;
-        temp = Shoot(position, posToShoot, temp, 3, speedBullet - 25f, 90);
+        temp = Shoot(position, posToShoot, temp, speedBullet - 25f, 90);
         StartCoroutine(WaveCollider(0.1f, temp, 0));
     }
     IEnumerator DestroyAfterTime(float time,GameObject temp)

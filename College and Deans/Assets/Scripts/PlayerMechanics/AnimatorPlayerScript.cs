@@ -65,21 +65,21 @@ public class AnimatorPlayerScript : MonoBehaviour
 
 
             //if you stop pressing left click, it is saved the position of the mouse, and check if distance of init dash and end dash is higher than 2
-            else if (Input.GetMouseButtonUp(0))
+             if (Input.GetMouseButtonUp(0))
             {
 
                 posFinalMouse = Input.mousePosition;
                 posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
 
 
-                if (Vector3.Distance(posFinalMouse, PosInitMouse) > 1.5 && canDash==true
+                if (Vector2.Distance(posFinalMouse, PosInitMouse) > 1.5f && canDash==true
                      && !animator.GetBool("Dash"))
                 {
                     InitDash();
                 }
 
                 // if is not dashing,it means that might player can move
-                else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
+                else if (Clicks >=2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
                 {
                     Attack();
                 }
@@ -187,7 +187,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         animator.SetBool("Dash", false);
-        this.gameObject.layer = LayerMask.NameToLayer("Default");
+        this.gameObject.layer = LayerMask.NameToLayer("Player");
         // isDashed = false;
     }
     public void setAnimationDashOrWalk(string TypeMov)
@@ -270,7 +270,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     }
     public void checkIfcanDash()
     {
-        if (Time.time - WhenDashStatusStarted > 1f)
+        if (Time.time - WhenDashStatusStarted > 0.5f)
             canDash = true;
         
     }
