@@ -14,6 +14,7 @@ public class RoomBehaviour : MonoBehaviour
     [Header("Room Information")]
     public RoomInfo roomInfo;
     public Transform[] SpawnPoints;
+    public bool hasBeenVisited;
     public bool hasSpawned;
     public NavMeshSurface2d navMeshSurface;
 

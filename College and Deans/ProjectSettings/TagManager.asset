@@ -12,6 +12,8 @@ TagManager:
   - Canvas
   - Boss
   - Wall
+  - Wave
+  - Bomb
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Minimap
   - 
   - Holes
   - PassHoles

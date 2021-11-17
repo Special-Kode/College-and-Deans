@@ -6,8 +6,8 @@ public class Weapon
 {
     private string name;
     private int damage;
-    private string type;
-    public Weapon(string name,int damage,string type){
+    private int type;
+    public Weapon(string name,int damage,int type){
         this.name = name;
         this.damage = damage;
         this.type = type;
@@ -20,7 +20,7 @@ public class Weapon
     {
         return this.damage;
     }
-    public string getType()
+    public int getType()
     {
         return this.type;
     }

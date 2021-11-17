@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class credits : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
 
-    GameObject pencil;
+    GameObject pencil, mainMenu, creditsMenu;
     Button button;
     Vector3 posPen, posBut;
 
@@ -16,9 +16,12 @@ public class credits : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     void Start()
     {
         pencil = GameObject.Find("Pencil");
+        mainMenu = GameObject.Find("Menu");
+        creditsMenu = GameObject.Find("Credits");
         button = this.GetComponent<Button>();
         posPen = pencil.transform.position;
         posBut = button.transform.position;
+        creditsMenu.SetActive(false);
 
 
     }
@@ -31,6 +34,7 @@ public class credits : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Credits");
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(true);
     }
 }

@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
     public Enemy enemy {get; private set;}
     public EnemyPathfinding EnemyPathfinding {get; private set;}
     public Rigidbody2D EnemyRigidbody2D  {get; private set;}
+    public Animator EnemyAnimator {get; private set;}
+
+    [SerializeField] private int health;
 
     private void Awake()
     {
@@ -14,10 +17,20 @@ public class Enemy : MonoBehaviour
 
         EnemyPathfinding = GetComponent<EnemyPathfinding>();
         EnemyRigidbody2D = GetComponent<Rigidbody2D>();
+        EnemyAnimator = GetComponent<Animator>();
     }
 
     public Vector2 GetPosition()
     {
         return EnemyRigidbody2D.position;
+    }
+
+    public void GetHit(int damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
