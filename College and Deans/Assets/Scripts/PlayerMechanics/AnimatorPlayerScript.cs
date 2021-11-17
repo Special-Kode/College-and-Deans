@@ -35,9 +35,11 @@ public class AnimatorPlayerScript : MonoBehaviour
     //las distintas animaciones
     void Update()
     {
+        if (!PauseMenu.GameIsPaused)
+        {
 
-        //if you press left click, clicks is added 1 and it is saved the time
-        if (Input.GetMouseButtonDown(0))
+            //if you press left click, clicks is added 1 and it is saved the time
+            if (Input.GetMouseButtonDown(0))
             {
 
                 PosInitMouse = Input.mousePosition;
@@ -69,19 +71,19 @@ public class AnimatorPlayerScript : MonoBehaviour
                 posFinalMouse = Input.mousePosition;
                 posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
 
-            if (!animator.GetBool("Attacking"))
+                if (!animator.GetBool("Attacking"))
 
-                if (Vector3.Distance(posFinalMouse, PosInitMouse) > 2 && canDash==true
-                     && !animator.GetBool("Dash") )
-                {
-                    InitDash();
-                }
+                    if (Vector3.Distance(posFinalMouse, PosInitMouse) > 2 && canDash == true
+                         && !animator.GetBool("Dash"))
+                    {
+                        InitDash();
+                    }
 
-                // if is not dashing,it means that might player can move
-                else if (Clicks % 2 == 0 && Clicks != 0)
-                {
-                    InitMove(); 
-                }
+                    // if is not dashing,it means that might player can move
+                    else if (Clicks % 2 == 0 && Clicks != 0)
+                    {
+                        InitMove();
+                    }
 
 
 
@@ -91,22 +93,22 @@ public class AnimatorPlayerScript : MonoBehaviour
             if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash") && Vector3.Distance(posFinalMouse, PosInitMouse) < 2)
             {
                 isEnemyClicked(posToMove);
-            /*
-                if (!HowToAttack.ClickedEnemy)
-                {
-                   
+                /*
+                    if (!HowToAttack.ClickedEnemy)
+                    {
 
-                }*/
+
+                    }*/
                 if (Clicks == 1 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
                     Attack();
                 Clicks = 0;
                 MouseClickedTime = 0;
             }
-   
-              //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
-            if ((Vector2.Distance(posFinaldash,transform.position)<0.1f || (Time.time-DashTimer)>0.3f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
+
+            //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
+            if ((Vector2.Distance(posFinaldash, transform.position) < 0.1f || (Time.time - DashTimer) > 0.3f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
                 EndDash();
-            
+
 
 
             if (canDash == false)
@@ -118,25 +120,29 @@ public class AnimatorPlayerScript : MonoBehaviour
             if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
             {
                 animator.SetBool("Death", true);
-             }
+            }
 
-
-
+        } else
+        {
+            canDash = false;
+        }
 
     }
     private void LateUpdate()
     {
-        if (animator.GetBool("Walking"))
-            setAnimationDashOrWalk("BlendWalking");
-        else if(animator.GetBool("Dash"))
-            setAnimationDashOrWalk("BlendDash");
-        else if (animator.GetBool("Attacking"))
-            setAnimationAttacking();
-      /*  else
-            setAnimationIdle();
-      */
+        if (!PauseMenu.GameIsPaused)
+        {
 
-
+            if (animator.GetBool("Walking"))
+                setAnimationDashOrWalk("BlendWalking");
+            else if (animator.GetBool("Dash"))
+                setAnimationDashOrWalk("BlendDash");
+            else if (animator.GetBool("Attacking"))
+                setAnimationAttacking();
+            /*  else
+                  setAnimationIdle();
+            */
+        }
     }
 
 
