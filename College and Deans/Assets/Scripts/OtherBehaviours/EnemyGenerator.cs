@@ -117,7 +117,8 @@ public class EnemyGenerator : MonoBehaviour
             case "dificil":
                 break;
             case "boss":
-                Instantiate(boss0, spawns[0].position, Quaternion.identity);
+                var boss = Instantiate(boss0, spawns[0].position, Quaternion.identity);
+                boss.EnemyPathfinding.SetPathfinding(pathfinding);
                 break;
         }
     }
