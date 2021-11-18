@@ -15,9 +15,6 @@ public class Collisions : MonoBehaviour
 
             if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
-
-
-
         }
     }
 
@@ -25,16 +22,11 @@ public class Collisions : MonoBehaviour
     {
             if (other.gameObject.tag == "Enemy")
             {
-                //Falta añadir el daño del jugador
                 other.gameObject.GetComponent<Enemy>().GetHit(damage);
             }
            else if(other.gameObject.tag == "Boss")
             {
-                Destroy(other.gameObject);
-                if (FindObjectOfType<LevelLoader>() != null)
-                    FindObjectOfType<LevelLoader>().LoadNextStage();
-                else
-                    SceneManager.LoadScene("MainMenu");
+                other.gameObject.GetComponent<Enemy>().GetHit(damage);
             }
 
             if (this.tag == "Bullet")

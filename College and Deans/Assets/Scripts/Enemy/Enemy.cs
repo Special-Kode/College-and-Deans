@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D EnemyRigidbody2D  {get; private set;}
     public Animator EnemyAnimator {get; private set;}
     public BossIA BossIA { get; private set; }
+    public RoomBehaviour Room;
 
     [SerializeField] private int health;
 
@@ -35,14 +36,15 @@ public class Enemy : MonoBehaviour
         {
             if (this.tag == "Enemy")
             {
+                Room.EnemyAmount -= 1;
                 Destroy(this.gameObject);
             }
             else if (this.tag == "Boss")
             {
+                Destroy(this.gameObject);
                 if (FindObjectOfType<LevelLoader>() != null)
-                    FindObjectOfType<LevelLoader>().LoadNextLevel();
+                    FindObjectOfType<LevelLoader>().LoadNextStage();
                 else
-                    Destroy(this.gameObject);
                     SceneManager.LoadScene("MainMenu");
             }
         }

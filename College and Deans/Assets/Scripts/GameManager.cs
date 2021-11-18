@@ -80,17 +80,6 @@ public class GameManager : MonoBehaviour
             StageNum = 1;
             LevelNum += 1;
         }
-
-        if (spawnBoss)
-        {
-            //Generar grid
-            Vector2 originPosition = room.roomInfo.position + new Vector2(-11f, -7f);
-            pathfinding = new Pathfinding(22, 14, 1f, originPosition);
-            //Generar enemigos
-            List<Transform> spawnPoints = new List<Transform>(room.SpawnPoints);
-            enemyGenerator.SpawnEnemies("boss", spawnPoints);
-            spawnPoints.Clear();
-        }
     }
 
     void ResetGame()
