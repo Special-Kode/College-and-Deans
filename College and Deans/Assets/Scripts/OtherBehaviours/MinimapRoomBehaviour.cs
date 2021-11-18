@@ -36,6 +36,7 @@ public class MinimapRoomBehaviour : MonoBehaviour
                     case RoomInfo.RoomType.Loot:
                         wall.color = Color.yellow;
                         break;
+                    case RoomInfo.RoomType.Stairs:
                     case RoomInfo.RoomType.Boss:
                         wall.color = Color.red;
                         break;
