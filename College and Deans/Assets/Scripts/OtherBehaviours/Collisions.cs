@@ -16,15 +16,14 @@ public class Collisions : MonoBehaviour
             if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
             this.GetComponent<Movement>().agent.enabled=true;
-            
+
+
+
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-
-        if (this.tag == "Bullet" || this.tag=="Wave" || this.tag == "Bomb")
-        {
             if (other.gameObject.tag == "Enemy")
             {
                 //Falta añadir el daño del jugador
@@ -43,7 +42,7 @@ public class Collisions : MonoBehaviour
                 Destroy(this.gameObject);
             if (this.tag == "Bomb")
                 GameObject.FindGameObjectWithTag("Player").GetComponent<AttackBehaviour>().Explode(this.gameObject);
-        }
+        
 
         if(this.tag == "EnemyBullet")
         {

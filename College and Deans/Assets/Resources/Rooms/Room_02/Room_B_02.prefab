@@ -5330,6 +5330,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table
       objectReference: {fileID: 0}
+    - target: {fileID: 8746754998937417881, guid: 785ee0fe587c9b543aeefe57d7ce790a, type: 3}
+      propertyPath: m_Carve
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 785ee0fe587c9b543aeefe57d7ce790a, type: 3}
 --- !u!4 &5055291911986377561 stripped
