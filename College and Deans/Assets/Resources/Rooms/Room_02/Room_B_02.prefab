@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2894112353133676235}
   - component: {fileID: 8154843375218264463}
   - component: {fileID: 8181017573219859796}
+  - component: {fileID: 7256227619957446068}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -2334,6 +2335,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &7256227619957446068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467781786183281581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1898876981191703490
 GameObject:
   m_ObjectHideFlags: 0
@@ -2578,6 +2595,7 @@ GameObject:
   - component: {fileID: 5590897967681026781}
   - component: {fileID: 5043256654047649025}
   - component: {fileID: 38690280981341621}
+  - component: {fileID: 5633033003974742860}
   m_Layer: 0
   m_Name: Door_B
   m_TagString: Untagged
@@ -2792,6 +2810,22 @@ MonoBehaviour:
   doorDirection: 2
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+--- !u!114 &5633033003974742860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3945723759716339743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &4225369688585461625
 GameObject:
   m_ObjectHideFlags: 0
