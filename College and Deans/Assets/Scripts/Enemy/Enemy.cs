@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,8 +9,7 @@ public class Enemy : MonoBehaviour
     public EnemyPathfinding EnemyPathfinding {get; private set;}
     public Rigidbody2D EnemyRigidbody2D  {get; private set;}
     public Animator EnemyAnimator {get; private set;}
-
-    public RoomBehaviour Room;
+    public BossIA BossIA { get; private set; }
 
     [SerializeField] private int health;
 
@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
         EnemyPathfinding = GetComponent<EnemyPathfinding>();
         EnemyRigidbody2D = GetComponent<Rigidbody2D>();
         EnemyAnimator = GetComponent<Animator>();
+        BossIA = GetComponent<BossIA>();
     }
 
     public Vector2 GetPosition()
@@ -32,8 +33,18 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if(health <= 0)
         {
-            Room.EnemyAmount -= 1;
-            Destroy(this.gameObject);
+            if (this.tag == "Enemy")
+            {
+                Destroy(this.gameObject);
+            }
+            else if (this.tag == "Boss")
+            {
+                if (FindObjectOfType<LevelLoader>() != null)
+                    FindObjectOfType<LevelLoader>().LoadNextLevel();
+                else
+                    Destroy(this.gameObject);
+                    SceneManager.LoadScene("MainMenu");
+            }
         }
     }
 }
