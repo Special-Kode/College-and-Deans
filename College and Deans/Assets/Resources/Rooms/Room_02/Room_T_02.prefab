@@ -106,6 +106,7 @@ MonoBehaviour:
   - {fileID: 8930477475723507046}
   - {fileID: 3919490531371777904}
   hasSpawned: 0
+  navMeshSurface: {fileID: 0}
 --- !u!1 &1765270105157775497
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +120,7 @@ GameObject:
   - component: {fileID: 7145986653208255051}
   - component: {fileID: 4861431732564252231}
   - component: {fileID: 1115357463968650219}
+  - component: {fileID: 6149872350754732854}
   m_Layer: 0
   m_Name: Door_T
   m_TagString: Untagged
@@ -333,6 +335,22 @@ MonoBehaviour:
   doorDirection: 0
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+--- !u!114 &6149872350754732854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765270105157775497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &3345155596681304268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,6 +2838,7 @@ GameObject:
   - component: {fileID: 2869908331250012164}
   - component: {fileID: 6403156513291877897}
   - component: {fileID: 4114125463293741912}
+  - component: {fileID: 8351041133217489143}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -5171,6 +5190,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &8351041133217489143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090186804581488481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &528428540699916812
 PrefabInstance:
   m_ObjectHideFlags: 0
