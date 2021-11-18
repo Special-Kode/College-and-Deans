@@ -62,17 +62,15 @@ public class AnimatorPlayerScript : MonoBehaviour
 
             }
 
-
-
             //if you stop pressing left click, it is saved the position of the mouse, and check if distance of init dash and end dash is higher than 2
-            else if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0))
             {
 
                 posFinalMouse = Input.mousePosition;
                 posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
 
 
-                if (Vector3.Distance(posFinalMouse, PosInitMouse) > 1.5 && canDash==true
+                if (Vector2.Distance(posFinalMouse, PosInitMouse) > 1.5f && canDash==true
                      && !animator.GetBool("Dash"))
                 {
                     InitDash();
@@ -82,6 +80,8 @@ public class AnimatorPlayerScript : MonoBehaviour
                 else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
                 {
                     Attack();
+                    Clicks = 0;
+                    MouseClickedTime = 0;
                 }
 
 
@@ -102,16 +102,11 @@ public class AnimatorPlayerScript : MonoBehaviour
             }
 
             //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
-            if ((Vector2.Distance(posFinaldash, transform.position) < 0.1f || (Time.time - DashTimer) > 0.3f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
+            if ((Vector2.Distance(posFinaldash, transform.position) < 0.1f || (Time.time - DashTimer) > 0.5f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
                 EndDash();
-
-
 
             if (canDash == false)
                 checkIfcanDash();
-
-
-
 
             if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
             {
@@ -133,8 +128,8 @@ public class AnimatorPlayerScript : MonoBehaviour
                 setAnimationDashOrWalk("BlendWalking");
             else if (animator.GetBool("Dash"))
                 setAnimationDashOrWalk("BlendDash");
-            else if (animator.GetBool("Attacking"))
-                setAnimationAttacking();
+            if (animator.GetBool("Attacking"))
+                WhereToLook(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             /*  else
                   setAnimationIdle();
             */
@@ -152,12 +147,12 @@ public class AnimatorPlayerScript : MonoBehaviour
 
     public void InitDash()
     {
-        movement.agent.enabled = false;
         direction = (posFinalMouse - PosInitMouse);
         posFinaldash = transform.position + direction.normalized * 3f;
         PosInitDash = transform.position;
         if (canPass())
         {
+            movement.agent.enabled = false;
             movement.PlayerDashed(direction);
             animator.SetBool("Dash", true);
             animator.SetBool("Walking", false);
@@ -167,6 +162,11 @@ public class AnimatorPlayerScript : MonoBehaviour
             DashTimer = Time.time;
             canDash = false;
         }
+        else
+        {
+            Clicks = 0;
+        }
+           
         
     }
 
@@ -187,7 +187,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         animator.SetBool("Dash", false);
-        this.gameObject.layer = LayerMask.NameToLayer("Default");
+        this.gameObject.layer = LayerMask.NameToLayer("Player");
         // isDashed = false;
     }
     public void setAnimationDashOrWalk(string TypeMov)
@@ -243,24 +243,33 @@ public class AnimatorPlayerScript : MonoBehaviour
    
     public bool canPass()
     {
-        int i = 3;
+    Collider2D collider;
+        int i = 0;
         bool check = false;
         Vector2[] positionsToCheck = new Vector2[4];
-        while (i >= 0 && check == false)
+        while (i < 3)
         {
-            positionsToCheck[i] = transform.position + direction.normalized * i;
-            if (Physics2D.OverlapBox(positionsToCheck[i], transform.GetComponent<BoxCollider2D>().size / 2, 0, LayerMask.GetMask("Holes")) == null)
+            positionsToCheck[i] = transform.position + direction.normalized * (i+1);
+            collider = Physics2D.OverlapBox(positionsToCheck[i], transform.GetComponent<BoxCollider2D>().size / 2, 0, LayerMask.GetMask("Holes", "Enemy","Walls"));
+
+            if (collider == null)
             {
                 posFinaldash = positionsToCheck[i];
-                check = true;
                 //  this.GetComponent<BoxCollider2D>().enabled = false;
                 this.gameObject.layer = LayerMask.NameToLayer("PassHoles");
-                return true;
+                check = true;
             }
-            i--;
-
+            else
+            {
+                if (collider.gameObject.layer == 9)
+                    i = 3;
+            }
+            i++;
         }
-        return false;
+        if(check==true)
+            return true;
+        else
+            return false;
 
 
 
@@ -270,7 +279,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     }
     public void checkIfcanDash()
     {
-        if (Time.time - WhenDashStatusStarted > 1f)
+        if (Time.time - WhenDashStatusStarted > 0.5f)
             canDash = true;
         
     }

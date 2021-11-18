@@ -40,6 +40,6 @@ public class BarAnimationScript : MonoBehaviour
 
            
         }*/
-        this.GetComponentInChildren<UnityEngine.UI.Text>().text= GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().vida.ToString();
+        this.GetComponentInChildren<UnityEngine.UI.Text>().text= GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().CurrentHealth.ToString();
     }
 }

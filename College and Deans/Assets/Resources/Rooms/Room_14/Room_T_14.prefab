@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 959863702283023476}
   - component: {fileID: 4665433975095110609}
   - component: {fileID: 1058062720792658580}
+  - component: {fileID: 8354366204486797355}
   m_Layer: 0
   m_Name: Solids
   m_TagString: Untagged
@@ -1647,6 +1648,22 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &8354366204486797355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274659832516093384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1177696824953175936
 GameObject:
   m_ObjectHideFlags: 0

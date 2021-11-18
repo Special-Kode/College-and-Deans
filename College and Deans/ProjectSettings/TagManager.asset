@@ -24,13 +24,13 @@ TagManager:
   - 
   - 
   - Minimap
-  - 
+  - Walls
   - Holes
   - PassHoles
   - Enemy
   - Wave
   - Player
-  - 
+  - Bullet
   - 
   - 
   - 
