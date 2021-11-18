@@ -24,7 +24,7 @@ public class Collisions : MonoBehaviour
             {
                 other.gameObject.GetComponent<Enemy>().GetHit(damage);
             }
-           else if(other.gameObject.tag == "Boss")
+            else if(other.gameObject.tag == "Boss")
             {
                 other.gameObject.GetComponent<Enemy>().GetHit(damage);
             }
