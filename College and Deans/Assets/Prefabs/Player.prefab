@@ -89,7 +89,7 @@ MonoBehaviour:
   SimpleWave: {fileID: 584049287400830091, guid: 5ade873f3423474479879d3383396b1d, type: 3}
   Bomb: {fileID: 6048944079043705129, guid: 56d10a0c5fd70024aba9a8f707a83b5c, type: 3}
   Wave360: {fileID: 6593843522054270871, guid: 0c6fb697fab7e0241aa480f3801c4bf5, type: 3}
-  Explosion: {fileID: 0}
+  Explosion: {fileID: 21300000, guid: 1ce220c69ed8e6448984868ecf3efbff, type: 3}
   bulletShooted: 0
   ClickedEnemy: 0
 --- !u!114 &457461885308424961
@@ -213,6 +213,7 @@ MonoBehaviour:
   death: 0
   vida: 0
   canMove: 0
+  TimeLife: 120
   DamageAmount: 3
   Invulnerability: 1
 --- !u!50 &5475639532632729970
