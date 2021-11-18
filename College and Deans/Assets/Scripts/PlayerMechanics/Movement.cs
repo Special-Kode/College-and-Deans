@@ -56,8 +56,7 @@ public class Movement : MonoBehaviour
     public void PlayerMoved()
     {
         target = screenPos;
-        if(agent.enabled==true)
-            agent.SetDestination(screenPos);
+        agent.SetDestination(screenPos);
        
 
     }

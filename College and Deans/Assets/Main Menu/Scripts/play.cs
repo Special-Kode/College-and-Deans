@@ -32,6 +32,7 @@ public class play : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        SceneManager.LoadScene("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
+        FindObjectOfType<GameLoader>().StartGame();
     }
 }
