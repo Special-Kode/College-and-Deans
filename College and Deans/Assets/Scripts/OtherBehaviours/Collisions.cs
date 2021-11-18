@@ -15,7 +15,6 @@ public class Collisions : MonoBehaviour
 
             if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
-            this.GetComponent<Movement>().agent.enabled=true;
 
 
 
