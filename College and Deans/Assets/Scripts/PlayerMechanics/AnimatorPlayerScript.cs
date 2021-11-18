@@ -77,9 +77,11 @@ public class AnimatorPlayerScript : MonoBehaviour
                 }
 
                 // if is not dashing,it means that might player can move
-                else if (Clicks >=2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
+                else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
                 {
                     Attack();
+                    Clicks = 0;
+                    MouseClickedTime = 0;
                 }
 
 
@@ -100,7 +102,7 @@ public class AnimatorPlayerScript : MonoBehaviour
             }
 
             //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
-            if ((Vector2.Distance(posFinaldash, transform.position) < 0.1f || (Time.time - DashTimer) > 0.3f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
+            if ((Vector2.Distance(posFinaldash, transform.position) < 0.1f || (Time.time - DashTimer) > 0.5f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
                 EndDash();
 
             if (canDash == false)
@@ -161,7 +163,10 @@ public class AnimatorPlayerScript : MonoBehaviour
             canDash = false;
         }
         else
-            posFinaldash = transform.position;
+        {
+            Clicks = 0;
+        }
+           
         
     }
 
@@ -242,7 +247,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         int i = 0;
         bool check = false;
         Vector2[] positionsToCheck = new Vector2[4];
-        while (i < 4)
+        while (i < 3)
         {
             positionsToCheck[i] = transform.position + direction.normalized * (i+1);
             collider = Physics2D.OverlapBox(positionsToCheck[i], transform.GetComponent<BoxCollider2D>().size / 2, 0, LayerMask.GetMask("Holes", "Enemy","Walls"));
