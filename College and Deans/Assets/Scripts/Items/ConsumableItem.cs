@@ -31,6 +31,7 @@ public class ConsumableItem : MonoBehaviour
     void LoadEnhancer()
     {
         int rand = UnityEngine.Random.Range(0, 5);
+        //rand = 1;
         switch (rand) {
             case 0:
                 enhancer = Resources.Load<Enhancer>("ScriptableObjects/Pressonesso");
@@ -53,6 +54,23 @@ public class ConsumableItem : MonoBehaviour
     void CheckEffect()
     {
         Debug.Log("Item " + enhancer.name + " buffing " + enhancer.affected.ToString() + " by " + enhancer.amount);
+
+        switch (enhancer.affected)
+        {
+            case Enhancer.AffectedStat.Speed:
+                //Edit player speed
+                break;
+            case Enhancer.AffectedStat.Damage:
+                //Edit player damage
+                break;
+            case Enhancer.AffectedStat.TimeScale:
+                //Edit player timescale
+                FindObjectOfType<ExternMechanicsPlayer>().ScaleTime(enhancer.amount);
+                break;
+            case Enhancer.AffectedStat.Berserk:
+                //Edit player speed
+                break;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
