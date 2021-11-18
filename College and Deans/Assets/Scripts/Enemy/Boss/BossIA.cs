@@ -22,6 +22,9 @@ public class BossIA : MonoBehaviour
     [SerializeField] private float speedBullet;
     [SerializeField] private float attackCD;
     [SerializeField] public bool isJumping { get;  private set; }
+    public bool hasJumped = false;
+    private bool hasLanded = false;
+    private Vector2 landingPosition;
     private float timeBeforeAttack;
     private int counter = 0;
     [SerializeField] private float speed;
@@ -61,6 +64,8 @@ public class BossIA : MonoBehaviour
                             timeBeforeAttack = fireRate;
                             break;
                         case 1:
+                            isJumping = false;
+                            nextAttack = attackCD;
                             state = State.Jumping;
                             break;
                     }
@@ -100,21 +105,42 @@ public class BossIA : MonoBehaviour
                 }
                 break;
             case State.Jumping:
-                StartCoroutine(Jump());
+               if(!isJumping)
+                {
+                    isJumping = true;
+                    StartCoroutine(Jump());
+                }else if(isJumping && !hasJumped && !hasLanded)
+                {
+                    Vector2 firstTarget = (Vector2)this.transform.position + Vector2.up;
+                    transform.position = Vector2.MoveTowards(this.transform.position, firstTarget, speed * Time.deltaTime);
+                }else if(isJumping && hasJumped && !hasLanded)
+                {
+                     transform.position = Vector2.MoveTowards(this.transform.position, landingPosition, speed * 2 * Time.deltaTime);  
+                    if(Vector2.Distance(this.transform.position, landingPosition) < 0.1f)
+                    {
+                        this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                        hasLanded = true;
+                    }
+                }else if(hasLanded)
+                {
+                    state = State.Chasing;
+                    isJumping = false;
+                    hasJumped = false;
+                    hasLanded = false;
+                }
                 break;
+
         }
     }
 
-    IEnumerator Jump()
+    /*IEnumerator Jump()
     {
         isJumping = true;
         bool hasJumped = false;
-        float debug = 0;
         Vector2 firstTarget = (Vector2)this.transform.position + Vector2.up;
-        while (!hasJumped && debug < 3)
+        while (!hasJumped)
         {
-            debug += 1f;
-            Vector2.MoveTowards(this.transform.position, firstTarget, speed * Time.deltaTime);
+            this.transform.position =  Vector2.MoveTowards(this.transform.position, firstTarget, speed * Time.deltaTime);
             if (Vector2.Distance(this.transform.position, firstTarget) < 0.1f)
             {
                 hasJumped = true;
@@ -124,11 +150,46 @@ public class BossIA : MonoBehaviour
         yield return new WaitForSeconds(1);
         while (isJumping)
         {
-            Vector2.MoveTowards(this.transform.position, secondTarget, speed * Time.deltaTime);
+            this.transform.position = Vector2.MoveTowards(this.transform.position, secondTarget, speed * Time.deltaTime);
             if (Vector2.Distance(this.transform.position, secondTarget) < 0.1f)
             {
                 isJumping = false;
             }
         }
+    }*/
+
+    /*
+    if(!isJumping)
+                {
+                    isJumping = true;
+                    StartCoroutine(Jump());
+                }else if(isJumping && !hasJumped && !hasLanded)
+                {
+                    Vector2 firstTarget = (Vector2)this.transform.position + Vector2.up;
+                    Debug.Log(firstTarget);
+                    transform.position = Vector2.MoveTowards(this.transform.position, firstTarget, speed * Time.deltaTime);
+                    Debug.Log("No me estoy moviendo");
+                }else if(isJumping && hasJumped && !hasLanded)
+                {
+                    Vector2.MoveTowards(this.transform.position, landingPosition, speed * Time.deltaTime);  
+                    if(Vector2.Distance(this.transform.position, landingPosition) < 0.1f)
+                    {
+                        hasLanded = true;
+                    }
+                }else if(hasLanded)
+                {
+                    state = State.Chasing;
+                    isJumping = false;
+                    hasJumped = false;
+                    hasLanded = false;
+                }
+                break;*/
+
+    IEnumerator Jump()
+    {
+        this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        yield return new WaitForSeconds(1f);
+        landingPosition = target.position;
+        hasJumped = true;
     }
 }
