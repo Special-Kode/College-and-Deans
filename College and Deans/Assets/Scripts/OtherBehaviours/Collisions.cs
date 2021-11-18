@@ -6,7 +6,7 @@ public class Collisions : MonoBehaviour
 {
 
     public bool collideHole = false;
-
+    public int damage { get; set; }
 
    void OnCollisionStay2D(Collision2D other)
     {
@@ -15,7 +15,6 @@ public class Collisions : MonoBehaviour
 
             if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
-            this.GetComponent<Animator>().SetBool("Dash", false);
             this.GetComponent<Movement>().agent.enabled=true;
             
         }
@@ -28,22 +27,22 @@ public class Collisions : MonoBehaviour
         {
             if (other.gameObject.tag == "Enemy")
             {
-                Destroy(this.gameObject);
                 //Falta añadir el daño del jugador
-                other.gameObject.GetComponent<Enemy>().GetHit(3);
+                other.gameObject.GetComponent<Enemy>().GetHit(damage);
             }
            else if(other.gameObject.tag == "Boss")
             {
                 Destroy(other.gameObject);
                 if (FindObjectOfType<LevelLoader>() != null)
-                    FindObjectOfType<LevelLoader>().LoadNextLevel();
+                    FindObjectOfType<LevelLoader>().LoadNextStage();
                 else
                     SceneManager.LoadScene("MainMenu");
             }
-            else if(other.gameObject.tag == "Wall")
-            {
+
+            if (this.tag == "Bullet")
                 Destroy(this.gameObject);
-            }
+            if (this.tag == "Bomb")
+                GameObject.FindGameObjectWithTag("Player").GetComponent<AttackBehaviour>().Explode(this.gameObject);
         }
 
         if(this.tag == "EnemyBullet")

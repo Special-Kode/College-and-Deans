@@ -14,17 +14,18 @@ public class LevelLoader : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            LoadNextLevel();
+            LoadNextStage();
         }
 #endif
     }
 
-    public void LoadNextLevel()
+    public void LoadNextStage()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+        StartCoroutine(LoadStage("Interlude"));
     }
 
-    IEnumerator LoadLevel(int levelIndex)
+
+    IEnumerator LoadStage(string levelName)
     {
         //Play animation
         transition.SetTrigger("Start");
@@ -33,6 +34,7 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
 
         //Load scene
-        SceneManager.LoadScene(levelIndex);
+        FindObjectOfType<GameManager>().NextLevelOrStage();
+        SceneManager.LoadScene(levelName);
     }
 }

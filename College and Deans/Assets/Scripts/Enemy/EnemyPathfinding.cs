@@ -25,7 +25,7 @@ public class EnemyPathfinding : MonoBehaviour
     private void Start() 
     {
         //pathfinding = new Pathfinding(20, 12, 1f, new Vector3(-10f, -6f, 0));
-        pathfinding = gameManager.GetPathfinding();
+        //pathfinding = gameManager.GetPathfinding();
     }
 
     private void FixedUpdate() 
@@ -72,7 +72,12 @@ public class EnemyPathfinding : MonoBehaviour
         {
             vectorPath.RemoveAt(0);
         }
-    } 
+    }
+
+    public void SetPathfinding(Pathfinding _pathfinding)
+    {
+        this.pathfinding = _pathfinding;
+    }
 
     public void StopMoving()
     {
