@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 5475639532632729970}
   - component: {fileID: 5475639532632729972}
   - component: {fileID: 234882419581565699}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -88,6 +88,8 @@ MonoBehaviour:
   bullet: {fileID: 1621872926787617426, guid: 76de8d97c5ede824a8c879d19e8b37b6, type: 3}
   SimpleWave: {fileID: 584049287400830091, guid: 5ade873f3423474479879d3383396b1d, type: 3}
   Bomb: {fileID: 6048944079043705129, guid: 56d10a0c5fd70024aba9a8f707a83b5c, type: 3}
+  Wave360: {fileID: 6593843522054270871, guid: 0c6fb697fab7e0241aa480f3801c4bf5, type: 3}
+  Explosion: {fileID: 21300000, guid: 1ce220c69ed8e6448984868ecf3efbff, type: 3}
   bulletShooted: 0
   ClickedEnemy: 0
 --- !u!114 &457461885308424961
@@ -123,6 +125,7 @@ MonoBehaviour:
   PosInitDash: {x: 0, y: 0, z: 0}
   posFinaldash: {x: 0, y: 0, z: 0}
   Weapon: 1
+  Weapons: {fileID: 0}
   NumModifier: 0
 --- !u!114 &5475639532632729974
 MonoBehaviour:
@@ -182,7 +185,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 4289750085505012322, guid: 157ec4931e2134b42bbf12c67f31dc28, type: 3}
   m_Color: {r: 0.7843138, g: 0.7843138, b: 0.7843138, a: 1}
   m_FlipX: 0
@@ -210,6 +213,7 @@ MonoBehaviour:
   death: 0
   vida: 0
   canMove: 0
+  TimeLife: 120
   DamageAmount: 3
   Invulnerability: 1
 --- !u!50 &5475639532632729970
@@ -224,7 +228,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.43179202
+  m_Mass: 0.3349746
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -246,18 +250,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01614526, y: -0.6040774}
+  m_Offset: {x: -0.01614523, y: -0.11090465}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 3.2}
+    pivot: {x: 0.5, y: 0.33}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 3.2, y: 3.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2776375, y: 1.3518451}
+  m_Size: {x: 1.2776375, y: 1.0487312}
   m_EdgeRadius: 0
 --- !u!195 &234882419581565699
 NavMeshAgent:
@@ -268,7 +272,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5475639532632729962}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.3
+  m_Radius: 0.63
   m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50

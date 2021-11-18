@@ -25,6 +25,8 @@ public class DungeonGeneratorManager : MonoBehaviour
     [SerializeField] private bool lootSpawned;
     [SerializeField] private bool cafeSpawned;
 
+    [SerializeField] private GameManager gameManager;
+
     [Header("Private Serialized Stuff")]
     [SerializeField] private Vector2 currentPos = Vector2.zero;
 
@@ -52,6 +54,7 @@ public class DungeonGeneratorManager : MonoBehaviour
     {
         lootSpawned = false;
         cafeSpawned = false;
+        gameManager = FindObjectOfType<GameManager>();
 
         positions = new List<Vector2>();
         roomInfoList = new List<RoomInfo>();
@@ -97,7 +100,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 }
                 else if (i == num - 1)
                 {
-                    roomInfo.roomType = RoomInfo.RoomType.Boss;
+                    SetLastRoom(roomInfo);
                 }
                 else
                     SetRandomRoom(roomInfo);
@@ -130,7 +133,7 @@ public class DungeonGeneratorManager : MonoBehaviour
     // Randomly sets the type of the room, excluding spawn and boss room type
     void SetRandomRoom(RoomInfo roomInfo)
     {
-        int rand = UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(RoomInfo.RoomType)).Length - 2);
+        int rand = UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(RoomInfo.RoomType)).Length - 3);
         switch (rand)
         {
             case 0:
@@ -144,6 +147,19 @@ public class DungeonGeneratorManager : MonoBehaviour
                 roomInfo.roomType = lootSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Loot;
                 lootSpawned = true;
                 break;
+        }
+    }
+
+    void SetLastRoom(RoomInfo roomInfo)
+    {
+        if(gameManager.StageNum != gameManager.MaxLevelStages)
+        {
+            //TODO change functionality when possible
+            roomInfo.roomType = RoomInfo.RoomType.Boss;
+        }
+        else
+        {
+            roomInfo.roomType = RoomInfo.RoomType.Boss;
         }
     }
 
@@ -181,21 +197,33 @@ public class DungeonGeneratorManager : MonoBehaviour
             GameObject roomInstance = (resource as RoomBehaviour).gameObject;
             GameObject room = Instantiate(roomInstance, roomInfo.position, Quaternion.identity);
 
+            var minimapResource = Resources.Load<MinimapRoomBehaviour>("Minimap/Minimap_" + toConcat);
+            Vector3 minimapPos = roomInfo.position;
+            minimapPos.z = 1;
+            GameObject minimapInstance = (minimapResource as MinimapRoomBehaviour).gameObject;
+            GameObject minimapRoom = Instantiate(minimapInstance, minimapPos, Quaternion.identity);
+            minimapRoom.GetComponent<MinimapRoomBehaviour>().roomInfo = roomInfo;
+
             roomList.Add(room);
 
             if (room.GetComponent<RoomBehaviour>() != null)
             {
                 room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
                 room.GetComponent<RoomBehaviour>().SetNavMesh();
+                room.gameObject.transform.Find("Grid").gameObject.transform.Find("Solids").gameObject.layer = 9;
+                if (room.gameObject.transform.Find("Grid").gameObject.transform.Find("Holes")!=null)
+                    room.gameObject.transform.Find("Grid").gameObject.transform.Find("Holes").gameObject.layer = 10;
+                minimapRoom.GetComponent<MinimapRoomBehaviour>().room = room.GetComponent<RoomBehaviour>();
             }
         }
 
         foreach (var room in roomList)
         {
-            room.GetComponent<RoomBehaviour>().SetAdjacentRooms(roomList, positions, MoveAmount);
+            room.GetComponent<RoomBehaviour>().SetAdjacentRooms(roomList, MoveAmount);
         }
 
         // Sets the spawn room for the current room
         Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = roomList[0];
+        roomList[0].GetComponent<RoomBehaviour>().hasBeenVisited = true;
     }
 }

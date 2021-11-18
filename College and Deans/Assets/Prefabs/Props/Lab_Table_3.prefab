@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5351947947071340676}
   - component: {fileID: 8737353286125200601}
   - component: {fileID: 1528960111077212828}
+  - component: {fileID: 680702905670492457}
   m_Layer: 0
   m_Name: Lab_Table_3
   m_TagString: Untagged
@@ -90,7 +91,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5272636069566457538}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -109,3 +110,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8802094, y: 0.8077047}
   m_EdgeRadius: 0
+--- !u!208 &680702905670492457
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5272636069566457538}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5, y: 0.5, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0.22, z: 0}
+  m_TimeToStationary: 0.5

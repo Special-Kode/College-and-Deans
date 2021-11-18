@@ -83,7 +83,7 @@ public class EnemyGenerator : MonoBehaviour
     
     //Metodo para generar los enemigos de cada sala:
     //Recibe la dificultad de la sala y una lista con los lugares donde pueden hacer spawn los enemigos
-    public void SpawnEnemies(string tipoSala, List<Transform> spawns)
+    public void SpawnEnemies(string tipoSala, List<Transform> spawns, Pathfinding pathfinding, RoomBehaviour room)
     {
         if (spawns.Count == 0) return;
 
@@ -101,7 +101,12 @@ public class EnemyGenerator : MonoBehaviour
                 {
                     Enemy temp = setRandom[0];
                     Transform spawnPosition = spawns[Random.Range(0, spawns.Count)];
-                    Instantiate(temp, spawnPosition.position, Quaternion.identity);
+
+                    var enemy = Instantiate(temp, spawnPosition.position, Quaternion.identity);
+                    enemy.EnemyPathfinding.SetPathfinding(pathfinding);
+                    enemy.Room = room;
+                    room.EnemyAmount += 1;
+
                     spawns.Remove(spawnPosition);
                     setRandom.Remove(temp);
                 } while (setRandom.Count != 0);
@@ -112,7 +117,8 @@ public class EnemyGenerator : MonoBehaviour
             case "dificil":
                 break;
             case "boss":
-                Instantiate(boss0, spawns[0].position, Quaternion.identity);
+                var boss = Instantiate(boss0, spawns[0].position, Quaternion.identity);
+                boss.EnemyPathfinding.SetPathfinding(pathfinding);
                 break;
         }
     }
