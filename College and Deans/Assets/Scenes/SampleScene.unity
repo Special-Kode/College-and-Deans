@@ -2392,6 +2392,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729962, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729968, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: vida
       value: 100
@@ -2399,10 +2403,6 @@ PrefabInstance:
     - target: {fileID: 5475639532632729968, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: TimeLife
       value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 5475639532632729962, guid: 52e304c89ca94f545a5056213089021d, type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729969, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_SpriteSortPoint
@@ -2423,6 +2423,10 @@ PrefabInstance:
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Size.y
       value: 0.7983677
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Offset.x
