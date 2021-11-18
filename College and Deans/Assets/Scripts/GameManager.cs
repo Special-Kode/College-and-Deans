@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public int LevelNum = 1;
     public int StageNum = 1;
 
+    [SerializeField] private int maxGameLevels = 3;
+    [SerializeField] private int maxLevelStages = 5;
     public int MaxLevelStages 
     { 
         get { return maxLevelStages; } 
@@ -22,8 +24,6 @@ public class GameManager : MonoBehaviour
         private set { maxGameLevels = value; }
     }
 
-    [SerializeField] private int maxGameLevels = 3;
-    [SerializeField] private int maxLevelStages = 5;
 
     private void Awake() 
     {

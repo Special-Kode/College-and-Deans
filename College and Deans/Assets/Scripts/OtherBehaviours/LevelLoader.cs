@@ -21,10 +21,11 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextStage()
     {
-        StartCoroutine(LoadStage(SceneManager.GetActiveScene().buildIndex));
+        StartCoroutine(LoadStage("Interlude"));
     }
 
-    IEnumerator LoadStage(int levelIndex)
+
+    IEnumerator LoadStage(string levelName)
     {
         //Play animation
         transition.SetTrigger("Start");
@@ -34,6 +35,6 @@ public class LevelLoader : MonoBehaviour
 
         //Load scene
         FindObjectOfType<GameManager>().NextLevelOrStage();
-        SceneManager.LoadScene(levelIndex);
+        SceneManager.LoadScene(levelName);
     }
 }
