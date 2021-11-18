@@ -31,7 +31,7 @@ public class ConsumableItem : MonoBehaviour
     void LoadEnhancer()
     {
         int rand = UnityEngine.Random.Range(0, 5);
-        //rand = 1;
+        rand = 0;
         switch (rand) {
             case 0:
                 enhancer = Resources.Load<Enhancer>("ScriptableObjects/Pressonesso");
@@ -59,16 +59,20 @@ public class ConsumableItem : MonoBehaviour
         {
             case Enhancer.AffectedStat.Speed:
                 //Edit player speed
+                FindObjectOfType<Movement>().SetSpeedMultiplier(enhancer.amount);
                 break;
             case Enhancer.AffectedStat.Damage:
                 //Edit player damage
+                FindObjectOfType<AttackBehaviour>().getWeapon().SetDamageMultiplier((int)enhancer.amount);
                 break;
             case Enhancer.AffectedStat.TimeScale:
                 //Edit player timescale
                 FindObjectOfType<ExternMechanicsPlayer>().ScaleTime(enhancer.amount);
                 break;
             case Enhancer.AffectedStat.Berserk:
-                //Edit player speed
+                //Edit player berserk
+                FindObjectOfType<ExternMechanicsPlayer>().ScaleDamage((int)enhancer.amount);
+                FindObjectOfType<AttackBehaviour>().getWeapon().SetDamageMultiplier((int)enhancer.amount);
                 break;
         }
     }
