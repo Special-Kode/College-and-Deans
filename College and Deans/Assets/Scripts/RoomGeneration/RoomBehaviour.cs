@@ -111,7 +111,11 @@ public class RoomBehaviour : MonoBehaviour
             hasSpawned = true;
         }
 
-        
+        if (roomInfo.roomType == RoomInfo.RoomType.Loot)
+        {
+            var enhancerLoot = Resources.Load("ConsumableItems/Enhancer");
+            Instantiate(enhancerLoot, SpawnPoints[0].position, Quaternion.identity);
+        }
     }
 
     public void SetNavMesh()

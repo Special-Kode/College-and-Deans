@@ -13,6 +13,8 @@ public class ConsumableItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LoadEnhancer();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = enhancer.sprite;
 
@@ -24,6 +26,28 @@ public class ConsumableItem : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void LoadEnhancer()
+    {
+        int rand = UnityEngine.Random.Range(0, 5);
+        switch (rand) {
+            case 0:
+                enhancer = Resources.Load<Enhancer>("ScriptableObjects/Pressonesso");
+                break;
+            case 1:
+                enhancer = Resources.Load<Enhancer>("ScriptableObjects/GoodPlanning");
+                break;
+            case 2:
+                enhancer = Resources.Load<Enhancer>("ScriptableObjects/BadPlanning");
+                break;
+            case 3:
+                enhancer = Resources.Load<Enhancer>("ScriptableObjects/Ualium");
+                break;
+            case 4:
+                enhancer = Resources.Load<Enhancer>("ScriptableObjects/StayUpLate");
+                break;
+        }
     }
 
     void CheckEffect()
