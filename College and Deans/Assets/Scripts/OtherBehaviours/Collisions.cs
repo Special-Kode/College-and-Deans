@@ -6,7 +6,7 @@ public class Collisions : MonoBehaviour
 {
 
     public bool collideHole = false;
-    public int damage = 1;
+    public int damage { get; set; }
 
     void OnCollisionStay2D(Collision2D other)
     {

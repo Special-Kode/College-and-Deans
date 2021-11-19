@@ -32,11 +32,15 @@ public class Enemy : MonoBehaviour
 
     public void GetHit(int damage)
     {
+        /**
+
+        //TODO: Check minimum damage to enemies when collision management is fixed
         if (damage == 0)
         {
             Debug.LogError("Damage should not be 0");
             damage = 1;
         }
+        //*/
 
         health -= damage;
         if(health <= 0)
