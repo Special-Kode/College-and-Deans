@@ -16,7 +16,9 @@ public class ExternMechanicsPlayer : MonoBehaviour
     public int TimeLife= 120;
     [SerializeField] private int DamageAmount = 3; //TODO change this for attack damage
 
-    public float timeScaler;
+    public float TimeScaler;
+    public int DamageScaler;
+    public GameObject ResultsMenuUI;
 
     [Header("Invulnerability Logic")]
     public bool damage;
@@ -27,11 +29,15 @@ public class ExternMechanicsPlayer : MonoBehaviour
     void Start()
     {
         damage = false;
-        m_CurrentHealth = TimeLife + 0.99f;
+        m_CurrentHealth = TimeLife;
         NoDamageTimer = 0;
         canBeDamage = true;
 
-        timeScaler = 1;
+        TimeScaler = 1;
+        DamageScaler = 1;
+
+        ResultsMenuUI = GameObject.Find("Results");
+        ResultsMenuUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,7 +50,7 @@ public class ExternMechanicsPlayer : MonoBehaviour
             AddNoDamageTime();
         }
 
-        m_CurrentHealth -= (Time.deltaTime * timeScaler);
+        m_CurrentHealth -= (Time.deltaTime * TimeScaler);
         calculateHealth();
     }
     //se asigna la vida según la escala.x de la barra de vida,
@@ -54,7 +60,7 @@ public class ExternMechanicsPlayer : MonoBehaviour
         if (m_CurrentHealth <= 0)
         {
             death = true;
-            SceneManager.LoadScene("MainMenu");
+            ResultsMenuUI.SetActive(true);
         }
 
     }
@@ -77,6 +83,12 @@ public class ExternMechanicsPlayer : MonoBehaviour
 
     public void ScaleTime(float _scaleTime)
     {
-        timeScaler = _scaleTime;
+        TimeScaler = _scaleTime;
+    }
+
+    //TODO receive float param
+    public void ScaleDamage(int _scaleDamage)
+    {
+        DamageScaler = _scaleDamage;
     }
 }

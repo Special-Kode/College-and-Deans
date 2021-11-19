@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D EnemyRigidbody2D  {get; private set;}
     public Animator EnemyAnimator {get; private set;}
     public BossIA BossIA { get; private set; }
+    public RoomBehaviour Room;
 
     [SerializeField] private int health;
 
@@ -30,20 +32,34 @@ public class Enemy : MonoBehaviour
 
     public void GetHit(int damage)
     {
+        /**
+
+        //TODO: Check minimum damage to enemies when collision management is fixed
+        if (damage == 0)
+        {
+            Debug.LogError("Damage should not be 0");
+            damage = 1;
+        }
+        //*/
+
         health -= damage;
         if(health <= 0)
         {
             if (this.tag == "Enemy")
             {
+                Room.EnemyAmount -= 1;
                 Destroy(this.gameObject);
             }
             else if (this.tag == "Boss")
             {
+                Destroy(this.gameObject);
                 if (FindObjectOfType<LevelLoader>() != null)
-                    FindObjectOfType<LevelLoader>().LoadNextLevel();
+                    FindObjectOfType<LevelLoader>().LoadNextStage();
                 else
-                    Destroy(this.gameObject);
+                {
+                    FindObjectOfType<GameManager>().ResetGame();
                     SceneManager.LoadScene("MainMenu");
+                }
             }
         }
     }

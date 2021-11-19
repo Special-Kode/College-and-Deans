@@ -1,5 +1,6 @@
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -80,20 +81,9 @@ public class GameManager : MonoBehaviour
             StageNum = 1;
             LevelNum += 1;
         }
-
-        if (spawnBoss)
-        {
-            //Generar grid
-            Vector2 originPosition = room.roomInfo.position + new Vector2(-11f, -7f);
-            pathfinding = new Pathfinding(22, 14, 1f, originPosition);
-            //Generar enemigos
-            List<Transform> spawnPoints = new List<Transform>(room.SpawnPoints);
-            enemyGenerator.SpawnEnemies("boss", spawnPoints);
-            spawnPoints.Clear();
-        }
     }
 
-    void ResetGame()
+    public void ResetGame()
     {
         LevelNum = 1;
         StageNum = 1;
@@ -102,5 +92,10 @@ public class GameManager : MonoBehaviour
     public Pathfinding GetPathfinding()
     {
         return pathfinding;
+    }
+
+    public bool CheckVictoryCondition()
+    {
+        return StageNum == maxLevelStages && LevelNum == maxGameLevels;
     }
 }

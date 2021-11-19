@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPathfinding : MonoBehaviour
 {
-    private Enemy enemy;
+    [SerializeField]private Enemy enemy;
     [SerializeField]private Transform target;
 
     public float speed = .02f;
@@ -19,12 +19,6 @@ public class EnemyPathfinding : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
         gameManager = FindObjectOfType<GameManager>();
-    }
-
-
-    private void Start() 
-    {
-        pathfinding = gameManager.GetPathfinding();
     }
 
     private void FixedUpdate() 
@@ -82,5 +76,10 @@ public class EnemyPathfinding : MonoBehaviour
     public Vector2 GetDirectionMov()
     {
         return direction;
+    }
+
+    public void SetPathfinding(Pathfinding _pathfinding)
+    {
+    this.pathfinding = _pathfinding;
     }
 }
