@@ -2413,6 +2413,10 @@ PrefabInstance:
       value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729969, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729969, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_SpriteSortPoint
       value: 0
       objectReference: {fileID: 0}
@@ -2422,7 +2426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729971, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: NumModifier
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Size.x
