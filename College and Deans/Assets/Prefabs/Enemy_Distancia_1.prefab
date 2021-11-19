@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Room: {fileID: 0}
-  health: 6
+  health: 1
 --- !u!114 &5193664818921105927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08e904b3914cc549836d0001a12f6b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   fireRate: 1
   attackRange: 5
   bullet: {fileID: 1621872926787617426, guid: 8079778cf3af0364e933fe78e1643582, type: 3}
@@ -153,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2279bef74ac124d80f88b191770ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
   target: {fileID: 0}
   speed: 400
   reachedEndOfPath: 0
