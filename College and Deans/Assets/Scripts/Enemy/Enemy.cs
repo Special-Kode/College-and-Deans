@@ -56,7 +56,10 @@ public class Enemy : MonoBehaviour
                 if (FindObjectOfType<LevelLoader>() != null)
                     FindObjectOfType<LevelLoader>().LoadNextStage();
                 else
+                {
+                    FindObjectOfType<GameManager>().ResetGame();
                     SceneManager.LoadScene("MainMenu");
+                }
             }
         }
     }

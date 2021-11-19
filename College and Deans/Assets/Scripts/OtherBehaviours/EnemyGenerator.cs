@@ -119,6 +119,8 @@ public class EnemyGenerator : MonoBehaviour
             case "boss":
                 var boss = Instantiate(boss0, spawns[0].position, Quaternion.identity);
                 boss.EnemyPathfinding.SetPathfinding(pathfinding);
+                boss.Room = room;
+                room.EnemyAmount += 1;
                 break;
         }
     }
