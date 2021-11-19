@@ -96,6 +96,9 @@ public class RoomBehaviour : MonoBehaviour
             pathfinding = new Pathfinding(22, 14, 1f, originPosition);
 
             List<Transform> spawnPoints = new List<Transform>(SpawnPoints);
+            
+            enemyGenerator.SpawnEnemies("boss", spawnPoints, pathfinding, this);
+            
             switch (roomInfo.roomType)
             {
                 case RoomInfo.RoomType.Enemies: //Genera enemigos

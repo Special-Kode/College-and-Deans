@@ -2750,6 +2750,7 @@ MonoBehaviour:
   enemy0: {fileID: 3521052303256644236, guid: 6edd911d92327364c8ba23866358ac90, type: 3}
   enemy1: {fileID: 1323550949206082606, guid: 98558a192835b4d42ac092145f3b843a, type: 3}
   boss0: {fileID: 3521052303256644236, guid: f15b376bb3e17a54bb981cda5209d2cb, type: 3}
+  boss1: {fileID: 3521052303256644236, guid: 485f962f6f4125642b7af301fcc19ed5, type: 3}
   spawns: []
 --- !u!4 &1687997602
 Transform:
