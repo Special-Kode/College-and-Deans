@@ -17,6 +17,10 @@ public class Boss_2_Animation : MonoBehaviour
         enemy.EnemyAnimator.SetFloat("Vertical", enemy.EnemyPathfinding.GetDirectionMov().y);
         enemy.EnemyAnimator.SetFloat("Speed", enemy.EnemyPathfinding.GetDirectionMov().sqrMagnitude);
         enemy.EnemyAnimator.SetBool("Embestida", enemy.Boss_2_IA.embistiendo);
-        enemy.EnemyAnimator.SetBool("Bofetada", enemy.Boss_2_IA.bofetada);
+    }
+
+    public void Bofetada()
+    {
+        enemy.EnemyAnimator.SetTrigger("Bofetada");
     }
 }

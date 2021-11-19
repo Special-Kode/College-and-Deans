@@ -15,9 +15,8 @@ public class Boss_2_IA : MonoBehaviour
     private EnemyPathfinding pathfinding;
     private Vector3 startPosition;
     private Transform target;
-    [SerializeField] private float fireRate;
-    [SerializeField] private float nextAttack; 
-    [SerializeField] private float nextEmbestida;
+    private float nextAttack; 
+    private float nextEmbestida;
     [SerializeField] private float attackRange;
     [SerializeField] private float attackCD;
     [SerializeField] private float embestidaRange;
@@ -26,13 +25,13 @@ public class Boss_2_IA : MonoBehaviour
     public bool bofetada { get;  private set; }
     public bool locked = false;
     private Vector2 landingPosition;
-    private float timeBeforeAttack;
     [SerializeField] private float speed;
     private State state;
-
+    private Enemy enemy;
     private void Awake() 
     {
         pathfinding = GetComponent<EnemyPathfinding>();
+        enemy = GetComponent<Enemy>();
         state = State.Chasing;    
     }
 
@@ -74,11 +73,10 @@ public class Boss_2_IA : MonoBehaviour
             case State.Bofetada:
                 if(locked)
                 {
-                    bofetada = true;
                     transform.position = Vector2.MoveTowards(this.transform.position, landingPosition, (speed / 2) * Time.deltaTime);
                     if(Vector2.Distance(this.transform.position, landingPosition) < 0.1f)
                     {
-                        bofetada = false;
+                        //bofetada = false;
                         locked = false;
                         state = State.Chasing;
                     }
@@ -102,6 +100,7 @@ public class Boss_2_IA : MonoBehaviour
     IEnumerator Attack()
     {
         landingPosition = target.position;
+        enemy.Boss_2_Animation.Bofetada();
         yield return new WaitForSeconds(0.2f);
         locked = true;
     }

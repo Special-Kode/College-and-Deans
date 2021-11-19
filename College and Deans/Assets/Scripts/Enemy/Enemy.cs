@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public Animator EnemyAnimator {get; private set;}
     public BossIA BossIA { get; private set; }
     public Boss_2_IA Boss_2_IA { get; private set; }
+    public Boss_2_Animation Boss_2_Animation { get; private set; }
 
     public RoomBehaviour Room;
 
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour
         EnemyAnimator = GetComponent<Animator>();
         BossIA = GetComponent<BossIA>();
         Boss_2_IA = GetComponent<Boss_2_IA>();
+        Boss_2_Animation = GetComponent<Boss_2_Animation>();
     }
 
     public Vector2 GetPosition()
