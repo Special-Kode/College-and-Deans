@@ -128,7 +128,7 @@ using UnityEngine;
                 Destroy(temp.gameObject);
 
     }
-   public void Explode(GameObject bomb)
+    public void Explode(GameObject bomb)
     {
         bomb.transform.localScale = new Vector3(20f, 20f, 0);
         bomb.GetComponent<SpriteRenderer>().sprite = Explosion;

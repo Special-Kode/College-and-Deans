@@ -22,8 +22,6 @@ public class credits : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         posPen = pencil.transform.position;
         posBut = button.transform.position;
         creditsMenu.SetActive(false);
-
-
     }
 
     public void OnPointerEnter(PointerEventData eventData)

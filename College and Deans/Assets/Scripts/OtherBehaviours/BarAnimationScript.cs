@@ -40,6 +40,8 @@ public class BarAnimationScript : MonoBehaviour
 
            
         }*/
+
+        //TODO edit this when editing UI
         this.GetComponentInChildren<UnityEngine.UI.Text>().text= GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().CurrentHealth.ToString();
     }
 }

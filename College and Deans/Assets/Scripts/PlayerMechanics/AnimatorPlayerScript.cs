@@ -20,7 +20,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     void Start()
     {
         Clicks = 0;
-        ClickDelay = 0.4f;
+        ClickDelay = 0.3f;
         animator = GetComponent<Animator>();
         movement = this.GetComponent<Movement>();
         HowToAttack = this.GetComponent<AttackBehaviour>();
