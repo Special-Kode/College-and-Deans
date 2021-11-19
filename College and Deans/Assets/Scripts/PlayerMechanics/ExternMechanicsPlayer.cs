@@ -4,56 +4,66 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ExternMechanicsPlayer : MonoBehaviour
 {
-    public bool damage;
+    [Header("Death Logic")]
     public bool death;
-    public int vida = 100;
-    public bool canMove;
-    private float NoDamageTimer;
+
+    [Header("Time-Health Logic")]
+    [SerializeField] private float m_CurrentHealth = 100; //m_CurrentHealth
+    public int CurrentHealth { 
+        get { return (int)m_CurrentHealth; } 
+        private set { } 
+    }
     public int TimeLife= 120;
+    [SerializeField] private int DamageAmount = 3; //TODO change this for attack damage
+
+    public float TimeScaler;
+    public int DamageScaler;
+
+    [Header("Invulnerability Logic")]
+    public bool damage;
+    private float NoDamageTimer;
     private bool canBeDamage;
-    [SerializeField] private int DamageAmount = 3;
     [SerializeField] private float Invulnerability = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
-        canMove = true;
         damage = false;
-        vida = TimeLife;
+        m_CurrentHealth = TimeLife;
         NoDamageTimer = 0;
         canBeDamage = true;
+
+        TimeScaler = 1;
+        DamageScaler = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (damage)
         {
-
-            animationDamage();
+            HandleDamage();
             canBeDamage = false;
             AddNoDamageTime();
         }
 
-        vida=TimeLife-(int)Time.timeSinceLevelLoad;
+        m_CurrentHealth -= (Time.deltaTime * TimeScaler);
         calculateHealth();
-
     }
     //se asigna la vida según la escala.x de la barra de vida,
     //con esto,si se hacen cambios de cuánto baja la barra de vida por cada golpe, se actualizará solo
     void calculateHealth()
     {
-        if (vida <= 0)
+        if (m_CurrentHealth <= 0)
         {
             death = true;
             SceneManager.LoadScene("MainMenu");
         }
 
     }
-    void animationDamage()
+    void HandleDamage()
     {
         if(canBeDamage)
-            TimeLife -= DamageAmount;
+            m_CurrentHealth -= DamageAmount;
        
     }
     void AddNoDamageTime()
@@ -65,6 +75,16 @@ public class ExternMechanicsPlayer : MonoBehaviour
             canBeDamage = true;
             NoDamageTimer = 0;
         }
-           
+    }
+
+    public void ScaleTime(float _scaleTime)
+    {
+        TimeScaler = _scaleTime;
+    }
+
+    //TODO receive float param
+    public void ScaleDamage(int _scaleDamage)
+    {
+        DamageScaler = _scaleDamage;
     }
 }

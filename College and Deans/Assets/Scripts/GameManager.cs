@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     DungeonGeneratorManager dungeonGenerator;
     EnemyGenerator enemyGenerator;
     Pathfinding pathfinding;
+    [SerializeField] bool spawnBoss;
 
     public int LevelNum = 1;
     public int StageNum = 1;

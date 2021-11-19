@@ -8,7 +8,7 @@ public class options : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
 
     GameObject pencil, mainMenu, optionsMenu;
-    Button button, goBack;
+    Button button, s, e;
     Vector3 posPen, posBut;
 
 
@@ -19,10 +19,23 @@ public class options : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         mainMenu = GameObject.Find("Menu");
         optionsMenu = GameObject.Find("Options");
         button = this.GetComponent<Button>();
-        goBack = this.GetComponent<Button>();
+        s = GameObject.Find("Spanish").GetComponent<Button>();
+        s.onClick.AddListener(spanish);
+        e = GameObject.Find("English").GetComponent<Button>();
+        e.onClick.AddListener(english);
         posPen = pencil.transform.position;
         posBut = button.transform.position;
         optionsMenu.SetActive(false);
+    }
+
+    private void spanish()
+    {
+        skill.idiom = 's';
+    }
+
+    private void english()
+    {
+        skill.idiom = 'e';
     }
 
     public void OnPointerEnter(PointerEventData eventData)
