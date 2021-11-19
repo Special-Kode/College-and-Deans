@@ -193,6 +193,10 @@ public class DungeonGeneratorManager : MonoBehaviour
             int numRoom = UnityEngine.Random.Range(0, 2);
 
             string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
+
+            if (roomInfo.roomType == RoomInfo.RoomType.Spawn)
+                roomName = "Rooms/Room_Start/Start_" + toConcat;
+
             var resource = Resources.Load<RoomBehaviour>(roomName);
             GameObject roomInstance = (resource as RoomBehaviour).gameObject;
             GameObject room = Instantiate(roomInstance, roomInfo.position, Quaternion.identity);

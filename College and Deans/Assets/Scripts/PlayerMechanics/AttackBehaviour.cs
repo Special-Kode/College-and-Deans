@@ -64,6 +64,7 @@ using UnityEngine;
                 temp = Shoot(position, MousePos,temp,speedBullet,90);
                 FindObjectOfType<SFXManager>().shotSFX();
                 StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos,2,bullet, speedBullet,0));
+
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 2:
@@ -103,15 +104,15 @@ using UnityEngine;
             
         return TypeOfShoot;
     }
-    IEnumerator ExecuteAfterTime(float time,Vector3 position, Vector3 MousePos,int Type,GameObject temp,float speed, float rotation)
+    IEnumerator ExecuteAfterTime(float time,Vector3 position, Vector3 MousePos,float speed, float rotation)
     {
-        if(GameObject.FindGameObjectWithTag(temp.tag) != null)
-        {
-            yield return new WaitForSeconds(time);
-                Shoot(position, MousePos, temp, speed, rotation);
-            FindObjectOfType<SFXManager>().shotSFX();
 
-        }
+        GameObject temp_b = Instantiate(bullet, this.transform.position, Quaternion.identity);
+         yield return new WaitForSeconds(time);
+         Shoot(position, MousePos, temp_b, speed, rotation);
+         FindObjectOfType<SFXManager>().shotSFX();
+         temp_b.GetComponent<Collisions>().damage = weapon.getDamage();
+
 
     }
     IEnumerator WaveCollider(float time,GameObject temp,int count)
