@@ -13,7 +13,7 @@ public class EnemyAI : MonoBehaviour
 
     private EnemyPathfinding pathfinding;
     private Vector3 startPosition;
-    private Transform target;
+    [SerializeField]private Transform target;
     [SerializeField] private float fireRate;
     private float nextAttack;
     [SerializeField] private float attackRange;

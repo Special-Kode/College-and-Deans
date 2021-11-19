@@ -27,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621872926787617426}
-  m_LocalRotation: {x: -0, y: -0, z: 0.99998915, w: -0.004664505}
-  m_LocalPosition: {x: -1.557, y: -0.3557, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9202355, w: 0.39136502}
+  m_LocalPosition: {x: 40.014896, y: 9.795842, z: 0}
   m_LocalScale: {x: -4.194735, y: -7.4667253, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collideHole: 0
+  damage: 1
 --- !u!50 &1621872926787617455
 Rigidbody2D:
   serializedVersion: 4

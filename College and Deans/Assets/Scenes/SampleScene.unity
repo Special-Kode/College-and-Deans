@@ -1111,7 +1111,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 31799
+    m_Bits: 65079
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2386,7 +2386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 234882419581565699, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Radius
-      value: 0.33
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 234882419581565699, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_BaseOffset
@@ -2418,7 +2418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729970, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Mass
-      value: 0.83105433
+      value: 0.45605338
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729971, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: NumModifier
@@ -2426,19 +2426,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Size.x
-      value: 1.0409418
+      value: 0.6971289
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Size.y
-      value: 0.7983677
+      value: 0.65418804
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Offset.x
-      value: -0.008156002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729972, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_Offset.y
-      value: -0.13700983
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729975, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_RootOrder
@@ -2563,6 +2567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40321eb758dc7a4f92e989333390544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnBoss: 0
   LevelNum: 1
   StageNum: 1
   maxGameLevels: 3
