@@ -54,6 +54,7 @@ using UnityEngine;
                 //animatorPlayer.WhereToLook(Input.mousePosition);
                 temp = Instantiate(bullet, this.transform.position, Quaternion.identity);
                 temp = Shoot(position, MousePos,temp,speedBullet,90);
+                FindObjectOfType<SFXManager>().shotSFX();
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 1:
@@ -61,7 +62,9 @@ using UnityEngine;
                 //animatorPlayer.WhereToLook(Input.mousePosition);
                 temp = Instantiate(bullet, this.transform.position, Quaternion.identity);
                 temp = Shoot(position, MousePos,temp,speedBullet,90);
-                StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos, speedBullet,90));
+                FindObjectOfType<SFXManager>().shotSFX();
+                StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos,2,bullet, speedBullet,0));
+
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 2:
@@ -103,10 +106,13 @@ using UnityEngine;
     }
     IEnumerator ExecuteAfterTime(float time,Vector3 position, Vector3 MousePos,float speed, float rotation)
     {
+
         GameObject temp_b = Instantiate(bullet, this.transform.position, Quaternion.identity);
          yield return new WaitForSeconds(time);
          Shoot(position, MousePos, temp_b, speed, rotation);
+         FindObjectOfType<SFXManager>().shotSFX();
          temp_b.GetComponent<Collisions>().damage = weapon.getDamage();
+
 
     }
     IEnumerator WaveCollider(float time,GameObject temp,int count)
@@ -131,6 +137,7 @@ using UnityEngine;
         bomb.transform.localScale = new Vector3(20f, 20f, 0);
         bomb.GetComponent<SpriteRenderer>().sprite = Explosion;
         bomb.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        FindObjectOfType<SFXManager>().explosionSFX();
         StartCoroutine(DestroyAfterTime(0.4f,bomb));
     }
     void CreateWave(Vector3 posToShoot,Vector3 position,GameObject temp)
