@@ -209,12 +209,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ecbb943703bac4fba7752a900612b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   death: 0
-  vida: 0
-  canMove: 0
+  m_CurrentHealth: 100
   TimeLife: 120
   DamageAmount: 3
+  TimeScaler: 0
+  DamageScaler: 0
+  damage: 0
   Invulnerability: 1
 --- !u!50 &5475639532632729970
 Rigidbody2D:
