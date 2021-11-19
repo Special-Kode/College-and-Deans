@@ -66,11 +66,11 @@ public class skill : MonoBehaviour
             case "Borja":
                 if (idiom == 's')
                 {
-                    text.text = "Diseñador de Niveles \n" + "Programador Web ";
+                    text.text = "Diseñador de Juego y Niveles \n" + "Programador Web ";
                 }
                 else
                 {
-                    text.text = "Level Designer \n" + "Web Programmer"; 
+                    text.text = "Game and Level Designer \n" + "Web Programmer"; 
                 }
                 break;
             case "Jonás":
