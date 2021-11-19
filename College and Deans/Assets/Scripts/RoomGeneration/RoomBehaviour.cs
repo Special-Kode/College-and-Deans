@@ -97,8 +97,6 @@ public class RoomBehaviour : MonoBehaviour
 
             List<Transform> spawnPoints = new List<Transform>(SpawnPoints);
             
-            enemyGenerator.SpawnEnemies("boss", spawnPoints, pathfinding, this);
-            
             switch (roomInfo.roomType)
             {
                 case RoomInfo.RoomType.Enemies: //Genera enemigos
