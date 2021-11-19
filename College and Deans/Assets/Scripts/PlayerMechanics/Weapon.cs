@@ -13,6 +13,8 @@ public class Weapon
         this.name = name;
         this.damage = damage;
         this.type = type;
+
+        this.damageMultiplier = 1;
     }
     public string getName()
     {
