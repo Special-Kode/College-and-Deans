@@ -2567,6 +2567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40321eb758dc7a4f92e989333390544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnBoss: 0
   LevelNum: 1
   StageNum: 1
   maxGameLevels: 3
