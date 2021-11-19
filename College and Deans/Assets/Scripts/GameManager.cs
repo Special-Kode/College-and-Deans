@@ -92,4 +92,9 @@ public class GameManager : MonoBehaviour
     {
         return pathfinding;
     }
+
+    public bool CheckVictoryCondition()
+    {
+        return StageNum == maxLevelStages && LevelNum == maxGameLevels;
+    }
 }
