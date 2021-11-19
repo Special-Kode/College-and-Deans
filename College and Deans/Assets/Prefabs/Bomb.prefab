@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collideHole: 0
-  damage: 1
 --- !u!50 &-5843053152748386816
 Rigidbody2D:
   serializedVersion: 4
