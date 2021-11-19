@@ -18,6 +18,7 @@ public class ExternMechanicsPlayer : MonoBehaviour
 
     public float TimeScaler;
     public int DamageScaler;
+    public GameObject ResultsMenuUI;
 
     [Header("Invulnerability Logic")]
     public bool damage;
@@ -34,6 +35,9 @@ public class ExternMechanicsPlayer : MonoBehaviour
 
         TimeScaler = 1;
         DamageScaler = 1;
+
+        ResultsMenuUI = GameObject.Find("Results");
+        ResultsMenuUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -56,7 +60,7 @@ public class ExternMechanicsPlayer : MonoBehaviour
         if (m_CurrentHealth <= 0)
         {
             death = true;
-            SceneManager.LoadScene("MainMenu");
+            ResultsMenuUI.SetActive(true);
         }
 
     }
