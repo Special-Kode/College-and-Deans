@@ -187,7 +187,7 @@ MonoBehaviour:
   speedBullet: 0
   attacking: 0
   locked: 0
-  speed: 0
+  speed: 2.5
   tipo: 1
 --- !u!114 &-5661549952890056418
 MonoBehaviour:
