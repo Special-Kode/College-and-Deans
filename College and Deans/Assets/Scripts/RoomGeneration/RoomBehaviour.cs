@@ -117,6 +117,12 @@ public class RoomBehaviour : MonoBehaviour
             var enhancerLoot = Resources.Load("ConsumableItems/Enhancer");
             Instantiate(enhancerLoot, SpawnPoints[0].position, Quaternion.identity);
         }
+
+        if (roomInfo.roomType == RoomInfo.RoomType.Cafe)
+        {
+            var modifierLoot = Resources.Load("ConsumableItems/Modifier");
+            Instantiate(modifierLoot, SpawnPoints[0].position, Quaternion.identity);
+        }
     }
 
     public void SetNavMesh()
