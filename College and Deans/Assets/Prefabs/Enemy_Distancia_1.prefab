@@ -141,7 +141,11 @@ MonoBehaviour:
   fireRate: 0.5
   attackRange: 5
   bullet: {fileID: 1621872926787617426, guid: 8079778cf3af0364e933fe78e1643582, type: 3}
-  speedBullet: 100000
+  speedBullet: 10
+  attacking: 0
+  locked: 0
+  speed: 0
+  tipo: 2
 --- !u!114 &98658462026765394
 MonoBehaviour:
   m_ObjectHideFlags: 0

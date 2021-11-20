@@ -37,6 +37,8 @@ public class MinimapRoomBehaviour : MonoBehaviour
                         wall.color = Color.yellow;
                         break;
                     case RoomInfo.RoomType.Stairs:
+                        wall.color = Color.magenta;
+                        break;
                     case RoomInfo.RoomType.Boss:
                         wall.color = Color.red;
                         break;
