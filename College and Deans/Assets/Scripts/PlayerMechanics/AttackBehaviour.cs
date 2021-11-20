@@ -63,8 +63,7 @@ public class AttackBehaviour :MonoBehaviour
                 temp = Instantiate(bullet, this.transform.position, Quaternion.identity);
                 temp = Shoot(position, MousePos,temp,speedBullet,90);
                 FindObjectOfType<SFXManager>().shotSFX();
-                StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos,2,0));
-
+                StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos,speedBullet,90));
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 2:
