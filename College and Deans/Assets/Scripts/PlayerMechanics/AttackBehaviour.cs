@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
- public class AttackBehaviour :MonoBehaviour
+public class AttackBehaviour :MonoBehaviour
 {
     //Aqu� est�n los distintos comportamientos de ataque dependiendo de si el arma es una arma blanca o una arma de fuego.
     private Weapon weapon;
@@ -63,7 +63,7 @@ using UnityEngine;
                 temp = Instantiate(bullet, this.transform.position, Quaternion.identity);
                 temp = Shoot(position, MousePos,temp,speedBullet,90);
                 FindObjectOfType<SFXManager>().shotSFX();
-                StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos,2,bullet, speedBullet,0));
+                StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos,2,0));
 
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
@@ -90,8 +90,8 @@ using UnityEngine;
     }
   
 
-     GameObject Shoot(Vector3 playerPos,Vector3 mousePos,GameObject TypeOfShoot,float speed,float rotation)
-     {
+    GameObject Shoot(Vector3 playerPos,Vector3 mousePos,GameObject TypeOfShoot,float speed,float rotation)
+    {
         if (TypeOfShoot != null)
         {
             Vector2 dir = new Vector2(mousePos.x - playerPos.x, mousePos.y - playerPos.y).normalized;
@@ -107,7 +107,7 @@ using UnityEngine;
     IEnumerator ExecuteAfterTime(float time,Vector3 position, Vector3 MousePos,float speed, float rotation)
     {
 
-        GameObject temp_b = Instantiate(bullet, this.transform.position, Quaternion.identity);
+         GameObject temp_b = Instantiate(bullet, this.transform.position, Quaternion.identity);
          yield return new WaitForSeconds(time);
          Shoot(position, MousePos, temp_b, speed, rotation);
          FindObjectOfType<SFXManager>().shotSFX();
@@ -117,19 +117,17 @@ using UnityEngine;
     }
     IEnumerator WaveCollider(float time,GameObject temp,int count)
     {
-
-            if (count < 5)
+        if (count < 5)
+        {
+            if (temp!=null)
             {
-                if (temp!=null)
-                {
-                    temp.transform.localScale += new Vector3(1f, 0, 0);
-                    yield return new WaitForSeconds(time);
-                    StartCoroutine(WaveCollider(time, temp, count + 1));
-                }
-
+                temp.transform.localScale += new Vector3(1f, 0, 0);
+                yield return new WaitForSeconds(time);
+                StartCoroutine(WaveCollider(time, temp, count + 1));
             }
-            else
-                Destroy(temp.gameObject);
+        }
+        else
+            Destroy(temp.gameObject);
 
     }
     public void Explode(GameObject bomb)
