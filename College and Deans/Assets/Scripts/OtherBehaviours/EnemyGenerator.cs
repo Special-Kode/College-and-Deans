@@ -118,7 +118,23 @@ public class EnemyGenerator : MonoBehaviour
             case "dificil":
                 break;
             case "boss":
-                var boss = Instantiate(boss1, spawns[0].position, Quaternion.identity);
+                int level = FindObjectOfType<GameManager>().LevelNum;
+                Enemy bossToInstantiate, boss;
+
+                switch (level)
+                {
+                    case 1:
+                        bossToInstantiate = boss0;
+                        break;
+                    case 2:
+                        bossToInstantiate = boss1;
+                        break;
+                    default:
+                        bossToInstantiate = boss0;
+                        break;
+                }
+
+                boss = Instantiate(bossToInstantiate, spawns[0].position, Quaternion.identity);
                 boss.EnemyPathfinding.SetPathfinding(pathfinding);
                 boss.Room = room;
                 room.EnemyAmount += 1;
