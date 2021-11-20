@@ -97,8 +97,6 @@ public class RoomBehaviour : MonoBehaviour
 
             List<Transform> spawnPoints = new List<Transform>(SpawnPoints);
             
-            enemyGenerator.SpawnEnemies("boss", spawnPoints, pathfinding, this);
-            
             switch (roomInfo.roomType)
             {
                 case RoomInfo.RoomType.Enemies: //Genera enemigos
@@ -118,6 +116,12 @@ public class RoomBehaviour : MonoBehaviour
         {
             var enhancerLoot = Resources.Load("ConsumableItems/Enhancer");
             Instantiate(enhancerLoot, SpawnPoints[0].position, Quaternion.identity);
+        }
+
+        if (roomInfo.roomType == RoomInfo.RoomType.Cafe)
+        {
+            var modifierLoot = Resources.Load("ConsumableItems/Modifier");
+            Instantiate(modifierLoot, SpawnPoints[0].position, Quaternion.identity);
         }
     }
 
