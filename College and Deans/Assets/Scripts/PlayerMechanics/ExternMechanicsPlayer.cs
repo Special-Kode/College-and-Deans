@@ -62,14 +62,15 @@ public class ExternMechanicsPlayer : MonoBehaviour
     //con esto,si se hacen cambios de cuánto baja la barra de vida por cada golpe, se actualizará solo
     void CalculateHealth()
     {
-        TimeBar.SetHealth((int)(m_CurrentHealth + 1));
 
         if (m_CurrentHealth <= 0)
         {
             death = true;
             ResultsMenuUI.SetActive(true);
+            m_CurrentHealth = 0;
         }
 
+        TimeBar.SetHealth((int)(m_CurrentHealth + 1));
     }
     void HandleDamage()
     {
