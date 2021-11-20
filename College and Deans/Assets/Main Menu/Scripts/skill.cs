@@ -7,7 +7,7 @@ public class skill : MonoBehaviour
 {
 
     public Text name, text;
-    public static char idiom;
+    public static string idiom;
 
     // Update is called once per frame
     void Update()
@@ -15,7 +15,7 @@ public class skill : MonoBehaviour
         switch (name.text)
         {
             case "Alejandro":
-                if (idiom == 's')
+                if (idiom == "s")
                 {
                     text.text = "Diseñador de IU \n" + "Compositor \n" + "Community Manager \n";
                 } else
@@ -24,7 +24,7 @@ public class skill : MonoBehaviour
                 }
                 break;
             case "Aless":
-                if (idiom == 's')
+                if (idiom == "s")
                 {
                     text.text = "Programador \n" + "Diseñador de Mecánicas";
                 }
@@ -34,7 +34,7 @@ public class skill : MonoBehaviour
                 }
                 break;
             case "Adrián":
-                if (idiom == 's')
+                if (idiom == "s")
                 {
                     text.text = "Programador Líder\n" + "Diseñador de IU";
                 }
@@ -44,7 +44,7 @@ public class skill : MonoBehaviour
                 }
                 break;
             case "Mario":
-                if (idiom == 's')
+                if (idiom == "s")
                 {
                     text.text = "Diseñador de Niveles \n" + "Artista \n";
                 }
@@ -54,7 +54,7 @@ public class skill : MonoBehaviour
                 }
                 break;
             case "David":
-                if (idiom == 's')
+                if (idiom == "s")
                 {
                     text.text = "Programador \n" + "Diseñador de IA";
                 }
@@ -64,7 +64,7 @@ public class skill : MonoBehaviour
                 }
                 break;
             case "Borja":
-                if (idiom == 's')
+                if (idiom == "s")
                 {
                     text.text = "Diseñador de Juego y Niveles \n" + "Programador Web ";
                 }
@@ -74,7 +74,7 @@ public class skill : MonoBehaviour
                 }
                 break;
             case "Jonás":
-                if (idiom == 's')
+                if (idiom == "s")
                 {
                     text.text = "Artista Líder";
                 }
