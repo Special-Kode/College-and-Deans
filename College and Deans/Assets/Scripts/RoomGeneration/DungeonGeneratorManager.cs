@@ -142,9 +142,11 @@ public class DungeonGeneratorManager : MonoBehaviour
             case 1:
                 roomInfo.roomType = cafeSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Cafe;
                 cafeSpawned = true;
+                lootSpawned = true;
                 break;
             case 2:
                 roomInfo.roomType = lootSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Loot;
+                cafeSpawned = true;
                 lootSpawned = true;
                 break;
         }
@@ -190,7 +192,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             }
 
             //TODO change room probability
-            int numRoom = UnityEngine.Random.Range(0, 2);
+            int numRoom = UnityEngine.Random.Range(0, 7);
 
             string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
 
@@ -198,6 +200,16 @@ public class DungeonGeneratorManager : MonoBehaviour
                 roomName = "Rooms/Room_Start/Start_" + toConcat;
 
             var resource = Resources.Load<RoomBehaviour>(roomName);
+
+            if(resource == null)
+            {
+                numRoom = UnityEngine.Random.Range(0, 4);
+
+                roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
+
+                resource = Resources.Load<RoomBehaviour>(roomName);
+            }
+
             GameObject roomInstance = (resource as RoomBehaviour).gameObject;
             GameObject room = Instantiate(roomInstance, roomInfo.position, Quaternion.identity);
 
