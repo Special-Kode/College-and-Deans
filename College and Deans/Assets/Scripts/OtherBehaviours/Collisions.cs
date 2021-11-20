@@ -29,7 +29,8 @@ public class Collisions : MonoBehaviour
         }
 
         if (this.tag == "Bullet")
-            Destroy(this.gameObject);
+            if(this.gameObject.layer!=13)
+                Destroy(this.gameObject);
         if (this.tag == "Bomb")
         {
             Debug.Log(other.gameObject.tag);
