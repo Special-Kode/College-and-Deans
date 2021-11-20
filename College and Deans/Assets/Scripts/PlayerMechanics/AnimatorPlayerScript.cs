@@ -26,6 +26,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         HowToAttack = this.GetComponent<AttackBehaviour>();
         Weapons = GetComponent<Modifiers>();
         Weapons.Init();
+        HowToAttack.SetWeapon(Weapons.modifiers[0]);
         SecondsToAttack = 0;
         canDash = true;
        
@@ -77,7 +78,7 @@ public class AnimatorPlayerScript : MonoBehaviour
                 }
 
                 // if is not dashing,it means that might player can move
-                else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
+                else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null && GameObject.FindGameObjectWithTag("Bomb") == null)
                 {
                     Attack();
                     Clicks = 0;

@@ -324,8 +324,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  hasBeenVisited: 0
   hasSpawned: 0
   navMeshSurface: {fileID: 0}
+  EnemyAmount: 0
 --- !u!1 &2656830673142731125
 GameObject:
   m_ObjectHideFlags: 0
@@ -5180,7 +5182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3960517617348884123, guid: 928fb79c8a5c8564ba4db671437d448d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.12
+      value: 6.12
       objectReference: {fileID: 0}
     - target: {fileID: 3960517617348884123, guid: 928fb79c8a5c8564ba4db671437d448d, type: 3}
       propertyPath: m_LocalPosition.y

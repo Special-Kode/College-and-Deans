@@ -1,5 +1,6 @@
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void ResetGame()
+    public void ResetGame()
     {
         LevelNum = 1;
         StageNum = 1;
@@ -91,5 +92,10 @@ public class GameManager : MonoBehaviour
     public Pathfinding GetPathfinding()
     {
         return pathfinding;
+    }
+
+    public bool CheckVictoryCondition()
+    {
+        return StageNum == maxLevelStages && LevelNum == maxGameLevels;
     }
 }
