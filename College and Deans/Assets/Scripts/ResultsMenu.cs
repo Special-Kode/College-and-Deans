@@ -21,7 +21,19 @@ public class ResultsMenu : MonoBehaviour
         Time.timeScale = 0f;
         PauseMenu.GameIsPaused = true;
 
-        resultText.text = "Welcome to the McDolan squad";
+        traduce();
         resultDiploma.sprite = winDiploma;
+    }
+
+    void traduce()
+    {
+        if (PlayerPrefs.GetString("language", "e") == "e")
+        {
+            resultText.text = "Bienvenido a la plantilla de McDolan";
+        }
+        else
+        {
+            resultText.text = "Welcome to the McDolan squad";
+        }
     }
 }
