@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public BossIA BossIA { get; private set; }
     public Boss_2_IA Boss_2_IA { get; private set; }
     public Boss_2_Animation Boss_2_Animation { get; private set; }
+    public EnemyAI EnemyAI { get; private set; }
 
     public RoomBehaviour Room;
 
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
         EnemyPathfinding = GetComponent<EnemyPathfinding>();
         EnemyRigidbody2D = GetComponent<Rigidbody2D>();
         EnemyAnimator = GetComponent<Animator>();
+        EnemyAI = GetComponent<EnemyAI>();
         BossIA = GetComponent<BossIA>();
         Boss_2_IA = GetComponent<Boss_2_IA>();
         Boss_2_Animation = GetComponent<Boss_2_Animation>();

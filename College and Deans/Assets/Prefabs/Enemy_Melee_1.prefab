@@ -180,10 +180,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  fireRate: 0
-  attackRange: 0
+  fireRate: 3
+  nextAttack: 0
+  attackRange: 2
   bullet: {fileID: 0}
   speedBullet: 0
+  attacking: 0
+  locked: 0
+  speed: 5
+  tipo: 0
 --- !u!114 &7390326754043779224
 MonoBehaviour:
   m_ObjectHideFlags: 0

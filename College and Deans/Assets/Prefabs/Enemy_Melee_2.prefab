@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5858472888220759503}
   - component: {fileID: -5661549952890056418}
   - component: {fileID: -7333618470194040430}
+  - component: {fileID: 7780987797131091638}
   m_Layer: 0
   m_Name: Enemy_Melee_2
   m_TagString: Untagged
@@ -123,7 +124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0035589933, y: 0.014235854}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -134,7 +135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.455137, y: 2.633816}
+  m_Size: {x: 1.0921202, y: 1.6657708}
   m_EdgeRadius: 0
 --- !u!208 &-673613116581155856
 NavMeshObstacle:
@@ -179,10 +180,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  fireRate: 0
-  attackRange: 0
+  fireRate: 5
+  nextAttack: 0
+  attackRange: 2
   bullet: {fileID: 0}
   speedBullet: 0
+  attacking: 0
+  locked: 0
+  speed: 0
+  tipo: 1
 --- !u!114 &-5661549952890056418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,3 +217,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d7f5bd2ae7ad94393bec6780605767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7780987797131091638
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565483701209284056}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f1e2ca9be373568488f000712d52b9bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
