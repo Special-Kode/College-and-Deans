@@ -7,9 +7,11 @@ public class EnemyGenerator : MonoBehaviour
     //TODO: Hacer que DungeonGenerator pueda llamar a este objeto cuando quiera
 
     private Dictionary<int, List<Enemy>> setFacil = new Dictionary<int, List<Enemy>>();
-    private int numSetsFacil = 5;
-    [SerializeField] private Enemy enemy0;
-    [SerializeField] private Enemy enemy1;
+    private int numSetsFacil = 6;
+    [SerializeField] private Enemy enemyMelee1;
+    [SerializeField] private Enemy enemyMelee2;
+    [SerializeField] private Enemy enemyDist1;
+    [SerializeField] private Enemy enemyDist2;
     [SerializeField] private Enemy boss0;
     [SerializeField] private Enemy boss1;
 
@@ -42,37 +44,44 @@ public class EnemyGenerator : MonoBehaviour
         List<Enemy> set2 = new List<Enemy>();
         List<Enemy> set3 = new List<Enemy>();  
         List<Enemy> set4 = new List<Enemy>();
+        List<Enemy> set5 = new List<Enemy>();
 
         //Creacion set 0
         for (int i = 0; i < 4; i++)
         {
-            set0.Add(enemy0);
+            set0.Add(enemyMelee1);
         }
 
         //Creacion set 1
         for (int i = 0; i < 3; i++)
         {
-            set1.Add(enemy0);
+            set1.Add(enemyDist2);
         }
-        set1.Add(enemy1);
+        set1.Add(enemyMelee2);
 
         //Creacion set 2
-        set2.Add(enemy0);
-        set2.Add(enemy0);
-        set2.Add(enemy1);
-        set2.Add(enemy1);
+        set2.Add(enemyMelee1);
+        set2.Add(enemyMelee2);
+        set2.Add(enemyDist1);
+        set2.Add(enemyDist2);
 
         //Creacion set 3
-        set3.Add(enemy0);
-        set3.Add(enemy1);
-        set3.Add(enemy1);
-        set3.Add(enemy1);
+        set3.Add(enemyMelee2);
+        set3.Add(enemyMelee2);
+        set3.Add(enemyMelee1);
+        set3.Add(enemyMelee1);
 
         //Creacion set 4
         for (int i = 0; i < 4; i++)
         {
-            set4.Add(enemy1);
+            set4.Add(enemyDist1);
         }
+
+        //Creacion set 5
+        set5.Add(enemyDist1);
+        set5.Add(enemyDist1);
+        set5.Add(enemyDist2);
+        set5.Add(enemyDist2);
 
         //Insercion de los sets en el diccionario
         setFacil.Add(0, set0);
@@ -80,6 +89,7 @@ public class EnemyGenerator : MonoBehaviour
         setFacil.Add(2, set2);
         setFacil.Add(3, set3);
         setFacil.Add(4, set4);
+        setFacil.Add(5, set5);
     }
     
     //Metodo para generar los enemigos de cada sala:

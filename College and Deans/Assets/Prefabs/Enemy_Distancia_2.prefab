@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 5969441011543182197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -138,10 +138,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  fireRate: 3
+  fireRate: 1.5
+  nextAttack: 0
   attackRange: 0
-  bullet: {fileID: 1621872926787617426, guid: 8079778cf3af0364e933fe78e1643582, type: 3}
+  bullet: {fileID: 8047655519925168261, guid: 8cfdac80b865f754e9561c4201ac0ae0, type: 3}
   speedBullet: 10
+  attacking: 0
   locked: 0
   speed: 0
   tipo: 3
@@ -159,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   target: {fileID: 0}
-  speed: 400
+  speed: 200
   reachedEndOfPath: 0
 --- !u!114 &-3506946159655995345
 MonoBehaviour:
