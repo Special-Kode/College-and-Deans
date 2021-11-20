@@ -30,6 +30,8 @@ public class ConsumableItem : MonoBehaviour
 
     void LoadEnhancer()
     {
+        //TODO load all resources from enhancers
+
         int rand = UnityEngine.Random.Range(0, 5);
         rand = 0;
         switch (rand) {
