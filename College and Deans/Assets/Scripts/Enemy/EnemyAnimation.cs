@@ -16,5 +16,6 @@ public class EnemyAnimation : MonoBehaviour
         enemy.EnemyAnimator.SetFloat("Horizontal", enemy.EnemyPathfinding.GetDirectionMov().x);
         enemy.EnemyAnimator.SetFloat("Vertical",enemy.EnemyPathfinding.GetDirectionMov().y);
         enemy.EnemyAnimator.SetFloat("Speed",enemy.EnemyPathfinding.GetDirectionMov().sqrMagnitude);
+        enemy.EnemyAnimator.SetBool("Atacando", enemy.EnemyAI.attacking);
     }
 }

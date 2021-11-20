@@ -3905,6 +3905,7 @@ GameObject:
   - component: {fileID: 2963693279034975514}
   - component: {fileID: 921639519510605734}
   - component: {fileID: 4655533479944763128}
+  - component: {fileID: 1020309892220742431}
   m_Layer: 0
   m_Name: Door_L
   m_TagString: Untagged
@@ -4168,6 +4169,21 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &1020309892220742431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661962693155976664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 3
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &2851629438601902926
 GameObject:
   m_ObjectHideFlags: 0
@@ -4459,6 +4475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1989313060867316051}
+  - component: {fileID: 2307214591805258206}
   m_Layer: 0
   m_Name: Room_L_03
   m_TagString: Untagged
@@ -4483,6 +4500,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2307214591805258206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103452696089035794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f699ebe626c7ad34b9c656b425b4fe97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topRoom: {fileID: 0}
+  rightRoom: {fileID: 0}
+  bottomRoom: {fileID: 0}
+  leftRoom: {fileID: 0}
+  roomInfo: {fileID: 0}
+  SpawnPoints:
+  - {fileID: 2991624889257843452}
+  - {fileID: 6361721001978058692}
+  - {fileID: 2400969741660136411}
+  - {fileID: 593544088768108563}
+  - {fileID: 3464328322338843}
+  - {fileID: 407433300075610058}
+  hasBeenVisited: 0
+  hasSpawned: 0
+  navMeshSurface: {fileID: 0}
+  EnemyAmount: 0
 --- !u!1 &4291649460023376683
 GameObject:
   m_ObjectHideFlags: 0

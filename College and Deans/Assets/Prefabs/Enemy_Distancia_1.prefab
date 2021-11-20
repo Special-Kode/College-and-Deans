@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7854927707497721117}
   - component: {fileID: 2167691292895425609}
   - component: {fileID: -901255170687042859}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy_Distancia_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -141,7 +141,11 @@ MonoBehaviour:
   fireRate: 0.5
   attackRange: 5
   bullet: {fileID: 1621872926787617426, guid: 8079778cf3af0364e933fe78e1643582, type: 3}
-  speedBullet: 100000
+  speedBullet: 10
+  attacking: 0
+  locked: 0
+  speed: 0
+  tipo: 2
 --- !u!114 &98658462026765394
 MonoBehaviour:
   m_ObjectHideFlags: 0

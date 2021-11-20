@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
- public class AttackBehaviour :MonoBehaviour
+public class AttackBehaviour :MonoBehaviour
 {
     //Aqu� est�n los distintos comportamientos de ataque dependiendo de si el arma es una arma blanca o una arma de fuego.
     private Weapon weapon;
@@ -54,6 +54,7 @@ using UnityEngine;
                 //animatorPlayer.WhereToLook(Input.mousePosition);
                 temp = Instantiate(bullet, this.transform.position, Quaternion.identity);
                 temp = Shoot(position, MousePos,temp,speedBullet,90);
+                FindObjectOfType<SFXManager>().shotSFX();
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 1:
@@ -61,7 +62,8 @@ using UnityEngine;
                 //animatorPlayer.WhereToLook(Input.mousePosition);
                 temp = Instantiate(bullet, this.transform.position, Quaternion.identity);
                 temp = Shoot(position, MousePos,temp,speedBullet,90);
-                StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos,2,bullet, speedBullet,0));
+                FindObjectOfType<SFXManager>().shotSFX();
+                StartCoroutine(ExecuteAfterTime(0.2f, position, MousePos,speedBullet,90));
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 2:
@@ -87,8 +89,8 @@ using UnityEngine;
     }
   
 
-     GameObject Shoot(Vector3 playerPos,Vector3 mousePos,GameObject TypeOfShoot,float speed,float rotation)
-     {
+    GameObject Shoot(Vector3 playerPos,Vector3 mousePos,GameObject TypeOfShoot,float speed,float rotation)
+    {
         if (TypeOfShoot != null)
         {
             Vector2 dir = new Vector2(mousePos.x - playerPos.x, mousePos.y - playerPos.y).normalized;
@@ -101,31 +103,30 @@ using UnityEngine;
             
         return TypeOfShoot;
     }
-    IEnumerator ExecuteAfterTime(float time,Vector3 position, Vector3 MousePos,int Type,GameObject temp,float speed, float rotation)
+    IEnumerator ExecuteAfterTime(float time,Vector3 position, Vector3 MousePos,float speed, float rotation)
     {
-        if(GameObject.FindGameObjectWithTag(temp.tag) != null)
-        {
-            yield return new WaitForSeconds(time);
-                Shoot(position, MousePos, temp, speed, rotation);
 
-        }
+         GameObject temp_b = Instantiate(bullet, this.transform.position, Quaternion.identity);
+         yield return new WaitForSeconds(time);
+         Shoot(position, MousePos, temp_b, speed, rotation);
+         FindObjectOfType<SFXManager>().shotSFX();
+         temp_b.GetComponent<Collisions>().damage = weapon.getDamage();
+
 
     }
     IEnumerator WaveCollider(float time,GameObject temp,int count)
     {
-
-            if (count < 5)
+        if (count < 5)
+        {
+            if (temp!=null)
             {
-                if (temp!=null)
-                {
-                    temp.transform.localScale += new Vector3(1f, 0, 0);
-                    yield return new WaitForSeconds(time);
-                    StartCoroutine(WaveCollider(time, temp, count + 1));
-                }
-
+                temp.transform.localScale += new Vector3(1f, 0, 0);
+                yield return new WaitForSeconds(time);
+                StartCoroutine(WaveCollider(time, temp, count + 1));
             }
-            else
-                Destroy(temp.gameObject);
+        }
+        else
+            Destroy(temp.gameObject);
 
     }
     public void Explode(GameObject bomb)
@@ -133,6 +134,7 @@ using UnityEngine;
         bomb.transform.localScale = new Vector3(20f, 20f, 0);
         bomb.GetComponent<SpriteRenderer>().sprite = Explosion;
         bomb.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        FindObjectOfType<SFXManager>().explosionSFX();
         StartCoroutine(DestroyAfterTime(0.4f,bomb));
     }
     void CreateWave(Vector3 posToShoot,Vector3 position,GameObject temp)

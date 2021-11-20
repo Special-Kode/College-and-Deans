@@ -18,9 +18,9 @@ GameObject:
   - component: {fileID: 2549491842927191388}
   - component: {fileID: 2834972154976963371}
   - component: {fileID: 2404920880143148404}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy_Distancia_2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,10 +138,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  fireRate: 1
-  attackRange: 10
-  bullet: {fileID: 0}
-  speedBullet: 100000
+  fireRate: 3
+  attackRange: 0
+  bullet: {fileID: 1621872926787617426, guid: 8079778cf3af0364e933fe78e1643582, type: 3}
+  speedBullet: 10
+  locked: 0
+  speed: 0
+  tipo: 3
 --- !u!114 &8671018936848857669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +186,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0064103603, y: -0.099358976}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -194,7 +197,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2.2}
+  m_Size: {x: 0.9487182, y: 1.4756411}
   m_EdgeRadius: 0
 --- !u!208 &2834972154976963371
 NavMeshObstacle:

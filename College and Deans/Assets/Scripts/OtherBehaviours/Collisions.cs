@@ -13,7 +13,34 @@ public class Collisions : MonoBehaviour
         if (this.tag == "Player" )
         {
             if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
+            {
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
+            }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (this.tag == "Player" )
+        {
+            if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
+            {
+                Debug.Log("me paro");
+                other.gameObject.GetComponent<EnemyAI>().PararEnemigo();
+            }
+        }
+        
+    }
+
+    private void OnCollisionExit2D(Collision2D other) 
+    {
+        if (this.tag == "Player" )
+        {
+            if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
+            {
+                Debug.Log("me muevo");
+                other.gameObject.GetComponent<EnemyAI>().MoverEnemigo();
+            }
         }
     }
 
@@ -29,7 +56,8 @@ public class Collisions : MonoBehaviour
         }
 
         if (this.tag == "Bullet")
-            Destroy(this.gameObject);
+            if(this.gameObject.layer!=13)
+                Destroy(this.gameObject);
         if (this.tag == "Bomb")
         {
             Debug.Log(other.gameObject.tag);
@@ -49,10 +77,5 @@ public class Collisions : MonoBehaviour
             }
             
         }
-
-
-
-       
-
     }
 }

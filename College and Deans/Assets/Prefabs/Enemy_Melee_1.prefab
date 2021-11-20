@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7390326754043779224}
   - component: {fileID: 2505314514870233846}
   - component: {fileID: 6354605362396837379}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy_Melee_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -180,10 +180,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  fireRate: 0
-  attackRange: 0
+  fireRate: 3
+  nextAttack: 0
+  attackRange: 2
   bullet: {fileID: 0}
   speedBullet: 0
+  attacking: 0
+  locked: 0
+  speed: 5
+  tipo: 0
 --- !u!114 &7390326754043779224
 MonoBehaviour:
   m_ObjectHideFlags: 0

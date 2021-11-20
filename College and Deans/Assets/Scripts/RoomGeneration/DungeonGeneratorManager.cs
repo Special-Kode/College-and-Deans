@@ -22,10 +22,13 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     public Vector2 MoveAmount = new Vector2(22, 22); //Distance between rooms
 
-    [SerializeField] private bool lootSpawned;
-    [SerializeField] private bool cafeSpawned;
+    public bool useDefaultRoomSet = false;
+    public int defaultRoomSetNum = 0;
 
-    [SerializeField] private GameManager gameManager;
+    private bool lootSpawned;
+    private bool cafeSpawned;
+
+    private GameManager gameManager;
 
     [Header("Private Serialized Stuff")]
     [SerializeField] private Vector2 currentPos = Vector2.zero;
@@ -142,9 +145,11 @@ public class DungeonGeneratorManager : MonoBehaviour
             case 1:
                 roomInfo.roomType = cafeSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Cafe;
                 cafeSpawned = true;
+                lootSpawned = true;
                 break;
             case 2:
                 roomInfo.roomType = lootSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Loot;
+                cafeSpawned = true;
                 lootSpawned = true;
                 break;
         }
@@ -155,7 +160,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         if(gameManager.StageNum != gameManager.MaxLevelStages)
         {
             //TODO change functionality when possible
-            roomInfo.roomType = RoomInfo.RoomType.Boss;
+            roomInfo.roomType = RoomInfo.RoomType.Stairs;
         }
         else
         {
@@ -190,10 +195,31 @@ public class DungeonGeneratorManager : MonoBehaviour
             }
 
             //TODO change room probability
-            int numRoom = UnityEngine.Random.Range(0, 2);
+            int numRoom = useDefaultRoomSet ? UnityEngine.Random.Range(0, 7) : defaultRoomSetNum;
 
             string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
+
+            if (roomInfo.roomType == RoomInfo.RoomType.Spawn)
+                roomName = "Rooms/Room_Start/Start_" + toConcat;
+
+            if (roomInfo.roomType == RoomInfo.RoomType.Stairs)
+                roomName = "Rooms/Room_Stairs/Room_Stairs_" + toConcat;
+
+            //TODO change boss room generation
+            if (roomInfo.roomType == RoomInfo.RoomType.Boss)
+                roomName = "Rooms/Room_00/Room_" + toConcat + "_00";
+
             var resource = Resources.Load<RoomBehaviour>(roomName);
+
+            if(resource == null)
+            {
+                numRoom = UnityEngine.Random.Range(0, 4);
+
+                roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
+
+                resource = Resources.Load<RoomBehaviour>(roomName);
+            }
+
             GameObject roomInstance = (resource as RoomBehaviour).gameObject;
             GameObject room = Instantiate(roomInstance, roomInfo.position, Quaternion.identity);
 

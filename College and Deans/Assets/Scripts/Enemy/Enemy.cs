@@ -11,6 +11,10 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D EnemyRigidbody2D  {get; private set;}
     public Animator EnemyAnimator {get; private set;}
     public BossIA BossIA { get; private set; }
+    public Boss_2_IA Boss_2_IA { get; private set; }
+    public Boss_2_Animation Boss_2_Animation { get; private set; }
+    public EnemyAI EnemyAI { get; private set; }
+
     public RoomBehaviour Room;
 
     [SerializeField] private int health;
@@ -22,7 +26,10 @@ public class Enemy : MonoBehaviour
         EnemyPathfinding = GetComponent<EnemyPathfinding>();
         EnemyRigidbody2D = GetComponent<Rigidbody2D>();
         EnemyAnimator = GetComponent<Animator>();
+        EnemyAI = GetComponent<EnemyAI>();
         BossIA = GetComponent<BossIA>();
+        Boss_2_IA = GetComponent<Boss_2_IA>();
+        Boss_2_Animation = GetComponent<Boss_2_Animation>();
     }
 
     public Vector2 GetPosition()
@@ -56,7 +63,10 @@ public class Enemy : MonoBehaviour
                 if (FindObjectOfType<LevelLoader>() != null)
                     FindObjectOfType<LevelLoader>().LoadNextStage();
                 else
+                {
+                    FindObjectOfType<GameManager>().ResetGame();
                     SceneManager.LoadScene("MainMenu");
+                }
             }
         }
     }
