@@ -66,8 +66,11 @@ public class ExternMechanicsPlayer : MonoBehaviour
     }
     void HandleDamage()
     {
-        if(canBeDamage)
+        if (canBeDamage)
+        {
             m_CurrentHealth -= DamageAmount * DamageScaler;
+            FindObjectOfType<SFXManager>().hurtSFX();
+        }    
     }
     void AddNoDamageTime()
     {

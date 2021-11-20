@@ -11,6 +11,7 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] private Enemy enemy0;
     [SerializeField] private Enemy enemy1;
     [SerializeField] private Enemy boss0;
+    [SerializeField] private Enemy boss1;
 
     public List<Transform> spawns;
 
@@ -117,7 +118,7 @@ public class EnemyGenerator : MonoBehaviour
             case "dificil":
                 break;
             case "boss":
-                var boss = Instantiate(boss0, spawns[0].position, Quaternion.identity);
+                var boss = Instantiate(boss1, spawns[0].position, Quaternion.identity);
                 boss.EnemyPathfinding.SetPathfinding(pathfinding);
                 boss.Room = room;
                 room.EnemyAmount += 1;

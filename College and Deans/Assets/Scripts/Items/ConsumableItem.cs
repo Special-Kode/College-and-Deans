@@ -67,6 +67,7 @@ public class ConsumableItem : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             CheckEffect();
+            FindObjectOfType<SFXManager>().powerSFX();
             Destroy(gameObject);
         }
     }
