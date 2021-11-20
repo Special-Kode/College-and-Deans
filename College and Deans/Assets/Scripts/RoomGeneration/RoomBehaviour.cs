@@ -96,6 +96,7 @@ public class RoomBehaviour : MonoBehaviour
             pathfinding = new Pathfinding(22, 14, 1f, originPosition);
 
             List<Transform> spawnPoints = new List<Transform>(SpawnPoints);
+            
             switch (roomInfo.roomType)
             {
                 case RoomInfo.RoomType.Enemies: //Genera enemigos
@@ -115,6 +116,12 @@ public class RoomBehaviour : MonoBehaviour
         {
             var enhancerLoot = Resources.Load("ConsumableItems/Enhancer");
             Instantiate(enhancerLoot, SpawnPoints[0].position, Quaternion.identity);
+        }
+
+        if (roomInfo.roomType == RoomInfo.RoomType.Cafe)
+        {
+            var modifierLoot = Resources.Load("ConsumableItems/Modifier");
+            Instantiate(modifierLoot, SpawnPoints[0].position, Quaternion.identity);
         }
     }
 
