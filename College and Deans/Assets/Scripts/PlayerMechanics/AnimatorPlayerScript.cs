@@ -26,6 +26,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         HowToAttack = this.GetComponent<AttackBehaviour>();
         Weapons = GetComponent<Modifiers>();
         Weapons.Init();
+        HowToAttack.SetWeapon(Weapons.modifiers[0]);
         SecondsToAttack = 0;
         canDash = true;
        

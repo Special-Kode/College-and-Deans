@@ -30,6 +30,8 @@ public class ModifierItem : MonoBehaviour
 
     void LoadModifier()
     {
+        if (modifier != null) return;
+
         Modifier[] mods = Resources.LoadAll<Modifier>("Items/Modifiers");
 
         int rand = UnityEngine.Random.Range(0, mods.Length);
