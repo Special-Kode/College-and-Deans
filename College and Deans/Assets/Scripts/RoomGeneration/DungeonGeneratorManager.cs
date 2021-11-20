@@ -22,10 +22,13 @@ public class DungeonGeneratorManager : MonoBehaviour
 
     public Vector2 MoveAmount = new Vector2(22, 22); //Distance between rooms
 
-    [SerializeField] private bool lootSpawned;
-    [SerializeField] private bool cafeSpawned;
+    public bool useDefaultRoomSet = false;
+    public int defaultRoomSetNum = 0;
 
-    [SerializeField] private GameManager gameManager;
+    private bool lootSpawned;
+    private bool cafeSpawned;
+
+    private GameManager gameManager;
 
     [Header("Private Serialized Stuff")]
     [SerializeField] private Vector2 currentPos = Vector2.zero;
@@ -192,7 +195,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             }
 
             //TODO change room probability
-            int numRoom = UnityEngine.Random.Range(0, 7);
+            int numRoom = useDefaultRoomSet ? UnityEngine.Random.Range(0, 7) : defaultRoomSetNum;
 
             string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
 
