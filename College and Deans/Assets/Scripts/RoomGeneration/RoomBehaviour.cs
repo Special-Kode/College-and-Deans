@@ -60,7 +60,7 @@ public class RoomBehaviour : MonoBehaviour
 
     void UnlockDoors()
     {
-        if(EnemyAmount == 0 && hasSpawned)
+        if(EnemyAmount <= 0 && hasSpawned)
         {
             foreach (var door in GetComponentsInChildren<DoorBehaviour>())
             {
