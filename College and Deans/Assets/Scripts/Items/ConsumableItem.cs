@@ -30,6 +30,8 @@ public class ConsumableItem : MonoBehaviour
 
     void LoadEnhancer()
     {
+        if (enhancer != null) return;
+
         Enhancer[] enhs = Resources.LoadAll<Enhancer>("Items/Enhancers");
 
         int rand = UnityEngine.Random.Range(0, enhs.Length);
