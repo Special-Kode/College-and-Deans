@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4891196937867020610}
+  - component: {fileID: -4214211456510670233}
   m_Layer: 0
   m_Name: Room_TRBL_03
   m_TagString: Untagged
@@ -33,6 +34,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4214211456510670233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673428506419915360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f699ebe626c7ad34b9c656b425b4fe97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topRoom: {fileID: 0}
+  rightRoom: {fileID: 0}
+  bottomRoom: {fileID: 0}
+  leftRoom: {fileID: 0}
+  roomInfo: {fileID: 0}
+  SpawnPoints:
+  - {fileID: 1875288919004452454}
+  - {fileID: 593517945948987818}
+  - {fileID: 1566133267262185540}
+  - {fileID: 7634364244491910958}
+  - {fileID: 8481079685438411741}
+  - {fileID: 3733953776057782001}
+  hasBeenVisited: 0
+  hasSpawned: 0
+  navMeshSurface: {fileID: 0}
+  EnemyAmount: 0
 --- !u!1 &1432325270906544094
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,6 +75,7 @@ GameObject:
   - component: {fileID: 4845775813334360675}
   - component: {fileID: 7630769708952620151}
   - component: {fileID: 1776896294251407421}
+  - component: {fileID: 5766618872759346384}
   m_Layer: 0
   m_Name: Door_R
   m_TagString: Untagged
@@ -309,6 +339,21 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &5766618872759346384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432325270906544094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 1
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &1434750487738029348
 GameObject:
   m_ObjectHideFlags: 0
@@ -2928,6 +2973,7 @@ GameObject:
   - component: {fileID: 543752449545165121}
   - component: {fileID: 6222548068981276026}
   - component: {fileID: 3248014010866995937}
+  - component: {fileID: 1710309664549440396}
   m_Layer: 0
   m_Name: Door_B
   m_TagString: Untagged
@@ -3191,6 +3237,21 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &1710309664549440396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086528365299284991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 2
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &2151970645316406352
 GameObject:
   m_ObjectHideFlags: 0
@@ -4721,6 +4782,7 @@ GameObject:
   - component: {fileID: 3323350508339791491}
   - component: {fileID: 1215524571881431680}
   - component: {fileID: 2820835017369220398}
+  - component: {fileID: 7108785717310473874}
   m_Layer: 0
   m_Name: Door_L
   m_TagString: Untagged
@@ -4984,6 +5046,21 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &7108785717310473874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3818278517552015595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 3
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &3944639791069561337
 GameObject:
   m_ObjectHideFlags: 0
@@ -5218,6 +5295,7 @@ GameObject:
   - component: {fileID: 40178958988741713}
   - component: {fileID: 7504833460853402044}
   - component: {fileID: 1013167528441323498}
+  - component: {fileID: 7099224057588692760}
   m_Layer: 0
   m_Name: Door_T
   m_TagString: Untagged
@@ -5481,6 +5559,21 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &7099224057588692760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031754934592623936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 0
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &8402964323706750495
 GameObject:
   m_ObjectHideFlags: 0
