@@ -18,18 +18,23 @@ public class ExternMechanicsPlayer : MonoBehaviour
 
     public float TimeScaler;
     public int DamageScaler;
-    public GameObject ResultsMenuUI;
 
     [Header("Invulnerability Logic")]
     public bool damage;
     private float NoDamageTimer;
     private bool canBeDamage;
     [SerializeField] private float Invulnerability = 1.0f;
+
+    [Header("UI Elems")]
+    public GameObject ResultsMenuUI;
+    public BarAnimationScript TimeBar;
+
     // Start is called before the first frame update
     void Start()
     {
         damage = false;
         m_CurrentHealth = TimeLife;
+        TimeBar.SetMaxHealth(TimeLife);
         NoDamageTimer = 0;
         canBeDamage = true;
 
@@ -51,24 +56,27 @@ public class ExternMechanicsPlayer : MonoBehaviour
         }
 
         m_CurrentHealth -= (Time.deltaTime * TimeScaler);
-        calculateHealth();
+        CalculateHealth();
     }
     //se asigna la vida según la escala.x de la barra de vida,
     //con esto,si se hacen cambios de cuánto baja la barra de vida por cada golpe, se actualizará solo
-    void calculateHealth()
+    void CalculateHealth()
     {
+
         if (m_CurrentHealth <= 0)
         {
             death = true;
             ResultsMenuUI.SetActive(true);
+            m_CurrentHealth = 0;
         }
 
+        TimeBar.SetHealth((int)(m_CurrentHealth + 1));
     }
     void HandleDamage()
     {
         if (canBeDamage)
         {
-            m_CurrentHealth -= DamageAmount;
+            m_CurrentHealth -= DamageAmount * DamageScaler;
             FindObjectOfType<SFXManager>().hurtSFX();
         }    
     }

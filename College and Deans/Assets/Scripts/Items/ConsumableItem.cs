@@ -30,25 +30,12 @@ public class ConsumableItem : MonoBehaviour
 
     void LoadEnhancer()
     {
-        int rand = UnityEngine.Random.Range(0, 5);
-        rand = 0;
-        switch (rand) {
-            case 0:
-                enhancer = Resources.Load<Enhancer>("ScriptableObjects/Pressonesso");
-                break;
-            case 1:
-                enhancer = Resources.Load<Enhancer>("ScriptableObjects/GoodPlanning");
-                break;
-            case 2:
-                enhancer = Resources.Load<Enhancer>("ScriptableObjects/BadPlanning");
-                break;
-            case 3:
-                enhancer = Resources.Load<Enhancer>("ScriptableObjects/Ualium");
-                break;
-            case 4:
-                enhancer = Resources.Load<Enhancer>("ScriptableObjects/StayUpLate");
-                break;
-        }
+        if (enhancer != null) return;
+
+        Enhancer[] enhs = Resources.LoadAll<Enhancer>("Items/Enhancers");
+
+        int rand = UnityEngine.Random.Range(0, enhs.Length);
+        enhancer = enhs[rand];
     }
 
     void CheckEffect()

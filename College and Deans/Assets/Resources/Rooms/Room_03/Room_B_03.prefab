@@ -231,6 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2821089374329538787}
+  - component: {fileID: -4121619477721219428}
   m_Layer: 0
   m_Name: Room_B_03
   m_TagString: Untagged
@@ -255,6 +256,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4121619477721219428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244522129943601691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f699ebe626c7ad34b9c656b425b4fe97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topRoom: {fileID: 0}
+  rightRoom: {fileID: 0}
+  bottomRoom: {fileID: 0}
+  leftRoom: {fileID: 0}
+  roomInfo: {fileID: 0}
+  SpawnPoints:
+  - {fileID: 1752887931471162340}
+  - {fileID: 2375067688823654347}
+  - {fileID: 1938246138876804560}
+  - {fileID: 4320460839313149485}
+  - {fileID: 351577174770066756}
+  - {fileID: 3339736219967374575}
+  hasBeenVisited: 0
+  hasSpawned: 0
+  navMeshSurface: {fileID: 0}
+  EnemyAmount: 0
 --- !u!1 &1311031397524716600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4759,6 +4788,7 @@ GameObject:
   - component: {fileID: 3079930856640869212}
   - component: {fileID: 5104036700952609936}
   - component: {fileID: 4039485800378374240}
+  - component: {fileID: 7533441849192792637}
   m_Layer: 0
   m_Name: Door_B
   m_TagString: Untagged
@@ -5022,3 +5052,18 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &7533441849192792637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926086941759897821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 2
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
