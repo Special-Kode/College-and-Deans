@@ -2852,9 +2852,8 @@ MonoBehaviour:
   RandomLowerBound: 5
   RandomUpperBound: 10
   MoveAmount: {x: 22, y: 16}
-  lootSpawned: 0
-  cafeSpawned: 0
-  gameManager: {fileID: 0}
+  useDefaultRoomSet: 0
+  defaultRoomSetNum: 0
   currentPos: {x: 0, y: 0}
   roomInfoList: []
   roomList: []
