@@ -3173,7 +3173,7 @@ MonoBehaviour:
   spawnBoss: 0
   LevelNum: 1
   StageNum: 1
-  maxGameLevels: 3
+  maxGameLevels: 1
   maxLevelStages: 5
 --- !u!4 &1903825174
 Transform:
