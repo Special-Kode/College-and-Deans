@@ -10,7 +10,7 @@ Trello: https://trello.com/b/0ukCaUtt
 ### -----------------------
 
 # College and Deans
-v 0.1
+v 0.8
 
 ## 1. Introducción 
 
