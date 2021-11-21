@@ -195,7 +195,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             }
 
             //TODO change room probability
-            int numRoom = useDefaultRoomSet ? UnityEngine.Random.Range(0, 7) : defaultRoomSetNum;
+            int numRoom = !useDefaultRoomSet ? UnityEngine.Random.Range(0, 7) : defaultRoomSetNum;
 
             string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
 
