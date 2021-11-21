@@ -23,9 +23,9 @@ public class Collisions : MonoBehaviour
     {
         if (this.tag == "Player" )
         {
-            if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
+            if(other.gameObject.tag == "Enemy" )
             {
-                Debug.Log("me paro");
+                //Debug.Log("me paro");
                 other.gameObject.GetComponent<EnemyAI>().PararEnemigo();
             }
         }
@@ -36,9 +36,9 @@ public class Collisions : MonoBehaviour
     {
         if (this.tag == "Player" )
         {
-            if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
+            if(other.gameObject.tag == "Enemy" )
             {
-                Debug.Log("me muevo");
+                //Debug.Log("me muevo");
                 other.gameObject.GetComponent<EnemyAI>().MoverEnemigo();
             }
         }

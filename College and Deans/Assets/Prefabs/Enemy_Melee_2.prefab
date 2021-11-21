@@ -18,9 +18,9 @@ GameObject:
   - component: {fileID: -5661549952890056418}
   - component: {fileID: -7333618470194040430}
   - component: {fileID: 7780987797131091638}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy_Melee_2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 1565483701209284056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -110,7 +110,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &4372447748475624406
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0035589933, y: 0.014235854}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,7 +135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0921202, y: 1.6657708}
+  m_Size: {x: 1.157964, y: 1.723331}
   m_EdgeRadius: 0
 --- !u!208 &-673613116581155856
 NavMeshObstacle:
@@ -147,7 +147,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.75, y: 1.3, z: 0.1}
+  m_Extents: {x: 0.578982, y: 0.8616655, z: 0.1}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Room: {fileID: 0}
-  health: 4
+  health: 1
 --- !u!114 &5858472888220759503
 MonoBehaviour:
   m_ObjectHideFlags: 0

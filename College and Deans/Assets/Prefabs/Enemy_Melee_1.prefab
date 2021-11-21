@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 7371851549745833664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -124,18 +124,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0031614304, y: 0.012645483}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 3.2}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 3.2, y: 3.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4551365, y: 2.6338155}
+  m_Size: {x: 1.1579645, y: 1.7233307}
   m_EdgeRadius: 0
 --- !u!208 &1115914711419876704
 NavMeshObstacle:
@@ -147,7 +147,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.75, y: 1.3, z: 0.1}
+  m_Extents: {x: 0.578982, y: 0.8616655, z: 0.1}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   target: {fileID: 0}
-  speed: 400
+  speed: 150
   reachedEndOfPath: 0
 --- !u!114 &2505314514870233846
 MonoBehaviour:
