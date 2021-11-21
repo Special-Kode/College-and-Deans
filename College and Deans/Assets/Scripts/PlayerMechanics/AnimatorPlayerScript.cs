@@ -23,10 +23,12 @@ public class AnimatorPlayerScript : MonoBehaviour
         ClickDelay = 0.3f;
         animator = GetComponent<Animator>();
         movement = this.GetComponent<Movement>();
+        /**
         HowToAttack = this.GetComponent<AttackBehaviour>();
         Weapons = GetComponent<Modifiers>();
         Weapons.Init();
         HowToAttack.SetWeapon(Weapons.modifiers[0]);
+        //*/
         SecondsToAttack = 0;
         canDash = true;
        
@@ -332,5 +334,12 @@ public class AnimatorPlayerScript : MonoBehaviour
       
     }
 
-
+    public void UpdateWeapon(int weaponId)
+    {
+        HowToAttack = this.GetComponent<AttackBehaviour>();
+        Weapons = GetComponent<Modifiers>();
+        Weapons.Init();
+        HowToAttack.SetWeapon(Weapons.modifiers[weaponId]);
+        NumModifier = weaponId;
+    }
 }

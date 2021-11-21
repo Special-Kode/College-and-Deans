@@ -48,6 +48,10 @@ public class StatsManager : MonoBehaviour
 
     void SetStats()
     {
+        //Update modifier
+        FindObjectOfType<AnimatorPlayerScript>().UpdateWeapon(modifier);
+
+
         //Speed stats
         FindObjectOfType<Movement>().SetSpeedMultiplier(SpeedStat);
 
@@ -60,9 +64,5 @@ public class StatsManager : MonoBehaviour
 
         //Berserk stats
         FindObjectOfType<ExternMechanicsPlayer>().ScaleDamage((int)DamageStat);
-
-
-        //Update modifier
-        
     }
 }
