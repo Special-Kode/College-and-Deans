@@ -72,12 +72,14 @@ public class AttackBehaviour :MonoBehaviour
                 break;
             case 3:
                 temp = Instantiate(SimpleWave, this.transform.position, Quaternion.identity);
+                FindObjectOfType<SFXManager>().waveSFX();
                 CreateWave(MousePos, position, temp);
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
             case 4:
                 bulletShooted = true;
                 temp = Instantiate(Wave360, this.transform);
+                FindObjectOfType<SFXManager>().waveSFX();
                 StartCoroutine(WaveCollider(0.1f,temp,0));
                 temp.GetComponent<Collisions>().damage = weapon.getDamage();
                 break;
@@ -142,8 +144,8 @@ public class AttackBehaviour :MonoBehaviour
         bomb.GetComponent<CircleCollider2D>().radius = 2f;
         bomb.GetComponent<SpriteRenderer>().sprite = Explosion;
         bomb.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        FindObjectOfType<SFXManager>().explosionSFX();
         StartCoroutine(DestroyAfterTime(0.4f,bomb));
+        FindObjectOfType<SFXManager>().explosionSFX();
     }
     void CreateWave(Vector3 posToShoot,Vector3 position,GameObject temp)
     {
