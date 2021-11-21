@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class ExternMechanicsPlayer : MonoBehaviour
 {
     [Header("Death Logic")]
@@ -27,6 +29,7 @@ public class ExternMechanicsPlayer : MonoBehaviour
 
     [Header("UI Elems")]
     public GameObject ResultsMenuUI;
+    public Text resultText;
     public BarAnimationScript TimeBar;
 
     // Start is called before the first frame update
@@ -41,6 +44,7 @@ public class ExternMechanicsPlayer : MonoBehaviour
         TimeScaler = 1;
         DamageScaler = 1;
 
+        resultText = GameObject.Find("Text").GetComponent<Text>();
         ResultsMenuUI = GameObject.Find("Results");
         ResultsMenuUI.SetActive(false);
     }
@@ -66,6 +70,14 @@ public class ExternMechanicsPlayer : MonoBehaviour
         if (m_CurrentHealth <= 0)
         {
             death = true;
+            if (PlayerPrefs.GetString("language", "e") == "e")
+            {
+                resultText.text = "YOU HAVE TO STUDY MORE";
+            }
+            else
+            {
+                resultText.text = "TIENES QUE ESTUDIAR MAS";
+            }
             ResultsMenuUI.SetActive(true);
             m_CurrentHealth = 0;
         }

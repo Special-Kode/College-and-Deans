@@ -131,12 +131,15 @@ public class EnemyAI : MonoBehaviour
                         }
                         break;
                     case Tipo.Melee_2:
-                        attacking = true;
-                        if(Vector2.Distance(transform.position, target.position) > attackRange)
+                        if(locked)
                         {
-                            attacking = false;
-                            nextAttack = fireRate;
-                            state = State.Chasing;
+                            transform.position = Vector2.MoveTowards(this.transform.position, landingPosition, speed * Time.deltaTime);
+                            if(Vector2.Distance(this.transform.position, landingPosition) < 0.1f)
+                            {
+                                locked = false;
+                                attacking = false;
+                                state = State.Chasing;
+                            }
                         }
                         break;
                 }
