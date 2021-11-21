@@ -23,6 +23,7 @@ public class BossIA : MonoBehaviour
     public bool isJumping { get;  private set; }
     public bool hasJumped = false;
     private bool hasLanded = false;
+    public bool isAttacking {get; private set;}
     private Vector2 landingPosition;
     private float timeBeforeAttack;
     private int counter = 0;
@@ -58,6 +59,7 @@ public class BossIA : MonoBehaviour
                     switch (random)
                     {
                         case 0:
+                            isAttacking = true;
                             state = State.Attacking;
                             nextAttack = attackCD;
                             timeBeforeAttack = fireRate;
@@ -98,6 +100,7 @@ public class BossIA : MonoBehaviour
 
                 if (counter == 3)
                 {
+                    isAttacking = false;
                     counter = 0;
                     state = State.Chasing;
                 }
