@@ -17,5 +17,6 @@ public class BossAnimation : MonoBehaviour
         enemy.EnemyAnimator.SetFloat("Vertical", enemy.EnemyPathfinding.GetDirectionMov().y);
         enemy.EnemyAnimator.SetFloat("Speed", enemy.EnemyPathfinding.GetDirectionMov().sqrMagnitude);
         enemy.EnemyAnimator.SetBool("IsJumping", enemy.BossIA.isJumping);
+        enemy.EnemyAnimator.SetBool("Attack", enemy.BossIA.isAttacking);
     }
 }
