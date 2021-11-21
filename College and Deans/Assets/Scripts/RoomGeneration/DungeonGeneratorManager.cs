@@ -160,7 +160,7 @@ public class DungeonGeneratorManager : MonoBehaviour
         if(gameManager.StageNum != gameManager.MaxLevelStages)
         {
             //TODO change functionality when possible
-            roomInfo.roomType = RoomInfo.RoomType.Boss;
+            roomInfo.roomType = RoomInfo.RoomType.Stairs;
         }
         else
         {
@@ -195,12 +195,19 @@ public class DungeonGeneratorManager : MonoBehaviour
             }
 
             //TODO change room probability
-            int numRoom = useDefaultRoomSet ? UnityEngine.Random.Range(0, 7) : defaultRoomSetNum;
+            int numRoom = !useDefaultRoomSet ? UnityEngine.Random.Range(0, 7) : defaultRoomSetNum;
 
             string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
 
             if (roomInfo.roomType == RoomInfo.RoomType.Spawn)
                 roomName = "Rooms/Room_Start/Start_" + toConcat;
+
+            if (roomInfo.roomType == RoomInfo.RoomType.Stairs)
+                roomName = "Rooms/Room_Stairs/Room_Stairs_" + toConcat;
+
+            //TODO change boss room generation
+            if (roomInfo.roomType == RoomInfo.RoomType.Boss)
+                roomName = "Rooms/Room_00/Room_" + toConcat + "_00";
 
             var resource = Resources.Load<RoomBehaviour>(roomName);
 

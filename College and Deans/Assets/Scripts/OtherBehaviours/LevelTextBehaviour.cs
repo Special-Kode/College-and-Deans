@@ -25,6 +25,13 @@ public class LevelTextBehaviour : MonoBehaviour
 
     void PrintLevel()
     {
-        levelText.text = "LEVEL " + gameManager.LevelNum + "-" + gameManager.StageNum;
+        if (PlayerPrefs.GetString("language", "e") == "e")
+        {
+            levelText.text = "LEVEL " + gameManager.LevelNum + "-" + gameManager.StageNum;
+        }
+        else
+        {
+            levelText.text = "NIVEL " + gameManager.LevelNum + "-" + gameManager.StageNum;
+        }   
     }
 }

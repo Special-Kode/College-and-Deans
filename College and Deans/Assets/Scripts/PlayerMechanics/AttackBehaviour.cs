@@ -36,9 +36,6 @@ public class AttackBehaviour :MonoBehaviour
 
     public void Update()
     {
-        if (GameObject.FindGameObjectWithTag("Bomb") != null)
-            if (Vector2.Distance(GameObject.FindGameObjectWithTag("Bomb").transform.position,posBomb) < 0.1f)
-                Explode(GameObject.FindGameObjectWithTag("Bomb"));
 
     }
     public void attack(float seconds,Vector3 position,Vector3 MousePos)
@@ -120,7 +117,17 @@ public class AttackBehaviour :MonoBehaviour
         {
             if (temp!=null)
             {
-                temp.transform.localScale += new Vector3(1f, 0, 0);
+                if (temp.name == "Wave360(Clone)")
+                {
+                    temp.transform.localScale += new Vector3(.2f, .2f, 0);
+                    temp.GetComponent<CircleCollider2D>().radius += .2f;
+                }
+                else
+                {
+                    temp.transform.localScale += new Vector3(.3f, 0, 0);
+                    temp.GetComponent<BoxCollider2D>().size += new Vector2(.3f, .3f);
+                }
+
                 yield return new WaitForSeconds(time);
                 StartCoroutine(WaveCollider(time, temp, count + 1));
             }
@@ -131,7 +138,8 @@ public class AttackBehaviour :MonoBehaviour
     }
     public void Explode(GameObject bomb)
     {
-        bomb.transform.localScale = new Vector3(20f, 20f, 0);
+        bomb.transform.localScale = new Vector3(2f, 2f, 0);
+        bomb.GetComponent<CircleCollider2D>().radius = 2f;
         bomb.GetComponent<SpriteRenderer>().sprite = Explosion;
         bomb.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         FindObjectOfType<SFXManager>().explosionSFX();

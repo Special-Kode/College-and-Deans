@@ -13,7 +13,9 @@ public class Collisions : MonoBehaviour
         if (this.tag == "Player" )
         {
             if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
+            {
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
+            }
         }
     }
 
@@ -50,10 +52,5 @@ public class Collisions : MonoBehaviour
             }
             
         }
-
-
-
-       
-
     }
 }

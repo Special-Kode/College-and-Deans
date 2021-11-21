@@ -10,10 +10,12 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
     public Button PauseButton;
     public GameObject PauseMenuUI;
+    public Text title, music;
 
     private void Start()
     {
         PauseButton.onClick.AddListener(Action);
+        traduce();
     }
 
     public void Action()
@@ -50,5 +52,20 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         FindObjectOfType<GameManager>().ResetGame();
         SceneManager.LoadScene("MainMenu");
+    }
+
+    void traduce()
+    {
+        if (PlayerPrefs.GetString("language", "e") == "e")
+        {
+            title.text = "Pause";
+            music.text = "Music";
+        }
+        else
+        {
+            title.text = "Pausa";
+            music.text = "Música";
+
+        }
     }
 }

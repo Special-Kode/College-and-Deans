@@ -3635,6 +3635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf6d6ab067fdb344bb1d34a1e853113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 1086006964}
 --- !u!114 &1034043906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4518,6 +4519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f43f20b6a3ff1342afd43aa0e70c146, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 481391429}
+  textbutton: {fileID: 513873412}
 --- !u!1 &1245098564
 GameObject:
   m_ObjectHideFlags: 0
@@ -4663,6 +4666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1440044497}
   - component: {fileID: 1440044498}
+  - component: {fileID: 1440044499}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -4710,6 +4714,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxSlider: {fileID: 191954783}
   musicSlider: {fileID: 2131640907}
+--- !u!114 &1440044499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440044496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1ffe84ff12c854ea894fe474cf6d02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interlude: {fileID: 0}
+  pause: {fileID: 0}
+  music: {fileID: 0}
 --- !u!1 &1482760899
 GameObject:
   m_ObjectHideFlags: 0
@@ -5932,6 +5951,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37669cf5d3211304eacc588b5577f1ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textbutton: {fileID: 27652524}
+  title: {fileID: 2120873837}
+  music: {fileID: 1132747279}
+  language: {fileID: 1676690587}
 --- !u!1 &1813453903
 GameObject:
   m_ObjectHideFlags: 0
