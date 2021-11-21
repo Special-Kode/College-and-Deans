@@ -18,8 +18,8 @@ public class ExternMechanicsPlayer : MonoBehaviour
     public int TimeLife= 150;
     [SerializeField] private int DamageAmount = 3; //TODO change this for attack damage
 
-    public float TimeScaler;
-    public int DamageScaler;
+    private float TimeScaler = 1;
+    private int DamageScaler = 1;
 
     [Header("Invulnerability Logic")]
     public bool damage;
@@ -40,9 +40,6 @@ public class ExternMechanicsPlayer : MonoBehaviour
         TimeBar.SetMaxHealth(TimeLife);
         NoDamageTimer = 0;
         canBeDamage = true;
-
-        TimeScaler = 1;
-        DamageScaler = 1;
 
         resultText = GameObject.Find("Text").GetComponent<Text>();
         ResultsMenuUI = GameObject.Find("Results");
@@ -103,9 +100,19 @@ public class ExternMechanicsPlayer : MonoBehaviour
         }
     }
 
+    public float GetScaleTime()
+    {
+        return TimeScaler;
+    }
+
     public void ScaleTime(float _scaleTime)
     {
         TimeScaler = _scaleTime;
+    }
+
+    public float GetScaleDamage()
+    {
+        return DamageScaler;
     }
 
     //TODO receive float param
