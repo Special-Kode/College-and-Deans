@@ -15,7 +15,7 @@ public class ExternMechanicsPlayer : MonoBehaviour
         get { return (int)m_CurrentHealth; } 
         private set { } 
     }
-    public int TimeLife= 120;
+    public int TimeLife= 150;
     [SerializeField] private int DamageAmount = 3; //TODO change this for attack damage
 
     public float TimeScaler;
