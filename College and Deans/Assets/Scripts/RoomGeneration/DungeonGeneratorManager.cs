@@ -230,6 +230,8 @@ public class DungeonGeneratorManager : MonoBehaviour
             GameObject minimapRoom = Instantiate(minimapInstance, minimapPos, Quaternion.identity);
             minimapRoom.GetComponent<MinimapRoomBehaviour>().roomInfo = roomInfo;
 
+            room.GetComponent<RoomBehaviour>().minimapRoom = minimapRoom.GetComponent<MinimapRoomBehaviour>();
+
             roomList.Add(room);
 
             if (room.GetComponent<RoomBehaviour>() != null)

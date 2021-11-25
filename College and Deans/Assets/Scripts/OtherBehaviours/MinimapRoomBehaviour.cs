@@ -11,6 +11,7 @@ public class MinimapRoomBehaviour : MonoBehaviour
     void Start()
     {
         ColorMinimapRoom();
+        NotRenderRoom();
     }
 
     // Update is called once per frame
@@ -47,11 +48,47 @@ public class MinimapRoomBehaviour : MonoBehaviour
         }
     }
 
+    private void NotRenderRoom()
+    {
+        foreach (var elem in GetComponentsInChildren<SpriteRenderer>())
+        {
+            elem.enabled = false;
+        }
+    }
+
+    private void RenderAdjacent()
+    {
+        if (room.topRoom != null)
+            foreach (var elem in room.topRoom.minimapRoom.GetComponentsInChildren<SpriteRenderer>())
+            {
+                elem.enabled = true;
+            }
+        if (room.rightRoom != null)
+            foreach (var elem in room.rightRoom.minimapRoom.GetComponentsInChildren<SpriteRenderer>())
+            {
+                elem.enabled = true;
+            }
+        if (room.bottomRoom != null)
+            foreach (var elem in room.bottomRoom.minimapRoom.GetComponentsInChildren<SpriteRenderer>())
+            {
+                elem.enabled = true;
+            }
+        if (room.leftRoom != null)
+            foreach (var elem in room.leftRoom.minimapRoom.GetComponentsInChildren<SpriteRenderer>())
+            {
+                elem.enabled = true;
+            }
+    }
+
     void RenderIfVisited()
     {
+        if (!room.hasBeenVisited) return;
+
         foreach (var elem in GetComponentsInChildren<SpriteRenderer>())
         {
             elem.enabled = room.hasBeenVisited;
         }
+
+        RenderAdjacent();
     }
 }
