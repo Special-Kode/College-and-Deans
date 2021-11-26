@@ -6,11 +6,13 @@ public class MinimapRoomBehaviour : MonoBehaviour
 {
     public RoomInfo roomInfo;
     public RoomBehaviour room;
+    public SpriteRenderer minimapIconRenderer;
     
     // Start is called before the first frame update
     void Start()
     {
         ColorMinimapRoom();
+        SetMinimapIcon();
         NotRenderRoom();
     }
 
@@ -24,7 +26,7 @@ public class MinimapRoomBehaviour : MonoBehaviour
     {
         foreach (var wall in GetComponentsInChildren<SpriteRenderer>())
         {
-            if (wall.color == Color.white)
+            if (wall.color == Color.white && wall.name != "MinimapIcon")
             {
                 switch (roomInfo.roomType)
                 {
@@ -46,6 +48,13 @@ public class MinimapRoomBehaviour : MonoBehaviour
                 }
             }
         }
+    }
+
+    void SetMinimapIcon()
+    {
+        Sprite minimapIcon;
+        minimapIcon = Resources.Load<Sprite>("Minimap/MinimapIcons/Minimap" + roomInfo.roomType.ToString());
+        minimapIconRenderer.sprite = minimapIcon;
     }
 
     private void NotRenderRoom()
