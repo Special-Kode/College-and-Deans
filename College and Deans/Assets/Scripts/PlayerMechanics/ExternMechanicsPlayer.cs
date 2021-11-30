@@ -13,7 +13,6 @@ public class ExternMechanicsPlayer : MonoBehaviour
     [SerializeField] private float m_CurrentHealth = 100; //m_CurrentHealth
     public int CurrentHealth { 
         get { return (int)m_CurrentHealth; } 
-        private set { } 
     }
     public int TimeLife= 150;
     [SerializeField] private int DamageAmount = 3; //TODO change this for attack damage
@@ -73,10 +72,10 @@ public class ExternMechanicsPlayer : MonoBehaviour
             }
             else
             {
-                resultText.text = "TIENES QUE ESTUDIAR MAS";
+                resultText.text = "TIENES QUE ESTUDIAR MÁS";
             }
             ResultsMenuUI.SetActive(true);
-            m_CurrentHealth = 0;
+            m_CurrentHealth = -0.1f;
         }
 
         TimeBar.SetHealth((int)(m_CurrentHealth + 1));
