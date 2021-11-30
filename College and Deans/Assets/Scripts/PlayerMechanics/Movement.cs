@@ -56,8 +56,14 @@ public class Movement : MonoBehaviour
                 }
                     
         }
+<<<<<<< Updated upstream
 
         transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+=======
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            
+        
+>>>>>>> Stashed changes
     }
 
 
@@ -65,7 +71,6 @@ public class Movement : MonoBehaviour
     {
         target = screenPos;
         agent.SetDestination(screenPos);
-       
 
     }
     public void PlayerDashed(Vector3 dir)

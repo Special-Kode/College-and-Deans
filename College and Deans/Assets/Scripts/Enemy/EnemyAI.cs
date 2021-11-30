@@ -144,9 +144,22 @@ public class EnemyAI : MonoBehaviour
                                 attacking = false;
                                 state = State.Chasing;
                             }
+<<<<<<< Updated upstream
                         }
                         break;
                 }
+=======
+                            break;
+                    } 
+                    break;
+                case State.Stop:
+                    pathfinding.StopMoving();
+
+                    if (Physics2D.Distance(this.gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>()).distance > 0.2f)
+                      MoverEnemigo();
+                    else
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().damage = true;
+>>>>>>> Stashed changes
                 break;
             case State.Stop:
                 pathfinding.StopMoving();

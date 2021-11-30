@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
-
 public class AnimatorPlayerScript : MonoBehaviour
 {
+    [DllImport("__Internal")]
+    private static extern bool IsMobile();
     // Start is called before the first frame update
     public Animator animator;
     Movement movement;
@@ -40,83 +42,157 @@ public class AnimatorPlayerScript : MonoBehaviour
     {
         if (!PauseMenu.GameIsPaused)
         {
-
-            //if you press left click, clicks is added 1 and it is saved the time
-            if (Input.GetMouseButtonDown(0))
+            //Control movil
+            if (isMobile())
             {
-
-                PosInitMouse = Input.mousePosition;
-                PosInitMouse = Camera.main.ScreenToWorldPoint(PosInitMouse);
-                PosInitMouse.z = 0;
-
-
-                posToMove = PosInitMouse;
-                posToMove.z = 0;
-
-                Clicks++;
-                if (Clicks % 2 != 0)
+                if (Input.GetMouseButtonDown(0))
                 {
 
-                    MouseClickedTime = Time.time;
+                    PosInitMouse = Input.mousePosition;
+                    PosInitMouse = Camera.main.ScreenToWorldPoint(PosInitMouse);
+                    PosInitMouse.z = 0;
+
+
+                    posToMove = PosInitMouse;
+                    posToMove.z = 0;
+
+                    Clicks++;
+                    if (Clicks % 2 != 0)
+                    {
+
+                        MouseClickedTime = Time.time;
+
+
+                    }
 
 
                 }
 
-
-            }
-
-            //if you stop pressing left click, it is saved the position of the mouse, and check if distance of init dash and end dash is higher than 2
-            if (Input.GetMouseButtonUp(0))
-            {
-
-                posFinalMouse = Input.mousePosition;
-                posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
-
-
-                if (Vector2.Distance(posFinalMouse, PosInitMouse) > 1.5f && canDash==true
-                     && !animator.GetBool("Dash"))
+                //if you stop pressing left click, it is saved the position of the mouse, and check if distance of init dash and end dash is higher than 2
+                if (Input.GetMouseButtonUp(0))
                 {
-                    InitDash();
+
+                    posFinalMouse = Input.mousePosition;
+                    posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
+
+
+                    if (Vector2.Distance(posFinalMouse, PosInitMouse) > 1.5f && canDash == true
+                         && !animator.GetBool("Dash"))
+                    {
+                        InitDash();
+                    }
+
+                    // if is not dashing,it means that might player can move
+                    else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null && GameObject.FindGameObjectWithTag("Bomb") == null)
+                    {
+                        Attack();
+                        Clicks = 0;
+                        MouseClickedTime = 0;
+                    }
+
+
+
                 }
+                //if the user press left click, there might be the possibility to the user press second click, if this not happen, the player attack if the user input click an enemy.
 
-                // if is not dashing,it means that might player can move
-                else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null && GameObject.FindGameObjectWithTag("Bomb") == null)
+                if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash") && Vector3.Distance(posFinalMouse, PosInitMouse) < 1.5)
                 {
-                    Attack();
+
+
+                    if (Clicks == 1)
+                        InitMove();
+
+
                     Clicks = 0;
                     MouseClickedTime = 0;
                 }
 
+                //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
+                if ((Vector2.Distance(posFinaldash, transform.position) < 0.1f || (Time.time - DashTimer) > 0.5f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
+                    EndDash();
 
+                if (canDash == false)
+                    checkIfcanDash();
 
+                if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
+                {
+                    animator.SetBool("Death", true);
+                }
             }
-            //if the user press left click, there might be the possibility to the user press second click, if this not happen, the player attack if the user input click an enemy.
-
-            if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash") && Vector3.Distance(posFinalMouse, PosInitMouse) < 1.5)
+            //ControlOrdenador
+            else
             {
+                if (Input.GetMouseButtonDown(0))
+                {
+
+                    PosInitMouse = Input.mousePosition;
+                    PosInitMouse = Camera.main.ScreenToWorldPoint(PosInitMouse);
+                    PosInitMouse.z = 0;
 
 
-            if(Clicks==1)
-                InitMove();
-                
+                    posToMove = PosInitMouse;
+                    posToMove.z = 0;
 
-                Clicks = 0;
-                MouseClickedTime = 0;
-            }
+                    Clicks++;
+                    if (Clicks % 2 != 0)
+                    {
 
-            //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
-            if ((Vector2.Distance(posFinaldash, transform.position) < 0.1f || (Time.time - DashTimer) > 0.5f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
-                EndDash();
+                        MouseClickedTime = Time.time;
 
-            if (canDash == false)
-                checkIfcanDash();
-
+<<<<<<< Updated upstream
             if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
             {
                 animator.SetBool("Death", true);
                 Time.timeScale = 0f;
                 //PauseMenu.GameIsPaused = true;
+=======
+
+                    }
+
+
+                }
+
+                //if you stop pressing left click, it is saved the position of the mouse, and check if distance of init dash and end dash is higher than 2
+                if (Input.GetMouseButtonUp(0))
+                {
+
+                    posFinalMouse = Input.mousePosition;
+                    posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
+
+
+                    if (Vector2.Distance(posFinalMouse, PosInitMouse) > 1.5f && canDash == true
+                         && !animator.GetBool("Dash"))
+                    {
+                        InitDash();
+                    }
+
+                    // if is not dashing,it means that might player can move
+                    else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null && GameObject.FindGameObjectWithTag("Bomb") == null)
+                    {
+                        Attack();
+                        Clicks = 0;
+                        MouseClickedTime = 0;
+                    }
+
+
+
+                }   
+
+                //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
+                if ((Vector2.Distance(posFinaldash, transform.position) < 0.1f || (Time.time - DashTimer) > 0.5f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
+                    EndDash();
+
+                if (canDash == false)
+                    checkIfcanDash();
+
+                if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
+                {
+                    animator.SetBool("Death", true);
+                }
+>>>>>>> Stashed changes
             }
+            //if you press left click, clicks is added 1 and it is saved the time
+            
 
         } else
         {
@@ -335,6 +411,14 @@ public class AnimatorPlayerScript : MonoBehaviour
 
       
     }
+      public bool isMobile()
+        {
+            #if !UNITY_EDITOR && UNITY_WEBGL
+                return IsMobile();
+            #endif
+            return false;
+        }
+    
 
     public void UpdateWeapon(int weaponId)
     {
