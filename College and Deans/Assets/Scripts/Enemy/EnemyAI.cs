@@ -86,17 +86,17 @@ public class EnemyAI : MonoBehaviour
 
                 break;
             case State.Attacking:
-                switch(tipo)
+                switch (tipo)
                 {
                     case Tipo.Distancia_1:
-                        if(nextAttack < 0)
+                        if (nextAttack < 0)
                         {
                             nextAttack = fireRate;
                             GameObject tempBullet = Instantiate(bullet, this.transform.position, Quaternion.identity);
                             Vector2 dir = new Vector2(target.position.x - transform.position.x, target.position.y - transform.position.y).normalized;
                             tempBullet.GetComponent<Rigidbody2D>().velocity = dir * speedBullet;
                         }
-                        if(Vector2.Distance(transform.position, target.position) > attackRange)
+                        if (Vector2.Distance(transform.position, target.position) > attackRange)
                         {
                             nextAttack = fireRate;
                             state = State.Chasing;
@@ -105,7 +105,7 @@ public class EnemyAI : MonoBehaviour
                         nextAttack -= Time.smoothDeltaTime;
                         break;
                     case Tipo.Distancia_2:
-                        if(nextAttack < 0)
+                        if (nextAttack < 0)
                         {
                             nextAttack = fireRate;
                             GameObject bullet0 = Instantiate(bullet, this.transform.position, Quaternion.identity);
@@ -123,10 +123,10 @@ public class EnemyAI : MonoBehaviour
                         nextAttack -= Time.smoothDeltaTime;
                         break;
                     case Tipo.Melee_1:
-                        if(locked)
+                        if (locked)
                         {
                             transform.position = Vector2.MoveTowards(this.transform.position, landingPosition, speed * Time.deltaTime);
-                            if(Vector2.Distance(this.transform.position, landingPosition) < 0.1f)
+                            if (Vector2.Distance(this.transform.position, landingPosition) < 0.1f)
                             {
                                 locked = false;
                                 attacking = false;
@@ -135,33 +135,20 @@ public class EnemyAI : MonoBehaviour
                         }
                         break;
                     case Tipo.Melee_2:
-                        if(locked)
+                        if (locked)
                         {
                             transform.position = Vector2.MoveTowards(this.transform.position, landingPosition, speed * Time.deltaTime);
-                            if(Vector2.Distance(this.transform.position, landingPosition) < 0.1f)
+                            if (Vector2.Distance(this.transform.position, landingPosition) < 0.1f)
                             {
                                 locked = false;
                                 attacking = false;
                                 state = State.Chasing;
                             }
-<<<<<<< Updated upstream
                         }
                         break;
-                }
-=======
-                            break;
-                    } 
+                } 
                     break;
                 case State.Stop:
-                    pathfinding.StopMoving();
-
-                    if (Physics2D.Distance(this.gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>()).distance > 0.2f)
-                      MoverEnemigo();
-                    else
-                        GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().damage = true;
->>>>>>> Stashed changes
-                break;
-            case State.Stop:
                 pathfinding.StopMoving();
                 if (Physics2D.Distance(this.gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>()).distance >= .2f)
                 {

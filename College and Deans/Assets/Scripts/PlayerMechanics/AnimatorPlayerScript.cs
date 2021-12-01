@@ -139,13 +139,14 @@ public class AnimatorPlayerScript : MonoBehaviour
 
                         MouseClickedTime = Time.time;
 
-<<<<<<< Updated upstream
-            if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
-            {
+                    }
+
+                if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
+                   {
                 animator.SetBool("Death", true);
                 Time.timeScale = 0f;
                 //PauseMenu.GameIsPaused = true;
-=======
+
 
                     }
 
@@ -189,7 +190,7 @@ public class AnimatorPlayerScript : MonoBehaviour
                 {
                     animator.SetBool("Death", true);
                 }
->>>>>>> Stashed changes
+
             }
             //if you press left click, clicks is added 1 and it is saved the time
             
