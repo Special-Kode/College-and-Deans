@@ -7,20 +7,23 @@ using UnityEngine.EventSystems;
 public class credits : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
 
-    GameObject pencil;
+    GameObject pencil, mainMenu, creditsMenu;
     Button button;
     Vector3 posPen, posBut;
+    public Text title, textbutton;
 
 
     // Start is called before the first frame update
     void Start()
     {
         pencil = GameObject.Find("Pencil");
+        mainMenu = GameObject.Find("Menu");
+        creditsMenu = GameObject.Find("Credits");
         button = this.GetComponent<Button>();
         posPen = pencil.transform.position;
         posBut = button.transform.position;
-
-
+        traduce();
+        creditsMenu.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -31,6 +34,21 @@ public class credits : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Credits");
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(true);
+    }
+
+    void traduce()
+    {
+        if (PlayerPrefs.GetString("language", "e") == "e")
+        {
+            title.text = "Credits and Acknoledgement";
+            textbutton.text = "credits";
+        }
+        else
+        {
+            title.text = "Creditos y Reconocimientos";
+            textbutton.text = "Créditos";
+        }
     }
 }

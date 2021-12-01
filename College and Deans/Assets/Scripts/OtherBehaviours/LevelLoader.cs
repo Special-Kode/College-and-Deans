@@ -8,23 +8,36 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
+    public GameObject ResultsMenuUI;
+
     // Update is called once per frame
     void Update()
     {
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            LoadNextLevel();
+            LoadNextStage();
         }
 #endif
     }
 
-    public void LoadNextLevel()
+    public void LoadNextStage()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+        bool hasWon = FindObjectOfType<GameManager>().CheckVictoryCondition();
+
+        if (hasWon)
+        {
+            ResultsMenuUI.SetActive(true);
+            ResultsMenuUI.GetComponent<ResultsMenu>().SetWinningResult();
+        }
+        else
+        {
+            StartCoroutine(LoadStage("Interlude"));
+        }
     }
 
-    IEnumerator LoadLevel(int levelIndex)
+
+    IEnumerator LoadStage(string levelName)
     {
         //Play animation
         transition.SetTrigger("Start");
@@ -33,6 +46,7 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
 
         //Load scene
-        SceneManager.LoadScene(levelIndex);
+        FindObjectOfType<GameManager>().NextLevelOrStage();
+        SceneManager.LoadScene(levelName);
     }
 }

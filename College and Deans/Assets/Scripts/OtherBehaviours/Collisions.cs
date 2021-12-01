@@ -6,45 +6,39 @@ public class Collisions : MonoBehaviour
 {
 
     public bool collideHole = false;
+    public int damage { get; set; }
 
-
-   void OnCollisionStay2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D other)
     {
         if (this.tag == "Player" )
         {
-
             if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
+            {
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
-            this.GetComponent<Animator>().SetBool("Dash", false);
-            this.GetComponent<Movement>().agent.enabled=true;
-            
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<Enemy>().GetHit(damage);
+        }
+        else if(other.gameObject.tag == "Boss")
+        {
+            other.gameObject.GetComponent<Enemy>().GetHit(damage);
+        }
 
         if (this.tag == "Bullet")
+            if(this.gameObject.layer!=13)
+                Destroy(this.gameObject);
+        if (this.tag == "Bomb")
         {
-            if (other.gameObject.tag == "Enemy")
-            {
-                Destroy(this.gameObject);
-                //Falta añadir el daño del jugador
-                other.gameObject.GetComponent<Enemy>().GetHit(3);
-            }
-           else if(other.gameObject.tag == "Boss")
-            {
-                Destroy(other.gameObject);
-                if (FindObjectOfType<LevelLoader>() != null)
-                    FindObjectOfType<LevelLoader>().LoadNextLevel();
-                else
-                    SceneManager.LoadScene("MainMenu");
-            }
-            else if(other.gameObject.tag == "Wall")
-            {
-                Destroy(this.gameObject);
-            }
+            Debug.Log(other.gameObject.tag);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<AttackBehaviour>().Explode(this.gameObject);
         }
+        
 
         if(this.tag == "EnemyBullet")
         {
@@ -58,10 +52,5 @@ public class Collisions : MonoBehaviour
             }
             
         }
-
-
-
-       
-
     }
 }

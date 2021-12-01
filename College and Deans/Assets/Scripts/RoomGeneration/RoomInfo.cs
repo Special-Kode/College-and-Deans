@@ -6,7 +6,7 @@ public class RoomInfo : ScriptableObject
 {
     public enum RoomType //All possible room types
     {
-        Spawn, Enemies, Boss, Cafe, Loot
+        Spawn, Enemies, Stairs, Boss, Cafe, Loot
     };
 
     public enum AdjacentRooms
@@ -18,6 +18,7 @@ public class RoomInfo : ScriptableObject
     public AdjacentRooms adjacentRooms;
 
     public Vector2 position;
+    public Vector2 roomSize;
 
     //Adds a flag for every door that needs to be generated
     public void CheckAdjacentRooms(List<Vector2> positions, Vector2 moveAmount)
