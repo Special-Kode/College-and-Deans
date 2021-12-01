@@ -11,7 +11,10 @@ public class LanguageManager : MonoBehaviour
 
     private void Start()
     {
-        traduce();
+        if(interlude != null)
+        {
+            traduce();
+        }        
     }
 
     private void Awake()
