@@ -195,7 +195,7 @@ public class DungeonGeneratorManager : MonoBehaviour
             }
 
             //TODO change room probability
-            int numRoom = useDefaultRoomSet ? UnityEngine.Random.Range(0, 7) : defaultRoomSetNum;
+            int numRoom = !useDefaultRoomSet ? UnityEngine.Random.Range(0, 7) : defaultRoomSetNum;
 
             string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
 
@@ -229,6 +229,8 @@ public class DungeonGeneratorManager : MonoBehaviour
             GameObject minimapInstance = (minimapResource as MinimapRoomBehaviour).gameObject;
             GameObject minimapRoom = Instantiate(minimapInstance, minimapPos, Quaternion.identity);
             minimapRoom.GetComponent<MinimapRoomBehaviour>().roomInfo = roomInfo;
+
+            room.GetComponent<RoomBehaviour>().minimapRoom = minimapRoom.GetComponent<MinimapRoomBehaviour>();
 
             roomList.Add(room);
 

@@ -7,6 +7,7 @@ public class RoomBehaviour : MonoBehaviour
 
     EnemyGenerator enemyGenerator;
     Pathfinding pathfinding;
+    public NavMeshSurface2d navMeshSurface;
 
     [Header("Adjacent Rooms")]
     public RoomBehaviour topRoom;
@@ -19,8 +20,8 @@ public class RoomBehaviour : MonoBehaviour
     public Transform[] SpawnPoints;
     public bool hasBeenVisited;
     public bool hasSpawned;
-    public NavMeshSurface2d navMeshSurface;
     public int EnemyAmount;
+    public MinimapRoomBehaviour minimapRoom;
 
     // Start is called before the first frame update
     void Start()

@@ -6,11 +6,15 @@ public class MinimapRoomBehaviour : MonoBehaviour
 {
     public RoomInfo roomInfo;
     public RoomBehaviour room;
+    public SpriteRenderer minimapIconRenderer;
+    private float adjacentRoomAlpha = 0.55f;
     
     // Start is called before the first frame update
     void Start()
     {
         ColorMinimapRoom();
+        SetMinimapIcon();
+        NotRenderRoom();
     }
 
     // Update is called once per frame
@@ -23,7 +27,7 @@ public class MinimapRoomBehaviour : MonoBehaviour
     {
         foreach (var wall in GetComponentsInChildren<SpriteRenderer>())
         {
-            if (wall.color == Color.white)
+            if (wall.color == Color.white && wall.name != "MinimapIcon")
             {
                 switch (roomInfo.roomType)
                 {
@@ -44,14 +48,67 @@ public class MinimapRoomBehaviour : MonoBehaviour
                         break;
                 }
             }
+            wall.color = new Color(wall.color.r, wall.color.g, wall.color.b, 1.0f);
         }
+    }
+
+    void SetMinimapIcon()
+    {
+        Sprite minimapIcon;
+        minimapIcon = Resources.Load<Sprite>("Minimap/MinimapIcons/Minimap" + roomInfo.roomType.ToString());
+        minimapIconRenderer.sprite = minimapIcon;
+    }
+
+    private void NotRenderRoom()
+    {
+        foreach (var elem in GetComponentsInChildren<SpriteRenderer>())
+        {
+            elem.enabled = false;
+        }
+    }
+
+    private void RenderAdjacent(float alpha)
+    {
+        if (room.topRoom != null)
+            foreach (var elem in room.topRoom.minimapRoom.GetComponentsInChildren<SpriteRenderer>())
+            {
+                elem.enabled = true;
+                if (!room.topRoom.hasBeenVisited)
+                    elem.color = new Color(elem.color.r, elem.color.g, elem.color.b, alpha);
+            }
+        if (room.rightRoom != null)
+            foreach (var elem in room.rightRoom.minimapRoom.GetComponentsInChildren<SpriteRenderer>())
+            {
+                elem.enabled = true;
+                if (!room.rightRoom.hasBeenVisited)
+                    elem.color = new Color(elem.color.r, elem.color.g, elem.color.b, alpha);
+            }
+        if (room.bottomRoom != null)
+            foreach (var elem in room.bottomRoom.minimapRoom.GetComponentsInChildren<SpriteRenderer>())
+            {
+                elem.enabled = true;
+                if (!room.bottomRoom.hasBeenVisited)
+                    elem.color = new Color(elem.color.r, elem.color.g, elem.color.b, alpha);
+            }
+        if (room.leftRoom != null)
+            foreach (var elem in room.leftRoom.minimapRoom.GetComponentsInChildren<SpriteRenderer>())
+            {
+                elem.enabled = true;
+                if (!room.leftRoom.hasBeenVisited)
+                    elem.color = new Color(elem.color.r, elem.color.g, elem.color.b, alpha);
+            }
     }
 
     void RenderIfVisited()
     {
+        if (!room.hasBeenVisited) return;
+
         foreach (var elem in GetComponentsInChildren<SpriteRenderer>())
         {
             elem.enabled = room.hasBeenVisited;
+            elem.color = new Color(elem.color.r, elem.color.g, elem.color.b, 1.0f);
         }
+
+        RenderAdjacent(adjacentRoomAlpha);
     }
 }

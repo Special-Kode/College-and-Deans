@@ -27,8 +27,6 @@ public class LevelLoader : MonoBehaviour
 
         if (hasWon)
         {
-            Debug.Log("YOU HAVE WON");
-
             ResultsMenuUI.SetActive(true);
             ResultsMenuUI.GetComponent<ResultsMenu>().SetWinningResult();
         }

@@ -79,6 +79,10 @@ public class EnemyAI : MonoBehaviour
                     nextAttack = fireRate;
                     StartCoroutine(Attack());
                 }
+                if(Physics2D.Distance(this.gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>()).distance < .2f){
+                    PararEnemigo();
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().damage = true;
+                }
 
                 break;
             case State.Attacking:
@@ -146,6 +150,14 @@ public class EnemyAI : MonoBehaviour
                 break;
             case State.Stop:
                 pathfinding.StopMoving();
+                if (Physics2D.Distance(this.gameObject.GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>()).distance >= .2f)
+                {
+                    MoverEnemigo();                  
+                }
+                else
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().damage = true;
+                }
                 break;
         }
     }
@@ -166,4 +178,5 @@ public class EnemyAI : MonoBehaviour
         attacking = true;
         locked = true;
     }
+
 }

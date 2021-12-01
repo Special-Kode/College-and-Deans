@@ -47,19 +47,25 @@ public class ConsumableItem : MonoBehaviour
             case Enhancer.AffectedStat.Speed:
                 //Edit player speed
                 FindObjectOfType<Movement>().SetSpeedMultiplier(enhancer.amount);
+                FindObjectOfType<StatsManager>().SpeedStat = FindObjectOfType<Movement>().GetSpeedMultiplier();
                 break;
             case Enhancer.AffectedStat.Damage:
                 //Edit player damage
                 FindObjectOfType<AttackBehaviour>().getWeapon().SetDamageMultiplier((int)enhancer.amount);
+                FindObjectOfType<StatsManager>().DamageStat = FindObjectOfType<AttackBehaviour>().getWeapon().GetDamageMultiplier();
                 break;
             case Enhancer.AffectedStat.TimeScale:
                 //Edit player timescale
                 FindObjectOfType<ExternMechanicsPlayer>().ScaleTime(enhancer.amount);
+                FindObjectOfType<StatsManager>().TimeScaleStat = FindObjectOfType<ExternMechanicsPlayer>().GetScaleTime();
                 break;
             case Enhancer.AffectedStat.Berserk:
                 //Edit player berserk
                 FindObjectOfType<ExternMechanicsPlayer>().ScaleDamage((int)enhancer.amount);
+                FindObjectOfType<StatsManager>().BerserkStats = FindObjectOfType<ExternMechanicsPlayer>().GetScaleDamage();
+
                 FindObjectOfType<AttackBehaviour>().getWeapon().SetDamageMultiplier((int)enhancer.amount);
+                FindObjectOfType<StatsManager>().DamageStat = FindObjectOfType<AttackBehaviour>().getWeapon().GetDamageMultiplier();
                 break;
         }
     }

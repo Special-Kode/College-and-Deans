@@ -19,31 +19,6 @@ public class Collisions : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (this.tag == "Player" )
-        {
-            if(other.gameObject.tag == "Enemy" )
-            {
-                //Debug.Log("me paro");
-                other.gameObject.GetComponent<EnemyAI>().PararEnemigo();
-            }
-        }
-        
-    }
-
-    private void OnCollisionExit2D(Collision2D other) 
-    {
-        if (this.tag == "Player" )
-        {
-            if(other.gameObject.tag == "Enemy" )
-            {
-                //Debug.Log("me muevo");
-                other.gameObject.GetComponent<EnemyAI>().MoverEnemigo();
-            }
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.gameObject.tag == "Enemy")
