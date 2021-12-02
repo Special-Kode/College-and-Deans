@@ -29,6 +29,11 @@ public class Weapon
         return this.type;
     }
     
+    public int GetDamageMultiplier()
+    {
+        return damageMultiplier;
+    }
+
     public void SetDamageMultiplier(int _damageMultiplier)
     {
         damageMultiplier = _damageMultiplier;

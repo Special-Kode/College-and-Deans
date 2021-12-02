@@ -27,7 +27,7 @@ public class ResultsMenu : MonoBehaviour
 
     void traduce()
     {
-        if (PlayerPrefs.GetString("language", "e") == "e")
+        if (PlayerPrefs.GetString("language", "e") != "e")
         {
             resultText.text = "Bienvenido a la plantilla de McDolan";
         }

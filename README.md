@@ -10,7 +10,7 @@ Trello: https://trello.com/b/0ukCaUtt
 ### -----------------------
 
 # College and Deans
-v 0.8
+v 0.9
 
 ## 1. Introducción 
 
@@ -128,121 +128,24 @@ Estos modificadores pueden ir desde cambiar la trayectoria o la velocidad de los
 
 | Modificador | Efecto |
 | --- | --- |
-| M1 | El tiempo entre proyectiles disminuye, lo que permite disparar más por segundo. Reduce un poco el daño. |
-| M2 | Aumenta el daño de los proyectiles, pero aumenta el tiempo entre ellos. |
-| M3 | Cambia los proyectiles por bombas que hacen daño en área. Aumenta considerablemente el tiempo entre ellos. |
-| M4 | Dispara en forma de rayo continuo. Reduce el daño. |
-| M5 | Dispara en forma de onda hacia el frente. Tiene un menor alcance que los proyectiles normales pero un mayor rango. |
-| M6 | Dispara dos proyectiles en vez de uno. Aumenta un pelín el tiempo entre ellos. |
-| M7 | Modifica el disparo para que ahora sean ondas que se desprenden del arma en todas direcciones. Es de corto alcance. |
-| M8 | El proyectil rebota una vez en las paredes y columnas. |
-| M9 | El proyectil atraviesa al enemigo en lugar de destruirse. |
-| M10 | Reduce el daño de los proyectiles a la mitad. |
+| ProblemSolver MK III | Cambia los proyectiles por bombas que hacen daño en área. |
+| MacroWave | Dispara en forma de onda hacia el frente. Tiene un menor alcance que los proyectiles normales pero un mayor rango. |
+| Double Barrel | Dispara dos proyectiles en vez de uno. Aumenta un pelín el tiempo entre ellos. |
+| Stomper | Modifica el disparo para que ahora sean ondas que se desprenden del arma en todas direcciones. Es de corto alcance. |
 
 De manera similar, el personaje podrá obtener distintos potenciadores. A diferencia de los modificadores de arma, estos potenciadores son acumulables y sus efectos son más variados. 
 
 | Potenciador | Efecto |
 | --- | --- |
-| P1 | Aumenta la velocidad. |
-| P2 | Ralentiza el paso del tiempo. |
-| P3 | Reduce el tiempo perdido por recibir un golpe. |
-| P4 | Duplica el daño infligido y el tiempo perdido por golpe recibido. |
-| P5 | Reduce la velocidad de movimiento. |
-| P6 | Aumenta el paso del tiempo. |
-| P7 | Muestra el mapa del nivel completo junto con los objetos y salas relevantes. |
-| P8 | Muestra la vida de los enemigos. |
-| P9 | Oculta el mapa del nivel. El efecto desaparece al coger otro potenciador. |
-| P10 | Oculta el tiempo restante del nivel. El efecto desaparece al coger otro potenciador. |
-| P11 | Aumenta el daño. |
- 
+| Pressonesso | Aumenta la velocidad. |
+| Buena Planificación | Ralentiza el paso del tiempo. |
+| Trasnochar | Duplica el daño infligido y el tiempo perdido por golpe recibido. |
+| Uallium | Reduce la velocidad de movimiento. |
+| Mala Planificación | Aumenta el paso del tiempo. |
 
-## 5. Trasfondo 
+## 5. Hoja de ruta del desarrollo  
 
-### 5.1. Descripción detallada de la historia 
-
-Corre el año 2030, nos encontramos en un futro distópico en el que la gente sin recursos tiene muy complicado acceder a la educación universitaria, por lo que se ven obligados a utilizar la violencia como aliada. Nuestro protagonista acaba de aprobar la selectividad, y con ilusión se dispone a comenzar una nueva etapa, la universidad. Pero aun creyendo saber a lo que se va a enfrentar, no es consciente de lo que le espera. Está solo, no conoce a nadie y no tiene experiencia en combate. Así, comienza el viaje y tras mucho esfuerzo, dolor, golpes y disparos consigue graduarse.  
-
-### 5.2. Personajes 
-
-El protagonista y personaje al que el jugador controla es un chico que acaba de entrar a la universidad. No tiene ni idea del reto que esto supone y todavía no sabe muy bien lo que quiere hacer a pesar de haber escogido una carrera. 
-
-Además del protagonista, existen dos tipos de personajes más, enemigos y aliados. 
-
-Dentro de los aliados encontramos al camarero de la cafetería, un hombre de mediana edad al que no parece sorprenderle toda la violencia que se desprende diariamente en la universidad. Lo único que quiere es acabar su jornada e irse a casa. No es muy hablador. 
-
-En cuanto a los enemigos, dentro de estos podemos distinguir entre dos tipos, los jefes y los enemigos comunes. 
-
-Los enemigos comunes son empleados de la universidad, algunos profesores y otros alumnos de distintas carreras y cursos a quienes los jefes envían a detener a cualquiera que intente llegar a ellos. 
-
-Por otro lado, los jefes son entes superiores, profesores que realizan trabajos de investigación y son expertos en sus respectivos campos. Esperan en sus aulas o laboratorios a que los alumnos dignos de su atención les encuentren.  
-
-### 5.3. Entornos y lugares 
-
-El juego se desarrolla únicamente en el interior de la universidad. Dentro de la misma, se podrán recorrer los siguientes lugares: 
-
-Aulas: Sala básica y principal de la universidad. En ella se pueden encontrar mesas, sillas, pizarras, pósteres y folletos en las paredes, mochilas y demás enseres típicos de las aulas universitarias. 
-
-Laboratorios: Junto a las aulas, las salas más básicas. En ellos, además de todo lo mencionado para las aulas se podrán encontrar pizarras móviles y aparatos especializados de distintos campos. 
-
-Cafetería: Sala de “descanso”. En ella no habrá enemigos, únicamente el camarero. Se compone de unas cuantas mesas y sillas, además de la barra y un par de máquinas expendedoras. 
-
-En todas las salas excepto en la cafetería, podrán aparecer obstáculos tales como columnas y agujeros en el suelo. 
-
-## 6. Arte 
-
-### 6.1. Estética general del juego 
-
-El estilo artístico que va a seguir el arte del juego es la estética pixel art, debido a que es el estilo con el que el equipo de arte se siente más cómodo.  
-
-### 6.2. Apartado visual 
-
-El juego presentará elementos propios de una universidad que se utilizarán en los escenarios y personajes, algunos exagerados para que sean coherentes con el contexto del juego. Dado que la acción del juego transcurre en una universidad, los menús e interfaz adaptarán elementos típicos del entorno de un estudiante para tener una estética acorde. 
-
-### 6.3. Música 
-
-El juego contará con dos temas principales, uno que sonará en bucle mientras el jugador está en el menú o explora los niveles y otro que se escuchará durante las peleas con los jefes. 
-
-### 6.4. Ambiente sonoro 
-
-En cuanto al resto de sonidos del juego habrá una variedad de sonidos de ataque para los enemigos y el propio jugador, un sonido para cuando el jugador compre algo en la cafetería y un sonido para cuando el jugador reciba daño. 
-
-## 7. Interfaz 
-
-### 7.1. Diseños básicos de los menús 
-
-Menú Principal 
-
-![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Menu%20Principal.png)
-
-Ilustración 1: Menú Principal 
-
-![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Opciones.png)
-
-Ilustración 2: Menú de Opciones 
-
-![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Menu%20de%20Pausa.png)
-
-Ilustración 3: Menú de Pausa 
-
-![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Creditos.png)
-
-Ilustración 4: Pantalla de creditos y reconocimientos 
-
-### 7.2. Interfaz de usuario 
-
-![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Interfaz%20de%20usuario.jpg)
-
-Ilustración 5: HUD durante el juego 
-
-### 7.3. Diagrama de flujo 
-
-![Image text](https://github.com/Special-Kode/College-and-Deans/blob/main/Concept%20Art%20and%20GDD/GDD/Imagenes/Diagrama%20de%20flujo.jpg)
-
-Ilustración 6: Diagrama de Flujo 
-
-## 8. Hoja de ruta del desarrollo  
-
-### 8.1. Funcionalidad básica y GDD 
+### 5.1. Funcionalidad básica y GDD 
 
 17 – 10 - 21 
 

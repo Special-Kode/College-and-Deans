@@ -128,9 +128,9 @@ public class EnemyGenerator : MonoBehaviour
             case "dificil":
                 break;
             case "boss":
-                int level = FindObjectOfType<GameManager>().LevelNum;
                 Enemy bossToInstantiate, boss;
-
+                /**
+                int level = FindObjectOfType<GameManager>().LevelNum;
                 switch (level)
                 {
                     case 1:
@@ -143,6 +143,10 @@ public class EnemyGenerator : MonoBehaviour
                         bossToInstantiate = boss0;
                         break;
                 }
+                //*/
+
+                float rand = UnityEngine.Random.Range(0.0f, 1.0f);
+                bossToInstantiate = rand > 0.5f ? boss0 : boss1;
 
                 boss = Instantiate(bossToInstantiate, spawns[0].position, Quaternion.identity);
                 boss.EnemyPathfinding.SetPathfinding(pathfinding);

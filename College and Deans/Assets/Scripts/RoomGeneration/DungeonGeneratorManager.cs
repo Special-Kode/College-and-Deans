@@ -194,28 +194,12 @@ public class DungeonGeneratorManager : MonoBehaviour
                 toConcat += "L";
             }
 
-            //TODO change room probability
-            int numRoom = !useDefaultRoomSet ? UnityEngine.Random.Range(0, 7) : defaultRoomSetNum;
-
-            string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
-
-            if (roomInfo.roomType == RoomInfo.RoomType.Spawn)
-                roomName = "Rooms/Room_Start/Start_" + toConcat;
-
-            if (roomInfo.roomType == RoomInfo.RoomType.Stairs)
-                roomName = "Rooms/Room_Stairs/Room_Stairs_" + toConcat;
-
-            //TODO change boss room generation
-            if (roomInfo.roomType == RoomInfo.RoomType.Boss)
-                roomName = "Rooms/Room_00/Room_" + toConcat + "_00";
-
+            string roomName = GetRoomName(roomInfo, toConcat);
             var resource = Resources.Load<RoomBehaviour>(roomName);
 
             if(resource == null)
             {
-                numRoom = UnityEngine.Random.Range(0, 4);
-
-                roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
+                roomName = GetRoomNameSecure(toConcat);
 
                 resource = Resources.Load<RoomBehaviour>(roomName);
             }
@@ -230,6 +214,8 @@ public class DungeonGeneratorManager : MonoBehaviour
             GameObject minimapRoom = Instantiate(minimapInstance, minimapPos, Quaternion.identity);
             minimapRoom.GetComponent<MinimapRoomBehaviour>().roomInfo = roomInfo;
 
+            room.GetComponent<RoomBehaviour>().minimapRoom = minimapRoom.GetComponent<MinimapRoomBehaviour>();
+
             roomList.Add(room);
 
             if (room.GetComponent<RoomBehaviour>() != null)
@@ -237,6 +223,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
                 room.GetComponent<RoomBehaviour>().SetNavMesh();
                 room.gameObject.transform.Find("Grid").gameObject.transform.Find("Solids").gameObject.layer = 9;
+                room.gameObject.transform.Find("Grid").gameObject.transform.Find("Solids").GetComponent<TilemapRenderer>().sortingOrder=1;
                 if (room.gameObject.transform.Find("Grid").gameObject.transform.Find("Holes")!=null)
                     room.gameObject.transform.Find("Grid").gameObject.transform.Find("Holes").gameObject.layer = 10;
                 minimapRoom.GetComponent<MinimapRoomBehaviour>().room = room.GetComponent<RoomBehaviour>();
@@ -251,5 +238,34 @@ public class DungeonGeneratorManager : MonoBehaviour
         // Sets the spawn room for the current room
         Camera.main.GetComponent<CameraBetweenRooms>().CurrentRoom = roomList[0];
         roomList[0].GetComponent<RoomBehaviour>().hasBeenVisited = true;
+    }
+
+    string GetRoomName(RoomInfo roomInfo, string toConcat)
+    {
+        //TODO change room probability
+        int numRoom = !useDefaultRoomSet ? UnityEngine.Random.Range(0, 7) : defaultRoomSetNum;
+
+        string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
+
+        if (roomInfo.roomType == RoomInfo.RoomType.Spawn)
+            roomName = "Rooms/Room_Start/Start_" + toConcat;
+
+        if (roomInfo.roomType == RoomInfo.RoomType.Stairs)
+            roomName = "Rooms/Room_Stairs/Room_Stairs_" + toConcat;
+
+        //TODO change boss room generation
+        if (roomInfo.roomType == RoomInfo.RoomType.Boss)
+            roomName = "Rooms/Room_00/Room_" + toConcat + "_00";
+
+        return roomName;
+    }
+
+    string GetRoomNameSecure(string toConcat)
+    {
+        int numRoom = UnityEngine.Random.Range(0, 6);
+
+        string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
+
+        return roomName;
     }
 }

@@ -9,7 +9,7 @@ public class options : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     GameObject pencil, mainMenu, optionsMenu;
     Button button, s, e;
-    Vector3 posPen, posBut;
+    Transform posPen, posBut;
     public Text textbutton, title, music, language; 
 
 
@@ -24,8 +24,8 @@ public class options : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         s.onClick.AddListener(spanish);
         e = GameObject.Find("English").GetComponent<Button>();
         e.onClick.AddListener(english);
-        posPen = pencil.transform.position;
-        posBut = button.transform.position;
+        posPen = pencil.transform;
+        posBut = button.transform;
         traduce();
         optionsMenu.SetActive(false);
     }
@@ -42,8 +42,8 @@ public class options : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        posPen.y = posBut.y;
-        pencil.transform.position = posPen;
+        pencil.transform.parent = posBut;
+        pencil.transform.localPosition = Vector3.zero;
     }
 
     public void OnPointerClick(PointerEventData eventData)
