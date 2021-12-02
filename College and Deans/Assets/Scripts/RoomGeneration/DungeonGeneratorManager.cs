@@ -239,6 +239,7 @@ public class DungeonGeneratorManager : MonoBehaviour
                 room.GetComponent<RoomBehaviour>().roomInfo = roomInfo;
                 room.GetComponent<RoomBehaviour>().SetNavMesh();
                 room.gameObject.transform.Find("Grid").gameObject.transform.Find("Solids").gameObject.layer = 9;
+                room.gameObject.transform.Find("Grid").gameObject.transform.Find("Solids").GetComponent<TilemapRenderer>().sortingOrder=1;
                 if (room.gameObject.transform.Find("Grid").gameObject.transform.Find("Holes")!=null)
                     room.gameObject.transform.Find("Grid").gameObject.transform.Find("Holes").gameObject.layer = 10;
                 minimapRoom.GetComponent<MinimapRoomBehaviour>().room = room.GetComponent<RoomBehaviour>();
