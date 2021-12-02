@@ -5,7 +5,7 @@ using UnityEngine;
 public class SFXManager : MonoBehaviour
 {
     static AudioSource SFX;
-    public AudioClip shot, hurt, explosion, powerup, wave;
+    public AudioClip shot, hurt, explosion, powerup, wave, reload;
 
     private void Start()
     {
@@ -15,6 +15,12 @@ public class SFXManager : MonoBehaviour
     public void shotSFX()
     {
         SFX.clip = shot;
+        SFX.Play();
+    }
+
+    public void reloadSFX()
+    {
+        SFX.clip = reload;
         SFX.Play();
     }
 

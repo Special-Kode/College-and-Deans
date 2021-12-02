@@ -3499,6 +3499,7 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: e2c547fb8dfaaf8499940dec007c4a43, type: 3}
   powerup: {fileID: 8300000, guid: 651111eb4e90da44283c31f7b7236550, type: 3}
   wave: {fileID: 8300000, guid: 10b1c6844c35cf243b56c36b88416f63, type: 3}
+  reload: {fileID: 8300000, guid: 87a90de9053963c4a90024939671cdd4, type: 3}
 --- !u!82 &2063286082
 AudioSource:
   m_ObjectHideFlags: 0
