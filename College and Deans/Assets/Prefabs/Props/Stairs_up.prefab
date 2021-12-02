@@ -97,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.060426474, y: 0.10333896}
+  m_Offset: {x: 0.060426474, y: 0.3074807}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.49585295, y: 3.206678}
+  m_Size: {x: 0.49585295, y: 3.6149614}
   m_EdgeRadius: 0
 --- !u!208 &3889777731535441116
 NavMeshObstacle:
@@ -120,7 +120,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.187, y: 1.5000001, z: 0.1}
+  m_Extents: {x: 0.135, y: 1.755, z: 0.1}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0
@@ -187,7 +187,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1}
+  m_Offset: {x: 0.004066229, y: -0.13283068}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -198,7 +198,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.5, y: 2.5}
+  m_Size: {x: 2.9170685, y: 2.565661}
   m_EdgeRadius: 0
 --- !u!1 &6316225320320208894
 GameObject:
@@ -297,7 +297,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04747796, y: 0.08103287}
+  m_Offset: {x: -0.04747796, y: 0.2938496}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -308,7 +308,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.46995592, y: 3.1620657}
+  m_Size: {x: 0.46995592, y: 3.5876992}
   m_EdgeRadius: 0
 --- !u!208 &1043555658405595056
 NavMeshObstacle:
@@ -320,7 +320,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.187, y: 1.5000001, z: 0.1}
+  m_Extents: {x: 0.135, y: 1.755, z: 0.1}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0
@@ -423,7 +423,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.7529935}
+  m_Offset: {x: 0, y: 1.1311643}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -434,7 +434,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.375, y: 4.5059867}
+  m_Size: {x: 0.375, y: 5.262328}
   m_EdgeRadius: 0
 --- !u!208 &8577846234038971502
 NavMeshObstacle:
@@ -446,11 +446,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.18800001, y: 1.5000001, z: 0.1}
+  m_Extents: {x: 0.18800001, y: 1.055, z: 0.1}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1.24, z: 0}
   m_TimeToStationary: 0.5
 --- !u!1 &6765588394871262324
 GameObject:
