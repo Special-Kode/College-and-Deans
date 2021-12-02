@@ -3140,8 +3140,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6274238375723558691}
+  - component: {fileID: -7137453052669867614}
   m_Layer: 0
-  m_Name: Room_TRL
+  m_Name: Room_TRL_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3165,6 +3166,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7137453052669867614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840827749472647482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f699ebe626c7ad34b9c656b425b4fe97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshSurface: {fileID: 0}
+  topRoom: {fileID: 0}
+  rightRoom: {fileID: 0}
+  bottomRoom: {fileID: 0}
+  leftRoom: {fileID: 0}
+  roomInfo: {fileID: 0}
+  SpawnPoints:
+  - {fileID: 4833172801430276973}
+  - {fileID: 5434187201342388692}
+  - {fileID: 5283975430323392847}
+  - {fileID: 6116798743834313974}
+  - {fileID: 3772207372122200983}
+  - {fileID: 2684749271642155680}
+  hasBeenVisited: 0
+  hasSpawned: 0
+  EnemyAmount: 0
+  minimapRoom: {fileID: 0}
 --- !u!1 &8139824371165186084
 GameObject:
   m_ObjectHideFlags: 0
