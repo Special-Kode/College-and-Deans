@@ -2349,6 +2349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f699ebe626c7ad34b9c656b425b4fe97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navMeshSurface: {fileID: 0}
   topRoom: {fileID: 0}
   rightRoom: {fileID: 0}
   bottomRoom: {fileID: 0}
@@ -2363,8 +2364,8 @@ MonoBehaviour:
   - {fileID: 0}
   hasBeenVisited: 0
   hasSpawned: 0
-  navMeshSurface: {fileID: 0}
   EnemyAmount: 0
+  minimapRoom: {fileID: 0}
 --- !u!1 &5664279569046890942
 GameObject:
   m_ObjectHideFlags: 0
@@ -4778,6 +4779,22 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!208 &265810684875646991
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9104383268018304023}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.895, y: 1.535, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &4738332073814768330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4916,6 +4933,11 @@ PrefabInstance:
 --- !u!4 &316828367581598973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5534952733576416784, guid: e7fab501b534d0d439aa165e07bfcb91, type: 3}
+  m_PrefabInstance: {fileID: 5239238427371739885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9104383268018304023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3957757864695312122, guid: e7fab501b534d0d439aa165e07bfcb91, type: 3}
   m_PrefabInstance: {fileID: 5239238427371739885}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8329839376422679500
