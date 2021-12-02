@@ -30,7 +30,7 @@ public class RoomBehaviour : MonoBehaviour
 
         foreach (var door in GetComponentsInChildren<DoorBehaviour>())
         {
-            door.DisableCollider(); //Disable door colliders
+            door.UnlockDoor(); //Disable door colliders
             door.SetAdjacentRoom();
         }
     }
@@ -65,7 +65,7 @@ public class RoomBehaviour : MonoBehaviour
         {
             foreach (var door in GetComponentsInChildren<DoorBehaviour>())
             {
-                door.DisableCollider(); //Disable door colliders
+                door.UnlockDoor(); //Disable door colliders
             }
         }
     }
@@ -74,7 +74,7 @@ public class RoomBehaviour : MonoBehaviour
     {
         foreach (var door in GetComponentsInChildren<DoorBehaviour>())
         {
-            door.EnableCollider(); //Enable door colliders
+            door.LockDoor(); //Enable door colliders
         }
     }
 

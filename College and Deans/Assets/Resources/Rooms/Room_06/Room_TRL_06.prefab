@@ -292,6 +292,7 @@ MonoBehaviour:
   doorDirection: 0
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+  lockSprite: {fileID: 0}
 --- !u!1 &1551857689873512899
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +532,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -832,6 +833,7 @@ MonoBehaviour:
   doorDirection: 3
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+  lockSprite: {fileID: 0}
 --- !u!1 &1887202197577892222
 GameObject:
   m_ObjectHideFlags: 0
@@ -3517,6 +3519,7 @@ MonoBehaviour:
   doorDirection: 1
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+  lockSprite: {fileID: 0}
 --- !u!1 &8960171815798608908
 GameObject:
   m_ObjectHideFlags: 0
