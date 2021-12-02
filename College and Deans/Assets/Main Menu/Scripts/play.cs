@@ -11,6 +11,7 @@ public class play : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     GameObject pencil;
     Button button;
     Vector3 posPen, posBut;
+    public Text title;
 
 
     // Start is called before the first frame update
@@ -20,7 +21,7 @@ public class play : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         button = this.GetComponent<Button>();
         posPen = pencil.transform.position;
         posBut = button.transform.position;
-        
+        traduce();
 
     }
 
@@ -34,5 +35,17 @@ public class play : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     {
         //SceneManager.LoadScene("SampleScene");
         FindObjectOfType<GameLoader>().StartGame();
+    }
+
+    void traduce()
+    {
+        if (PlayerPrefs.GetString("language", "e") == "e")
+        {
+            title.text = "Play";
+        }
+        else
+        {
+            title.text = "Jugar";
+        }
     }
 }

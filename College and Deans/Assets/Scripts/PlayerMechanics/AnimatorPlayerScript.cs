@@ -20,12 +20,15 @@ public class AnimatorPlayerScript : MonoBehaviour
     void Start()
     {
         Clicks = 0;
-        ClickDelay = 0.4f;
+        ClickDelay = 0.3f;
         animator = GetComponent<Animator>();
         movement = this.GetComponent<Movement>();
+        /**
         HowToAttack = this.GetComponent<AttackBehaviour>();
         Weapons = GetComponent<Modifiers>();
         Weapons.Init();
+        HowToAttack.SetWeapon(Weapons.modifiers[0]);
+        //*/
         SecondsToAttack = 0;
         canDash = true;
        
@@ -77,7 +80,7 @@ public class AnimatorPlayerScript : MonoBehaviour
                 }
 
                 // if is not dashing,it means that might player can move
-                else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null)
+                else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null && GameObject.FindGameObjectWithTag("Bomb") == null)
                 {
                     Attack();
                     Clicks = 0;
@@ -111,6 +114,8 @@ public class AnimatorPlayerScript : MonoBehaviour
             if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
             {
                 animator.SetBool("Death", true);
+                Time.timeScale = 0f;
+                //PauseMenu.GameIsPaused = true;
             }
 
         } else
@@ -331,5 +336,12 @@ public class AnimatorPlayerScript : MonoBehaviour
       
     }
 
-
+    public void UpdateWeapon(int weaponId)
+    {
+        HowToAttack = this.GetComponent<AttackBehaviour>();
+        Weapons = GetComponent<Modifiers>();
+        Weapons.Init();
+        HowToAttack.SetWeapon(Weapons.modifiers[weaponId]);
+        NumModifier = weaponId;
+    }
 }

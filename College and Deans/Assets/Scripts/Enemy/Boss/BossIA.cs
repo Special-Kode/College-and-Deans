@@ -9,7 +9,7 @@ public class BossIA : MonoBehaviour
     {
         Chasing,
         Attacking,
-        Jumping
+        Jumping,
     }
 
     private EnemyPathfinding pathfinding;
@@ -17,13 +17,13 @@ public class BossIA : MonoBehaviour
     private Transform target;
     [SerializeField] private float fireRate;
     private float nextAttack;
-    [SerializeField] private float attackRange;
     [SerializeField] private GameObject bullet;
     [SerializeField] private float speedBullet;
     [SerializeField] private float attackCD;
-    [SerializeField] public bool isJumping { get;  private set; }
+    public bool isJumping { get;  private set; }
     public bool hasJumped = false;
     private bool hasLanded = false;
+    public bool isAttacking {get; private set;}
     private Vector2 landingPosition;
     private float timeBeforeAttack;
     private int counter = 0;
@@ -59,6 +59,7 @@ public class BossIA : MonoBehaviour
                     switch (random)
                     {
                         case 0:
+                            isAttacking = true;
                             state = State.Attacking;
                             nextAttack = attackCD;
                             timeBeforeAttack = fireRate;
@@ -99,7 +100,7 @@ public class BossIA : MonoBehaviour
 
                 if (counter == 3)
                 {
-                    Debug.Log("voy a perseguir");
+                    isAttacking = false;
                     counter = 0;
                     state = State.Chasing;
                 }
@@ -129,61 +130,8 @@ public class BossIA : MonoBehaviour
                     hasLanded = false;
                 }
                 break;
-
         }
     }
-
-    /*IEnumerator Jump()
-    {
-        isJumping = true;
-        bool hasJumped = false;
-        Vector2 firstTarget = (Vector2)this.transform.position + Vector2.up;
-        while (!hasJumped)
-        {
-            this.transform.position =  Vector2.MoveTowards(this.transform.position, firstTarget, speed * Time.deltaTime);
-            if (Vector2.Distance(this.transform.position, firstTarget) < 0.1f)
-            {
-                hasJumped = true;
-            }
-        }
-        Vector2 secondTarget = target.position;
-        yield return new WaitForSeconds(1);
-        while (isJumping)
-        {
-            this.transform.position = Vector2.MoveTowards(this.transform.position, secondTarget, speed * Time.deltaTime);
-            if (Vector2.Distance(this.transform.position, secondTarget) < 0.1f)
-            {
-                isJumping = false;
-            }
-        }
-    }*/
-
-    /*
-    if(!isJumping)
-                {
-                    isJumping = true;
-                    StartCoroutine(Jump());
-                }else if(isJumping && !hasJumped && !hasLanded)
-                {
-                    Vector2 firstTarget = (Vector2)this.transform.position + Vector2.up;
-                    Debug.Log(firstTarget);
-                    transform.position = Vector2.MoveTowards(this.transform.position, firstTarget, speed * Time.deltaTime);
-                    Debug.Log("No me estoy moviendo");
-                }else if(isJumping && hasJumped && !hasLanded)
-                {
-                    Vector2.MoveTowards(this.transform.position, landingPosition, speed * Time.deltaTime);  
-                    if(Vector2.Distance(this.transform.position, landingPosition) < 0.1f)
-                    {
-                        hasLanded = true;
-                    }
-                }else if(hasLanded)
-                {
-                    state = State.Chasing;
-                    isJumping = false;
-                    hasJumped = false;
-                    hasLanded = false;
-                }
-                break;*/
 
     IEnumerator Jump()
     {

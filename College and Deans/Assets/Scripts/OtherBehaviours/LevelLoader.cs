@@ -8,6 +8,8 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
+    public GameObject ResultsMenuUI;
+
     // Update is called once per frame
     void Update()
     {
@@ -21,7 +23,17 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextStage()
     {
-        StartCoroutine(LoadStage("Interlude"));
+        bool hasWon = FindObjectOfType<GameManager>().CheckVictoryCondition();
+
+        if (hasWon)
+        {
+            ResultsMenuUI.SetActive(true);
+            ResultsMenuUI.GetComponent<ResultsMenu>().SetWinningResult();
+        }
+        else
+        {
+            StartCoroutine(LoadStage("Interlude"));
+        }
     }
 
 

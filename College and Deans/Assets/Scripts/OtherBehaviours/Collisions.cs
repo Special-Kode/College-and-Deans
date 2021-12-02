@@ -6,14 +6,16 @@ public class Collisions : MonoBehaviour
 {
 
     public bool collideHole = false;
-    public int damage = 1;
+    public int damage { get; set; }
 
     void OnCollisionStay2D(Collision2D other)
     {
         if (this.tag == "Player" )
         {
             if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
+            {
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
+            }
         }
     }
 
@@ -29,7 +31,8 @@ public class Collisions : MonoBehaviour
         }
 
         if (this.tag == "Bullet")
-            Destroy(this.gameObject);
+            if(this.gameObject.layer!=13)
+                Destroy(this.gameObject);
         if (this.tag == "Bomb")
         {
             Debug.Log(other.gameObject.tag);
@@ -49,10 +52,5 @@ public class Collisions : MonoBehaviour
             }
             
         }
-
-
-
-       
-
     }
 }

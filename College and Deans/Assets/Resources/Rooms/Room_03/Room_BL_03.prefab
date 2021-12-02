@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8628978171365226887}
   - component: {fileID: 467852036113206919}
   - component: {fileID: 4785442668928143558}
+  - component: {fileID: 8243035723094009587}
   m_Layer: 0
   m_Name: Door_B
   m_TagString: Untagged
@@ -306,6 +307,21 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &8243035723094009587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419275637923582780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 2
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &718128368195907753
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +335,7 @@ GameObject:
   - component: {fileID: 6597786490909313248}
   - component: {fileID: 1472579448993316264}
   - component: {fileID: 4681055813290398500}
+  - component: {fileID: 2041499886562461195}
   m_Layer: 0
   m_Name: Door_L
   m_TagString: Untagged
@@ -582,6 +599,21 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &2041499886562461195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718128368195907753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 3
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &1304200786397710906
 GameObject:
   m_ObjectHideFlags: 0
@@ -5080,6 +5112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 763521363493927951}
+  - component: {fileID: -105672221379690367}
   m_Layer: 0
   m_Name: Room_BL_03
   m_TagString: Untagged
@@ -5104,6 +5137,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-105672221379690367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5451603854278873210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f699ebe626c7ad34b9c656b425b4fe97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topRoom: {fileID: 0}
+  rightRoom: {fileID: 0}
+  bottomRoom: {fileID: 0}
+  leftRoom: {fileID: 0}
+  roomInfo: {fileID: 0}
+  SpawnPoints:
+  - {fileID: 388821957747736840}
+  - {fileID: 6203088832689660646}
+  - {fileID: 7677051379876900331}
+  - {fileID: 863276008834014997}
+  - {fileID: 8482602892807288950}
+  - {fileID: 2021389131988719691}
+  hasBeenVisited: 0
+  hasSpawned: 0
+  navMeshSurface: {fileID: 0}
+  EnemyAmount: 0
 --- !u!1 &6161080409221895247
 GameObject:
   m_ObjectHideFlags: 0
