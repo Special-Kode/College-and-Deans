@@ -1,45 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BarAnimationScript : MonoBehaviour
 {
-    //private GameObject HealthBar;
-    public bool damage;
-    public int TimeDamage;
-    public float sizeBar;
-    private string text;
-    // Start is called before the first frame update
-    void Start()
+    public Slider slider;
+    public Gradient gradient;
+    public Image fill;
+    public Text time;
+
+    [SerializeField] private bool useGradient;
+    [SerializeField] private Color defaultColor;
+
+    public void SetMaxHealth(int maxHealth)
     {
-        TimeDamage = 20;
-       // HealthBar = this.gameObject;
-        //sizeBar = HealthBar.transform.localScale.x;
+        slider.maxValue = maxHealth;
+        slider.value = maxHealth;
+
+        time.text = maxHealth.ToString();
+
+        fill.color = useGradient ? gradient.Evaluate(1.0f) : defaultColor;
+        time.color = useGradient ? gradient.Evaluate(1.0f) : defaultColor;
+    }
+
+    public void SetHealth(int health)
+    {
+        slider.value = health;
+
+        if (health < 0) health = 0;
+        time.text = (health).ToString();
+
+        fill.color = useGradient ? gradient.Evaluate(slider.normalizedValue) : defaultColor;
+        time.color = useGradient ? gradient.Evaluate(slider.normalizedValue) : defaultColor;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        /*
-        damage = GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().damage;
-        if (damage == true)
-        {
-            if (TimeDamage == 0)
-            {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().damage = false;
-                TimeDamage = 20;
-            }
-           
-
-            TimeDamage -= 1;
-            if (HealthBar.transform.localScale.x > 0)
-                HealthBar.transform.localScale = new Vector3(HealthBar.transform.localScale.x - sizeBar/100,
-                HealthBar.transform.localScale.y, 0);
-
-
-           
-        }*/
+        //TODO edit this when editing UI
         this.GetComponentInChildren<UnityEngine.UI.Text>().text= GameObject.FindGameObjectWithTag("Player").GetComponent<ExternMechanicsPlayer>().CurrentHealth.ToString();
     }
 }

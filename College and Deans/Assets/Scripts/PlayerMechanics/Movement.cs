@@ -13,6 +13,11 @@ public class Movement : MonoBehaviour
     [SerializeField] public NavMeshAgent agent;
     [SerializeField] public float destinationReachedThreshold;
     private Vector3 target;
+
+    private float baseAgentSpeed;
+    private float speedMultiplier = 1;
+
+
     // Se procede a cambiar de posición al personaje dependiendo de si se mueve o procede a realizar un dash.
     void Start()
     {
@@ -30,12 +35,15 @@ public class Movement : MonoBehaviour
         animator = GetComponent<Animator>();
         target = Vector3.zero;
         //offset = this.gameObject.transform.TransformPoint(offset, 0, 0).x;
-       
+        
+        baseAgentSpeed = agent.speed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        agent.speed = baseAgentSpeed * speedMultiplier;
+
         if (agent.enabled == true)
         {
             velocity = agent.velocity;
@@ -48,8 +56,8 @@ public class Movement : MonoBehaviour
                 }
                     
         }
-            
-        
+
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
 
 
@@ -70,5 +78,13 @@ public class Movement : MonoBehaviour
 
     }
 
+    public float GetSpeedMultiplier()
+    {
+        return speedMultiplier;
+    }
 
+    public void SetSpeedMultiplier(float _speed)
+    {
+        speedMultiplier = _speed;
+    }
 }

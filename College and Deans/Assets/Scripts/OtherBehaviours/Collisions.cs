@@ -8,31 +8,36 @@ public class Collisions : MonoBehaviour
     public bool collideHole = false;
     public int damage { get; set; }
 
-   void OnCollisionStay2D(Collision2D other)
+    void OnCollisionStay2D(Collision2D other)
     {
         if (this.tag == "Player" )
         {
-
             if(other.gameObject.tag == "Enemy" || other.gameObject.tag=="Boss")
+            {
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-            if (other.gameObject.tag == "Enemy")
-            {
-                other.gameObject.GetComponent<Enemy>().GetHit(damage);
-            }
-           else if(other.gameObject.tag == "Boss")
-            {
-                other.gameObject.GetComponent<Enemy>().GetHit(damage);
-            }
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<Enemy>().GetHit(damage);
+        }
+        else if(other.gameObject.tag == "Boss")
+        {
+            other.gameObject.GetComponent<Enemy>().GetHit(damage);
+        }
 
-            if (this.tag == "Bullet")
+        if (this.tag == "Bullet")
+            if(this.gameObject.layer!=13)
                 Destroy(this.gameObject);
-            if (this.tag == "Bomb")
-                GameObject.FindGameObjectWithTag("Player").GetComponent<AttackBehaviour>().Explode(this.gameObject);
+        if (this.tag == "Bomb")
+        {
+            Debug.Log(other.gameObject.tag);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<AttackBehaviour>().Explode(this.gameObject);
+        }
         
 
         if(this.tag == "EnemyBullet")
@@ -47,10 +52,5 @@ public class Collisions : MonoBehaviour
             }
             
         }
-
-
-
-       
-
     }
 }

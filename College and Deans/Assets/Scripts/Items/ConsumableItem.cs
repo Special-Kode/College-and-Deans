@@ -30,25 +30,12 @@ public class ConsumableItem : MonoBehaviour
 
     void LoadEnhancer()
     {
-        int rand = UnityEngine.Random.Range(0, 5);
-        //rand = 1;
-        switch (rand) {
-            case 0:
-                enhancer = Resources.Load<Enhancer>("ScriptableObjects/Pressonesso");
-                break;
-            case 1:
-                enhancer = Resources.Load<Enhancer>("ScriptableObjects/GoodPlanning");
-                break;
-            case 2:
-                enhancer = Resources.Load<Enhancer>("ScriptableObjects/BadPlanning");
-                break;
-            case 3:
-                enhancer = Resources.Load<Enhancer>("ScriptableObjects/Ualium");
-                break;
-            case 4:
-                enhancer = Resources.Load<Enhancer>("ScriptableObjects/StayUpLate");
-                break;
-        }
+        if (enhancer != null) return;
+
+        Enhancer[] enhs = Resources.LoadAll<Enhancer>("Items/Enhancers");
+
+        int rand = UnityEngine.Random.Range(0, enhs.Length);
+        enhancer = enhs[rand];
     }
 
     void CheckEffect()
@@ -59,16 +46,26 @@ public class ConsumableItem : MonoBehaviour
         {
             case Enhancer.AffectedStat.Speed:
                 //Edit player speed
+                FindObjectOfType<Movement>().SetSpeedMultiplier(enhancer.amount);
+                FindObjectOfType<StatsManager>().SpeedStat = FindObjectOfType<Movement>().GetSpeedMultiplier();
                 break;
             case Enhancer.AffectedStat.Damage:
                 //Edit player damage
+                FindObjectOfType<AttackBehaviour>().getWeapon().SetDamageMultiplier((int)enhancer.amount);
+                FindObjectOfType<StatsManager>().DamageStat = FindObjectOfType<AttackBehaviour>().getWeapon().GetDamageMultiplier();
                 break;
             case Enhancer.AffectedStat.TimeScale:
                 //Edit player timescale
                 FindObjectOfType<ExternMechanicsPlayer>().ScaleTime(enhancer.amount);
+                FindObjectOfType<StatsManager>().TimeScaleStat = FindObjectOfType<ExternMechanicsPlayer>().GetScaleTime();
                 break;
             case Enhancer.AffectedStat.Berserk:
-                //Edit player speed
+                //Edit player berserk
+                FindObjectOfType<ExternMechanicsPlayer>().ScaleDamage((int)enhancer.amount);
+                FindObjectOfType<StatsManager>().BerserkStats = FindObjectOfType<ExternMechanicsPlayer>().GetScaleDamage();
+
+                FindObjectOfType<AttackBehaviour>().getWeapon().SetDamageMultiplier((int)enhancer.amount);
+                FindObjectOfType<StatsManager>().DamageStat = FindObjectOfType<AttackBehaviour>().getWeapon().GetDamageMultiplier();
                 break;
         }
     }
@@ -78,6 +75,7 @@ public class ConsumableItem : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             CheckEffect();
+            FindObjectOfType<SFXManager>().powerSFX();
             Destroy(gameObject);
         }
     }

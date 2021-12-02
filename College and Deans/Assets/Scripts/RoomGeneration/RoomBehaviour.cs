@@ -7,6 +7,7 @@ public class RoomBehaviour : MonoBehaviour
 
     EnemyGenerator enemyGenerator;
     Pathfinding pathfinding;
+    public NavMeshSurface2d navMeshSurface;
 
     [Header("Adjacent Rooms")]
     public RoomBehaviour topRoom;
@@ -19,8 +20,8 @@ public class RoomBehaviour : MonoBehaviour
     public Transform[] SpawnPoints;
     public bool hasBeenVisited;
     public bool hasSpawned;
-    public NavMeshSurface2d navMeshSurface;
     public int EnemyAmount;
+    public MinimapRoomBehaviour minimapRoom;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +61,7 @@ public class RoomBehaviour : MonoBehaviour
 
     void UnlockDoors()
     {
-        if(EnemyAmount == 0 && hasSpawned)
+        if(EnemyAmount <= 0 && hasSpawned)
         {
             foreach (var door in GetComponentsInChildren<DoorBehaviour>())
             {
@@ -96,6 +97,7 @@ public class RoomBehaviour : MonoBehaviour
             pathfinding = new Pathfinding(22, 14, 1f, originPosition);
 
             List<Transform> spawnPoints = new List<Transform>(SpawnPoints);
+            
             switch (roomInfo.roomType)
             {
                 case RoomInfo.RoomType.Enemies: //Genera enemigos
@@ -115,6 +117,12 @@ public class RoomBehaviour : MonoBehaviour
         {
             var enhancerLoot = Resources.Load("ConsumableItems/Enhancer");
             Instantiate(enhancerLoot, SpawnPoints[0].position, Quaternion.identity);
+        }
+
+        if (roomInfo.roomType == RoomInfo.RoomType.Cafe)
+        {
+            var modifierLoot = Resources.Load("ConsumableItems/Modifier");
+            Instantiate(modifierLoot, SpawnPoints[0].position, Quaternion.identity);
         }
     }
 

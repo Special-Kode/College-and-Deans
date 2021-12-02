@@ -10,6 +10,7 @@ public class credits : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     GameObject pencil, mainMenu, creditsMenu;
     Button button;
     Vector3 posPen, posBut;
+    public Text title, textbutton;
 
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class credits : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         button = this.GetComponent<Button>();
         posPen = pencil.transform.position;
         posBut = button.transform.position;
+        traduce();
         creditsMenu.SetActive(false);
     }
 
@@ -34,5 +36,19 @@ public class credits : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     {
         mainMenu.SetActive(false);
         creditsMenu.SetActive(true);
+    }
+
+    void traduce()
+    {
+        if (PlayerPrefs.GetString("language", "e") == "e")
+        {
+            title.text = "Credits and Acknoledgement";
+            textbutton.text = "credits";
+        }
+        else
+        {
+            title.text = "Creditos y Reconocimientos";
+            textbutton.text = "Créditos";
+        }
     }
 }

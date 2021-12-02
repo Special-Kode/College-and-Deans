@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Modifiers :MonoBehaviour
+public class Modifiers : MonoBehaviour
 {
     // Start is called before the first frame update
-  public List< Weapon> modifiers;
+    public List< Weapon> modifiers;
 
     public void Init()
     {

@@ -1676,6 +1676,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2292360821543133232}
+  - component: {fileID: 234469148038540124}
   m_Layer: 0
   m_Name: Room_R_03
   m_TagString: Untagged
@@ -1700,6 +1701,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &234469148038540124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2756892002960898059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f699ebe626c7ad34b9c656b425b4fe97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topRoom: {fileID: 0}
+  rightRoom: {fileID: 0}
+  bottomRoom: {fileID: 0}
+  leftRoom: {fileID: 0}
+  roomInfo: {fileID: 0}
+  SpawnPoints:
+  - {fileID: 1352008324692868571}
+  - {fileID: 2315567978395562932}
+  - {fileID: 499676603000152707}
+  - {fileID: 7822936821265211772}
+  - {fileID: 2640122462663381325}
+  - {fileID: 3648394272825496226}
+  hasBeenVisited: 0
+  hasSpawned: 0
+  navMeshSurface: {fileID: 0}
+  EnemyAmount: 0
 --- !u!1 &2858921670719218042
 GameObject:
   m_ObjectHideFlags: 0
@@ -4333,6 +4362,7 @@ GameObject:
   - component: {fileID: 5153354562941920353}
   - component: {fileID: 7701296730585180429}
   - component: {fileID: 1513111185730153175}
+  - component: {fileID: 3305201082352553029}
   m_Layer: 0
   m_Name: Door_R
   m_TagString: Untagged
@@ -4596,6 +4626,21 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &3305201082352553029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663888267335607286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 1
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &6710939114602565174
 GameObject:
   m_ObjectHideFlags: 0
