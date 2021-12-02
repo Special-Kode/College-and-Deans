@@ -114,6 +114,8 @@ public class AnimatorPlayerScript : MonoBehaviour
             if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
             {
                 animator.SetBool("Death", true);
+                Time.timeScale = 0f;
+                //PauseMenu.GameIsPaused = true;
             }
 
         } else

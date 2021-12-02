@@ -3737,6 +3737,7 @@ GameObject:
   - component: {fileID: 3337078124628444532}
   - component: {fileID: 5272299203454190355}
   - component: {fileID: 2097156160240772057}
+  - component: {fileID: 4546219051267850387}
   m_Layer: 0
   m_Name: Door_R
   m_TagString: Untagged
@@ -4000,6 +4001,21 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &4546219051267850387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437520539524568769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 1
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &7545175955057871755
 GameObject:
   m_ObjectHideFlags: 0
@@ -4683,6 +4699,7 @@ GameObject:
   - component: {fileID: 2480894971074284538}
   - component: {fileID: 242998860800132928}
   - component: {fileID: 4328089449867685673}
+  - component: {fileID: 8430460775448531995}
   m_Layer: 0
   m_Name: Door_T
   m_TagString: Untagged
@@ -4946,6 +4963,21 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &8430460775448531995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8261556551716835301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ab106c863e894458382ea2f07146ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDirection: 0
+  RoomParent: {fileID: 0}
+  AdjacentRoom: {fileID: 0}
 --- !u!1 &8338843450736273505
 GameObject:
   m_ObjectHideFlags: 0
@@ -4990,7 +5022,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_CollectObjects: 0
+  m_CollectObjects: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
