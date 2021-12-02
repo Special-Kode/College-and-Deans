@@ -4075,6 +4075,7 @@ MonoBehaviour:
   doorDirection: 1
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+  lockSprite: {fileID: 0}
 --- !u!1 &1901336979152852547
 GameObject:
   m_ObjectHideFlags: 0
@@ -4397,6 +4398,7 @@ MonoBehaviour:
   doorDirection: 3
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+  lockSprite: {fileID: 0}
 --- !u!1 &2759378532460861667
 GameObject:
   m_ObjectHideFlags: 0
@@ -5628,6 +5630,7 @@ MonoBehaviour:
   doorDirection: 0
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+  lockSprite: {fileID: 0}
 --- !u!1 &8920391782832423569
 GameObject:
   m_ObjectHideFlags: 0

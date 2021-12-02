@@ -5184,6 +5184,7 @@ MonoBehaviour:
   doorDirection: 0
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+  lockSprite: {fileID: 0}
 --- !u!1001 &4151092568868228034
 PrefabInstance:
   m_ObjectHideFlags: 0

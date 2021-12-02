@@ -2974,6 +2974,7 @@ MonoBehaviour:
   doorDirection: 1
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+  lockSprite: {fileID: 0}
 --- !u!1 &1484710539198834448
 GameObject:
   m_ObjectHideFlags: 0

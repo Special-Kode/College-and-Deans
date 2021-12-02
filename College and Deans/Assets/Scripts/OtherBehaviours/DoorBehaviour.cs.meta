@@ -3,7 +3,10 @@ guid: d3ab106c863e894458382ea2f07146ce
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - RoomParent: {instanceID: 0}
+  - AdjacentRoom: {instanceID: 0}
+  - lockSprite: {fileID: 7109920361282846786, guid: 0347cc53ca50c8041affe5c0be6c2e08, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
