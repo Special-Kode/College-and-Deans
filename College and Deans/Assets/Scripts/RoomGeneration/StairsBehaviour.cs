@@ -9,6 +9,7 @@ public class StairsBehaviour : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            FindObjectOfType<ExternMechanicsPlayer>().stopTimeOnStairs = 0;
             FindObjectOfType<LevelLoader>().LoadNextStage();
         }
     }
