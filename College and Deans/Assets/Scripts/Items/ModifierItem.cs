@@ -50,6 +50,7 @@ public class ModifierItem : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             ModifyWeapon();
+            FindObjectOfType<SFXManager>().reloadSFX();
             Destroy(gameObject);
         }
     }
