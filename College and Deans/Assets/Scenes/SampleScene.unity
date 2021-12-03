@@ -689,7 +689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5155298158085426503, guid: b56fe03f015b62643ad67b1b67b9cb7b, type: 3}
       propertyPath: m_MatchWidthOrHeight
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5394322265363110912, guid: b56fe03f015b62643ad67b1b67b9cb7b, type: 3}
       propertyPath: m_RootOrder
@@ -3057,7 +3057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729969, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5475639532632729969, guid: 52e304c89ca94f545a5056213089021d, type: 3}
       propertyPath: m_SpriteSortPoint
@@ -3499,6 +3499,7 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: e2c547fb8dfaaf8499940dec007c4a43, type: 3}
   powerup: {fileID: 8300000, guid: 651111eb4e90da44283c31f7b7236550, type: 3}
   wave: {fileID: 8300000, guid: 10b1c6844c35cf243b56c36b88416f63, type: 3}
+  reload: {fileID: 8300000, guid: 87a90de9053963c4a90024939671cdd4, type: 3}
 --- !u!82 &2063286082
 AudioSource:
   m_ObjectHideFlags: 0

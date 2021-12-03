@@ -491,6 +491,7 @@ MonoBehaviour:
   doorDirection: 1
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+  lockSprite: {fileID: 0}
 --- !u!114 &2667129413276312831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5266,6 +5267,7 @@ MonoBehaviour:
   doorDirection: 0
   RoomParent: {fileID: 0}
   AdjacentRoom: {fileID: 0}
+  lockSprite: {fileID: 0}
 --- !u!114 &1593547786419301750
 MonoBehaviour:
   m_ObjectHideFlags: 0
