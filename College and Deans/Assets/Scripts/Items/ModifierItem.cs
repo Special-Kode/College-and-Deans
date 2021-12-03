@@ -43,6 +43,7 @@ public class ModifierItem : MonoBehaviour
         Debug.Log("Modifier " + modifier.name + " id: " + modifier.modifierId);
 
         FindObjectOfType<AnimatorPlayerScript>().NumModifier = modifier.modifierId;
+        FindObjectOfType<StatsManager>().modifier = modifier.modifierId;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -51,6 +52,7 @@ public class ModifierItem : MonoBehaviour
         {
             ModifyWeapon();
             FindObjectOfType<SFXManager>().reloadSFX();
+            FindObjectOfType<Inventory>().SuitModifier(modifier.sprite);
             Destroy(gameObject);
         }
     }
