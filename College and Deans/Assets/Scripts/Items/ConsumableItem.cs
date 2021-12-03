@@ -76,6 +76,7 @@ public class ConsumableItem : MonoBehaviour
         {
             CheckEffect();
             FindObjectOfType<SFXManager>().powerSFX();
+            FindObjectOfType<Inventory>().SuitEnhancer(enhancer.sprite);
             Destroy(gameObject);
         }
     }
