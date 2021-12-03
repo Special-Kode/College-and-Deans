@@ -27,7 +27,10 @@ public class Inventory : MonoBehaviour
 
     void SetItemsOnGUI()
     {
+        if (m_statsManager.modSprite != null)
+            modSlot.GetComponent<Image>().color = Color.white;
         modSlot.GetComponent<Image>().sprite = m_statsManager.modSprite;
+
         for (uint i = 0; i < enhSlots.Length; i++)
         {
             if (m_statsManager.enhSprites[i] != null)
@@ -42,6 +45,7 @@ public class Inventory : MonoBehaviour
     public void SuitModifier(Sprite modSprite)
     {
         modSlot.GetComponent<Image>().sprite = modSprite;
+        modSlot.GetComponent<Image>().color = Color.white;
         m_statsManager.modSprite = modSprite;
     }
 
