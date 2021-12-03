@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66378794164008575}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6, y: 6.5, z: 0}
+  m_LocalPosition: {x: 6, y: 6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1399173333852959705}
@@ -3269,6 +3269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 262231424006530319}
   - component: {fileID: -286400902517119952}
+  - component: {fileID: -9138050174621369334}
   m_Layer: 0
   m_Name: Start_RBL
   m_TagString: Untagged
@@ -3322,6 +3323,32 @@ MonoBehaviour:
   hasSpawned: 0
   EnemyAmount: 0
   minimapRoom: {fileID: 0}
+--- !u!114 &-9138050174621369334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4311649369745663001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83217457e6afb8e489722be060301722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mob_move_s: {fileID: 799593999896874371, guid: d2edabdf2e200cd45bfe7fe2867bada0, type: 3}
+  mob_attack_s: {fileID: 799593999896874371, guid: 3a47fcf6dcf72a94c9a727acff5508c6, type: 3}
+  mob_dash_s: {fileID: 799593999896874371, guid: 814565bf06ab1074e8dda0a095f4ec35, type: 3}
+  pc_move_s: {fileID: 799593999896874371, guid: 6fc4575f4ceda104dbdbc41181ed018a, type: 3}
+  pc_attack_s: {fileID: 799593999896874371, guid: c38907ac4bc6479488f4efa41fbe8460, type: 3}
+  pc_dash_s: {fileID: 799593999896874371, guid: 6c60ce47cdbdc3b42a082739cb404530, type: 3}
+  board_s: {fileID: 20165849849446433, guid: a53b26707a2a5464aa085d0244c76050, type: 3}
+  mob_move_en: {fileID: 799593999896874371, guid: 4dfa046a4fde8fc49b71214cd03208c9, type: 3}
+  mob_attack_en: {fileID: 799593999896874371, guid: a0970e00e2865ae4e966a8e897bb9aec, type: 3}
+  mob_dash_en: {fileID: 799593999896874371, guid: d27a05f5f3a0649409b285cfe3a90208, type: 3}
+  pc_move_en: {fileID: 799593999896874371, guid: 8bc18c765c02d7a488520a313ddaa2d1, type: 3}
+  pc_attack_en: {fileID: 799593999896874371, guid: 17ab20836e229474b812a6ad749f11f9, type: 3}
+  pc_dash_en: {fileID: 799593999896874371, guid: 5f0a12328d3d26944bc85416c9df09d0, type: 3}
+  board_en: {fileID: 799593999896874371, guid: 06356de843f3c184182468946a62be78, type: 3}
 --- !u!1 &6053380947598240428
 GameObject:
   m_ObjectHideFlags: 0
