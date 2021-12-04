@@ -12,8 +12,8 @@ public class Modifiers : MonoBehaviour
         modifiers = new List<Weapon>(5);
         modifiers.Add(new Weapon("NormalWeapon", 1, 0));
         modifiers.Add(new Weapon("DoubleShoot", 1, 1));
-        modifiers.Add(new Weapon("Bomb", 1, 2));
-        modifiers.Add(new Weapon("SimpleWave", 1, 3));
-        modifiers.Add(new Weapon("Wave360", 1, 4));
+        modifiers.Add(new Weapon("Bomb", 3, 2));
+        modifiers.Add(new Weapon("SimpleWave", 2, 3));
+        modifiers.Add(new Weapon("Wave360", 2, 4));
     }
 }
