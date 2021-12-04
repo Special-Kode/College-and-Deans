@@ -19,6 +19,8 @@ public class DoorBehaviour : MonoBehaviour
     public GameObject lockSprite;
     private Vector3 dir;
 
+    bool rotateLockSprite = true;
+
     void Awake()
     {
         lockSprite = Resources.Load("DoorLock") as GameObject;
@@ -52,6 +54,21 @@ public class DoorBehaviour : MonoBehaviour
                 break;
             case DoorDirection.Left:
                 lockSprite.transform.localPosition += Vector3.left * 10;
+                break;
+        }
+
+        if (!rotateLockSprite) return;
+
+        switch (doorDirection)
+        {
+            case DoorDirection.Right:
+                lockSprite.transform.Rotate(new Vector3(0, 0, 270));
+                break;
+            case DoorDirection.Bottom:
+                lockSprite.transform.Rotate(new Vector3(0, 0, 180));
+                break;
+            case DoorDirection.Left:
+                lockSprite.transform.Rotate(new Vector3(0, 0, 90));
                 break;
         }
     }
