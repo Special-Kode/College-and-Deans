@@ -171,11 +171,17 @@ public class EnemyAI : MonoBehaviour
         state = State.Chasing;
     }
 
+    public Vector3 GetTargetPosition()
+    {
+        return target.position;
+    }
+
     IEnumerator Attack()
     {
         landingPosition = target.position;
         yield return new WaitForSeconds(0.2f);
         attacking = true;
+        this.gameObject.GetComponent<EnemyAnimation>().Attack();
         locked = true;
     }
 

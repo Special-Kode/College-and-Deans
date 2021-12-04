@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyPathfinding : MonoBehaviour
 {
     [SerializeField]private Enemy enemy;
-    [SerializeField]private Transform target;
 
     public float speed = .02f;
     int nodoActual = 0;
@@ -14,11 +14,15 @@ public class EnemyPathfinding : MonoBehaviour
     Pathfinding pathfinding;
     GameManager gameManager;
     Vector2 direction;
+    private NavMeshAgent agent;
     
     private void Awake() 
     {
         enemy = GetComponent<Enemy>();
         gameManager = FindObjectOfType<GameManager>();
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     private void FixedUpdate() 
@@ -28,6 +32,7 @@ public class EnemyPathfinding : MonoBehaviour
 
     private void HandleMovement() 
     {
+        /*
         if(vectorPath != null){
             Vector2 targetPosition = (Vector2)vectorPath[nodoActual] + pathfinding.GetOriginPosition();
             if(Vector2.Distance(enemy.GetPosition(), targetPosition) > .1f)
@@ -49,6 +54,11 @@ public class EnemyPathfinding : MonoBehaviour
                 }
             }
         }
+        */
+        if(agent.enabled)
+        {
+            agent.speed = speed;
+        }
     }
 
     public void MoveTo(Vector3 targetPosition)
@@ -58,6 +68,7 @@ public class EnemyPathfinding : MonoBehaviour
 
     public void SetTargetPosition(Vector3 targetPosition)
     {
+        /*
         nodoActual = 0;
         vectorPath = pathfinding.FindPath(enemy.GetPosition(), targetPosition);
 
@@ -65,21 +76,27 @@ public class EnemyPathfinding : MonoBehaviour
         {
             vectorPath.RemoveAt(0);
         }
+        */
+        agent.SetDestination(targetPosition);
     } 
 
     public void StopMoving()
     {
+        /*
         vectorPath = null;
         enemy.EnemyRigidbody2D.velocity = Vector2.zero;
+        */
+        agent.ResetPath();
     }
 
     public Vector2 GetDirectionMov()
     {
+        direction = ((Vector2)enemy.EnemyAI.GetTargetPosition() - enemy.GetPosition()).normalized;
         return direction;
     }
 
     public void SetPathfinding(Pathfinding _pathfinding)
     {
-    this.pathfinding = _pathfinding;
+        this.pathfinding = _pathfinding;
     }
 }
