@@ -109,7 +109,8 @@ public class AttackBehaviour :MonoBehaviour
          yield return new WaitForSeconds(time);
          Shoot(position, MousePos, temp_b, speed, rotation);
          FindObjectOfType<SFXManager>().shotSFX();
-         temp_b.GetComponent<Collisions>().damage = weapon.getDamage();
+         if(temp_b != null)
+            temp_b.GetComponent<Collisions>().damage = weapon.getDamage();
 
 
     }
