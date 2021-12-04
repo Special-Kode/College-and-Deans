@@ -17,8 +17,20 @@ public class Collisions : MonoBehaviour
                 this.GetComponent<ExternMechanicsPlayer>().damage = true;
             }
         }
-    }
 
+       
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<Enemy>().GetHit(damage);
+        }
+        else if (other.gameObject.tag == "Boss")
+        {
+            other.gameObject.GetComponent<Enemy>().GetHit(damage);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.gameObject.tag == "Enemy")

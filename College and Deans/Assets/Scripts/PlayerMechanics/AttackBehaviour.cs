@@ -141,7 +141,7 @@ public class AttackBehaviour :MonoBehaviour
     public void Explode(GameObject bomb)
     {
         bomb.transform.localScale = new Vector3(2f, 2f, 0);
-        bomb.GetComponent<CircleCollider2D>().radius = 2f;
+        bomb.GetComponent<CircleCollider2D>().radius = 0.95f;
         bomb.GetComponent<SpriteRenderer>().sprite = Explosion;
         bomb.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         StartCoroutine(DestroyAfterTime(0.4f,bomb));
