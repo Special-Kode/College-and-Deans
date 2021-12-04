@@ -121,6 +121,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         } else
         {
             canDash = false;
+            Clicks = 0;
         }
 
     }
