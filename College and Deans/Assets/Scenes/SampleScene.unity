@@ -2929,7 +2929,7 @@ MonoBehaviour:
   RandomUpperBound: 10
   MoveAmount: {x: 22, y: 16}
   useDefaultRoomSet: 0
-  defaultRoomSetNum: 0
+  defaultRoomSetNum: 6
   currentPos: {x: 0, y: 0}
   roomInfoList: []
   roomList: []

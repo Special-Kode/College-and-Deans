@@ -133,6 +133,11 @@ public class BossIA : MonoBehaviour
         }
     }
 
+    public Vector3 GetTargetPosition()
+    {
+        return target.position;
+    }
+
     IEnumerator Jump()
     {
         this.gameObject.GetComponent<BoxCollider2D>().enabled = false;

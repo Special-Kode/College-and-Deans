@@ -91,7 +91,12 @@ public class EnemyPathfinding : MonoBehaviour
 
     public Vector2 GetDirectionMov()
     {
-        direction = ((Vector2)enemy.EnemyAI.GetTargetPosition() - enemy.GetPosition()).normalized;
+        if(enemy.EnemyAI != null)
+            direction = ((Vector2)enemy.EnemyAI.GetTargetPosition() - enemy.GetPosition()).normalized;
+        if (enemy.BossIA != null)
+            direction = ((Vector2)enemy.BossIA.GetTargetPosition() - enemy.GetPosition()).normalized;
+        if (enemy.Boss_2_IA != null)
+            direction = ((Vector2)enemy.Boss_2_IA.GetTargetPosition() - enemy.GetPosition()).normalized;
         return direction;
     }
 
