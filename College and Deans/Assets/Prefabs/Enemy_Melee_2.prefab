@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2451477461787248738}
   - component: {fileID: -4783919721273971797}
   - component: {fileID: 4372447748475624406}
-  - component: {fileID: -673613116581155856}
   - component: {fileID: 21014100371783254}
   - component: {fileID: 5858472888220759503}
   - component: {fileID: -5661549952890056418}
   - component: {fileID: -7333618470194040430}
   - component: {fileID: 7780987797131091638}
+  - component: {fileID: 2200168000060434025}
   m_Layer: 12
   m_Name: Enemy_Melee_2
   m_TagString: Enemy
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0074279904, y: -0.09394717}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,24 +135,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.157964, y: 1.723331}
+  m_Size: {x: 1.0299672, y: 1.1964033}
   m_EdgeRadius: 0
---- !u!208 &-673613116581155856
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1565483701209284056}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.578982, y: 0.8616655, z: 0.1}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!114 &21014100371783254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +171,7 @@ MonoBehaviour:
   speedBullet: 0
   attacking: 0
   locked: 0
-  speed: 2.5
+  speed: 5
   tipo: 1
 --- !u!114 &-5661549952890056418
 MonoBehaviour:
@@ -202,8 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
-  target: {fileID: 0}
-  speed: 400
+  speed: 4
   reachedEndOfPath: 0
 --- !u!114 &-7333618470194040430
 MonoBehaviour:
@@ -236,3 +219,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!195 &2200168000060434025
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565483701209284056}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.49
+  m_Speed: 2
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.26
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

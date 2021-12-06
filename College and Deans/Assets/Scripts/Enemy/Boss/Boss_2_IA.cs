@@ -97,6 +97,11 @@ public class Boss_2_IA : MonoBehaviour
         }
     }
 
+    public Vector3 GetTargetPosition()
+    {
+        return target.position;
+    }
+
     IEnumerator Attack()
     {
         landingPosition = target.position;

@@ -18,4 +18,9 @@ public class EnemyAnimation : MonoBehaviour
         enemy.EnemyAnimator.SetFloat("Speed",enemy.EnemyPathfinding.GetDirectionMov().sqrMagnitude);
         enemy.EnemyAnimator.SetBool("Atacando", enemy.EnemyAI.attacking);
     }
+
+    public void Attack()
+    {
+        enemy.EnemyAnimator.SetTrigger("Atacando");
+    }
 }

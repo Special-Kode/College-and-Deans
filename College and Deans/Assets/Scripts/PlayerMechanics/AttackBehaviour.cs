@@ -109,7 +109,8 @@ public class AttackBehaviour :MonoBehaviour
          yield return new WaitForSeconds(time);
          Shoot(position, MousePos, temp_b, speed, rotation);
          FindObjectOfType<SFXManager>().shotSFX();
-         temp_b.GetComponent<Collisions>().damage = weapon.getDamage();
+         if(temp_b != null)
+            temp_b.GetComponent<Collisions>().damage = weapon.getDamage();
 
 
     }
@@ -141,7 +142,7 @@ public class AttackBehaviour :MonoBehaviour
     public void Explode(GameObject bomb)
     {
         bomb.transform.localScale = new Vector3(2f, 2f, 0);
-        bomb.GetComponent<CircleCollider2D>().radius = 2f;
+        bomb.GetComponent<CircleCollider2D>().radius = 0.95f;
         bomb.GetComponent<SpriteRenderer>().sprite = Explosion;
         bomb.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         StartCoroutine(DestroyAfterTime(0.4f,bomb));

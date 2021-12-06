@@ -12,6 +12,10 @@ public class StatsManager : MonoBehaviour
 
     public int modifier = 0;
 
+    [Header("UI Persistancy")]
+    public Sprite modSprite;
+    public Sprite[] enhSprites = new Sprite[5];
+
     private void Awake()
     {
         if (FindObjectsOfType<StatsManager>().Length > 1)

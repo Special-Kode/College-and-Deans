@@ -9,7 +9,7 @@ public class credits : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 
     GameObject pencil, mainMenu, creditsMenu;
     Button button;
-    Vector3 posPen, posBut;
+    Transform posPen, posBut;
     public Text title, textbutton;
 
 
@@ -20,16 +20,16 @@ public class credits : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         mainMenu = GameObject.Find("Menu");
         creditsMenu = GameObject.Find("Credits");
         button = this.GetComponent<Button>();
-        posPen = pencil.transform.position;
-        posBut = button.transform.position;
+        posPen = pencil.transform;
+        posBut = button.transform;
         traduce();
         creditsMenu.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        posPen.y = posBut.y;
-        pencil.transform.position = posPen;
+        pencil.transform.parent = posBut;
+        pencil.transform.localPosition = Vector3.zero;
     }
 
     public void OnPointerClick(PointerEventData eventData)

@@ -31,6 +31,9 @@ public class ExternMechanicsPlayer : MonoBehaviour
     public Text resultText;
     public BarAnimationScript TimeBar;
 
+    [Header("Other stuff")]
+    public byte stopTimeOnStairs; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,8 @@ public class ExternMechanicsPlayer : MonoBehaviour
         resultText = GameObject.Find("Text").GetComponent<Text>();
         ResultsMenuUI = GameObject.Find("Results");
         ResultsMenuUI.SetActive(false);
+
+        stopTimeOnStairs = 1;
     }
 
     // Update is called once per frame
@@ -55,11 +60,10 @@ public class ExternMechanicsPlayer : MonoBehaviour
             AddNoDamageTime();
         }
 
-        m_CurrentHealth -= (Time.deltaTime * TimeScaler);
+        m_CurrentHealth -= (Time.deltaTime * TimeScaler * stopTimeOnStairs);
         CalculateHealth();
     }
-    //se asigna la vida según la escala.x de la barra de vida,
-    //con esto,si se hacen cambios de cuánto baja la barra de vida por cada golpe, se actualizará solo
+
     void CalculateHealth()
     {
 
