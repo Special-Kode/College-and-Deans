@@ -39,10 +39,11 @@ public class ExternMechanicsPlayer : MonoBehaviour
     {
         damage = false;
         m_CurrentHealth = TimeLife;
+
+        TimeBar = GameObject.Find("TimeLifeBar").GetComponent<BarAnimationScript>();
         TimeBar.SetMaxHealth(TimeLife);
         NoDamageTimer = 0;
         canBeDamage = true;
-
         resultText = GameObject.Find("Text").GetComponent<Text>();
         ResultsMenuUI = GameObject.Find("Results");
         ResultsMenuUI.SetActive(false);
