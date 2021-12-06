@@ -141,11 +141,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenPos: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
-  speed: 0
+  rb: {fileID: 5475639532632729970}
+  DashSpeed: 0
   canPass: 0
   velocity: {x: 0, y: 0}
   agent: {fileID: 234882419581565699}
   destinationReachedThreshold: 1
+  moveSpeed: 5
 --- !u!212 &5475639532632729969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -213,13 +215,12 @@ MonoBehaviour:
   m_CurrentHealth: 100
   TimeLife: 120
   DamageAmount: 3
-  TimeScaler: 0
-  DamageScaler: 0
   damage: 0
   Invulnerability: 1
   ResultsMenuUI: {fileID: 0}
   resultText: {fileID: 0}
   TimeBar: {fileID: 0}
+  stopTimeOnStairs: 0
 --- !u!50 &5475639532632729970
 Rigidbody2D:
   serializedVersion: 4

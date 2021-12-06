@@ -4,8 +4,6 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 public class AnimatorPlayerScript : MonoBehaviour
 {
-    [DllImport("__Internal")]
-    private static extern bool IsMobile();
     // Start is called before the first frame update
     public Animator animator;
     Movement movement;
@@ -19,6 +17,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     [SerializeField] public int Weapon;
     public Modifiers Weapons;
     [SerializeField] public int NumModifier;
+    private bool isMobile;
     void Start()
     {
         Clicks = 0;
@@ -33,7 +32,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         //*/
         SecondsToAttack = 0;
         canDash = true;
-       
+        isMobile = Application.isMobilePlatform;
     }
 
     // Aquí se cambian las variables de estado dependeiendo de el estado al cual se quiere llegar partiendo de un estado específico. También se dispone a ejecutar 
@@ -43,69 +42,15 @@ public class AnimatorPlayerScript : MonoBehaviour
         if (!PauseMenu.GameIsPaused)
         {
             //Control movil
-            if (isMobile())
+            if (isMobile)
             {
-                if (Input.GetMouseButtonDown(0))
-                {
 
-                    PosInitMouse = Input.mousePosition;
-                    PosInitMouse = Camera.main.ScreenToWorldPoint(PosInitMouse);
-                    PosInitMouse.z = 0;
-
-
-                    posToMove = PosInitMouse;
-                    posToMove.z = 0;
-
-                    Clicks++;
-                    if (Clicks % 2 != 0)
-                    {
-
-                        MouseClickedTime = Time.time;
-
-
-                    }
-
-
-                }
-
+                ClickDown();
                 //if you stop pressing left click, it is saved the position of the mouse, and check if distance of init dash and end dash is higher than 2
-                if (Input.GetMouseButtonUp(0))
-                {
-
-                    posFinalMouse = Input.mousePosition;
-                    posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
-
-
-                    if (Vector2.Distance(posFinalMouse, PosInitMouse) > 1.5f && canDash == true
-                         && !animator.GetBool("Dash"))
-                    {
-                        InitDash();
-                    }
-
-                    // if is not dashing,it means that might player can move
-                    else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null && GameObject.FindGameObjectWithTag("Bomb") == null)
-                    {
-                        Attack();
-                        Clicks = 0;
-                        MouseClickedTime = 0;
-                    }
-
-
-
-                }
+                ClickUp();
                 //if the user press left click, there might be the possibility to the user press second click, if this not happen, the player attack if the user input click an enemy.
-
-                if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash") && Vector3.Distance(posFinalMouse, PosInitMouse) < 1.5)
-                {
-
-
-                    if (Clicks == 1)
-                        InitMove();
-
-
-                    Clicks = 0;
-                    MouseClickedTime = 0;
-                }
+                CheckIfStartToMove();
+                
 
                 //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
                 if ((Vector2.Distance(posFinaldash, transform.position) < 0.1f || (Time.time - DashTimer) > 0.5f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
@@ -122,64 +67,13 @@ public class AnimatorPlayerScript : MonoBehaviour
             //ControlOrdenador
             else
             {
-                if (Input.GetMouseButtonDown(0))
-                {
-
-                    PosInitMouse = Input.mousePosition;
-                    PosInitMouse = Camera.main.ScreenToWorldPoint(PosInitMouse);
-                    PosInitMouse.z = 0;
-
-
-                    posToMove = PosInitMouse;
-                    posToMove.z = 0;
-
-                    Clicks++;
-                    if (Clicks % 2 != 0)
-                    {
-
-                        MouseClickedTime = Time.time;
-
-                    }
-
-                if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
-                   {
-                animator.SetBool("Death", true);
-                Time.timeScale = 0f;
-                //PauseMenu.GameIsPaused = true;
-
-
-                    }
-
-
-                }
-
+                MovementWASD();
+                ClickDown();
                 //if you stop pressing left click, it is saved the position of the mouse, and check if distance of init dash and end dash is higher than 2
-                if (Input.GetMouseButtonUp(0))
-                {
+                ClickUp();
+                //if the user press left click, there might be the possibility to the user press second click, if this not happen, the player attack if the user input click an enemy.
+                resetClicks();
 
-                    posFinalMouse = Input.mousePosition;
-                    posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
-
-
-                    if (Vector2.Distance(posFinalMouse, PosInitMouse) > 1.5f && canDash == true
-                         && !animator.GetBool("Dash"))
-                    {
-                        InitDash();
-                    }
-
-                    // if is not dashing,it means that might player can move
-                    else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null && GameObject.FindGameObjectWithTag("Bomb") == null)
-                    {
-                        Attack();
-                        Clicks = 0;
-                        MouseClickedTime = 0;
-                    }
-
-
-
-                }   
-
-                //  Debug.Log(this.GetComponent<Rigidbody2D>().velocity);
                 if ((Vector2.Distance(posFinaldash, transform.position) < 0.1f || (Time.time - DashTimer) > 0.5f) && animator.GetBool("Dash")) //&& isDashed==true                                                                        )
                     EndDash();
 
@@ -190,6 +84,7 @@ public class AnimatorPlayerScript : MonoBehaviour
                 {
                     animator.SetBool("Death", true);
                 }
+
 
             }
             //if you press left click, clicks is added 1 and it is saved the time
@@ -259,7 +154,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         animator.SetBool("Walking", true);
         animator.SetBool("Dash", false);
         movement.screenPos = posToMove;
-        movement.PlayerMoved();
+        movement.PlayerMoved(true);
         enter = false;
         MouseClickedTime = Time.time;
         Clicks = 0;
@@ -271,7 +166,7 @@ public class AnimatorPlayerScript : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         animator.SetBool("Dash", false);
         this.gameObject.layer = LayerMask.NameToLayer("Player");
-        // isDashed = false;
+        movement.dashing = false;
     }
     public void setAnimationDashOrWalk(string TypeMov)
     {
@@ -413,15 +308,6 @@ public class AnimatorPlayerScript : MonoBehaviour
 
       
     }
-      public bool isMobile()
-        {
-            #if !UNITY_EDITOR && UNITY_WEBGL
-                return IsMobile();
-            #endif
-            return false;
-        }
-    
-
     public void UpdateWeapon(int weaponId)
     {
         HowToAttack = this.GetComponent<AttackBehaviour>();
@@ -429,5 +315,86 @@ public class AnimatorPlayerScript : MonoBehaviour
         Weapons.Init();
         HowToAttack.SetWeapon(Weapons.modifiers[weaponId]);
         NumModifier = weaponId;
+    }
+
+    public void ClickDown()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            PosInitMouse = Input.mousePosition;
+            PosInitMouse = Camera.main.ScreenToWorldPoint(PosInitMouse);
+            PosInitMouse.z = 0;
+
+
+            posToMove = PosInitMouse;
+            posToMove.z = 0;
+
+            Clicks++;
+            if (Clicks % 2 != 0)
+            {
+
+                MouseClickedTime = Time.time;
+
+
+            }
+
+
+        }
+    }
+
+    public void ClickUp()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+
+            posFinalMouse = Input.mousePosition;
+            posFinalMouse = Camera.main.ScreenToWorldPoint(posFinalMouse);
+
+
+            if (Vector2.Distance(posFinalMouse, PosInitMouse) > 1.5f && canDash == true
+                 && !animator.GetBool("Dash"))
+            {
+                InitDash();
+            }
+
+            // if is not dashing,it means that might player can move
+            else if (Clicks == 2 && !animator.GetBool("Dash") && GameObject.FindGameObjectWithTag("Bullet") == null && GameObject.FindGameObjectWithTag("Bomb") == null)
+            {
+                Attack();
+                Clicks = 0;
+                MouseClickedTime = 0;
+            }
+
+
+
+        }
+    }
+    public void CheckIfStartToMove()
+    {
+        if ((Time.time - MouseClickedTime) > ClickDelay && !animator.GetBool("Dash") && Vector3.Distance(posFinalMouse, PosInitMouse) < 1.5)
+        {
+
+
+            if (Clicks == 1)
+                InitMove();
+
+
+            Clicks = 0;
+            MouseClickedTime = 0;
+        }
+    }
+    void resetClicks()
+    {
+        if ((Time.time - MouseClickedTime) > ClickDelay)
+        {
+            Clicks = 0;
+            MouseClickedTime = 0;
+        }
+    }
+    void MovementWASD()
+    {
+        animator.SetBool("Walking", true);
+        movement.PlayerMoved(false);
     }
 }
