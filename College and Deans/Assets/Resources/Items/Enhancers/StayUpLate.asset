@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: StayUpLate
   m_EditorClassIdentifier: 
   sprite: {fileID: 7967382537570147585, guid: 45cabc9287aa02e44aa83e5caaf3af60, type: 3}
+  affected: 16
   amount: 2
-  affected: 3

@@ -852,10 +852,16 @@ MonoBehaviour:
   SpeedStat: 1
   DamageStat: 1
   TimeScaleStat: 1
-  BerserkStats: 1
+  ResistanceStat: 1
+  SeeFullMinimap: 0.55
   modifier: 0
   modSprite: {fileID: 0}
   enhSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

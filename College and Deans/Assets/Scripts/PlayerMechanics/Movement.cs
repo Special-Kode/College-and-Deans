@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour
     private Vector3 target;
 
     private float baseAgentSpeed;
-    private float speedMultiplier = 1;
+    [SerializeField] private float speedMultiplier = 1;
 
     public float moveSpeed = 5f;
     private bool WASD = false;
@@ -46,6 +46,9 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        agent.speed = baseAgentSpeed * speedMultiplier;
+        moveSpeed = agent.speed;
+
         if (WASD)
         {
             if (!dashing)
@@ -61,7 +64,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            agent.speed = baseAgentSpeed * speedMultiplier;
+            
 
             if (agent.enabled == true)
             {
@@ -114,6 +117,11 @@ public class Movement : MonoBehaviour
     public float GetSpeedMultiplier()
     {
         return speedMultiplier;
+    }
+
+    public void MultiplySpeed(float _speedMultiplier)
+    {
+        speedMultiplier *= _speedMultiplier;
     }
 
     public void SetSpeedMultiplier(float _speed)

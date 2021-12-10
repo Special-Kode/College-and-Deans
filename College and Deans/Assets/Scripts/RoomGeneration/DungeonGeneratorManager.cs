@@ -145,11 +145,13 @@ public class DungeonGeneratorManager : MonoBehaviour
             case 1:
                 roomInfo.roomType = cafeSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Cafe;
                 cafeSpawned = true;
-                lootSpawned = true;
                 break;
             case 2:
-                roomInfo.roomType = lootSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Loot;
-                cafeSpawned = true;
+                roomInfo.roomType = lootSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.ModLoot;
+                lootSpawned = true;
+                break;
+            case 3:
+                roomInfo.roomType = lootSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.EnhLoot;
                 lootSpawned = true;
                 break;
         }
@@ -250,10 +252,15 @@ public class DungeonGeneratorManager : MonoBehaviour
         if (roomInfo.roomType == RoomInfo.RoomType.Spawn)
             roomName = "Rooms/Room_Start/Start_" + toConcat;
 
+        /**
         if (roomInfo.roomType == RoomInfo.RoomType.Cafe)
             roomName = "Rooms/Room_Mod/Room_Mod_" + toConcat;
+        //*/
 
-        if (roomInfo.roomType == RoomInfo.RoomType.Loot)
+        if (roomInfo.roomType == RoomInfo.RoomType.ModLoot)
+            roomName = "Rooms/Room_Mod/Room_Mod_" + toConcat;
+
+        if (roomInfo.roomType == RoomInfo.RoomType.EnhLoot)
             roomName = "Rooms/Room_Pow/Room_Pow_" + toConcat;
 
         if (roomInfo.roomType == RoomInfo.RoomType.Stairs)
