@@ -40,7 +40,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5894354197550530550}
   - component: {fileID: 6161849708490214496}
-  - component: {fileID: 1117652532755383879}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -78,35 +77,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &1117652532755383879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012402180578572286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f699ebe626c7ad34b9c656b425b4fe97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navMeshSurface: {fileID: 0}
-  topRoom: {fileID: 0}
-  rightRoom: {fileID: 0}
-  bottomRoom: {fileID: 0}
-  leftRoom: {fileID: 0}
-  roomInfo: {fileID: 0}
-  SpawnPoints:
-  - {fileID: 442981329636905444}
-  - {fileID: 353799805849648644}
-  - {fileID: 2556213360578314743}
-  - {fileID: 7343648791633849241}
-  - {fileID: 4976715161513504778}
-  - {fileID: 1000190005922419284}
-  hasBeenVisited: 0
-  hasSpawned: 0
-  EnemyAmount: 0
-  minimapRoom: {fileID: 0}
 --- !u!1 &1086154849949941266
 GameObject:
   m_ObjectHideFlags: 0

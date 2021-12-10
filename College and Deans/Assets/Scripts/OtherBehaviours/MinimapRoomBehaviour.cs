@@ -27,7 +27,8 @@ public class MinimapRoomBehaviour : MonoBehaviour
     {
         foreach (var wall in GetComponentsInChildren<SpriteRenderer>())
         {
-            if (wall.color == Color.white && wall.name != "MinimapIcon")
+            //TODO make this color comparison more properly
+            if ((wall.color == Color.white || wall.color == new Color(1, 1, 1, adjacentRoomAlpha)) && wall.name != "MinimapIcon")
             {
                 switch (roomInfo.roomType)
                 {
