@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f22a7a83d79f87d4b962214b3e3c016e, type: 3}
   m_Name: TuesdayMenu
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  affected: 10
-  amount: 0
+  sprite: {fileID: -3362366602981382685, guid: 45cabc9287aa02e44aa83e5caaf3af60, type: 3}
+  affected: 3
+  amount: 2

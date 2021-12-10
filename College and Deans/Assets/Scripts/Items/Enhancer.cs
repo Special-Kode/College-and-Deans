@@ -16,9 +16,13 @@ public class Enhancer : ScriptableObject
         Timescale = 4, 
         Resistance = 8,
         Berserk = 16,
-        SpeedAndTimescale = Speed | Timescale,
+        SeeFullMinimap = 32,
+        Cheatsheet = 64,
         SpeedAndDamage = Speed | Damage,
+        SpeedAndTimescale = Speed | Timescale,
+        SpeedAndResistance = Speed | Resistance,
         DamageAndResistance = Damage | Resistance,
+
         CookieJar = SpeedAndTimescale | Berserk, //For cookie jar
     }
 }

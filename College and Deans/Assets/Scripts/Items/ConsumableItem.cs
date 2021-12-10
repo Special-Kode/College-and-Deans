@@ -7,6 +7,7 @@ using UnityEngine;
 public class ConsumableItem : MonoBehaviour
 {
     public Enhancer enhancer;
+    public bool isFood;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider2D;
 
@@ -32,7 +33,12 @@ public class ConsumableItem : MonoBehaviour
     {
         if (enhancer != null) return;
 
-        Enhancer[] enhs = Resources.LoadAll<Enhancer>("Items/Enhancers");
+        Enhancer[] enhs;
+
+        if (isFood)
+            enhs = Resources.LoadAll<Enhancer>("Items/CafeItems");
+        else
+            enhs = Resources.LoadAll<Enhancer>("Items/Enhancers");
 
         int rand = UnityEngine.Random.Range(0, enhs.Length);
         enhancer = enhs[rand];
@@ -67,6 +73,16 @@ public class ConsumableItem : MonoBehaviour
             //Edit player berserk
             EditPlayerBerserk();
         }
+        if ((enhancer.affected & Enhancer.AffectedStat.SeeFullMinimap) != 0)
+        {
+            //Edit player minimap vision
+            EditPlayerSeeMinimap();
+        }
+        if ((enhancer.affected & Enhancer.AffectedStat.Cheatsheet) != 0)
+        {
+            //Edit player cheatsheet
+            EditPlayerCheatsheet();
+        }
     }
 
     private void EditPlayerSpeed()
@@ -100,6 +116,24 @@ public class ConsumableItem : MonoBehaviour
 
         FindObjectOfType<AttackBehaviour>().getWeapon().MultiplyDamage(enhancer.amount);
         FindObjectOfType<StatsManager>().DamageStat = FindObjectOfType<AttackBehaviour>().getWeapon().GetDamageMultiplier();
+    }
+
+    private void EditPlayerSeeMinimap()
+    {
+        var stats = FindObjectOfType<StatsManager>();
+
+        if (stats.SeeFullMinimap == 1.0f) return;
+
+        stats.SeeFullMinimap = enhancer.amount;
+    }
+
+    private void EditPlayerCheatsheet()
+    {
+        FindObjectOfType<AttackBehaviour>().getWeapon().MultiplyDamage(enhancer.amount + 1);
+        FindObjectOfType<StatsManager>().DamageStat = FindObjectOfType<AttackBehaviour>().getWeapon().GetDamageMultiplier();
+
+        FindObjectOfType<ExternMechanicsPlayer>().ScaleTime(1.0f / enhancer.amount);
+        FindObjectOfType<StatsManager>().TimeScaleStat = FindObjectOfType<ExternMechanicsPlayer>().GetTimescale();
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -38,7 +38,13 @@ public class Weapon
     {
         int amount = (int)_multiplyDamage;
 
-        damageMultiplier = amount;
+        if (amount == 0)
+        {
+            damageMultiplier = 1;
+            return;
+        }
+
+        damageMultiplier *= amount;
     }
 
     public void SetDamageMultiplier(float _damageMultiplier)

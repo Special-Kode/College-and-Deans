@@ -5,7 +5,7 @@ public class Inventory : MonoBehaviour
 {
     public GameObject modSlot;
 
-    public bool[] isFull;
+    private bool[] isFull;
     public GameObject[] enhSlots;
 
     public GameObject item;
@@ -15,6 +15,8 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isFull = new bool[enhSlots.Length];
+
         m_statsManager = FindObjectOfType<StatsManager>();
         SetItemsOnGUI();
     }

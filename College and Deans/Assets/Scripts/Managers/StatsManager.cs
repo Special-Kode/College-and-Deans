@@ -10,11 +10,14 @@ public class StatsManager : MonoBehaviour
     public float TimeScaleStat = 1;
     public float ResistanceStat = 1;
 
+    public float SeeFullMinimap = 0.55f;
+
+    [Header("Modifier")]
     public int modifier = 0;
 
     [Header("UI Persistancy")]
     public Sprite modSprite;
-    public Sprite[] enhSprites = new Sprite[5];
+    public Sprite[] enhSprites = new Sprite[10];
 
     private void Awake()
     {

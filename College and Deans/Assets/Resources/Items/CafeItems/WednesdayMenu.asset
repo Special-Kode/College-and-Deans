@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f22a7a83d79f87d4b962214b3e3c016e, type: 3}
-  m_Name: MondayMenu
+  m_Name: WednesdayMenu
   m_EditorClassIdentifier: 
-  sprite: {fileID: 6836527639125134130, guid: 45cabc9287aa02e44aa83e5caaf3af60, type: 3}
-  affected: 10
-  amount: 2
+  sprite: {fileID: -1712571589163668777, guid: 45cabc9287aa02e44aa83e5caaf3af60, type: 3}
+  affected: 9
+  amount: 1.3
