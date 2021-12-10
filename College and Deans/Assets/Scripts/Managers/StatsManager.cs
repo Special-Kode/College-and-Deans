@@ -8,7 +8,7 @@ public class StatsManager : MonoBehaviour
     public float SpeedStat = 1;
     public float DamageStat = 1;
     public float TimeScaleStat = 1;
-    public float BerserkStats = 1;
+    public float ResistanceStat = 1;
 
     public int modifier = 0;
 
@@ -53,20 +53,19 @@ public class StatsManager : MonoBehaviour
     void SetStats()
     {
         //Update modifier
-        FindObjectOfType<AnimatorPlayerScript>().UpdateWeapon(modifier);
-
+        FindObjectOfType<AnimatorPlayerScript>().InitWeapon(modifier);
 
         //Speed stats
         FindObjectOfType<Movement>().SetSpeedMultiplier(SpeedStat);
 
         //Damage stats
         if(FindObjectOfType<AttackBehaviour>().getWeapon() != null)
-            FindObjectOfType<AttackBehaviour>().getWeapon().SetDamageMultiplier((int)DamageStat);
+            FindObjectOfType<AttackBehaviour>().getWeapon().SetDamageMultiplier(DamageStat);
 
         //TimeScale stats
-        FindObjectOfType<ExternMechanicsPlayer>().ScaleTime(TimeScaleStat);
+        FindObjectOfType<ExternMechanicsPlayer>().SetTimescale(TimeScaleStat);
 
         //Berserk stats
-        FindObjectOfType<ExternMechanicsPlayer>().ScaleDamage((int)DamageStat);
+        FindObjectOfType<ExternMechanicsPlayer>().SetResistanceScaler(ResistanceStat);
     }
 }

@@ -17,6 +17,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     [SerializeField] public int Weapon;
     public Modifiers Weapons;
     [SerializeField] public int NumModifier;
+    [SerializeField] private int weaponDamage;
     private bool isMobile;
     void Start()
     {
@@ -308,13 +309,23 @@ public class AnimatorPlayerScript : MonoBehaviour
 
       
     }
-    public void UpdateWeapon(int weaponId)
+    public void InitWeapon(int weaponId)
     {
         HowToAttack = this.GetComponent<AttackBehaviour>();
         Weapons = GetComponent<Modifiers>();
         Weapons.Init();
         HowToAttack.SetWeapon(Weapons.modifiers[weaponId]);
         NumModifier = weaponId;
+        weaponDamage = HowToAttack.getWeapon().getDamage();
+    }
+
+    public void UpdateWeapon(int weaponId)
+    {
+        HowToAttack = this.GetComponent<AttackBehaviour>();
+        Weapons = GetComponent<Modifiers>();
+        HowToAttack.SetWeapon(Weapons.modifiers[weaponId]);
+        NumModifier = weaponId;
+        weaponDamage = HowToAttack.getWeapon().getDamage();
     }
 
     public void ClickDown()

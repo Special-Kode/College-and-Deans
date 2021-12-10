@@ -42,7 +42,7 @@ public class ModifierItem : MonoBehaviour
     {
         Debug.Log("Modifier " + modifier.name + " id: " + modifier.modifierId);
 
-        FindObjectOfType<AnimatorPlayerScript>().NumModifier = modifier.modifierId;
+        FindObjectOfType<AnimatorPlayerScript>().UpdateWeapon(modifier.modifierId);
         FindObjectOfType<StatsManager>().modifier = modifier.modifierId;
     }
 

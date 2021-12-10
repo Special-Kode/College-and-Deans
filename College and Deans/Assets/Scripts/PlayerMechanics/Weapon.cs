@@ -34,8 +34,17 @@ public class Weapon
         return damageMultiplier;
     }
 
-    public void SetDamageMultiplier(int _damageMultiplier)
+    public void MultiplyDamage(float _multiplyDamage)
     {
-        damageMultiplier = _damageMultiplier;
+        int amount = (int)_multiplyDamage;
+
+        damageMultiplier = amount;
+    }
+
+    public void SetDamageMultiplier(float _damageMultiplier)
+    {
+        int amount = (int)_damageMultiplier;
+
+        damageMultiplier = amount;
     }
 }
