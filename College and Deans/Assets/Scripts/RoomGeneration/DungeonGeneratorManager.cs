@@ -243,12 +243,18 @@ public class DungeonGeneratorManager : MonoBehaviour
     string GetRoomName(RoomInfo roomInfo, string toConcat)
     {
         //TODO change room probability
-        int numRoom = !useDefaultRoomSet ? UnityEngine.Random.Range(0, 7) : defaultRoomSetNum;
+        int numRoom = !useDefaultRoomSet ? UnityEngine.Random.Range(0, 8) : defaultRoomSetNum;
 
         string roomName = "Rooms/Room_0" + numRoom.ToString() + "/Room_" + toConcat + "_0" + numRoom.ToString();
 
         if (roomInfo.roomType == RoomInfo.RoomType.Spawn)
             roomName = "Rooms/Room_Start/Start_" + toConcat;
+
+        if (roomInfo.roomType == RoomInfo.RoomType.Cafe)
+            roomName = "Rooms/Room_Mod/Room_Mod_" + toConcat;
+
+        if (roomInfo.roomType == RoomInfo.RoomType.Loot)
+            roomName = "Rooms/Room_Pow/Room_Pow_" + toConcat;
 
         if (roomInfo.roomType == RoomInfo.RoomType.Stairs)
             roomName = "Rooms/Room_Stairs/Room_Stairs_" + toConcat;
