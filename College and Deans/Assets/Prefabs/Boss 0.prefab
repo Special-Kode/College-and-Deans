@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6462973616389898792}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spawn 2
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2982832415666952279}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spawn 5
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8201322182794233802}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spawn 3
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4628984432217722396}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spawn 0
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -129,7 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1214267293353757105}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spawn 7
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8325719034637078874}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spawn 6
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 7083012603883097641}
   - component: {fileID: 3674942458157132596}
   - component: {fileID: 1554711296219710469}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Boss 0
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3042923732418784933}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spawn 1
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -457,7 +457,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5110783433793721773}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Spawn 4
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -487,7 +487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8991498230590535810}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet Spawns
   m_TagString: Untagged
   m_Icon: {fileID: 0}
