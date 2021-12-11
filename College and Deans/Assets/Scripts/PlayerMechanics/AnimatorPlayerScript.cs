@@ -80,7 +80,11 @@ public class AnimatorPlayerScript : MonoBehaviour
 
                 if (canDash == false)
                     checkIfcanDash();
-
+                if (!Input.anyKey)
+                {
+                    animator.SetBool("Walking", false);
+                }
+                   
                 if (this.gameObject.GetComponentInChildren<ExternMechanicsPlayer>().death == true)
                 {
                     animator.SetBool("Death", true);
