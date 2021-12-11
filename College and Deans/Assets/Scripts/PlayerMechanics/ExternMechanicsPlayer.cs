@@ -91,11 +91,17 @@ public class ExternMechanicsPlayer : MonoBehaviour
         {
             m_CurrentHealth -= DamageAmount / ResistanceScaler;
             FindObjectOfType<SFXManager>().hurtSFX();
+            GetComponent<SpriteRenderer>().color = Color.red;
         }    
     }
     void AddNoDamageTime()
     {
         NoDamageTimer += Time.deltaTime;
+        if (NoDamageTimer >= 0.2f)
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+
         if (NoDamageTimer >= Invulnerability)
         {
             damage = false;
