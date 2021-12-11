@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Pressonesso
   m_EditorClassIdentifier: 
   sprite: {fileID: -1574392758297952465, guid: 45cabc9287aa02e44aa83e5caaf3af60, type: 3}
+  affected: 1
   amount: 1.2
-  affected: 0

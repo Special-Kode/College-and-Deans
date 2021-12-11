@@ -19,9 +19,14 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private int health;
 
+    [SerializeField] private float damageAnimTime;
+    [SerializeField] private bool isBeingDamaged;
+
     private void Awake()
     {
         enemy = GetComponent<Enemy>();
+
+        damageAnimTime = 0.0f;
 
         EnemyPathfinding = GetComponent<EnemyPathfinding>();
         EnemyRigidbody2D = GetComponent<Rigidbody2D>();
@@ -32,6 +37,20 @@ public class Enemy : MonoBehaviour
         Boss_2_Animation = GetComponent<Boss_2_Animation>();
     }
 
+    private void Update()
+    {
+        if (isBeingDamaged)
+        {
+            damageAnimTime += Time.deltaTime;
+            if (damageAnimTime >= 0.2f)
+            {
+                isBeingDamaged = false;
+                damageAnimTime = 0.0f;
+                GetComponent<SpriteRenderer>().color = Color.white;
+            }
+        }
+    }
+
     public Vector2 GetPosition()
     {
         return EnemyRigidbody2D.position;
@@ -39,6 +58,11 @@ public class Enemy : MonoBehaviour
 
     public void GetHit(int damage)
     {
+        damageAnimTime = 0.0f;
+        isBeingDamaged = true;
+        if(damage != 0)
+            GetComponent<SpriteRenderer>().color = Color.red;
+
         /**
 
         //TODO: Check minimum damage to enemies when collision management is fixed

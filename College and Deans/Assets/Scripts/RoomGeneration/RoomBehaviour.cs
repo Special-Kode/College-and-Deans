@@ -113,13 +113,19 @@ public class RoomBehaviour : MonoBehaviour
             hasSpawned = true;
         }
 
-        if (roomInfo.roomType == RoomInfo.RoomType.Loot)
+        if (roomInfo.roomType == RoomInfo.RoomType.Cafe)
+        {
+            var enhancerLoot = Resources.Load("ConsumableItems/CafeItem");
+            Instantiate(enhancerLoot, SpawnPoints[0].position, Quaternion.identity);
+        }
+
+        if (roomInfo.roomType == RoomInfo.RoomType.EnhLoot)
         {
             var enhancerLoot = Resources.Load("ConsumableItems/Enhancer");
             Instantiate(enhancerLoot, SpawnPoints[0].position, Quaternion.identity);
         }
 
-        if (roomInfo.roomType == RoomInfo.RoomType.Cafe)
+        if (roomInfo.roomType == RoomInfo.RoomType.ModLoot)
         {
             var modifierLoot = Resources.Load("ConsumableItems/Modifier");
             Instantiate(modifierLoot, SpawnPoints[0].position, Quaternion.identity);

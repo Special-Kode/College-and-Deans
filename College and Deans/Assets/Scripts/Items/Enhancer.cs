@@ -6,11 +6,23 @@ using UnityEngine;
 public class Enhancer : ScriptableObject
 {
     public Sprite sprite;
-    public float amount;
     public AffectedStat affected;
+    public float amount;
 
     public enum AffectedStat
     {
-        Speed, Damage, TimeScale, Berserk
+        Speed = 1, 
+        Damage = 2, 
+        Timescale = 4, 
+        Resistance = 8,
+        Berserk = 16,
+        SeeFullMinimap = 32,
+        Cheatsheet = 64,
+        SpeedAndDamage = Speed | Damage,
+        SpeedAndTimescale = Speed | Timescale,
+        SpeedAndResistance = Speed | Resistance,
+        DamageAndResistance = Damage | Resistance,
+
+        CookieJar = SpeedAndTimescale | Berserk, //For cookie jar
     }
 }

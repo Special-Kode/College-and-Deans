@@ -18,12 +18,12 @@ public class ExternMechanicsPlayer : MonoBehaviour
     [SerializeField] private int DamageAmount = 3; //TODO change this for attack damage
 
     private float TimeScaler = 1;
-    private int DamageScaler = 1;
+    private float ResistanceScaler = 1; //TODO rename this properly
 
     [Header("Invulnerability Logic")]
     public bool damage;
     private float NoDamageTimer;
-    private bool canBeDamage;
+    private bool canBeDamaged;
     [SerializeField] private float Invulnerability = 1.0f;
 
     [Header("UI Elems")]
@@ -43,7 +43,7 @@ public class ExternMechanicsPlayer : MonoBehaviour
         TimeBar = GameObject.Find("TimeLifeBar").GetComponent<BarAnimationScript>();
         TimeBar.SetMaxHealth(TimeLife);
         NoDamageTimer = 0;
-        canBeDamage = true;
+        canBeDamaged = true;
         resultText = GameObject.Find("Text").GetComponent<Text>();
         ResultsMenuUI = GameObject.Find("Results");
         ResultsMenuUI.SetActive(false);
@@ -57,7 +57,7 @@ public class ExternMechanicsPlayer : MonoBehaviour
         if (damage)
         {
             HandleDamage();
-            canBeDamage = false;
+            canBeDamaged = false;
             AddNoDamageTime();
         }
 
@@ -87,41 +87,57 @@ public class ExternMechanicsPlayer : MonoBehaviour
     }
     void HandleDamage()
     {
-        if (canBeDamage)
+        if (canBeDamaged)
         {
-            m_CurrentHealth -= DamageAmount * DamageScaler;
+            m_CurrentHealth -= DamageAmount / ResistanceScaler;
             FindObjectOfType<SFXManager>().hurtSFX();
+            GetComponent<SpriteRenderer>().color = Color.red;
         }    
     }
     void AddNoDamageTime()
     {
         NoDamageTimer += Time.deltaTime;
+        if (NoDamageTimer >= 0.2f)
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+
         if (NoDamageTimer >= Invulnerability)
         {
             damage = false;
-            canBeDamage = true;
+            canBeDamaged = true;
             NoDamageTimer = 0;
         }
     }
 
-    public float GetScaleTime()
+    public float GetTimescale()
     {
         return TimeScaler;
     }
 
     public void ScaleTime(float _scaleTime)
     {
-        TimeScaler = _scaleTime;
+        TimeScaler *= _scaleTime;
     }
 
-    public float GetScaleDamage()
+    public void SetTimescale(float _timescale)
     {
-        return DamageScaler;
+        TimeScaler = _timescale;
+    }
+
+    public float GetResistanceScaler()
+    {
+        return ResistanceScaler;
     }
 
     //TODO receive float param
-    public void ScaleDamage(int _scaleDamage)
+    public void ScaleResistance(float _scaleResistance)
     {
-        DamageScaler = _scaleDamage;
+        ResistanceScaler *= _scaleResistance;
+    }
+
+    public void SetResistanceScaler(float _resistanceScaler)
+    {
+        ResistanceScaler = _resistanceScaler;
     }
 }

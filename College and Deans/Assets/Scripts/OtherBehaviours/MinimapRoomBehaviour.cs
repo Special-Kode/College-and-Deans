@@ -7,7 +7,9 @@ public class MinimapRoomBehaviour : MonoBehaviour
     public RoomInfo roomInfo;
     public RoomBehaviour room;
     public SpriteRenderer minimapIconRenderer;
+
     private float adjacentRoomAlpha = 0.55f;
+    private StatsManager statsManager;
     
     // Start is called before the first frame update
     void Start()
@@ -15,19 +17,22 @@ public class MinimapRoomBehaviour : MonoBehaviour
         ColorMinimapRoom();
         SetMinimapIcon();
         NotRenderRoom();
+
+        statsManager = FindObjectOfType<StatsManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        RenderIfVisited();
+        RenderSelection();
     }
 
     void ColorMinimapRoom()
     {
         foreach (var wall in GetComponentsInChildren<SpriteRenderer>())
         {
-            if (wall.color == Color.white && wall.name != "MinimapIcon")
+            //TODO make this color comparison more properly
+            if ((wall.color == Color.white || wall.color == new Color(1, 1, 1, adjacentRoomAlpha)) && wall.name != "MinimapIcon")
             {
                 switch (roomInfo.roomType)
                 {
@@ -37,7 +42,8 @@ public class MinimapRoomBehaviour : MonoBehaviour
                     case RoomInfo.RoomType.Cafe:
                         wall.color = Color.green;
                         break;
-                    case RoomInfo.RoomType.Loot:
+                    case RoomInfo.RoomType.ModLoot:
+                    case RoomInfo.RoomType.EnhLoot:
                         wall.color = Color.yellow;
                         break;
                     case RoomInfo.RoomType.Stairs:
@@ -57,6 +63,16 @@ public class MinimapRoomBehaviour : MonoBehaviour
         Sprite minimapIcon;
         minimapIcon = Resources.Load<Sprite>("Minimap/MinimapIcons/Minimap" + roomInfo.roomType.ToString());
         minimapIconRenderer.sprite = minimapIcon;
+    }
+
+    private void RenderSelection()
+    {
+        if (statsManager.SeeFullMinimap >= 1.0f)
+            RenderAll();
+        else if (statsManager.SeeFullMinimap <= 0.0f)
+            RenderOnlyVisited();
+        else
+            RenderIfVisited();
     }
 
     private void NotRenderRoom()
@@ -97,6 +113,24 @@ public class MinimapRoomBehaviour : MonoBehaviour
                 if (!room.leftRoom.hasBeenVisited)
                     elem.color = new Color(elem.color.r, elem.color.g, elem.color.b, alpha);
             }
+    }
+
+    void RenderAll()
+    {
+        foreach (var elem in GetComponentsInChildren<SpriteRenderer>())
+        {
+            elem.enabled = true;
+            elem.color = new Color(elem.color.r, elem.color.g, elem.color.b, 1.0f);
+        }
+    }
+
+    void RenderOnlyVisited()
+    {
+        foreach (var elem in GetComponentsInChildren<SpriteRenderer>())
+        {
+            elem.enabled = room.hasBeenVisited;
+            elem.color = new Color(elem.color.r, elem.color.g, elem.color.b, 1.0f);
+        }
     }
 
     void RenderIfVisited()
