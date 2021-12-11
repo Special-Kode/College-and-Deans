@@ -316,16 +316,18 @@ public class AnimatorPlayerScript : MonoBehaviour
         Weapons.Init();
         HowToAttack.SetWeapon(Weapons.modifiers[weaponId]);
         NumModifier = weaponId;
-        weaponDamage = HowToAttack.getWeapon().getDamage();
+        weaponDamage = HowToAttack.getWeapon().GetDamageMultiplier();
+        Weapons.modifiers[weaponId].SetDamageMultiplier(weaponDamage);
     }
 
     public void UpdateWeapon(int weaponId)
     {
         HowToAttack = this.GetComponent<AttackBehaviour>();
         Weapons = GetComponent<Modifiers>();
+        weaponDamage = HowToAttack.getWeapon().GetDamageMultiplier();
         HowToAttack.SetWeapon(Weapons.modifiers[weaponId]);
         NumModifier = weaponId;
-        weaponDamage = HowToAttack.getWeapon().getDamage();
+        Weapons.modifiers[weaponId].SetDamageMultiplier(weaponDamage);
     }
 
     public void ClickDown()

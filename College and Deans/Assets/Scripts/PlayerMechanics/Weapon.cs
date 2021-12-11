@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Weapon 
 {
-    private string name;
-    private int damage;
-    private int type;
-
-    private int damageMultiplier;
+    [SerializeField] private string name;
+    [SerializeField] private int damage;
+    [SerializeField] private int type;
+    
+    [SerializeField] private int damageMultiplier;
     public Weapon(string name,int damage,int type){
         this.name = name;
         this.damage = damage;
@@ -41,6 +42,12 @@ public class Weapon
         if (amount == 0)
         {
             damageMultiplier = 1;
+            return;
+        }
+
+        if (amount == 1)
+        {
+            damageMultiplier += amount;
             return;
         }
 
