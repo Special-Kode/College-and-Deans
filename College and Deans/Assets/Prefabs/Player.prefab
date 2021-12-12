@@ -127,6 +127,7 @@ MonoBehaviour:
   Weapon: 1
   Weapons: {fileID: 0}
   NumModifier: 2
+  weaponDamage: 0
 --- !u!114 &5475639532632729974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +148,9 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   agent: {fileID: 234882419581565699}
   destinationReachedThreshold: 1
+  speedMultiplier: 1
   moveSpeed: 5
+  dashing: 0
 --- !u!212 &5475639532632729969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -255,7 +258,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01614523, y: -0.11090465}
+  m_Offset: {x: -0.0030763745, y: -0.15376084}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.33}
@@ -266,7 +269,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2776375, y: 1.0487312}
+  m_Size: {x: 0.67968166, y: 0.61422205}
   m_EdgeRadius: 0
 --- !u!195 &234882419581565699
 NavMeshAgent:
