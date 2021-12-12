@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.49
+    agentRadius: 0.3
     agentHeight: 0.93
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16333334
+    cellSize: 0.1
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -2833,7 +2833,7 @@ MonoBehaviour:
   RandomUpperBound: 10
   MoveAmount: {x: 22, y: 16}
   useDefaultRoomSet: 0
-  defaultRoomSetNum: 6
+  defaultRoomSetNum: 7
   currentPos: {x: 0, y: 0}
   roomInfoList: []
   roomList: []
