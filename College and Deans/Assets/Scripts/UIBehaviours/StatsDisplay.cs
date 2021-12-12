@@ -40,7 +40,7 @@ public class StatsDisplay : MonoBehaviour
             text.text = val.ToString("0.0");
             if (text.text[text.text.Length - 1] == '0')
             {
-                text.text = aux.ToString();
+                text.text = val.ToString("0");
             }
         }
     }
