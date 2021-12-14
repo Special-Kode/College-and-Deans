@@ -124,7 +124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Room: {fileID: 0}
-  health: 3
+  health: 5
+  damageAnimTime: 0
+  isBeingDamaged: 0
 --- !u!114 &7284812093490662857
 MonoBehaviour:
   m_ObjectHideFlags: 0

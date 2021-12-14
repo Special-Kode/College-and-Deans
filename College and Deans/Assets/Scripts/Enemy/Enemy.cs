@@ -60,8 +60,9 @@ public class Enemy : MonoBehaviour
     {
         damageAnimTime = 0.0f;
         isBeingDamaged = true;
-        if(damage != 0)
-            GetComponent<SpriteRenderer>().color = Color.red;
+        GetComponent<SpriteRenderer>().color = Color.red;
+        if (damage <= 0)
+            damage = 1;
 
         /**
 
