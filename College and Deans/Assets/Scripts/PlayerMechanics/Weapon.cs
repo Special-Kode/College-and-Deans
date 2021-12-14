@@ -23,7 +23,7 @@ public class Weapon
     }
     public float getDamage()
     {
-        return this.damage * damageMultiplier;
+        return this.damage + damageMultiplier;
     }
     public int getType()
     {
@@ -42,8 +42,6 @@ public class Weapon
 
     public void SetDamageMultiplier(float _damageMultiplier)
     {
-        int amount = (int)_damageMultiplier;
-
-        damageMultiplier = amount;
+        damageMultiplier = _damageMultiplier;
     }
 }

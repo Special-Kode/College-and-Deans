@@ -136,24 +136,26 @@ public class DungeonGeneratorManager : MonoBehaviour
     // Randomly sets the type of the room, excluding spawn and boss room type
     void SetRandomRoom(RoomInfo roomInfo)
     {
-        int rand = UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(RoomInfo.RoomType)).Length - 3);
-        switch (rand)
+        float rnd = UnityEngine.Random.Range(0.0f, 1.0f);
+
+        if (rnd < 0.1f && !cafeSpawned)
         {
-            case 0:
-                roomInfo.roomType = RoomInfo.RoomType.Enemies;
-                break;
-            case 1:
-                roomInfo.roomType = cafeSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.Cafe;
-                cafeSpawned = true;
-                break;
-            case 2:
-                roomInfo.roomType = lootSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.ModLoot;
-                lootSpawned = true;
-                break;
-            case 3:
-                roomInfo.roomType = lootSpawned ? RoomInfo.RoomType.Enemies : RoomInfo.RoomType.EnhLoot;
-                lootSpawned = true;
-                break;
+            roomInfo.roomType = RoomInfo.RoomType.Cafe;
+            cafeSpawned = true;
+        }
+        else if (rnd < 0.4f && !lootSpawned)
+        {
+            roomInfo.roomType = RoomInfo.RoomType.ModLoot;
+            lootSpawned = true;
+        }
+        else if (rnd < 0.7f && !lootSpawned)
+        {
+            roomInfo.roomType = RoomInfo.RoomType.EnhLoot;
+            lootSpawned = true;
+        }
+        else
+        {
+            roomInfo.roomType = RoomInfo.RoomType.Enemies;
         }
     }
 
