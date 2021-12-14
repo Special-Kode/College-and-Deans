@@ -6,7 +6,7 @@ public class Collisions : MonoBehaviour
 {
 
     public bool collideHole = false;
-    public int damage { get; set; }
+    public float damage { get; set; }
 
     void OnCollisionStay2D(Collision2D other)
     {
@@ -24,22 +24,22 @@ public class Collisions : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<Enemy>().GetHit(damage);
+            other.gameObject.GetComponent<Enemy>().GetHit((int)damage);
         }
         else if (other.gameObject.tag == "Boss")
         {
-            other.gameObject.GetComponent<Enemy>().GetHit(damage);
+            other.gameObject.GetComponent<Enemy>().GetHit((int)damage);
         }
     }
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<Enemy>().GetHit(damage);
+            other.gameObject.GetComponent<Enemy>().GetHit((int)damage);
         }
         else if(other.gameObject.tag == "Boss")
         {
-            other.gameObject.GetComponent<Enemy>().GetHit(damage);
+            other.gameObject.GetComponent<Enemy>().GetHit((int)damage);
         }
 
         if (this.tag == "Bullet")

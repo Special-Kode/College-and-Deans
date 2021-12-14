@@ -17,7 +17,7 @@ public class AnimatorPlayerScript : MonoBehaviour
     [SerializeField] public int Weapon;
     public Modifiers Weapons;
     [SerializeField] public int NumModifier;
-    [SerializeField] private int weaponDamage;
+    [SerializeField] private float weaponDamage;
     private bool isMobile;
     void Start()
     {

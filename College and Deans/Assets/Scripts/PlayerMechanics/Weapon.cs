@@ -9,7 +9,7 @@ public class Weapon
     [SerializeField] private int damage;
     [SerializeField] private int type;
     
-    [SerializeField] private int damageMultiplier;
+    [SerializeField] private float damageMultiplier;
     public Weapon(string name,int damage,int type){
         this.name = name;
         this.damage = damage;
@@ -21,7 +21,7 @@ public class Weapon
     {
         return this.name;
     }
-    public int getDamage()
+    public float getDamage()
     {
         return this.damage * damageMultiplier;
     }
@@ -30,28 +30,14 @@ public class Weapon
         return this.type;
     }
     
-    public int GetDamageMultiplier()
+    public float GetDamageMultiplier()
     {
         return damageMultiplier;
     }
 
     public void MultiplyDamage(float _multiplyDamage)
     {
-        int amount = (int)_multiplyDamage;
-
-        if (amount == 0)
-        {
-            damageMultiplier = 1;
-            return;
-        }
-
-        if (amount == 1)
-        {
-            damageMultiplier += amount;
-            return;
-        }
-
-        damageMultiplier *= amount;
+        damageMultiplier *= _multiplyDamage;
     }
 
     public void SetDamageMultiplier(float _damageMultiplier)
